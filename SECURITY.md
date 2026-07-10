@@ -8,7 +8,7 @@ This project is in early development. Security fixes are handled on the `main` b
 
 Please do not report security vulnerabilities through public GitHub issues.
 
-Report suspected vulnerabilities through GitHub private vulnerability reporting if it is enabled for this repository. If private vulnerability reporting is unavailable, contact the maintainer privately through GitHub.
+Report suspected vulnerabilities through GitHub private vulnerability reporting if it is enabled for this repository. If private vulnerability reporting is unavailable, contact the maintainer privately through the GitHub profile at https://github.com/sergioviniciuss.
 
 Include:
 

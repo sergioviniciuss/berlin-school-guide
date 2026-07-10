@@ -38,7 +38,7 @@ Examples of representing our community include using an official email address, 
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported privately to the project maintainer through GitHub.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported privately to the maintainer through the GitHub profile at https://github.com/sergioviniciuss.
 
 All complaints will be reviewed and investigated promptly and fairly.
 
