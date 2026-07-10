@@ -45,6 +45,50 @@ Preserve the static-first architecture unless the user explicitly changes the V1
 
 Do not add a production database, server-side API dependency, user accounts, or authentication for V1 unless explicitly requested.
 
+## Repository Conventions
+
+Use the feature-first `src/` architecture:
+
+- `src/app`: routing, layouts, metadata, and page composition only;
+- `src/features`: product-domain behavior and feature-specific code;
+- `src/components/ui`: shadcn/ui primitives only;
+- `src/content`: static MDX and structured content inputs;
+- `src/test`: shared test infrastructure only;
+- `e2e`: Playwright tests.
+
+Use directory-based colocation for meaningful components, utilities, hooks, schemas, and domain units.
+
+The directory name provides the context, so avoid repeating it in file names.
+
+Preferred pattern:
+
+```text
+SchoolCard/
+├── index.tsx
+├── index.test.tsx
+├── types.ts
+├── utils.ts
+├── constants.ts
+└── fixtures.ts
+```
+
+```text
+calculateEvidenceCoverage/
+├── index.ts
+├── index.test.ts
+├── types.ts
+└── constants.ts
+```
+
+Rules:
+
+- one directory per meaningful component, utility, hook, schema, or domain unit;
+- use `index.ts` or `index.tsx` as the primary implementation;
+- colocate tests as `index.test.ts` or `index.test.tsx`;
+- use generic supporting file names such as `types.ts`, `utils.ts`, `constants.ts`, `fixtures.ts`, and `hooks.ts`;
+- avoid repeating the directory name in file names;
+- create additional files only when there is a real need.
+
 ## Testing Expectations
 
 Use tests proportionally to risk.

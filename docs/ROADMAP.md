@@ -63,7 +63,7 @@ M2 should only configure these tools and prove they work together with minimal s
 - MDX renders a minimal static page.
 - Zod is installed and usable.
 - shadcn/ui is initialized.
-- pnpm scripts for `lint`, `typecheck`, `test`, `test:watch`, `test:coverage`, `e2e`, and `build` are documented.
+- pnpm scripts for `dev`, `lint`, `typecheck`, `test`, `test:watch`, `test:coverage`, `e2e`, `format`, `format:check`, and `build` are documented.
 - No production database or server-side API dependency is introduced.
 
 ## M3: School And Evidence Data Model

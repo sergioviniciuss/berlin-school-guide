@@ -152,3 +152,54 @@ V1 will include a broad basic directory, but detailed profiles will be limited t
 ### Consequences
 
 The product can demonstrate a rigorous research model while still giving families broad orientation. More schools can be upgraded from directory entries to detailed profiles over time.
+
+## 2026-07-10: Use Directory-Based Colocation
+
+### Context
+
+The project is expected to grow around durable product domains such as schools, evidence, comparison, guides, methodology, and checklists. Components, utilities, hooks, schemas, tests, fixtures, and constants will often belong to a specific domain unit rather than to broad generic folders.
+
+### Decision
+
+Use a directory-based colocation pattern. Each meaningful component, utility, hook, schema, or domain unit should live in its own directory. The directory name provides the context, so the primary implementation file should be named `index.ts` or `index.tsx`, with colocated supporting files using generic names such as `types.ts`, `utils.ts`, `constants.ts`, `fixtures.ts`, and `hooks.ts`.
+
+Tests should be colocated as `index.test.ts` or `index.test.tsx`.
+
+### Alternatives Considered
+
+- Repeating the unit name in every file, such as `SchoolCard.tsx`, `SchoolCard.test.tsx`, and `SchoolCard.types.ts`.
+- Organizing primarily by technical file type, such as global `components/`, `utils/`, `schemas/`, and `tests/` directories.
+- Creating generic shared utilities before concrete reuse exists.
+
+### Consequences
+
+Related implementation, tests, fixtures, and local helpers stay close together. File names remain short and predictable. The repository must avoid creating extra files without a real need, and shared code should emerge only after at least two concrete use cases exist.
+
+## 2026-07-10: Use Feature-First Source Architecture
+
+### Context
+
+The application will grow around product domains such as guides, schools, evidence, comparison, methodology, and checklists. A generic `lib/`-first structure would make those domain boundaries less visible as schemas, components, utilities, and tests grow.
+
+### Decision
+
+Use a feature-first `src/` architecture:
+
+- `src/app` owns App Router routing, layouts, metadata, and page composition.
+- `src/features` owns product-domain behavior and feature-specific code.
+- `src/components/ui` owns shadcn/ui primitives.
+- `src/content` owns static MDX and structured content inputs.
+- `src/test` owns shared test infrastructure.
+- `e2e` owns Playwright tests.
+
+Do not create empty directories for future features.
+
+### Alternatives Considered
+
+- Generic top-level `lib/`, `components/`, and `tests/` folders for most code.
+- Creating all planned feature folders during M2.
+- Route-only organization under `src/app`.
+
+### Consequences
+
+Domain code stays close to the product capability it supports. Future milestones should add feature folders only when that feature is being implemented. Truly shared code should emerge from repeated use rather than being created speculatively.
