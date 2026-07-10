@@ -204,6 +204,35 @@ Do not create empty directories for future features.
 
 Domain code stays close to the product capability it supports. Future milestones should add feature folders only when that feature is being implemented. Truly shared code should emerge from repeated use rather than being created speculatively.
 
+## 2026-07-10: Use English Technical Naming
+
+### Context
+
+The site is written for Brazilian families in Brazilian Portuguese, but the codebase, routes, query parameters, and filesystem need consistent technical naming that stays predictable for implementation and collaboration.
+
+### Decision
+
+Technical structure is written in English. User-facing content is written in Brazilian Portuguese.
+
+Use English for URL paths, route segments, directory names, file names, code identifiers, and query parameter names. Use Brazilian Portuguese for visible labels, headings, descriptions, accessibility text, and editorial copy.
+
+Examples:
+
+- `/schools` with visible heading `Escolas`;
+- `/guides` with visible heading `Guias`;
+- `/compare` with visible heading `Comparar`;
+- `/methodology` with visible heading `Metodologia`.
+
+### Alternatives Considered
+
+- Portuguese routes and directory names matching the user-facing language.
+- Mixed technical naming based on whether a feature is user-visible.
+- English code identifiers with Portuguese URL paths.
+
+### Consequences
+
+The implementation uses one technical naming convention across routes, folders, files, identifiers, and query parameters. Existing Portuguese technical paths should be renamed before related feature work continues.
+
 ## 2026-07-10: Version V1 Evidence Coverage Fields
 
 ### Context

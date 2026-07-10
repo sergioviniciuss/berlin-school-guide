@@ -47,6 +47,10 @@ Do not add a production database, server-side API dependency, user accounts, or 
 
 ## Repository Conventions
 
+Technical structure is written in English. User-facing content is written in Brazilian Portuguese.
+
+Use English for URL paths, route segments, directory names, file names, code identifiers, and query parameter names. Use Brazilian Portuguese for visible labels, headings, descriptions, accessibility text, and editorial copy.
+
 Use the feature-first `src/` architecture:
 
 - `src/app`: routing, layouts, metadata, and page composition only;

@@ -92,7 +92,7 @@ Define validated structured data for schools, evidence, citations, and research 
 
 ### Goal
 
-Build a searchable static school directory using structured school data.
+Build a searchable static `/schools` directory using structured school data.
 
 ### Scope
 

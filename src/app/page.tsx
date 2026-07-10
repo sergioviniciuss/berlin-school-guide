@@ -13,7 +13,7 @@ export default function HomePage() {
       />
       <div>
         <Button asChild>
-          <Link href="/guia/m2-smoke">Abrir página MDX</Link>
+          <Link href="/guides/m2-smoke">Abrir página MDX</Link>
         </Button>
       </div>
     </main>

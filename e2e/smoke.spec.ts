@@ -7,7 +7,43 @@ test("renders the static home page and MDX guide", async ({ page }) => {
   ).toBeVisible();
 
   await page.getByRole("link", { name: "Abrir página MDX" }).click();
+  await expect(page).toHaveURL(/\/guides\/m2-smoke$/);
   await expect(
     page.getByRole("heading", { name: "Página MDX de validação" }),
+  ).toBeVisible();
+});
+
+test("searches and filters the static school directory", async ({ page }) => {
+  await page.goto("/schools");
+  await expect(page.getByRole("heading", { name: "Escolas" })).toBeVisible();
+  await expect(page.getByText("7 de 7 escolas encontradas")).toBeVisible();
+
+  await page.getByLabel("Buscar escola pelo nome").fill("private bilingual");
+  await expect(page.getByText("1 de 7 escolas encontradas")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Synthetic Private Bilingual School" }),
+  ).toBeVisible();
+
+  await page.goto("/schools");
+  await page.getByRole("checkbox", { name: "Pankow" }).click();
+  await expect(page.getByText("4 de 7 escolas encontradas")).toBeVisible();
+
+  await page
+    .getByRole("button", { name: "Remover filtro Distrito: Pankow" })
+    .click();
+  await expect(page.getByText("7 de 7 escolas encontradas")).toBeVisible();
+
+  await page.getByRole("group", { name: "Bilíngue" }).getByLabel("Sim").click();
+  await expect(
+    page.getByRole("button", { name: "Remover filtro Bilíngue: Sim" }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: "Limpar filtros" }).click();
+  await expect(page.getByText("7 de 7 escolas encontradas")).toBeVisible();
+
+  await page.getByLabel("Buscar escola pelo nome").fill("sem resultado");
+  await expect(page.getByText("0 de 7 escolas encontradas")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Nenhuma escola encontrada" }),
   ).toBeVisible();
 });

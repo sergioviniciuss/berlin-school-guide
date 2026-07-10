@@ -179,6 +179,53 @@ export const validNotApplicableInspectionSchool: School = {
   inspectionData: field(null, notApplicableEvidence),
 };
 
+export const validMissingDataSchool: School = {
+  ...validDirectoryOnlySchool,
+  id: "synthetic-missing-data-school",
+  slug: "synthetic-missing-data-school",
+  name: field("Synthetic Missing Data School", verifiedDirectoryEvidence),
+  location: {
+    district: field("Neukölln", verifiedDirectoryEvidence),
+    neighbourhood: field("Britz", verifiedDirectoryEvidence),
+    address: field("Example Weg 3, 12347 Berlin", verifiedDirectoryEvidence),
+  },
+  classification: field("public", verifiedDirectoryEvidence),
+  inspectionAvailability: field("not_confirmed", verifiedDirectoryEvidence),
+};
+
+export const validConflictingDataSchool: School = {
+  ...validDetailedPublicSchool,
+  id: "synthetic-conflicting-data-school",
+  slug: "synthetic-conflicting-data-school",
+  name: field("Synthetic Conflicting Data School", verifiedDirectoryEvidence),
+  location: {
+    district: field("Charlottenburg-Wilmersdorf", verifiedDirectoryEvidence),
+    neighbourhood: field("Charlottenburg", verifiedDirectoryEvidence),
+    address: field("Example Platz 4, 10623 Berlin", verifiedDirectoryEvidence),
+  },
+  ganztag: field("Conflicting synthetic Ganztag information", {
+    status: "conflicting",
+    citations: [
+      { sourceId: officialDirectorySource.id },
+      { sourceId: schoolWebsiteSource.id },
+    ],
+    note: "Synthetic sources disagree about the Ganztag model.",
+    lastChecked: "2026-07-10",
+  }),
+  afterSchoolCare: field("Outdated synthetic after-school care information", {
+    status: "outdated",
+    citations: [{ sourceId: schoolWebsiteSource.id }],
+    note: "Synthetic field needs rechecking.",
+    lastChecked: "2025-01-10",
+  }),
+  welcomeClasses: field(null, {
+    status: "unverified",
+    citations: [{ sourceId: schoolWebsiteSource.id }],
+    note: "Synthetic field has no acceptable confirmed value.",
+    lastChecked: "2026-07-10",
+  }),
+};
+
 export const invalidVerifiedWithoutCitation = {
   ...validDirectoryOnlySchool,
   name: field("Invalid School", {

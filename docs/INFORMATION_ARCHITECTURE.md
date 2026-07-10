@@ -29,20 +29,31 @@ The site should include:
 
 ```text
 /
- /guia/
- /guia/sistema-escolar-berlim/
- /guia/matricula/
- /guia/einzugsgebiet/
- /guia/ganztag/
- /guia/escolas-publicas-e-privadas/
- /guia/inspecoes-escolares/
- /escolas/
- /escolas/[slug]/
- /comparar/
- /metodologia/
+ /guides/
+ /guides/berlin-school-system/
+ /guides/enrollment/
+ /guides/catchment-area/
+ /guides/ganztag/
+ /guides/public-and-private-schools/
+ /guides/school-inspections/
+ /schools/
+ /schools/[slug]/
+ /compare/
+ /methodology/
  /checklists/
- /reportar-correcao/
+ /report-correction/
 ```
+
+Technical route segments and slugs should be written in English. User-facing labels, page headings, descriptions, accessibility text, and editorial content should be written in Brazilian Portuguese.
+
+Examples:
+
+- route: `/schools`; visible heading: `Escolas`;
+- route: `/guides`; visible heading: `Guias`;
+- route: `/compare`; visible heading: `Comparar`;
+- route: `/methodology`; visible heading: `Metodologia`.
+
+Editorial guide URLs should use English structural routes and concise English slugs, while titles and content remain in Brazilian Portuguese.
 
 ## School Directory
 
@@ -63,6 +74,14 @@ The directory should support static filtering by:
 Structured geography should use `district` as Berlin `Bezirk` and `neighbourhood` as official Berlin `Ortsteil`. The Portuguese labels should be `Distrito` and `Bairro`.
 
 The inspection filter should use `available`, `unavailable`, and `not_confirmed`. It indicates whether official inspection information was found, not school quality.
+
+Directory query parameters should use English names:
+
+```text
+/schools?q=example&district=Mitte&neighbourhood=Moabit&type=public&coverage=80-100
+```
+
+Supported M4 query parameter names should include `q`, `district`, `neighbourhood`, `type`, `ganztag`, `bilingual`, `welcome`, `language`, `focus`, `afterSchool`, `inspection`, and `coverage`.
 
 ## School Page Journey
 
