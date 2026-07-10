@@ -105,6 +105,46 @@ Optional or school-specific fields do not count unless explicitly designated as 
 
 The canonical list of important V1 fields will be defined during M3 and versioned so future calculation changes remain explicit.
 
+### V1 Important Fields
+
+Evidence coverage version `v1` uses these important fields:
+
+- name;
+- website;
+- public/private classification;
+- school level;
+- district;
+- neighbourhood;
+- address;
+- grades served;
+- Ganztag model;
+- after-school care;
+- languages;
+- bilingual programs;
+- international programs;
+- welcome classes;
+- school profile;
+- pedagogy or focus areas;
+- inclusion and support services;
+- transition path after grade 6;
+- communication with families;
+- official inspection availability;
+- official inspection data;
+- facilities.
+
+Internal metadata such as IDs, slugs, sources, research status, and research dates does not count toward evidence coverage.
+
+### Field Evidence Statuses
+
+Factual fields should use one of these statuses:
+
+- `verified`: the field has a non-null value, at least one acceptable citation, and no unresolved material conflict;
+- `missing`: the information was not found during research;
+- `unverified`: a value exists but has no acceptable supporting source;
+- `outdated`: the value exists but needs source rechecking;
+- `conflicting`: sources materially disagree and the conflict must be explained;
+- `not_applicable`: the field does not apply and is excluded from evidence coverage.
+
 ## Anecdotal Signals
 
 The data model may reserve space for anecdotal parent signals, but these should not be displayed in V1.

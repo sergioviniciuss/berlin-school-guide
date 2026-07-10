@@ -1,0 +1,209 @@
+{
+  "id": "synthetic-detailed-public-school",
+  "slug": "synthetic-detailed-public-school",
+  "name": {
+    "value": "Synthetic Detailed Public School",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "website": {
+    "value": "https://example.test/synthetic-detailed-public-school",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "classification": {
+    "value": "public",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "level": {
+    "value": "primary",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "location": {
+    "district": {
+      "value": "Pankow",
+      "evidence": {
+        "status": "verified",
+        "citations": [{ "sourceId": "berlin-directory" }],
+        "lastChecked": "2026-07-10"
+      }
+    },
+    "neighbourhood": {
+      "value": "Prenzlauer Berg",
+      "evidence": {
+        "status": "verified",
+        "citations": [{ "sourceId": "berlin-directory" }],
+        "lastChecked": "2026-07-10"
+      }
+    },
+    "address": {
+      "value": "Example Allee 2, 10405 Berlin",
+      "evidence": {
+        "status": "verified",
+        "citations": [{ "sourceId": "berlin-directory" }],
+        "lastChecked": "2026-07-10"
+      }
+    }
+  },
+  "gradesServed": {
+    "value": ["1", "2", "3", "4", "5", "6"],
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "ganztag": {
+    "value": "Open all-day model",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "afterSchoolCare": {
+    "value": "eFöB information is published by the school",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "languages": {
+    "value": ["German", "English"],
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "bilingualPrograms": {
+    "value": ["English"],
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "internationalPrograms": {
+    "value": ["Synthetic international support"],
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "welcomeClasses": {
+    "value": true,
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "schoolProfile": {
+    "value": "Synthetic music and language profile",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "pedagogyFocus": {
+    "value": ["Music", "Languages"],
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "inclusionSupport": {
+    "value": "Synthetic inclusion support description",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "transitionAfterGrade6": {
+    "value": "Synthetic transition guidance after grade 6",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "familyCommunication": {
+    "value": "Synthetic parent communication description",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "inspectionAvailability": {
+    "value": "available",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "inspectionData": {
+    "value": "Synthetic inspection source available",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "facilities": {
+    "value": ["Gym", "Library"],
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "school-website" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "sources": [
+    {
+      "id": "berlin-directory",
+      "title": "Synthetic Berlin school directory",
+      "url": "https://example.test/berlin-directory",
+      "type": "official_government",
+      "reliability": "primary",
+      "publisher": "Synthetic Berlin Senate source",
+      "dateAccessed": "2026-07-10",
+      "datePublished": "2026-07-01"
+    },
+    {
+      "id": "school-website",
+      "title": "Synthetic school website",
+      "url": "https://example.test/school",
+      "type": "school_website",
+      "reliability": "secondary",
+      "publisher": "Synthetic school",
+      "dateAccessed": "2026-07-10"
+    }
+  ],
+  "research": {
+    "status": "profile_ready",
+    "coverageLevel": "detailed",
+    "lastResearched": "2026-07-10",
+    "lastSourceChecked": "2026-07-10"
+  }
+}

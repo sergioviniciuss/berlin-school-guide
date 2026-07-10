@@ -1,0 +1,198 @@
+{
+  "id": "synthetic-directory-school",
+  "slug": "synthetic-directory-school",
+  "name": {
+    "value": "Synthetic Directory School",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "website": {
+    "value": "https://example.test/synthetic-directory-school",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "classification": {
+    "value": "public",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "level": {
+    "value": "primary",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "location": {
+    "district": {
+      "value": "Mitte",
+      "evidence": {
+        "status": "verified",
+        "citations": [{ "sourceId": "berlin-directory" }],
+        "lastChecked": "2026-07-10"
+      }
+    },
+    "neighbourhood": {
+      "value": "Moabit",
+      "evidence": {
+        "status": "verified",
+        "citations": [{ "sourceId": "berlin-directory" }],
+        "lastChecked": "2026-07-10"
+      }
+    },
+    "address": {
+      "value": "Example Str. 1, 10557 Berlin",
+      "evidence": {
+        "status": "verified",
+        "citations": [{ "sourceId": "berlin-directory" }],
+        "lastChecked": "2026-07-10"
+      }
+    }
+  },
+  "gradesServed": {
+    "value": ["1", "2", "3", "4", "5", "6"],
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "ganztag": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "afterSchoolCare": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "languages": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "bilingualPrograms": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "internationalPrograms": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "welcomeClasses": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "schoolProfile": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "pedagogyFocus": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "inclusionSupport": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "transitionAfterGrade6": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "familyCommunication": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "inspectionAvailability": {
+    "value": "not_confirmed",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
+  "inspectionData": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "facilities": {
+    "value": null,
+    "evidence": {
+      "status": "missing",
+      "citations": [],
+      "note": "Synthetic fixture does not include this information."
+    }
+  },
+  "sources": [
+    {
+      "id": "berlin-directory",
+      "title": "Synthetic Berlin school directory",
+      "url": "https://example.test/berlin-directory",
+      "type": "official_government",
+      "reliability": "primary",
+      "publisher": "Synthetic Berlin Senate source",
+      "dateAccessed": "2026-07-10",
+      "datePublished": "2026-07-01"
+    }
+  ],
+  "research": {
+    "status": "directory_only",
+    "coverageLevel": "directory"
+  }
+}

@@ -86,6 +86,7 @@ Define validated structured data for schools, evidence, citations, and research 
 - Field-level evidence is supported.
 - Evidence coverage can be computed.
 - The model supports V1 primary-school needs and can evolve later without breaking existing data.
+- Static synthetic school fixtures can be validated with `pnpm validate:data`.
 
 ## M4: Static Directory And Filters
 

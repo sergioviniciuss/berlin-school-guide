@@ -203,3 +203,103 @@ Do not create empty directories for future features.
 ### Consequences
 
 Domain code stays close to the product capability it supports. Future milestones should add feature folders only when that feature is being implemented. Truly shared code should emerge from repeated use rather than being created speculatively.
+
+## 2026-07-10: Version V1 Evidence Coverage Fields
+
+### Context
+
+Evidence coverage needs to measure research completeness consistently without becoming a school quality score. Future changes to the field list must be explicit so coverage percentages remain interpretable.
+
+### Decision
+
+Use evidence coverage version `v1` for the initial important-field list. The V1 list covers core school identity, classification, location, grades served, Ganztag, after-school care, languages, bilingual/international programs, welcome classes, school profile, pedagogy focus, inclusion support, transition after grade 6, family communication, inspection availability/data, and facilities.
+
+### Alternatives Considered
+
+- Calculating coverage from every field on a school record.
+- Leaving the important-field list implicit.
+- Using a qualitative label instead of a percentage.
+
+### Consequences
+
+Coverage can be computed and tested consistently. Changes to coverage inputs should create a new version or explicit decision entry.
+
+## 2026-07-10: Use Field-Level Evidence Statuses
+
+### Context
+
+The product needs to distinguish verified facts from missing, unverified, outdated, conflicting, and not-applicable information.
+
+### Decision
+
+Every factual field uses one of these statuses: `verified`, `missing`, `unverified`, `outdated`, `conflicting`, or `not_applicable`.
+
+### Alternatives Considered
+
+- A boolean verified/unverified flag.
+- Page-level evidence only.
+- Free-text research notes without structured status.
+
+### Consequences
+
+The data model can make uncertainty visible and compute evidence coverage. `not_applicable` fields are excluded from both numerator and denominator; all other non-verified statuses do not count as verified.
+
+## 2026-07-10: Use School-Level Sources With Field-Level Citations
+
+### Context
+
+Many fields can cite the same official source, and each field may need multiple citations.
+
+### Decision
+
+Each school record stores sources once in a top-level `sources` array. Field-level citations reference those sources by `sourceId`.
+
+### Alternatives Considered
+
+- Embedding full source objects on every field.
+- Keeping only page-level sources.
+- Storing citations as unstructured prose.
+
+### Consequences
+
+Sources are not duplicated across fields, and field-level citations can be validated against the school source registry.
+
+## 2026-07-10: Use Synthetic Fixtures For M3
+
+### Context
+
+M3 validates the data model shape and rules. It should not introduce real Berlin school research before the research methodology is applied in later milestones.
+
+### Decision
+
+M3 uses synthetic valid and invalid school fixtures only.
+
+### Alternatives Considered
+
+- Using real Berlin schools immediately.
+- Skipping fixtures until import work begins.
+- Testing schemas only with inline objects.
+
+### Consequences
+
+Schema behavior can be tested without creating production content or implying researched claims about real schools.
+
+## 2026-07-10: Use tsx For Static Data Validation
+
+### Context
+
+The project needs a simple way to run TypeScript validation scripts against static fixture data.
+
+### Decision
+
+Use `tsx` for the `pnpm validate:data` script.
+
+### Alternatives Considered
+
+- Compiling scripts before running them.
+- Writing validation scripts in plain JavaScript.
+- Reusing Next.js runtime commands for validation.
+
+### Consequences
+
+Static data validation can run directly from TypeScript source. This adds a small development dependency but keeps validation scripts straightforward.
