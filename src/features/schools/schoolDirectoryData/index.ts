@@ -1,6 +1,7 @@
 import { calculateEvidenceCoverage } from "@/features/evidence/calculateEvidenceCoverage";
 import type { School } from "@/features/schools/school";
 import { schoolSchema } from "@/features/schools/school";
+import { realLichtenbergPrimarySchools } from "@/content/schools/real/lichtenbergPrimarySchools";
 import {
   validConflictingDataSchool,
   validDetailedPublicSchool,
@@ -26,8 +27,14 @@ export function getSyntheticSchools() {
   return syntheticSchoolFixtures.map((school) => schoolSchema.parse(school));
 }
 
+export function getRealSchools() {
+  return realLichtenbergPrimarySchools.map((school) =>
+    schoolSchema.parse(school),
+  );
+}
+
 export function getSchoolDirectoryItems(): SchoolDirectoryItem[] {
-  return getSyntheticSchools().map(toSchoolDirectoryItem);
+  return getRealSchools().map(toSchoolDirectoryItem);
 }
 
 export function toSchoolDirectoryItem(school: School): SchoolDirectoryItem {
@@ -35,6 +42,8 @@ export function toSchoolDirectoryItem(school: School): SchoolDirectoryItem {
     id: school.id,
     slug: school.slug,
     name: school.name.value ?? "Escola sintética sem nome",
+    schoolNumber: school.schoolNumber.value,
+    schoolNumberStatus: school.schoolNumber.evidence.status,
     classification: school.classification.value,
     classificationStatus: school.classification.evidence.status,
     district: school.location.district.value,

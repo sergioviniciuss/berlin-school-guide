@@ -9,6 +9,14 @@
       "lastChecked": "2026-07-10"
     }
   },
+  "schoolNumber": {
+    "value": "SYN-G02",
+    "evidence": {
+      "status": "verified",
+      "citations": [{ "sourceId": "berlin-directory" }],
+      "lastChecked": "2026-07-10"
+    }
+  },
   "website": {
     "value": "https://example.test/synthetic-detailed-public-school",
     "evidence": {

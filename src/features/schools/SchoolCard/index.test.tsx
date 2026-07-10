@@ -8,14 +8,15 @@ describe("SchoolCard", () => {
     render(<SchoolCard school={getSchoolDirectoryItems()[1]} />);
 
     expect(
-      screen.getByRole("heading", { name: "Synthetic Detailed Public School" }),
+      screen.getByRole("heading", { name: "Bernhard-Grzimek-Schule" }),
     ).toBeVisible();
+    expect(screen.getByText(/Número oficial:/)).toBeVisible();
     expect(screen.getByText("Cobertura da pesquisa")).toBeVisible();
     expect(screen.getByText(/Percentual de campos importantes/)).toBeVisible();
   });
 
   it("renders missing data neutrally", () => {
-    render(<SchoolCard school={getSchoolDirectoryItems()[0]} />);
+    render(<SchoolCard school={getSchoolDirectoryItems()[4]} />);
 
     expect(
       screen.getAllByText("Informação não encontrada").length,

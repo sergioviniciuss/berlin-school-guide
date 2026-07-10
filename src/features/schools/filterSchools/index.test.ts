@@ -8,7 +8,7 @@ describe("filterSchools", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        query: "private bilingual",
+        query: "Lew-Tolstoi",
       }),
     ).toHaveLength(1);
   });
@@ -17,19 +17,19 @@ describe("filterSchools", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        districts: ["Pankow"],
-        neighbourhoods: ["Prenzlauer Berg"],
+        districts: ["Lichtenberg"],
+        neighbourhoods: ["Friedrichsfelde"],
       }),
-    ).toHaveLength(4);
+    ).toHaveLength(6);
   });
 
   it("filters by public/private classification", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        classifications: ["private"],
+        classifications: ["public"],
       }),
-    ).toHaveLength(1);
+    ).toHaveLength(10);
   });
 
   it("filters Ganztag by verified and missing/unconfirmed status", () => {
@@ -67,13 +67,13 @@ describe("filterSchools", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        languages: ["German"],
+        languages: ["Deutsch"],
       }).length,
     ).toBeGreaterThan(0);
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        educationalFocus: ["Music"],
+        educationalFocus: ["Musikbetonung"],
       }).length,
     ).toBeGreaterThan(0);
   });
@@ -97,7 +97,7 @@ describe("filterSchools", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        evidenceCoverage: ["0-49"],
+        evidenceCoverage: ["50-79"],
       }).length,
     ).toBeGreaterThan(0);
     expect(
@@ -112,8 +112,10 @@ describe("filterSchools", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        districts: ["Mitte"],
-        classifications: ["private"],
+        districts: ["Lichtenberg"],
+        neighbourhoods: ["Karlshorst"],
+        languages: ["Französisch"],
+        educationalFocus: ["Informationstechnik"],
       }),
     ).toHaveLength(0);
   });

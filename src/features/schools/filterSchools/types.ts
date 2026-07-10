@@ -28,6 +28,8 @@ export type SchoolDirectoryItem = {
   id: string;
   slug: string;
   name: string;
+  schoolNumber: string | null;
+  schoolNumberStatus: FieldStatus;
   classification: SchoolClassification | null;
   classificationStatus: FieldStatus;
   district: string | null;

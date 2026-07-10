@@ -25,6 +25,10 @@ export function SchoolCard({ school }: SchoolCardProps) {
           {school.neighbourhood ??
             formatFieldStatus(school.neighbourhoodStatus)}
         </p>
+        <p className="text-sm text-neutral-600">
+          Número oficial:{" "}
+          {school.schoolNumber ?? formatFieldStatus(school.schoolNumberStatus)}
+        </p>
       </div>
 
       <dl className="mt-5 grid gap-3 sm:grid-cols-2">

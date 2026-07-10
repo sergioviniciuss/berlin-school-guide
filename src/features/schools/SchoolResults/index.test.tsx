@@ -7,7 +7,7 @@ describe("SchoolResults", () => {
   it("renders school cards", () => {
     render(<SchoolResults schools={getSchoolDirectoryItems().slice(0, 1)} />);
     expect(
-      screen.getByRole("heading", { name: "Synthetic Directory School" }),
+      screen.getByRole("heading", { name: "Adam-Ries-Schule" }),
     ).toBeVisible();
   });
 

@@ -26,6 +26,7 @@ export const schoolSchema = z
     id: z.string().min(1),
     slug: slugSchema,
     name: createFieldValueSchema(z.string().min(1)),
+    schoolNumber: createFieldValueSchema(z.string().min(1)),
     website: createFieldValueSchema(z.string().url()),
     classification: createFieldValueSchema(schoolClassificationSchema),
     level: createFieldValueSchema(schoolLevelSchema),

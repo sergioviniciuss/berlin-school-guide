@@ -2,6 +2,7 @@ export const evidenceCoverageVersion = "v1" as const;
 
 export const importantSchoolFieldPathsV1 = [
   "name",
+  "schoolNumber",
   "website",
   "classification",
   "level",

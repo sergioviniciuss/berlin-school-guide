@@ -47,6 +47,7 @@ export const validDirectoryOnlySchool: School = {
   id: "synthetic-directory-school",
   slug: "synthetic-directory-school",
   name: field("Synthetic Directory School", verifiedDirectoryEvidence),
+  schoolNumber: field("SYN-G01", verifiedDirectoryEvidence),
   website: field(
     "https://example.test/synthetic-directory-school",
     verifiedDirectoryEvidence,
@@ -87,6 +88,7 @@ export const validDetailedPublicSchool: School = {
   id: "synthetic-detailed-public-school",
   slug: "synthetic-detailed-public-school",
   name: field("Synthetic Detailed Public School", verifiedDirectoryEvidence),
+  schoolNumber: field("SYN-G02", verifiedDirectoryEvidence),
   website: field(
     "https://example.test/synthetic-detailed-public-school",
     verifiedDirectoryEvidence,

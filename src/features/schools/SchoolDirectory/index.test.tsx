@@ -22,29 +22,29 @@ describe("SchoolDirectory", () => {
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
     expect(screen.getByRole("heading", { name: "Escolas" })).toBeVisible();
-    expect(screen.getByText("7 de 7 escolas encontradas")).toBeVisible();
+    expect(screen.getByText("10 de 10 escolas encontradas")).toBeVisible();
   });
 
   it("syncs search to URL query parameters", () => {
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
     fireEvent.change(screen.getByLabelText("Buscar escola pelo nome"), {
-      target: { value: "private" },
+      target: { value: "Lew" },
     });
 
-    expect(replace).toHaveBeenLastCalledWith("/schools?q=private", {
+    expect(replace).toHaveBeenLastCalledWith("/schools?q=Lew", {
       scroll: false,
     });
   });
 
   it("filters initial results from query parameters", () => {
-    params = new URLSearchParams("district=Mitte");
+    params = new URLSearchParams("neighbourhood=Karlshorst");
 
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
-    expect(screen.getByText("1 de 7 escolas encontradas")).toBeVisible();
+    expect(screen.getByText("4 de 10 escolas encontradas")).toBeVisible();
     expect(
-      screen.getByRole("heading", { name: "Synthetic Directory School" }),
+      screen.getByRole("heading", { name: "Lew-Tolstoi-Schule" }),
     ).toBeVisible();
   });
 });

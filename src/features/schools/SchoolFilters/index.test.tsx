@@ -19,7 +19,7 @@ describe("SchoolFilters", () => {
       />,
     );
 
-    await user.click(screen.getByLabelText("Pankow"));
-    expect(onToggle).toHaveBeenCalledWith("districts", "Pankow");
+    await user.click(screen.getByLabelText("Lichtenberg"));
+    expect(onToggle).toHaveBeenCalledWith("districts", "Lichtenberg");
   });
 });
