@@ -54,6 +54,7 @@ export const schoolSchema = z
     sources: z.array(sourceSchema).min(1),
     research: researchMetadataSchema,
   })
+  // Citation quality gate (RSCH-04 data layer) — verified fields require acceptable primary/secondary source
   .superRefine((school, context) => {
     const fieldEntries = collectFieldEvidence(school);
 
