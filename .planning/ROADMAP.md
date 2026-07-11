@@ -63,7 +63,11 @@ Plans:
   1. The homepage presents the product in Portuguese, replacing the old "M2 foundation validation" copy, and links prominently to the school directory.
   2. A shared header/footer appears on every page and links home, directory, and methodology (comparison and guides links appear as those phases ship).
   3. A user can go from the homepage to the filtered school directory using only in-page navigation.
-**Plans**: TBD
+**Plans**: 3 plans (2 waves)
+Plans:
+- [ ] 03-01-PLAN.md — Site chrome: Sheet, SiteHeader, SiteFooter, layout wiring (NAV-02)
+- [ ] 03-02-PLAN.md — Homepage landing: HomeJourneyCards, hero, scope note (NAV-01, NAV-03)
+- [ ] 03-03-PLAN.md — Legacy cleanup: remove m2-smoke, rewrite e2e smoke (NAV-03, D-13–D-15)
 **UI hint**: yes
 
 ### Phase 4: School Detail Profiles
@@ -139,7 +143,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Data & Evidence Audit | 3/3 | Complete | 2026-07-11 |
 | 2. Research Process & Attribution | 3/3 | Complete | 2026-07-11 |
-| 3. Homepage, Navigation & Core Journey | 0/TBD | Not started | - |
+| 3. Homepage, Navigation & Core Journey | 0/3 | Not started | - |
 | 4. School Detail Profiles | 0/TBD | Not started | - |
 | 5. Directory UX & Discovery | 0/TBD | Not started | - |
 | 6. School Comparison | 0/TBD | Not started | - |
