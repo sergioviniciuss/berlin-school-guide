@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 import { SchoolCard } from ".";
 import { getSchoolDirectoryItems } from "@/features/schools/schoolDirectoryData";
@@ -123,5 +123,103 @@ describe("SchoolCard", () => {
     );
 
     expect(screen.queryByText("Willkommensklasse")).not.toBeInTheDocument();
+  });
+
+  describe("compare selection", () => {
+    it("renders compare checkbox with Portuguese aria-label", () => {
+      const school = getSchoolDirectoryItems()[0];
+
+      render(
+        <SchoolCard
+          school={school}
+          isCompareSelected={false}
+          onToggleCompare={jest.fn()}
+          selectionFull={false}
+        />,
+      );
+
+      expect(
+        screen.getByRole("checkbox", {
+          name: `Selecionar ${school.name} para comparar`,
+        }),
+      ).toBeInTheDocument();
+    });
+
+    it("uses min-h-11 min-w-11 tap target on compare checkbox", () => {
+      const school = getSchoolDirectoryItems()[0];
+
+      render(
+        <SchoolCard
+          school={school}
+          isCompareSelected={false}
+          onToggleCompare={jest.fn()}
+          selectionFull={false}
+        />,
+      );
+
+      const checkbox = screen.getByRole("checkbox", {
+        name: `Selecionar ${school.name} para comparar`,
+      });
+      expect(checkbox).toHaveClass("min-h-11", "min-w-11");
+    });
+
+    it("calls onToggleCompare without navigating when checkbox is clicked", () => {
+      const school = getSchoolDirectoryItems()[0];
+      const onToggleCompare = jest.fn();
+
+      render(
+        <SchoolCard
+          school={school}
+          isCompareSelected={false}
+          onToggleCompare={onToggleCompare}
+          selectionFull={false}
+        />,
+      );
+
+      fireEvent.click(
+        screen.getByRole("checkbox", {
+          name: `Selecionar ${school.name} para comparar`,
+        }),
+      );
+
+      expect(onToggleCompare).toHaveBeenCalledTimes(1);
+      expect(window.location.pathname).not.toBe(`/schools/${school.slug}`);
+    });
+
+    it("disables checkbox when selection is full and school is not selected", () => {
+      const school = getSchoolDirectoryItems()[0];
+
+      render(
+        <SchoolCard
+          school={school}
+          isCompareSelected={false}
+          onToggleCompare={jest.fn()}
+          selectionFull
+        />,
+      );
+
+      const checkbox = screen.getByRole("checkbox", {
+        name: `Selecionar ${school.name} para comparar`,
+      });
+      expect(checkbox).toBeDisabled();
+      expect(checkbox).toHaveAttribute("title", "Máximo de 4 escolas");
+    });
+
+    it("keeps profile link navigation separate from compare checkbox", () => {
+      const school = getSchoolDirectoryItems()[0];
+
+      render(
+        <SchoolCard
+          school={school}
+          isCompareSelected={false}
+          onToggleCompare={jest.fn()}
+          selectionFull={false}
+        />,
+      );
+
+      expect(
+        screen.getByRole("link", { name: `Ver perfil de ${school.name}` }),
+      ).toHaveAttribute("href", `/schools/${school.slug}`);
+    });
   });
 });
