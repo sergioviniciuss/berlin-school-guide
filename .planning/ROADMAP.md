@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Data & Evidence Audit** - Audit all 10 Lichtenberg records, remove misleading evidence fallbacks and synthetic copy (completed 2026-07-11)
 - [x] **Phase 2: Research Process & Attribution** - Document a repeatable research workflow with dated, citable sources and a parent-facing methodology page (completed 2026-07-11)
-- [ ] **Phase 3: Homepage, Navigation & Core Journey** - Replace M2 homepage copy and add shared site navigation
+- [x] **Phase 3: Homepage, Navigation & Core Journey** - Replace M2 homepage copy and add shared site navigation (completed 2026-07-11)
 - [ ] **Phase 4: School Detail Profiles** - Build `/schools/[slug]` with per-field evidence labels and consolidated sources
 - [ ] **Phase 5: Directory UX & Discovery** - Polish search, filters, sorting, empty states, mobile usability, and discoverability
 - [ ] **Phase 6: School Comparison** - Let families compare selected schools side by side without a quality ranking
@@ -143,7 +143,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 1. Data & Evidence Audit | 3/3 | Complete | 2026-07-11 |
 | 2. Research Process & Attribution | 3/3 | Complete | 2026-07-11 |
-| 3. Homepage, Navigation & Core Journey | 0/3 | Not started | - |
+| 3. Homepage, Navigation & Core Journey | 3/3 | Complete | 2026-07-11 |
 | 4. School Detail Profiles | 0/TBD | Not started | - |
 | 5. Directory UX & Discovery | 0/TBD | Not started | - |
 | 6. School Comparison | 0/TBD | Not started | - |

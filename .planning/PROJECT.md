@@ -27,11 +27,13 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Per-school `lastResearched`/`lastSourceChecked` dates validated via `validateResearchDates` — Phase 2 (2026-07-11)
 - ✓ Parent-facing `/methodology` page explaining evidence statuses and coverage v2 — Phase 2 (2026-07-11)
 - ✓ Citation data completeness enforced on verified fields (UI rendering deferred to Phase 4) — Phase 2 (2026-07-11)
+- ✓ Homepage landing page with journey cards to directory and methodology — Phase 3 (2026-07-11)
+- ✓ Shared site header/footer navigation (Início, Escolas, Metodologia) on all pages — Phase 3 (2026-07-11)
+- ✓ Core journey: home → school directory via in-page links (e2e verified) — Phase 3 (2026-07-11)
 
 ### Active
 - [ ] Build school detail pages (`/schools/[slug]`) with citations and missing-data labels
 - [ ] Build comparison experience without quality rankings
-- [ ] Create homepage and shared navigation for core user journey
 - [ ] Publish essential parent guides (system understanding + practical decision support)
 - [ ] Release readiness: accessibility, responsive behavior, SEO, static export validation
 
@@ -70,7 +72,9 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 |------|-------|
 | School research depth | 3/10 schools have deeper field research (Adam-Ries, Lew-Tolstoi, Richard-Wagner); 7 are `directory_only` |
 | Evidence coverage UI | Coverage v2 with level-aware denominators; tier labels on cards (Phase 1) |
-| MDX guides | `methodology.mdx` published; `m2-smoke` smoke page still exists |
+| MDX guides | `methodology.mdx` published |
+| Site navigation | `SiteHeader`/`SiteFooter` on all pages; live nav: Início, Escolas, Metodologia (Phase 3) |
+| Homepage | Fuller landing with journey cards to `/schools` and `/methodology` (Phase 3) |
 | Research workflow | `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` + `validateResearchDates` in `pnpm validate:data` |
 | Information architecture | Documented in `docs/INFORMATION_ARCHITECTURE.md` but most routes do not exist |
 | Comparison | Philosophy in `docs/COMPARISON.md`; no `/compare` route or feature code |
@@ -89,14 +93,14 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 | `bilingualPrograms` defaults to `not_applicable` when unset | Defaults to `missing` unless verified |
 | `inspectionAvailability` weak portrait default | Directory schools use `missing`; independent citations when overridden |
 
-#### 4. Remaining scaffolding / deferred
+#### 4. Resolved in Phase 3 (2026-07-11)
 
-| Issue | Location | Target phase |
-|-------|----------|--------------|
-| Legacy `/guides/m2-smoke` route | `src/app/guides/m2-smoke/` | Phase 3 |
-| `e2e/smoke.spec.ts` stale homepage assertion | `e2e/smoke.spec.ts` | Phase 8 |
+| Issue | Resolution |
+|-------|------------|
+| Legacy `/guides/m2-smoke` route | Removed route and MDX content |
+| `e2e/smoke.spec.ts` stale homepage assertion | Rewritten for home → `/schools` journey (e2e passes) |
 
-#### 5. Schools researched with official sources
+#### 5. Remaining scaffolding / deferred
 
 All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bildung.berlin.de/Schulverzeichnis/Schulportrait.aspx`). Post-audit (Phase 1), all 10 are classified `directory_only` / `directory`; formerly-detailed schools downgraded per D-19 threshold (<8 independently verified detailed fields).
 
@@ -127,14 +131,13 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 #### 8. What prevents usable V1 today
 
 1. **No school detail pages** — directory is a dead end
-2. **No shared navigation** — cannot move between sections without typing URLs
-3. **No comparison** — key parent workflow missing
-4. **No educational guides** — system explanation not published
+2. **No comparison** — key parent workflow missing
+3. **No educational guides** — system explanation not published
 
 #### 9. CONCERNS.md items required before launch
 
 **Must resolve (remaining):**
-- Site-wide navigation for existing routes (Phase 3)
+- School detail pages linking from directory cards (Phase 4)
 
 **Should resolve:**
 - Document deployment security headers when host is chosen (Phase 8)
@@ -143,6 +146,9 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 
 **Resolved in Phase 1:**
 - Homepage M2 scaffolding, directory synthetic copy, ganztag fallbacks, synthetic data isolation
+
+**Resolved in Phase 3:**
+- Site-wide navigation, m2-smoke legacy route, e2e homepage journey smoke test
 
 **Monitor (not blocking at 10 schools):**
 - Client-side filter performance at Berlin-wide scale (M8 deferred)
@@ -196,4 +202,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-11 after Phase 2 completion*
+*Last updated: 2026-07-11 after Phase 3 completion*
