@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 07 context gathered
-last_updated: "2026-07-11T21:30:12.120Z"
-last_activity: 2026-07-11
+status: executing
+stopped_at: Phase 07 complete — UAT pending
+last_updated: "2026-07-11T23:45:00Z"
+last_activity: 2026-07-11 -- Phase 07 execution complete
 progress:
   total_phases: 8
-  completed_phases: 6
-  total_plans: 19
-  completed_plans: 19
-  percent: 100
+  completed_phases: 7
+  total_plans: 25
+  completed_plans: 22
+  percent: 88
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-11)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 06 — school-comparison
+**Current focus:** Phase 08 — release-readiness
 
 ## Current Position
 
-Phase: 7
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-07-11
+Phase: 07 (essential-parent-guides) — COMPLETE (UAT pending)
+Plan: 3 of 3
+Status: Phase 07 automated verification passed; human UAT pending
+Last activity: 2026-07-11 -- Phase 07 execution complete
 
-Progress: [██████░░░░] 63%
+Progress: [███████░░░] 88%
 
 ## Performance Metrics
 
@@ -50,10 +50,11 @@ Progress: [██████░░░░] 63%
 | 04 | 3 | - | - |
 | 05 | 3 | - | - |
 | 06 | 4 | - | - |
+| 07 | 3 | - | - |
 
 **Recent Trend:**
 
-- Last 5 plans: -
+- Last 5 plans: 07-01, 07-02, 07-03
 - Trend: -
 
 *Updated after each plan completion*
@@ -65,18 +66,17 @@ Progress: [██████░░░░] 63%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- Brownfield assessment (2026-07-11): Static export, no backend, field-level evidence model, Lichtenberg-first scope, and feature-first architecture are all confirmed good — keep as-is.
-- Brownfield assessment (2026-07-11): Evidence coverage scoring inflated by implicit fallbacks — **resolved in Phase 1** via `inferredFrom()`, coverage v2, and school audit.
-- Roadmap revision (2026-07-11): Navigation moves to Phase 3 (usable product earlier); new Phase 5 for directory UX before comparison; 8 phases total.
+- Phase 7 (2026-07-11): Hub shows live guides only; system guide at `/guides/berlin-school-system/`; checklist at `/guides/first-steps/`; filter help links to guide anchors.
+- Brownfield assessment (2026-07-11): Static export, no backend, field-level evidence model, Lichtenberg-first scope confirmed.
 
 ### Pending Todos
 
-None yet.
+- Phase 7 human UAT (3 tests in 07-HUMAN-UAT.md)
 
 ### Blockers/Concerns
 
-- [Phase 8] E2E suite (`e2e/smoke.spec.ts`) exists but is not wired into CI (`.github/workflows/ci.yml`) — must add before release readiness can be considered done.
-- [Phase 8] No HTTP security headers or dependency vulnerability scanning documented for the eventual static host — deployment docs in Phase 8 should address this.
+- [Phase 8] E2E suite exists but is not wired into CI — must add before release readiness.
+- [Phase 8] No HTTP security headers or dependency vulnerability scanning documented for static host.
 
 ## Deferred Items
 
@@ -86,11 +86,10 @@ Items acknowledged and carried forward — see ROADMAP.md **Future Backlog** for
 |----------|------|--------|-------------|
 | Scope | Complete all Lichtenberg Grundschulen | Future backlog | 2026-07-11 roadmap revision |
 | Scope | Additional Berlin districts | Future backlog | 2026-07-11 roadmap revision |
-| Scope | Berlin-wide directory import (M8) | Future backlog | 2026-07-11 project init |
-| Scope | 20–30 pilot profiles across Berlin (M9) | Future backlog | 2026-07-11 project init |
+| Guides | Dedicated enrollment step-by-step guide | Future backlog | Phase 7 D-08 |
 
 ## Session Continuity
 
-Last session: 2026-07-11T21:30:12.108Z
-Stopped at: Phase 07 context gathered
-Resume file: .planning/phases/07-essential-parent-guides/07-CONTEXT.md
+Last session: 2026-07-11T23:45:00Z
+Stopped at: Phase 07 complete — UAT pending
+Resume file: .planning/phases/07-essential-parent-guides/07-HUMAN-UAT.md

@@ -20,7 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: School Detail Profiles** - Build `/schools/[slug]` with per-field evidence labels and consolidated sources (completed 2026-07-11)
 - [x] **Phase 5: Directory UX & Discovery** - Polish search, filters, sorting, empty states, mobile usability, and discoverability (completed 2026-07-11)
 - [x] **Phase 6: School Comparison** - Let families compare selected schools side by side without a quality ranking (completed 2026-07-11)
-- [ ] **Phase 7: Essential Parent Guides** - Publish the Berlin primary system guide and a practical checklist in Portuguese
+- [x] **Phase 7: Essential Parent Guides** - Publish the Berlin primary system guide and a practical checklist in Portuguese (completed 2026-07-11)
 - [ ] **Phase 8: Release Readiness** - Validate build, data, e2e coverage, SEO, responsiveness, and accessibility before launch
 
 ## Phase Details
@@ -133,9 +133,9 @@ Plans:
   3. German education terms used across the site (Ganztag, Bezirk, Schulportrait, etc.) are explained in Portuguese context within the guides.
 **Plans**: 3 plans (3 waves)
 Plans:
-- [ ] 07-01-PLAN.md — Guide routes, GuidesHub, MDX shell, print CSS (GUID-01–03 foundation)
-- [ ] 07-02-PLAN.md — Editorial MDX: system guide + Primeiros passos checklist + glossary (GUID-01–03)
-- [ ] 07-03-PLAN.md — Guias nav, homepage card, cross-links, filter help URLs, e2e (GUID-01–03)
+- [x] 07-01-PLAN.md — Guide routes, GuidesHub, MDX shell, print CSS (GUID-01–03 foundation)
+- [x] 07-02-PLAN.md — Editorial MDX: system guide + Primeiros passos checklist + glossary (GUID-01–03)
+- [x] 07-03-PLAN.md — Guias nav, homepage card, cross-links, filter help URLs, e2e (GUID-01–03)
 **UI hint**: yes
 
 ### Phase 8: Release Readiness
@@ -162,8 +162,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. Homepage, Navigation & Core Journey | 3/3 | Complete | 2026-07-11 |
 | 4. School Detail Profiles | 3/3 | Complete | 2026-07-11 |
 | 5. Directory UX & Discovery | 3/3 | Complete | 2026-07-11 |
-| 6. School Comparison | 4/4 | Complete (UAT pending) | 2026-07-11 |
-| 7. Essential Parent Guides | 0/TBD | Not started | - |
+| 6. School Comparison | 4/4 | Complete | 2026-07-11 |
+| 7. Essential Parent Guides | 3/3 | Complete (UAT pending) | 2026-07-11 |
 | 8. Release Readiness | 0/TBD | Not started | - |
 
 ## Future Backlog
