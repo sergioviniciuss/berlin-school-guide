@@ -35,7 +35,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. Evidence coverage percentages shown anywhere in the app reflect only topically valid, independently cited fields — visibly lower for directory-only schools than before the audit.
   4. Directory-only schools are visibly distinguished from detailed schools in the data and UI, and no directory-only school displays a detailed-level claim it can't support.
   5. No page or component shows "sintética"/"synthetic"/M2 scaffolding wording, and synthetic test fixtures (`getSyntheticSchools` or equivalent) are unreachable from any production page.
-**Plans**: TBD
+**Plans**: 3 plans (3 waves)
+- 01-01: Evidence data integrity — inferredFrom helper + 10-school audit
+- 01-02: Evidence coverage v2 — level-aware denominators and tier labels
+- 01-03: Trust UX — SchoolCard badges, honest copy, synthetic isolation
 
 ### Phase 2: Research Process & Attribution
 **Goal**: Anyone — including a future Claude session — can repeat the school research process consistently, and parents can see exactly where every fact came from.
@@ -130,7 +133,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Data & Evidence Audit | 0/TBD | Not started | - |
+| 1. Data & Evidence Audit | 0/3 | Ready to execute | - |
 | 2. Research Process & Attribution | 0/TBD | Not started | - |
 | 3. Homepage, Navigation & Core Journey | 0/TBD | Not started | - |
 | 4. School Detail Profiles | 0/TBD | Not started | - |
