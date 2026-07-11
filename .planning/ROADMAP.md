@@ -101,9 +101,9 @@ Plans:
   8. Cards or list items surface research depth (directory vs detailed, coverage %) so parents can gauge data quality at a glance.
 **Plans**: 3 plans (3 waves)
 Plans:
-- [ ] 05-01-PLAN.md — Debounce hook, sortSchools utility, SchoolDirectory URL/pipeline, header counts (DISC-01, DISC-03, DISC-04, DISC-07, DISC-08)
-- [ ] 05-02-PLAN.md — Tiered filters, mobile Sheet drawer, sticky bar, SchoolDirectorySort (DISC-02, DISC-04, DISC-06)
-- [ ] 05-03-PLAN.md — Contextual empty states, SchoolCard tier help, few-results tip, e2e URL share, scaling note (DISC-04, DISC-05, DISC-07, DISC-08)
+- [x] 05-01-PLAN.md — Debounce hook, sortSchools utility, SchoolDirectory URL/pipeline, header counts (DISC-01, DISC-03, DISC-04, DISC-07, DISC-08)
+- [x] 05-02-PLAN.md — Tiered filters, mobile Sheet drawer, sticky bar, SchoolDirectorySort (DISC-02, DISC-04, DISC-06)
+- [x] 05-03-PLAN.md — Contextual empty states, SchoolCard tier help, few-results tip, e2e URL share, scaling note (DISC-04, DISC-05, DISC-07, DISC-08)
 **UI hint**: yes
 
 ### Phase 6: School Comparison
