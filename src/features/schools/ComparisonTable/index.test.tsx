@@ -20,13 +20,16 @@ describe("ComparisonTable", () => {
   it("renders school names and coverage metadata in column headers", () => {
     render(<ComparisonTable schools={schools} selectedSlugs={slugs} />);
 
+    const table = screen.getByRole("table", { name: "Comparação de critérios" });
+    const headerRow = within(table).getAllByRole("row")[0]!;
+
     for (const school of schools) {
       const coverage = calculateEvidenceCoverage(school);
       const tierLabel = getCoverageTierLabel(school.research.coverageLevel);
 
-      expect(screen.getByText(school.name)).toBeVisible();
+      expect(within(headerRow).getByText(school.name.value!)).toBeVisible();
       expect(
-        screen.getByText(`${tierLabel} · ${coverage.percentage}%`),
+        within(headerRow).getByText(`${tierLabel} · ${coverage.percentage}%`),
       ).toBeVisible();
     }
   });
@@ -54,10 +57,10 @@ describe("ComparisonTable", () => {
     const table = screen.getByRole("table", { name: "Comparação de critérios" });
     expect(table.closest(".overflow-x-auto")).toBeInTheDocument();
 
-    const criteriaHeader = screen.getByRole("columnheader", {
-      name: "Critério",
+    const criteriaRowLabel = screen.getByRole("rowheader", {
+      name: "Nome da escola",
     });
-    expect(criteriaHeader).toHaveClass("sticky", "left-0", "z-10", "bg-white");
+    expect(criteriaRowLabel).toHaveClass("sticky", "left-0", "z-10", "bg-white");
   });
 
   it("does not render sort controls or winner styling", () => {
@@ -81,7 +84,7 @@ describe("ComparisonTable", () => {
     render(<ComparisonTable schools={schools} selectedSlugs={slugs} />);
 
     const removeLink = screen.getByRole("link", {
-      name: `Remover ${schools[0]!.name} da comparação`,
+      name: `Remover ${schools[0]!.name.value} da comparação`,
     });
 
     expect(removeLink).toHaveAttribute(
