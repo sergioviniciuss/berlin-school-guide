@@ -50,10 +50,10 @@
 
 ### Comparison
 
-- [ ] **COMP-01**: User can select schools from the directory to compare
-- [ ] **COMP-02**: Comparison shows criteria side by side without a universal quality ranking
-- [ ] **COMP-03**: Comparison surfaces missing data and evidence coverage per school
-- [ ] **COMP-04**: Comparison limitations are explained in Portuguese
+- [x] **COMP-01**: User can select schools from the directory to compare
+- [x] **COMP-02**: Comparison shows criteria side by side without a universal quality ranking
+- [x] **COMP-03**: Comparison surfaces missing data and evidence coverage per school
+- [x] **COMP-04**: Comparison limitations are explained in Portuguese
 
 ### Guides
 
@@ -136,10 +136,10 @@ Deferred until Lichtenberg V1 is trustworthy and released.
 | DISC-06 | Phase 5 | Pending |
 | DISC-07 | Phase 5 | Pending |
 | DISC-08 | Phase 5 | Pending |
-| COMP-01 | Phase 6 | Pending |
-| COMP-02 | Phase 6 | Pending |
-| COMP-03 | Phase 6 | Pending |
-| COMP-04 | Phase 6 | Pending |
+| COMP-01 | Phase 6 | Complete |
+| COMP-02 | Phase 6 | Complete |
+| COMP-03 | Phase 6 | Complete |
+| COMP-04 | Phase 6 | Complete |
 | GUID-01 | Phase 7 | Pending |
 | GUID-02 | Phase 7 | Pending |
 | GUID-03 | Phase 7 | Pending |

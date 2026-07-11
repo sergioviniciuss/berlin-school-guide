@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Homepage, Navigation & Core Journey** - Replace M2 homepage copy and add shared site navigation (completed 2026-07-11)
 - [x] **Phase 4: School Detail Profiles** - Build `/schools/[slug]` with per-field evidence labels and consolidated sources (completed 2026-07-11)
 - [x] **Phase 5: Directory UX & Discovery** - Polish search, filters, sorting, empty states, mobile usability, and discoverability (completed 2026-07-11)
-- [ ] **Phase 6: School Comparison** - Let families compare selected schools side by side without a quality ranking
+- [x] **Phase 6: School Comparison** - Let families compare selected schools side by side without a quality ranking (completed 2026-07-11)
 - [ ] **Phase 7: Essential Parent Guides** - Publish the Berlin primary system guide and a practical checklist in Portuguese
 - [ ] **Phase 8: Release Readiness** - Validate build, data, e2e coverage, SEO, responsiveness, and accessibility before launch
 
@@ -120,7 +120,7 @@ Plans:
 - [x] 06-01-PLAN.md — Comparison utilities and shared field formatting (COMP-03 foundation)
 - [x] 06-02-PLAN.md — Directory compare selection, URL sync, sticky CompareBar (COMP-01; superseded in part by 06-04)
 - [x] 06-04-PLAN.md — Gap closure: toggle button, max 3, profile compare, shared selection (COMP-01)
-- [ ] 06-03-PLAN.md — Comparison page, mobile layout, diff toggle, nav, e2e (COMP-01–COMP-04) — revised, paused
+- [x] 06-03-PLAN.md — Comparison page, mobile layout, diff toggle, nav, e2e (COMP-01–COMP-04)
 **UI hint**: yes
 
 ### Phase 7: Essential Parent Guides
@@ -158,7 +158,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. Homepage, Navigation & Core Journey | 3/3 | Complete | 2026-07-11 |
 | 4. School Detail Profiles | 3/3 | Complete | 2026-07-11 |
 | 5. Directory UX & Discovery | 3/3 | Complete | 2026-07-11 |
-| 6. School Comparison | 0/3 | Not started | - |
+| 6. School Comparison | 4/4 | Complete (UAT pending) | 2026-07-11 |
 | 7. Essential Parent Guides | 0/TBD | Not started | - |
 | 8. Release Readiness | 0/TBD | Not started | - |
 
