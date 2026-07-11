@@ -51,9 +51,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. Every evidence entry across all schools carries a complete, citable source record (publisher, URL, access date) ready to render — no field is marked verified without a linkable source.
 **Plans**: 3 plans (2 waves)
 Plans:
-- [ ] 02-01-PLAN.md — School research workflow document (RSCH-01)
-- [ ] 02-02-PLAN.md — Research date validation and citation data audit (RSCH-02, RSCH-04)
-- [ ] 02-03-PLAN.md — Methodology page and directory discoverability link (RSCH-03)
+- [x] 02-01-PLAN.md — School research workflow document (RSCH-01)
+- [x] 02-02-PLAN.md — Research date validation and citation data audit (RSCH-02, RSCH-04)
+- [x] 02-03-PLAN.md — Methodology page and directory discoverability link (RSCH-03)
 
 ### Phase 3: Homepage, Navigation & Core Journey
 **Goal**: The product becomes navigable early — a family landing on the site can understand what it is and reach the school directory without typing a URL.
