@@ -8,6 +8,7 @@ import type { School } from "@/features/schools/school";
 import { inferredFrom } from "./inferredFrom";
 
 const spikeFullReviewDate = "2026-07-10";
+const phaseFourAuditDate = "2026-07-11";
 
 type SourceInput = Omit<Source, "dateAccessed"> & { dateAccessed: string };
 
@@ -298,8 +299,10 @@ export const realLichtenbergPrimarySchools = [
       "zweisprachige Alphabetisierung und Erziehung deutsch-türkisch",
     ],
     sources: [adamRiesWebsite, adamRiesWelcomeClasses],
-    researchStatus: "directory_only",
-    coverageLevel: "directory",
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: phaseFourAuditDate,
+    lastSourceChecked: phaseFourAuditDate,
     bilingualPrograms: field(
       ["Deutsch-Türkisch"],
       evidence("29355-official-portrait", spikeFullReviewDate),
@@ -323,6 +326,22 @@ export const realLichtenbergPrimarySchools = [
     inclusionSupport: field(
       "Sonderpädagogische Kleinklassen mit Förderschwerpunkt Autismus are listed in the official portrait.",
       evidence("29355-official-portrait", spikeFullReviewDate),
+    ),
+    inspectionAvailability: field<
+      School["inspectionAvailability"]["value"]
+    >(
+      null,
+      missing(
+        "Inspeção oficial não pesquisada para esta escola durante a auditoria de perfil detalhado.",
+        phaseFourAuditDate,
+      ),
+    ),
+    inspectionData: field(
+      null,
+      missing(
+        "Dados de inspeção não encontrados durante a auditoria de perfil detalhado.",
+        phaseFourAuditDate,
+      ),
     ),
   }),
   primarySchool({
@@ -432,8 +451,10 @@ export const realLichtenbergPrimarySchools = [
     ganztag: "Gebundener Ganztagbetrieb (GGB)",
     offers: ["Staatliche Europa-Schule Berlin Deutsch/Russisch"],
     sources: [lewTolstoiWebsite, lewTolstoiGanztag],
-    researchStatus: "directory_only",
-    coverageLevel: "directory",
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: phaseFourAuditDate,
+    lastSourceChecked: lewTolstoiGanztag.dateAccessed,
     afterSchoolCare: field(
       "Ganztag information and eFöB coordination are published on the school website.",
       evidence("lew-tolstoi-ganztag", lewTolstoiGanztag.dateAccessed),
@@ -464,6 +485,22 @@ export const realLichtenbergPrimarySchools = [
       "The school website publishes contact information including school office, Hort, and eFöB coordination.",
       evidence("lew-tolstoi-website", lewTolstoiWebsite.dateAccessed),
     ),
+    inspectionAvailability: field<
+      School["inspectionAvailability"]["value"]
+    >(
+      null,
+      missing(
+        "Inspeção oficial não pesquisada para esta escola durante a auditoria de perfil detalhado.",
+        phaseFourAuditDate,
+      ),
+    ),
+    inspectionData: field(
+      null,
+      missing(
+        "Dados de inspeção não encontrados durante a auditoria de perfil detalhado.",
+        phaseFourAuditDate,
+      ),
+    ),
   }),
   primarySchool({
     portraitId: "29344",
@@ -483,8 +520,10 @@ export const realLichtenbergPrimarySchools = [
       richardWagnerInspection,
       richardWagnerMusic,
     ],
-    researchStatus: "directory_only",
-    coverageLevel: "directory",
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: phaseFourAuditDate,
+    lastSourceChecked: richardWagnerInspection.dateAccessed,
     afterSchoolCare: field(
       "The school website identifies Socius - Die Bildungspartner as the Hort contact for open all-day care.",
       evidence("richard-wagner-ganztag", richardWagnerGanztag.dateAccessed),
