@@ -8,6 +8,7 @@ import { getCoverageTierLabel } from "@/features/schools/getCoverageTierLabel";
 import { getSchoolFieldByPath } from "@/features/schools/getSchoolFieldByPath";
 import { ProfileFieldRow } from "@/features/schools/ProfileFieldRow";
 import { ProfileSection } from "@/features/schools/ProfileSection";
+import { SchoolProfileCompareAction } from "@/features/schools/SchoolProfileCompareAction";
 import type { School } from "@/features/schools/school";
 import { SourcesSection } from "@/features/schools/SourcesSection";
 
@@ -72,6 +73,10 @@ export function SchoolProfile({ school }: SchoolProfileProps) {
             </>
           ) : null}
           <span>{addressText}</span>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <SchoolProfileCompareAction slug={school.slug} />
         </div>
 
         <div className="rounded-md border border-neutral-200 bg-neutral-50 p-4">

@@ -1,9 +1,12 @@
+import { MAX_COMPARE_SCHOOLS } from "@/features/schools/compareSelection/constants";
+
 export const COMPARE_PARAM = "compare";
 export const COMPARE_PAGE_PARAM = "schools";
 
-const MAX_COMPARE_SCHOOLS = 4;
-
-export function parseCompareSlugs(raw: string | null, max = MAX_COMPARE_SCHOOLS): string[] {
+export function parseCompareSlugs(
+  raw: string | null,
+  max = MAX_COMPARE_SCHOOLS,
+): string[] {
   if (!raw) {
     return [];
   }

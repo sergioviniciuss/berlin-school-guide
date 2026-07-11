@@ -43,7 +43,7 @@ export function SchoolResults({
   filters,
   selectedCompareSlugs = [],
   onToggleCompare,
-  maxCompareSelection = 4,
+  maxCompareSelection = 3,
   onClearSearch,
   onResetFilters,
 }: SchoolResultsProps) {

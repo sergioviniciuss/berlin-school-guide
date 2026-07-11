@@ -284,21 +284,14 @@ describe("SchoolDirectory", () => {
   });
 
   describe("compare selection", () => {
-    it("initializes compare checkboxes from URL compare param", () => {
+    it("initializes compare toggles from URL compare param", () => {
       params = new URLSearchParams("compare=lew-tolstoi-schule,adam-ries-schule");
 
       render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
-      expect(
-        screen.getByRole("checkbox", {
-          name: /Selecionar Lew-Tolstoi-Schule para comparar/,
-        }),
-      ).toBeChecked();
-      expect(
-        screen.getByRole("checkbox", {
-          name: /Selecionar Adam-Ries-Schule para comparar/,
-        }),
-      ).toBeChecked();
+      expect(screen.getAllByRole("button", { name: "Na comparação" })).toHaveLength(
+        2,
+      );
     });
 
     it("updates compare param while preserving search and filter params", () => {
@@ -309,9 +302,10 @@ describe("SchoolDirectory", () => {
       render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
       replace.mockClear();
 
+      const heading = screen.getByRole("heading", { name: /Lew-Tolstoi-Schule/ });
       fireEvent.click(
-        screen.getByRole("checkbox", {
-          name: /Selecionar Lew-Tolstoi-Schule para comparar/,
+        within(heading.closest("article")!).getByRole("button", {
+          name: "Na comparação",
         }),
       );
 
@@ -328,9 +322,10 @@ describe("SchoolDirectory", () => {
       render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
       replace.mockClear();
 
+      const heading = screen.getByRole("heading", { name: /Adam-Ries-Schule/ });
       fireEvent.click(
-        screen.getByRole("checkbox", {
-          name: /Selecionar Adam-Ries-Schule para comparar/,
+        within(heading.closest("article")!).getByRole("button", {
+          name: "Adicionar à comparação",
         }),
       );
 
@@ -346,9 +341,10 @@ describe("SchoolDirectory", () => {
       render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
       replace.mockClear();
 
+      const heading = screen.getByRole("heading", { name: /Lew-Tolstoi-Schule/ });
       fireEvent.click(
-        screen.getByRole("checkbox", {
-          name: /Selecionar Lew-Tolstoi-Schule para comparar/,
+        within(heading.closest("article")!).getByRole("button", {
+          name: "Na comparação",
         }),
       );
 

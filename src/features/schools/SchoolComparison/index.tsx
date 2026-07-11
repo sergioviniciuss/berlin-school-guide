@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { ComparisonLimitations } from "@/features/schools/ComparisonLimitations";
 import { ComparisonTable } from "@/features/schools/ComparisonTable";
+import { writeStoredCompareSlugs } from "@/features/schools/compareSelection";
 import {
   COMPARE_PAGE_PARAM,
   parseCompareSlugs,
@@ -16,6 +18,10 @@ export function SchoolComparison() {
   const searchParams = useSearchParams();
   const slugs = parseCompareSlugs(searchParams.get(COMPARE_PAGE_PARAM));
   const { schools, skippedSlugs } = resolveCompareSchools(slugs);
+
+  useEffect(() => {
+    writeStoredCompareSlugs(slugs);
+  }, [slugs]);
 
   return (
     <div className="space-y-8">
@@ -62,7 +68,7 @@ function CompareEmptyState() {
         Selecione pelo menos duas escolas
       </h2>
       <p className="mt-2 text-sm text-neutral-700">
-        Use o diretório para marcar de 2 a 4 escolas e voltar aqui para
+        Use o diretório para selecionar de 2 a 3 escolas e voltar aqui para
         comparar critérios com transparência.
       </p>
       <Button asChild className="mt-6 min-h-11">

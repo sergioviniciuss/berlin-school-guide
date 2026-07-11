@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ChevronRight, HelpCircle } from "lucide-react";
 
 import type { FieldStatus } from "@/features/evidence/fieldEvidence";
+import { CompareToggleButton } from "@/features/schools/CompareToggleButton";
 import type { SchoolDirectoryItem } from "@/features/schools/filterSchools/types";
 import type { CoverageLevel } from "@/features/schools/researchMetadata";
 import {
@@ -32,21 +33,12 @@ export function SchoolCard({
 
   return (
     <article className="rounded-lg border border-neutral-200 bg-white shadow-sm hover:border-neutral-300 hover:shadow-md transition-shadow focus-within:ring-2 focus-within:ring-primary">
-      <div className="flex gap-3 p-5">
-        {onToggleCompare ? (
-          <CompareCheckbox
-            schoolName={school.name}
-            checked={isCompareSelected}
-            disabled={compareDisabled}
-            onToggle={onToggleCompare}
-          />
-        ) : null}
-        <div className="min-w-0 flex-1">
-          <Link
-            href={`/schools/${school.slug}`}
-            aria-label={`Ver perfil de ${school.name}`}
-            className="block cursor-pointer"
-          >
+      <div className="p-5">
+        <Link
+          href={`/schools/${school.slug}`}
+          aria-label={`Ver perfil de ${school.name}`}
+          className="block cursor-pointer"
+        >
             <div className="space-y-2">
               <h2 className="text-xl font-semibold text-neutral-950">
                 {school.name}
@@ -156,36 +148,16 @@ export function SchoolCard({
             </p>
           </Link>
         </div>
-      </div>
+      {onToggleCompare ? (
+        <div className="border-t border-neutral-200 px-5 py-3">
+          <CompareToggleButton
+            isSelected={isCompareSelected}
+            disabled={compareDisabled}
+            onToggle={onToggleCompare}
+          />
+        </div>
+      ) : null}
     </article>
-  );
-}
-
-type CompareCheckboxProps = {
-  schoolName: string;
-  checked: boolean;
-  disabled: boolean;
-  onToggle: () => void;
-};
-
-function CompareCheckbox({
-  schoolName,
-  checked,
-  disabled,
-  onToggle,
-}: CompareCheckboxProps) {
-  return (
-    <label className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center">
-      <input
-        type="checkbox"
-        checked={checked}
-        disabled={disabled}
-        title={disabled ? "Máximo de 4 escolas" : undefined}
-        aria-label={`Selecionar ${schoolName} para comparar`}
-        onChange={onToggle}
-        className="min-h-11 min-w-11 rounded border-neutral-300"
-      />
-    </label>
   );
 }
 

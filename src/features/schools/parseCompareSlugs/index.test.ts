@@ -10,8 +10,8 @@ describe("parseCompareSlugs", () => {
     expect(parseCompareSlugs(null)).toEqual([]);
   });
 
-  it("deduplicates slugs and caps at 4", () => {
-    expect(parseCompareSlugs("a,b,a,c,d,e")).toEqual(["a", "b", "c", "d"]);
+  it("deduplicates slugs and caps at 3", () => {
+    expect(parseCompareSlugs("a,b,a,c,d,e")).toEqual(["a", "b", "c"]);
   });
 
   it("trims whitespace from slug segments", () => {

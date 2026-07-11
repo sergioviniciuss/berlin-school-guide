@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { ActiveFilterSummary } from "@/features/schools/ActiveFilterSummary";
 import { CompareBar } from "@/features/schools/CompareBar";
@@ -29,11 +29,15 @@ import {
 import type { DirectorySortKey } from "@/features/schools/sortSchools/types";
 import { useDebouncedValue } from "@/features/schools/useDebouncedValue";
 import {
+  MAX_COMPARE_SCHOOLS,
+  readStoredCompareSlugs,
+  toggleCompareSlug,
+  writeStoredCompareSlugs,
+} from "@/features/schools/compareSelection";
+import {
   COMPARE_PARAM,
   parseCompareSlugs,
 } from "@/features/schools/parseCompareSlugs";
-
-const MAX_COMPARE_SELECTION = 4;
 
 type SchoolDirectoryProps = {
   schools: SchoolDirectoryItem[];
@@ -116,19 +120,42 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     );
   };
 
-  const toggleCompareSlug = (slug: string) => {
-    const isSelected = selectedCompareSlugs.includes(slug);
-    const nextSlugs = isSelected
-      ? selectedCompareSlugs.filter((entry) => entry !== slug)
-      : selectedCompareSlugs.length >= MAX_COMPARE_SELECTION
-        ? selectedCompareSlugs
-        : [...selectedCompareSlugs, slug];
-
+  const toggleCompareSlugHandler = (slug: string) => {
+    const nextSlugs = toggleCompareSlug(selectedCompareSlugs, slug);
+    writeStoredCompareSlugs(nextSlugs);
     router.replace(
       `${pathname}${toQueryString(filters, sortKey, nextSlugs)}`,
       { scroll: false },
     );
   };
+
+  const hasRestoredCompare = useRef(false);
+
+  useEffect(() => {
+    writeStoredCompareSlugs(selectedCompareSlugs);
+  }, [selectedCompareSlugs]);
+
+  useEffect(() => {
+    if (hasRestoredCompare.current) {
+      return;
+    }
+
+    hasRestoredCompare.current = true;
+    const fromUrl = parseCompareSlugs(searchParams.get(COMPARE_PARAM));
+
+    if (fromUrl.length > 0) {
+      writeStoredCompareSlugs(fromUrl);
+      return;
+    }
+
+    const stored = readStoredCompareSlugs();
+    if (stored.length > 0) {
+      router.replace(
+        `${pathname}${toQueryString(filters, sortKey, stored)}`,
+        { scroll: false },
+      );
+    }
+  }, []);
 
   useEffect(() => {
     if (debouncedQuery === filters.query) {
@@ -305,8 +332,8 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
             filters={filters}
             totalCount={schools.length}
             selectedCompareSlugs={selectedCompareSlugs}
-            onToggleCompare={toggleCompareSlug}
-            maxCompareSelection={MAX_COMPARE_SELECTION}
+            onToggleCompare={toggleCompareSlugHandler}
+            maxCompareSelection={MAX_COMPARE_SCHOOLS}
             onClearSearch={() => {
               setSearchInput("");
               updateFilters({ ...filters, query: "" });
