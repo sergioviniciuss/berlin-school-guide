@@ -23,10 +23,12 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Lichtenberg school evidence audit — all 10 records field-reviewed with honest statuses — Phase 1 (2026-07-11)
 - ✓ Evidence coverage v2 with level-aware denominators and verified-only numerator — Phase 1 (2026-07-11)
 - ✓ Trust UX on directory cards (research depth badges, tier labels, honest copy, synthetic isolation) — Phase 1 (2026-07-11)
+- ✓ Documented, repeatable school research workflow with per-field checklist — Phase 2 (2026-07-11)
+- ✓ Per-school `lastResearched`/`lastSourceChecked` dates validated via `validateResearchDates` — Phase 2 (2026-07-11)
+- ✓ Parent-facing `/methodology` page explaining evidence statuses and coverage v2 — Phase 2 (2026-07-11)
+- ✓ Citation data completeness enforced on verified fields (UI rendering deferred to Phase 4) — Phase 2 (2026-07-11)
 
 ### Active
-
-- [ ] Establish reproducible school research workflow with source attribution standards
 - [ ] Build school detail pages (`/schools/[slug]`) with citations and missing-data labels
 - [ ] Build comparison experience without quality rankings
 - [ ] Create homepage and shared navigation for core user journey
@@ -68,7 +70,8 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 |------|-------|
 | School research depth | 3/10 schools have deeper field research (Adam-Ries, Lew-Tolstoi, Richard-Wagner); 7 are `directory_only` |
 | Evidence coverage UI | Coverage v2 with level-aware denominators; tier labels on cards (Phase 1) |
-| MDX guides | Only `m2-smoke` smoke page exists (`src/content/guides/m2-smoke.mdx`) |
+| MDX guides | `methodology.mdx` published; `m2-smoke` smoke page still exists |
+| Research workflow | `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` + `validateResearchDates` in `pnpm validate:data` |
 | Information architecture | Documented in `docs/INFORMATION_ARCHITECTURE.md` but most routes do not exist |
 | Comparison | Philosophy in `docs/COMPARISON.md`; no `/compare` route or feature code |
 | School detail pages | No `src/app/schools/[slug]/` route; `SchoolCard` is not linked anywhere |
@@ -119,7 +122,7 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 
 #### 7. Research process reproducibility
 
-**Partially reproducible.** Spike docs and `primarySchool()` builder encode patterns. **Phase 2 scope:** step-by-step workflow, per-field checklist, methodology page for parents.
+**Reproducible (Phase 2).** `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` provides step-by-step checklist for humans and AI sessions. `validateResearchDates` enforces per-school date coherence; `validateFieldCitations` enforces citation completeness on verified fields. `/methodology` explains evidence and coverage to parents.
 
 #### 8. What prevents usable V1 today
 
@@ -127,7 +130,6 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 2. **No shared navigation** — cannot move between sections without typing URLs
 3. **No comparison** — key parent workflow missing
 4. **No educational guides** — system explanation not published
-5. **No methodology/transparency page** — parents cannot evaluate research quality (Phase 2)
 
 #### 9. CONCERNS.md items required before launch
 
@@ -194,4 +196,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-11 after Phase 1 completion*
+*Last updated: 2026-07-11 after Phase 2 completion*
