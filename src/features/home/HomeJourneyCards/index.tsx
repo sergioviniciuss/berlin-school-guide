@@ -17,6 +17,17 @@ export function HomeJourneyCards() {
       </article>
 
       <article className="rounded-lg border border-neutral-200 bg-neutral-50 p-5 md:p-6">
+        <h2 className="text-xl font-semibold">Entender o sistema escolar</h2>
+        <p className="mt-2 text-base leading-8 text-neutral-700">
+          Grundschule, matrícula, Ganztag e termos alemães — o contexto que
+          ajuda a ler os cartões de escola com mais segurança.
+        </p>
+        <Button asChild variant="outline" className="mt-4">
+          <Link href="/guides">Ver guias para famílias</Link>
+        </Button>
+      </article>
+
+      <article className="rounded-lg border border-neutral-200 bg-neutral-50 p-5 md:p-6">
         <h2 className="text-xl font-semibold">Entender nossa metodologia</h2>
         <p className="mt-2 text-base leading-8 text-neutral-700">
           Saiba como interpretamos evidências, cobertura da pesquisa e dados

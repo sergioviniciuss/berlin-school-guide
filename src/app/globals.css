@@ -18,3 +18,33 @@ body {
   color: hsl(var(--foreground));
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@media print {
+  .guide-print-hide {
+    display: none !important;
+  }
+
+  header,
+  footer {
+    display: none !important;
+  }
+
+  .guide-print {
+    color: #000;
+  }
+
+  .guide-print h2 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .guide-print li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .guide-print ul,
+  .guide-print ol {
+    margin-top: 0.5rem;
+  }
+}

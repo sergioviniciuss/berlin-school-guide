@@ -11,6 +11,15 @@ describe("SiteFooter", () => {
     ).toBeInTheDocument();
   });
 
+  it("links Guias to /guides", () => {
+    render(<SiteFooter />);
+
+    expect(screen.getByRole("link", { name: "Guias" })).toHaveAttribute(
+      "href",
+      "/guides",
+    );
+  });
+
   it("links Metodologia to /methodology", () => {
     render(<SiteFooter />);
 

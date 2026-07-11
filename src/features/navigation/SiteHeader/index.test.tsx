@@ -36,6 +36,10 @@ describe("SiteHeader", () => {
       "href",
       "/schools",
     );
+    expect(within(nav).getByRole("link", { name: "Guias" })).toHaveAttribute(
+      "href",
+      "/guides",
+    );
     expect(
       within(nav).getByRole("link", { name: "Comparar" }),
     ).toHaveAttribute("href", "/compare");
@@ -70,6 +74,20 @@ describe("SiteHeader", () => {
 
     expect(escolasLink).toHaveClass("text-primary");
     expect(escolasLink).toHaveClass("font-semibold");
+  });
+
+  it("highlights Guias when pathname is a guide route", () => {
+    pathname = "/guides/berlin-school-system";
+
+    render(<SiteHeader />);
+
+    const nav = screen.getByRole("navigation", {
+      name: "Navegação principal",
+    });
+    const guiasLink = within(nav).getByRole("link", { name: "Guias" });
+
+    expect(guiasLink).toHaveClass("text-primary");
+    expect(guiasLink).toHaveClass("font-semibold");
   });
 
   it("highlights only Início when pathname is /", () => {
@@ -109,6 +127,7 @@ describe("SiteHeader", () => {
     expect(screen.getByRole("heading", { name: "Navegação" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Início" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Escolas" })).toBeVisible();
+    expect(screen.getByRole("link", { name: "Guias" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Comparar" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Metodologia" })).toBeVisible();
   });

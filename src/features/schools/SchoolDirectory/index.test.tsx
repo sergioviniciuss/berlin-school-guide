@@ -160,9 +160,12 @@ describe("SchoolDirectory", () => {
     ).toBeVisible();
   });
 
-  it("links to the methodology page from the header", () => {
+  it("links to guides and methodology from the header", () => {
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
+    expect(
+      screen.getByRole("link", { name: /novo em berlim\? comece pelos guias/i }),
+    ).toHaveAttribute("href", "/guides");
     expect(
       screen.getByRole("link", { name: /como funciona nossa pesquisa/i }),
     ).toHaveAttribute("href", "/methodology");

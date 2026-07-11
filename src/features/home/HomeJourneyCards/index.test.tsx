@@ -3,11 +3,14 @@ import { render, screen } from "@testing-library/react";
 import { HomeJourneyCards } from ".";
 
 describe("HomeJourneyCards", () => {
-  it('renders h2 "Explorar escolas" and h2 "Entender nossa metodologia"', () => {
+  it("renders journey headings for schools, guides, and methodology", () => {
     render(<HomeJourneyCards />);
 
     expect(
       screen.getByRole("heading", { name: "Explorar escolas" }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", { name: "Entender o sistema escolar" }),
     ).toBeVisible();
     expect(
       screen.getByRole("heading", { name: "Entender nossa metodologia" }),
@@ -20,6 +23,14 @@ describe("HomeJourneyCards", () => {
     expect(
       screen.getByRole("link", { name: "Ver escolas em Lichtenberg" }),
     ).toHaveAttribute("href", "/schools");
+  });
+
+  it('links "Ver guias para famílias" to /guides', () => {
+    render(<HomeJourneyCards />);
+
+    expect(
+      screen.getByRole("link", { name: "Ver guias para famílias" }),
+    ).toHaveAttribute("href", "/guides");
   });
 
   it('links "Como funciona nossa pesquisa" to /methodology', () => {
@@ -38,13 +49,6 @@ describe("HomeJourneyCards", () => {
       .closest("article");
 
     expect(primaryCard).toHaveClass("border-l-primary");
-    expect(container.querySelectorAll("article")).toHaveLength(2);
-  });
-
-  it("does not link to /guides or mention Guias", () => {
-    const { container } = render(<HomeJourneyCards />);
-
-    expect(screen.queryByText("Guias")).not.toBeInTheDocument();
-    expect(container.innerHTML).not.toMatch(/\/guides/);
+    expect(container.querySelectorAll("article")).toHaveLength(3);
   });
 });

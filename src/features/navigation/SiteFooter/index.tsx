@@ -11,6 +11,15 @@ export function SiteFooter() {
           ·
         </span>
         <Link
+          href="/guides"
+          className="text-blue-700 underline hover:opacity-90"
+        >
+          Guias
+        </Link>
+        <span aria-hidden="true" className="hidden sm:inline">
+          ·
+        </span>
+        <Link
           href="/compare"
           className="text-blue-700 underline hover:opacity-90"
         >

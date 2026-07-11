@@ -47,7 +47,10 @@ export function SchoolFilters({
           }}
           selected={filters.ganztag}
           onToggle={(value) => onToggle("ganztag", value)}
-          helpLink={{ href: "/methodology", label: "O que é Ganztag?" }}
+          helpLink={{
+            href: "/guides/berlin-school-system#o-que-e-ganztag",
+            label: "O que é Ganztag?",
+          }}
         />
         <FilterGroup
           legend="Bilíngue"
@@ -73,7 +76,7 @@ export function SchoolFilters({
           selected={filters.welcomeClasses}
           onToggle={(value) => onToggle("welcomeClasses", value)}
           helpLink={{
-            href: "/methodology",
+            href: "/guides/berlin-school-system#glossario",
             label: "O que é Willkommensklasse?",
           }}
         />

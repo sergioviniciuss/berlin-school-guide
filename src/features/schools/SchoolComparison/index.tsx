@@ -32,7 +32,11 @@ export function SchoolComparison() {
         <h1 className="text-3xl font-semibold text-neutral-950">Comparar</h1>
         <p className="mt-2 text-base text-neutral-700">
           Critérios lado a lado para preparar perguntas — sem ranking de
-          qualidade.
+          qualidade.{" "}
+          <Link href="/guides" className="font-medium text-blue-700 underline">
+            Antes de comparar, leia os guias
+          </Link>
+          .
         </p>
       </header>
 

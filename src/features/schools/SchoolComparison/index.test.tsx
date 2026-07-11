@@ -25,6 +25,18 @@ describe("SchoolComparison", () => {
     ).toBeVisible();
   });
 
+  it("links to guides from the header subtitle", () => {
+    params = new URLSearchParams(
+      "schools=lew-tolstoi-schule,adam-ries-schule",
+    );
+
+    render(<SchoolComparison />);
+
+    expect(
+      screen.getByRole("link", { name: "Antes de comparar, leia os guias" }),
+    ).toHaveAttribute("href", "/guides");
+  });
+
   it("shows limitations block when comparison is visible", () => {
     params = new URLSearchParams(
       "schools=lew-tolstoi-schule,adam-ries-schule",

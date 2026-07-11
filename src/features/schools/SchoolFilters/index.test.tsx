@@ -84,7 +84,7 @@ describe("SchoolFilters", () => {
     }
   });
 
-  it('links Ganztag help to "/methodology"', () => {
+  it("links Ganztag help to the system guide Ganztag section", () => {
     render(
       <SchoolFilters
         filters={defaultDirectoryFilters}
@@ -99,10 +99,13 @@ describe("SchoolFilters", () => {
     const helpLink = within(ganztagFieldset!).getByRole("link", {
       name: "O que é Ganztag?",
     });
-    expect(helpLink).toHaveAttribute("href", "/methodology");
+    expect(helpLink).toHaveAttribute(
+      "href",
+      "/guides/berlin-school-system#o-que-e-ganztag",
+    );
   });
 
-  it('links Willkommensklasse help to "/methodology"', () => {
+  it("links Willkommensklasse help to the system guide glossary", () => {
     render(
       <SchoolFilters
         filters={defaultDirectoryFilters}
@@ -119,7 +122,10 @@ describe("SchoolFilters", () => {
     const helpLink = within(welcomeFieldset!).getByRole("link", {
       name: "O que é Willkommensklasse?",
     });
-    expect(helpLink).toHaveAttribute("href", "/methodology");
+    expect(helpLink).toHaveAttribute(
+      "href",
+      "/guides/berlin-school-system#glossario",
+    );
   });
 
   it("calls onToggle with the correct key when a checkbox is toggled", async () => {

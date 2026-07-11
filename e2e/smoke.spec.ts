@@ -27,6 +27,36 @@ test("navigates from homepage to school directory via header nav", async ({
   await expect(page.getByRole("heading", { name: "Escolas" })).toBeVisible();
 });
 
+test("navigates to guides hub and system guide via header nav", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("navigation", { name: "Navegação principal" })
+    .getByRole("link", { name: "Guias" })
+    .click();
+  await expect(page).toHaveURL(/\/guides$/);
+  await expect(page.getByRole("heading", { name: "Guias", level: 1 })).toBeVisible();
+
+  await page
+    .getByRole("link", { name: "Ler guia do sistema escolar" })
+    .click();
+  await expect(page).toHaveURL(/\/guides\/berlin-school-system$/);
+  await expect(
+    page.getByRole("heading", {
+      name: "Como funciona a escola primária em Berlim",
+      level: 1,
+    }),
+  ).toBeVisible();
+});
+
+test("navigates from homepage journey card to guides hub", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("link", { name: "Ver guias para famílias" }).click();
+  await expect(page).toHaveURL(/\/guides$/);
+  await expect(page.getByRole("heading", { name: "Guias", level: 1 })).toBeVisible();
+});
+
 test("searches and filters the static school directory", async ({ page }) => {
   await page.goto("/schools");
   await expect(page.getByRole("heading", { name: "Escolas" })).toBeVisible();

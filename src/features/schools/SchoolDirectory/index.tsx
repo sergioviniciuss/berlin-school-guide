@@ -263,6 +263,10 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
           transparência sobre o que ainda não confirmamos. Começamos por
           Lichtenberg — mais distritos em breve. A cobertura da pesquisa mede
           completude dos dados neste nível, não qualidade da escola.{" "}
+          <Link href="/guides" className="font-medium text-blue-700 underline">
+            Novo em Berlim? Comece pelos guias
+          </Link>{" "}
+          ·{" "}
           <Link href="/methodology" className="font-medium text-blue-700 underline">
             Como funciona nossa pesquisa?
           </Link>
