@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { ActiveFilterSummary } from "@/features/schools/ActiveFilterSummary";
 import {
@@ -17,6 +17,13 @@ import { getDirectoryFilterOptions } from "@/features/schools/getDirectoryFilter
 import { SchoolFilters } from "@/features/schools/SchoolFilters";
 import { SchoolResults } from "@/features/schools/SchoolResults";
 import { SchoolSearch } from "@/features/schools/SchoolSearch";
+import {
+  SORT_PARAM,
+  sortFromSearchParams,
+  sortSchools,
+} from "@/features/schools/sortSchools";
+import type { DirectorySortKey } from "@/features/schools/sortSchools/types";
+import { useDebouncedValue } from "@/features/schools/useDebouncedValue";
 
 type SchoolDirectoryProps = {
   schools: SchoolDirectoryItem[];
@@ -47,6 +54,14 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     () => filtersFromSearchParams(searchParams),
     [searchParams],
   );
+  const sortKey = useMemo(
+    () => sortFromSearchParams(searchParams),
+    [searchParams],
+  );
+  const [searchInput, setSearchInput] = useState(filters.query);
+  const debouncedQuery = useDebouncedValue(searchInput, 300);
+  const isSearchPending = searchInput !== debouncedQuery;
+
   const filterOptions = useMemo(
     () => getDirectoryFilterOptions(schools),
     [schools],
@@ -55,16 +70,35 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     () => filterSchools(schools, filters),
     [schools, filters],
   );
+  const sortedSchools = useMemo(
+    () => sortSchools(filteredSchools, sortKey),
+    [filteredSchools, sortKey],
+  );
+
+  const detailedCount = schools.filter(
+    (school) => school.coverageLevel === "detailed",
+  ).length;
+  const directoryCount = schools.filter(
+    (school) => school.coverageLevel === "directory",
+  ).length;
 
   const updateFilters = (nextFilters: DirectoryFilterState) => {
-    router.replace(`${pathname}${toQueryString(nextFilters)}`, {
+    router.replace(`${pathname}${toQueryString(nextFilters, sortKey)}`, {
       scroll: false,
     });
   };
 
-  const setQuery = (query: string) => {
-    updateFilters({ ...filters, query });
-  };
+  useEffect(() => {
+    if (debouncedQuery === filters.query) {
+      return;
+    }
+
+    updateFilters({ ...filters, query: debouncedQuery });
+  }, [debouncedQuery, filters, sortKey, pathname, router]);
+
+  useEffect(() => {
+    setSearchInput(filters.query);
+  }, [filters.query]);
 
   const toggleFilter = (key: keyof DirectoryFilterState, value: string) => {
     const current = filters[key];
@@ -115,6 +149,10 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
             Como funciona nossa pesquisa?
           </Link>
         </p>
+        <p className="text-sm text-neutral-600">
+          {detailedCount} escolas com perfil detalhado · {directoryCount} com
+          dados oficiais
+        </p>
       </header>
 
       <div className="grid gap-8 lg:grid-cols-[18rem_1fr]">
@@ -132,7 +170,7 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
         </aside>
 
         <section className="space-y-6">
-          <SchoolSearch value={filters.query} onChange={setQuery} />
+          <SchoolSearch value={searchInput} onChange={setSearchInput} />
 
           <div className="lg:hidden">
             <button
@@ -165,10 +203,13 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
           />
 
           <p aria-live="polite" className="text-sm text-neutral-700">
-            {filteredSchools.length} de {schools.length} escolas encontradas
+            {sortedSchools.length} de {schools.length} escolas encontradas
+            {isSearchPending ? (
+              <span className="text-neutral-500"> · Atualizando…</span>
+            ) : null}
           </p>
 
-          <SchoolResults schools={filteredSchools} />
+          <SchoolResults schools={sortedSchools} />
         </section>
       </div>
     </div>
@@ -208,7 +249,10 @@ function filtersFromSearchParams(
   };
 }
 
-function toQueryString(filters: DirectoryFilterState) {
+function toQueryString(
+  filters: DirectoryFilterState,
+  sortKey: DirectorySortKey = "name",
+) {
   const params = new URLSearchParams();
 
   if (filters.query) {
@@ -228,6 +272,10 @@ function toQueryString(filters: DirectoryFilterState) {
         params.append(queryParamMap[key], String(value)),
       );
     }
+  }
+
+  if (sortKey !== "name") {
+    params.set(SORT_PARAM, sortKey);
   }
 
   const queryString = params.toString();
