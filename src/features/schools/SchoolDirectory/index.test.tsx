@@ -282,4 +282,79 @@ describe("SchoolDirectory", () => {
       screen.queryByText("Poucos resultados — tente remover filtros"),
     ).not.toBeInTheDocument();
   });
+
+  describe("compare selection", () => {
+    it("initializes compare checkboxes from URL compare param", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule,adam-ries-schule");
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+      expect(
+        screen.getByRole("checkbox", {
+          name: /Selecionar Lew-Tolstoi-Schule para comparar/,
+        }),
+      ).toBeChecked();
+      expect(
+        screen.getByRole("checkbox", {
+          name: /Selecionar Adam-Ries-Schule para comparar/,
+        }),
+      ).toBeChecked();
+    });
+
+    it("updates compare param while preserving search and filter params", () => {
+      params = new URLSearchParams(
+        "q=Lew&district=Lichtenberg&compare=lew-tolstoi-schule",
+      );
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+      replace.mockClear();
+
+      fireEvent.click(
+        screen.getByRole("checkbox", {
+          name: /Selecionar Adam-Ries-Schule para comparar/,
+        }),
+      );
+
+      expect(replace).toHaveBeenLastCalledWith(
+        "/schools?q=Lew&district=Lichtenberg&compare=lew-tolstoi-schule,adam-ries-schule",
+        { scroll: false },
+      );
+    });
+
+    it("omits compare param from URL when selection is cleared", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule");
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+      replace.mockClear();
+
+      fireEvent.click(
+        screen.getByRole("checkbox", {
+          name: /Selecionar Lew-Tolstoi-Schule para comparar/,
+        }),
+      );
+
+      expect(replace).toHaveBeenLastCalledWith("/schools", { scroll: false });
+    });
+
+    it("renders CompareBar when at least one school is selected", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule");
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+      expect(screen.getByText("1 escola selecionada")).toBeVisible();
+      expect(
+        screen.getByRole("region", { name: "Comparação de escolas" }),
+      ).toBeVisible();
+    });
+
+    it("adds bottom spacer when compare bar is visible", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule");
+
+      const { container } = render(
+        <SchoolDirectory schools={getSchoolDirectoryItems()} />,
+      );
+
+      expect(container.querySelector(".pb-24")).toBeInTheDocument();
+    });
+  });
 });
