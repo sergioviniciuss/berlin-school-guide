@@ -7,21 +7,27 @@ import type { School } from "@/features/schools/school";
 
 import { inferredFrom } from "./inferredFrom";
 
-const checkedAt = "2026-07-10";
+const spikeFullReviewDate = "2026-07-10";
 
-type SourceInput = Omit<Source, "dateAccessed">;
+type SourceInput = Omit<Source, "dateAccessed"> & { dateAccessed: string };
 
 function source(input: SourceInput): Source {
-  return {
-    ...input,
-    dateAccessed: checkedAt,
-  };
+  return input;
+}
+
+function maxDateAccessed(sources: Source[]): string {
+  return sources.reduce(
+    (max, current) =>
+      current.dateAccessed.localeCompare(max) > 0 ? current.dateAccessed : max,
+    sources[0]!.dateAccessed,
+  );
 }
 
 function officialPortraitSource(
   id: string,
   name: string,
   schoolNumber: string,
+  dateAccessed = spikeFullReviewDate,
 ) {
   return source({
     id: `${id}-official-portrait`,
@@ -30,11 +36,17 @@ function officialPortraitSource(
     type: "official_government",
     reliability: "primary",
     publisher: "Senatsverwaltung für Bildung, Jugend und Familie Berlin",
+    dateAccessed,
     notes: `Official Berlin school directory portrait for ${schoolNumber}.`,
   });
 }
 
-function schoolWebsiteSource(id: string, name: string, url: string) {
+function schoolWebsiteSource(
+  id: string,
+  name: string,
+  url: string,
+  dateAccessed = spikeFullReviewDate,
+) {
   return source({
     id,
     title: `${name} official school website`,
@@ -42,32 +54,33 @@ function schoolWebsiteSource(id: string, name: string, url: string) {
     type: "school_website",
     reliability: "secondary",
     publisher: name,
+    dateAccessed,
   });
 }
 
-function evidence(sourceId: string): FieldEvidence {
+function evidence(sourceId: string, lastChecked: string): FieldEvidence {
   return {
     status: "verified",
     citations: [{ sourceId }],
-    lastChecked: checkedAt,
+    lastChecked,
   };
 }
 
-function missing(note: string): FieldEvidence {
+function missing(note: string, lastChecked = spikeFullReviewDate): FieldEvidence {
   return {
     status: "missing",
     citations: [],
     note,
-    lastChecked: checkedAt,
+    lastChecked,
   };
 }
 
-function notApplicable(note: string): FieldEvidence {
+function notApplicable(note: string, lastChecked = spikeFullReviewDate): FieldEvidence {
   return {
     status: "not_applicable",
     citations: [],
     note,
-    lastChecked: checkedAt,
+    lastChecked,
   };
 }
 
@@ -96,6 +109,8 @@ type BaseSchoolInput = {
   sources?: Source[];
   researchStatus?: School["research"]["status"];
   coverageLevel?: School["research"]["coverageLevel"];
+  lastResearched?: string;
+  lastSourceChecked?: string;
   afterSchoolCare?: FieldValue<string>;
   bilingualPrograms?: FieldValue<string[]>;
   internationalPrograms?: FieldValue<string[]>;
@@ -117,7 +132,7 @@ function primarySchool(input: BaseSchoolInput): School {
     input.name,
     input.schoolNumber,
   );
-  const directoryEvidence = evidence(portrait.id);
+  const directoryEvidence = evidence(portrait.id, portrait.dateAccessed);
   const sources = [portrait, ...(input.sources ?? [])];
   const missingResearch = missing(
     "Information was not found during the real-data spike.",
@@ -214,8 +229,8 @@ function primarySchool(input: BaseSchoolInput): School {
     research: {
       status: researchStatus,
       coverageLevel,
-      lastResearched: checkedAt,
-      lastSourceChecked: checkedAt,
+      lastResearched: input.lastResearched ?? spikeFullReviewDate,
+      lastSourceChecked: input.lastSourceChecked ?? maxDateAccessed(sources),
     },
   };
 }
@@ -239,6 +254,7 @@ const lewTolstoiGanztag = schoolWebsiteSource(
   "lew-tolstoi-ganztag",
   "Lew-Tolstoi-Schule",
   "https://www.lew-tolstoi-schule.de/ganztag/",
+  "2026-07-11",
 );
 const richardWagnerWebsite = schoolWebsiteSource(
   "richard-wagner-website",
@@ -254,6 +270,7 @@ const richardWagnerInspection = schoolWebsiteSource(
   "richard-wagner-inspection",
   "Richard-Wagner-Schule",
   "https://www.richard-wagner-grundschule.de/unsere-schule/schulinspektion/",
+  "2026-07-11",
 );
 const richardWagnerMusic = schoolWebsiteSource(
   "richard-wagner-music",
@@ -285,12 +302,15 @@ export const realLichtenbergPrimarySchools = [
     coverageLevel: "directory",
     bilingualPrograms: field(
       ["Deutsch-Türkisch"],
-      evidence("29355-official-portrait"),
+      evidence("29355-official-portrait", spikeFullReviewDate),
     ),
-    welcomeClasses: field(true, evidence("29355-official-portrait")),
+    welcomeClasses: field(
+      true,
+      evidence("29355-official-portrait", spikeFullReviewDate),
+    ),
     schoolProfile: field(
       "Profil Informationstechnik; Schulstation; sonderpädagogische Kleinklassen mit Förderschwerpunkt Autismus; zweisprachige Alphabetisierung und Erziehung deutsch-türkisch.",
-      evidence("29355-official-portrait"),
+      evidence("29355-official-portrait", spikeFullReviewDate),
     ),
     pedagogyFocus: field(
       [
@@ -298,11 +318,11 @@ export const realLichtenbergPrimarySchools = [
         "Schulanfangsphase mit jahrgangsbezogenen und jahrgangsübergreifenden Lerngruppen",
         "Willkommensklassen",
       ],
-      evidence("29355-official-portrait"),
+      evidence("29355-official-portrait", spikeFullReviewDate),
     ),
     inclusionSupport: field(
       "Sonderpädagogische Kleinklassen mit Förderschwerpunkt Autismus are listed in the official portrait.",
-      evidence("29355-official-portrait"),
+      evidence("29355-official-portrait", spikeFullReviewDate),
     ),
   }),
   primarySchool({
@@ -416,15 +436,15 @@ export const realLichtenbergPrimarySchools = [
     coverageLevel: "directory",
     afterSchoolCare: field(
       "Ganztag information and eFöB coordination are published on the school website.",
-      evidence("lew-tolstoi-ganztag"),
+      evidence("lew-tolstoi-ganztag", lewTolstoiGanztag.dateAccessed),
     ),
     bilingualPrograms: field(
       ["Deutsch-Russisch"],
-      evidence("28987-official-portrait"),
+      evidence("28987-official-portrait", spikeFullReviewDate),
     ),
     internationalPrograms: field(
       ["Staatliche Europa-Schule Berlin Deutsch/Russisch"],
-      evidence("28987-official-portrait"),
+      evidence("28987-official-portrait", spikeFullReviewDate),
     ),
     welcomeClasses: field<boolean>(
       null,
@@ -434,15 +454,15 @@ export const realLichtenbergPrimarySchools = [
     ),
     schoolProfile: field(
       "Staatliche Europa-Schule Berlin with Deutsch/Russisch focus.",
-      evidence("28987-official-portrait"),
+      evidence("28987-official-portrait", spikeFullReviewDate),
     ),
     pedagogyFocus: field(
       ["Deutsch-Russisch", "Europaschule", "Sprachen"],
-      evidence("28987-official-portrait"),
+      evidence("28987-official-portrait", spikeFullReviewDate),
     ),
     familyCommunication: field(
       "The school website publishes contact information including school office, Hort, and eFöB coordination.",
-      evidence("lew-tolstoi-website"),
+      evidence("lew-tolstoi-website", lewTolstoiWebsite.dateAccessed),
     ),
   }),
   primarySchool({
@@ -467,31 +487,31 @@ export const realLichtenbergPrimarySchools = [
     coverageLevel: "directory",
     afterSchoolCare: field(
       "The school website identifies Socius - Die Bildungspartner as the Hort contact for open all-day care.",
-      evidence("richard-wagner-ganztag"),
+      evidence("richard-wagner-ganztag", richardWagnerGanztag.dateAccessed),
     ),
     schoolProfile: field(
       "Musikbetonte Grundschule in Berlin Karlshorst.",
-      evidence("richard-wagner-website"),
+      evidence("richard-wagner-website", richardWagnerWebsite.dateAccessed),
     ),
     pedagogyFocus: field(
       ["Musikbetonung", "Hochbegabtenförderung"],
-      evidence("29344-official-portrait"),
+      evidence("29344-official-portrait", spikeFullReviewDate),
     ),
     familyCommunication: field(
       "The school website publishes contact pages for the school and after-school partner.",
-      evidence("richard-wagner-website"),
+      evidence("richard-wagner-website", richardWagnerWebsite.dateAccessed),
     ),
     inspectionAvailability: field(
       "available",
-      evidence("richard-wagner-inspection"),
+      evidence("richard-wagner-inspection", richardWagnerInspection.dateAccessed),
     ),
     inspectionData: field(
       "The school website links a short school-inspection report from 2018 and an older report from 2007.",
-      evidence("richard-wagner-inspection"),
+      evidence("richard-wagner-inspection", richardWagnerInspection.dateAccessed),
     ),
     facilities: field(
       ["Nachmittagsbetrieb / Hort contact", "music-focused school profile"],
-      evidence("richard-wagner-ganztag"),
+      evidence("richard-wagner-ganztag", richardWagnerGanztag.dateAccessed),
     ),
   }),
   primarySchool({
