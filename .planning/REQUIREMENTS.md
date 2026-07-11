@@ -21,6 +21,12 @@
 - [ ] **RSCH-03**: A methodology page explains how evidence, missing data, and coverage scores work for parents
 - [ ] **RSCH-04**: Source citations are visible and link to original references on school detail pages
 
+### Navigation & Core Journey
+
+- [ ] **NAV-01**: Homepage introduces the product in Portuguese and links to directory and guides
+- [ ] **NAV-02**: Shared site header/footer navigation connects home, directory, guides, comparison, and methodology
+- [ ] **NAV-03**: User can navigate from home to the school directory using only in-page links (journey expands as later phases ship)
+
 ### School Profiles
 
 - [ ] **PROF-01**: User can open a school detail page at `/schools/[slug]` for every school in the directory
@@ -31,18 +37,23 @@
 - [ ] **PROF-06**: Seven directory-only schools show only claims supported by official portrait data, with other fields marked missing
 - [ ] **PROF-07**: School cards in directory link to detail pages
 
+### Directory UX & Discovery
+
+- [ ] **DISC-01**: Search is usable with clear labeling, visible result counts, and responsive feedback as the user types
+- [ ] **DISC-02**: Filter controls are intuitive with an active-filter summary and a clear way to reset filters
+- [ ] **DISC-03**: User can sort directory results (e.g. by name, district, evidence coverage)
+- [ ] **DISC-04**: Filter and search state is shareable via URL — opening a shared link restores the same directory view
+- [ ] **DISC-05**: Empty states explain why no schools match and suggest how to broaden the search
+- [ ] **DISC-06**: Directory layout and controls work well on mobile viewports
+- [ ] **DISC-07**: Directory filtering remains responsive at current dataset size (no perceptible lag while typing)
+- [ ] **DISC-08**: Directory surfaces research depth and discoverability cues (coverage badges, research level, helpful intro copy)
+
 ### Comparison
 
 - [ ] **COMP-01**: User can select schools from the directory to compare
 - [ ] **COMP-02**: Comparison shows criteria side by side without a universal quality ranking
 - [ ] **COMP-03**: Comparison surfaces missing data and evidence coverage per school
 - [ ] **COMP-04**: Comparison limitations are explained in Portuguese
-
-### Navigation & Core Journey
-
-- [ ] **NAV-01**: Homepage introduces the product in Portuguese and links to directory and guides
-- [ ] **NAV-02**: Shared site header/footer navigation connects home, directory, guides, comparison, and methodology
-- [ ] **NAV-03**: User can complete journey: home → understand system (guide) → browse/filter schools → view profile → compare
 
 ### Guides
 
@@ -107,36 +118,44 @@ Deferred until Lichtenberg V1 is trustworthy and released.
 | RSCH-02 | Phase 2 | Pending |
 | RSCH-03 | Phase 2 | Pending |
 | RSCH-04 | Phase 2 | Pending |
-| PROF-01 | Phase 3 | Pending |
-| PROF-02 | Phase 3 | Pending |
-| PROF-03 | Phase 3 | Pending |
-| PROF-04 | Phase 3 | Pending |
-| PROF-05 | Phase 3 | Pending |
-| PROF-06 | Phase 3 | Pending |
-| PROF-07 | Phase 3 | Pending |
-| COMP-01 | Phase 4 | Pending |
-| COMP-02 | Phase 4 | Pending |
-| COMP-03 | Phase 4 | Pending |
-| COMP-04 | Phase 4 | Pending |
-| NAV-01 | Phase 5 | Pending |
-| NAV-02 | Phase 5 | Pending |
-| NAV-03 | Phase 5 | Pending |
-| GUID-01 | Phase 6 | Pending |
-| GUID-02 | Phase 6 | Pending |
-| GUID-03 | Phase 6 | Pending |
-| REL-01 | Phase 7 | Pending |
-| REL-02 | Phase 7 | Pending |
-| REL-03 | Phase 7 | Pending |
-| REL-04 | Phase 7 | Pending |
-| REL-05 | Phase 7 | Pending |
-| REL-06 | Phase 7 | Pending |
-| REL-07 | Phase 7 | Pending |
+| NAV-01 | Phase 3 | Pending |
+| NAV-02 | Phase 3 | Pending |
+| NAV-03 | Phase 3 | Pending |
+| PROF-01 | Phase 4 | Pending |
+| PROF-02 | Phase 4 | Pending |
+| PROF-03 | Phase 4 | Pending |
+| PROF-04 | Phase 4 | Pending |
+| PROF-05 | Phase 4 | Pending |
+| PROF-06 | Phase 4 | Pending |
+| PROF-07 | Phase 4 | Pending |
+| DISC-01 | Phase 5 | Pending |
+| DISC-02 | Phase 5 | Pending |
+| DISC-03 | Phase 5 | Pending |
+| DISC-04 | Phase 5 | Pending |
+| DISC-05 | Phase 5 | Pending |
+| DISC-06 | Phase 5 | Pending |
+| DISC-07 | Phase 5 | Pending |
+| DISC-08 | Phase 5 | Pending |
+| COMP-01 | Phase 6 | Pending |
+| COMP-02 | Phase 6 | Pending |
+| COMP-03 | Phase 6 | Pending |
+| COMP-04 | Phase 6 | Pending |
+| GUID-01 | Phase 7 | Pending |
+| GUID-02 | Phase 7 | Pending |
+| GUID-03 | Phase 7 | Pending |
+| REL-01 | Phase 8 | Pending |
+| REL-02 | Phase 8 | Pending |
+| REL-03 | Phase 8 | Pending |
+| REL-04 | Phase 8 | Pending |
+| REL-05 | Phase 8 | Pending |
+| REL-06 | Phase 8 | Pending |
+| REL-07 | Phase 8 | Pending |
 
 **Coverage:**
-- v1 requirements: 31 total
-- Mapped to phases: 31
+- v1 requirements: 39 total
+- Mapped to phases: 39
 - Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-07-11*
-*Last updated: 2026-07-11 after initial definition*
+*Last updated: 2026-07-11 after roadmap phase reorder*
