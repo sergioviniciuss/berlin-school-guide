@@ -47,4 +47,12 @@ describe("SchoolDirectory", () => {
       screen.getByRole("heading", { name: "Lew-Tolstoi-Schule" }),
     ).toBeVisible();
   });
+
+  it("links to the methodology page from the header", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.getByRole("link", { name: /como funciona nossa pesquisa/i }),
+    ).toHaveAttribute("href", "/methodology");
+  });
 });

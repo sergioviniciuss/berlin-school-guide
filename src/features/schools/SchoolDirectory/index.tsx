@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 
@@ -109,7 +110,10 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
           Explore escolas primárias em Berlim com informações verificadas e
           transparência sobre o que ainda não confirmamos. Começamos por
           Lichtenberg — mais distritos em breve. A cobertura da pesquisa mede
-          completude dos dados neste nível, não qualidade da escola.
+          completude dos dados neste nível, não qualidade da escola.{" "}
+          <Link href="/methodology" className="font-medium text-blue-700 underline">
+            Como funciona nossa pesquisa?
+          </Link>
         </p>
       </header>
 
