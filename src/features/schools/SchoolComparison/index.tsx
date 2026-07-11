@@ -2,12 +2,16 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { ComparisonLimitations } from "@/features/schools/ComparisonLimitations";
+import { ComparisonMobile } from "@/features/schools/ComparisonMobile";
 import { ComparisonTable } from "@/features/schools/ComparisonTable";
+import { writeStoredCompareSlugs } from "@/features/schools/compareSelection";
 import {
   COMPARE_PAGE_PARAM,
+  COMPARE_PARAM,
   parseCompareSlugs,
 } from "@/features/schools/parseCompareSlugs";
 import { resolveCompareSchools } from "@/features/schools/resolveCompareSchools";
@@ -16,6 +20,11 @@ export function SchoolComparison() {
   const searchParams = useSearchParams();
   const slugs = parseCompareSlugs(searchParams.get(COMPARE_PAGE_PARAM));
   const { schools, skippedSlugs } = resolveCompareSchools(slugs);
+  const [showDifferencesOnly, setShowDifferencesOnly] = useState(false);
+
+  useEffect(() => {
+    writeStoredCompareSlugs(slugs);
+  }, [slugs]);
 
   return (
     <div className="space-y-8">
@@ -42,7 +51,39 @@ export function SchoolComparison() {
       ) : (
         <>
           <ComparisonLimitations />
-          <ComparisonTable schools={schools} selectedSlugs={slugs} />
+          <div className="flex flex-col gap-3 rounded-lg border border-neutral-200 bg-white px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+            <Link
+              href={`/schools?${COMPARE_PARAM}=${slugs.join(",")}`}
+              className="min-h-11 inline-flex items-center text-sm font-medium text-blue-700 underline hover:opacity-90"
+            >
+              Editar seleção
+            </Link>
+            <label className="inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-medium text-neutral-900">
+              <input
+                type="checkbox"
+                checked={showDifferencesOnly}
+                onChange={(event) =>
+                  setShowDifferencesOnly(event.target.checked)
+                }
+                className="size-4 rounded border-neutral-300"
+              />
+              Mostrar apenas diferenças
+            </label>
+          </div>
+          <div className="hidden lg:block">
+            <ComparisonTable
+              schools={schools}
+              selectedSlugs={slugs}
+              showDifferencesOnly={showDifferencesOnly}
+            />
+          </div>
+          <div className="lg:hidden">
+            <ComparisonMobile
+              schools={schools}
+              selectedSlugs={slugs}
+              showDifferencesOnly={showDifferencesOnly}
+            />
+          </div>
         </>
       )}
     </div>
@@ -62,7 +103,7 @@ function CompareEmptyState() {
         Selecione pelo menos duas escolas
       </h2>
       <p className="mt-2 text-sm text-neutral-700">
-        Use o diretório para marcar de 2 a 4 escolas e voltar aqui para
+        Use o diretório para selecionar de 2 a 3 escolas e voltar aqui para
         comparar critérios com transparência.
       </p>
       <Button asChild className="mt-6 min-h-11">

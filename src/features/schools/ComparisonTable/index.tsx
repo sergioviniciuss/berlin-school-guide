@@ -3,38 +3,31 @@ import { Fragment } from "react";
 import { X } from "lucide-react";
 
 import { calculateEvidenceCoverage } from "@/features/evidence/calculateEvidenceCoverage";
-import { formatProfileFieldValue } from "@/features/schools/formatProfileFieldValue";
+import { ComparisonCellContent } from "@/features/schools/ComparisonCellContent";
+import { filterComparisonFieldPaths } from "@/features/schools/filterComparisonRows";
 import { getCoverageTierLabel } from "@/features/schools/getCoverageTierLabel";
-import { getSchoolFieldByPath } from "@/features/schools/getSchoolFieldByPath";
 import {
   COMPARE_PAGE_PARAM,
-  COMPARE_PARAM,
 } from "@/features/schools/parseCompareSlugs";
 import {
   PROFILE_SECTIONS,
   profileFieldLabels,
 } from "@/features/schools/SchoolProfile/constants";
 import type { School } from "@/features/schools/school";
-import { StatusBadge } from "@/features/schools/StatusBadge";
 
 type ComparisonTableProps = {
   schools: School[];
   selectedSlugs: string[];
+  showDifferencesOnly?: boolean;
 };
 
-export function ComparisonTable({ schools, selectedSlugs }: ComparisonTableProps) {
+export function ComparisonTable({
+  schools,
+  selectedSlugs,
+  showDifferencesOnly = false,
+}: ComparisonTableProps) {
   return (
-    <div className="space-y-4">
-      <div className="flex justify-end">
-        <Link
-          href={`/schools?${COMPARE_PARAM}=${selectedSlugs.join(",")}`}
-          className="text-sm font-medium text-blue-700 underline hover:opacity-90"
-        >
-          Editar seleção
-        </Link>
-      </div>
-
-      <div className="overflow-x-auto rounded-lg border border-neutral-200">
+    <div className="overflow-x-auto rounded-lg border border-neutral-200">
         <table
           aria-label="Comparação de critérios"
           className="min-w-full border-collapse text-sm"
@@ -73,7 +66,7 @@ export function ComparisonTable({ schools, selectedSlugs }: ComparisonTableProps
                       </div>
                       <Link
                         href={`/compare?${COMPARE_PAGE_PARAM}=${remainingSlugs.join(",")}`}
-                          aria-label={`Remover ${school.name.value} da comparação`}
+                        aria-label={`Remover ${school.name.value} da comparação`}
                         className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-100 hover:text-neutral-800"
                       >
                         <X className="size-4" aria-hidden />
@@ -85,73 +78,57 @@ export function ComparisonTable({ schools, selectedSlugs }: ComparisonTableProps
             </tr>
           </thead>
           <tbody>
-            {PROFILE_SECTIONS.map((section) => (
-              <Fragment key={section.key}>
-                <tr className="bg-neutral-100">
-                  <th
-                    scope="rowgroup"
-                    colSpan={schools.length + 1}
-                    className="sticky left-0 z-10 bg-neutral-100 px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-neutral-700 lg:static lg:z-auto"
-                  >
-                    {section.heading}
-                  </th>
-                </tr>
-                {section.fields.map((fieldPath) => (
-                  <tr
-                    key={fieldPath}
-                    className="border-b border-neutral-100 last:border-0"
-                  >
+            {PROFILE_SECTIONS.map((section) => {
+              const visibleFields = filterComparisonFieldPaths(
+                schools,
+                section.fields,
+                showDifferencesOnly,
+              );
+
+              if (visibleFields.length === 0) {
+                return null;
+              }
+
+              return (
+                <Fragment key={section.key}>
+                  <tr className="bg-neutral-100">
                     <th
-                      scope="row"
-                      className="sticky left-0 z-10 bg-white px-4 py-3 text-left font-medium text-neutral-950 lg:static lg:z-auto lg:bg-transparent"
+                      scope="rowgroup"
+                      colSpan={schools.length + 1}
+                      className="sticky left-0 z-10 bg-neutral-100 px-4 py-2 text-left text-xs font-semibold uppercase tracking-wide text-neutral-700 lg:static lg:z-auto"
                     >
-                      {profileFieldLabels[fieldPath]}
+                      {section.heading}
                     </th>
-                    {schools.map((school) => (
-                      <ComparisonCell
-                        key={`${school.slug}-${fieldPath}`}
-                        school={school}
-                        fieldPath={fieldPath}
-                      />
-                    ))}
                   </tr>
-                ))}
-              </Fragment>
-            ))}
+                  {visibleFields.map((fieldPath) => (
+                    <tr
+                      key={fieldPath}
+                      className="border-b border-neutral-100 last:border-0"
+                    >
+                      <th
+                        scope="row"
+                        className="sticky left-0 z-10 bg-white px-4 py-3 text-left font-medium text-neutral-950 lg:static lg:z-auto lg:bg-transparent"
+                      >
+                        {profileFieldLabels[fieldPath]}
+                      </th>
+                      {schools.map((school) => (
+                        <td
+                          key={`${school.slug}-${fieldPath}`}
+                          className="px-4 py-3 align-top"
+                        >
+                          <ComparisonCellContent
+                            school={school}
+                            fieldPath={fieldPath}
+                          />
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </Fragment>
+              );
+            })}
           </tbody>
         </table>
-      </div>
     </div>
-  );
-}
-
-type ComparisonCellProps = {
-  school: School;
-  fieldPath: string;
-};
-
-function ComparisonCell({ school, fieldPath }: ComparisonCellProps) {
-  const field = getSchoolFieldByPath(school, fieldPath);
-
-  if (!field) {
-    return (
-      <td className="px-4 py-3 align-top">
-        <div className="flex flex-wrap items-baseline gap-2">
-          <span className="text-neutral-900">—</span>
-          <StatusBadge status="missing" />
-        </div>
-      </td>
-    );
-  }
-
-  const valueText = formatProfileFieldValue(fieldPath, field);
-
-  return (
-    <td className="px-4 py-3 align-top">
-      <div className="flex flex-wrap items-baseline gap-2">
-        <span className="text-neutral-900">{valueText}</span>
-        <StatusBadge status={field.evidence.status} />
-      </div>
-    </td>
   );
 }

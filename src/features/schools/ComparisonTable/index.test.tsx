@@ -3,8 +3,15 @@ import { render, screen, within } from "@testing-library/react";
 import { ComparisonTable } from ".";
 import { calculateEvidenceCoverage } from "@/features/evidence/calculateEvidenceCoverage";
 import { getCoverageTierLabel } from "@/features/schools/getCoverageTierLabel";
-import { getSchoolFieldByPath } from "@/features/schools/getSchoolFieldByPath";
 import { resolveCompareSchools } from "@/features/schools/resolveCompareSchools";
+import {
+  field,
+  validConflictingDataSchool,
+  validDirectoryOnlySchool,
+  verifiedDirectoryEvidence,
+} from "@/features/schools/school/fixtures";
+import type { School } from "@/features/schools/school";
+import type { SchoolClassification } from "@/features/schools/schoolClassification";
 
 describe("ComparisonTable", () => {
   const slugs = ["lew-tolstoi-schule", "adam-ries-schule"];
@@ -37,9 +44,6 @@ describe("ComparisonTable", () => {
   it("renders formatted field values with status badges", () => {
     render(<ComparisonTable schools={schools} selectedSlugs={slugs} />);
 
-    const ganztagField = getSchoolFieldByPath(schools[0]!, "ganztag");
-    expect(ganztagField).toBeDefined();
-
     expect(screen.getAllByText("Verificado").length).toBeGreaterThan(0);
   });
 
@@ -51,7 +55,7 @@ describe("ComparisonTable", () => {
     ).toBeGreaterThan(0);
   });
 
-  it("uses horizontal scroll wrapper with sticky criteria column below lg", () => {
+  it("uses horizontal scroll wrapper with sticky criteria column", () => {
     render(<ComparisonTable schools={schools} selectedSlugs={slugs} />);
 
     const table = screen.getByRole("table", { name: "Comparação de critérios" });
@@ -63,6 +67,50 @@ describe("ComparisonTable", () => {
     expect(criteriaRowLabel).toHaveClass("sticky", "left-0", "z-10", "bg-white");
   });
 
+  it("hides equivalent rows when showDifferencesOnly is enabled", () => {
+    const schoolA = validDirectoryOnlySchool;
+    const schoolB: School = {
+      ...validDirectoryOnlySchool,
+      slug: "school-b",
+      classification: field<SchoolClassification>("public", {
+        ...verifiedDirectoryEvidence,
+        status: "not_confirmed",
+      }),
+    };
+
+    render(
+      <ComparisonTable
+        schools={[schoolA, schoolB]}
+        selectedSlugs={["synthetic-directory-school", "school-b"]}
+        showDifferencesOnly
+      />,
+    );
+
+    expect(
+      screen.queryByRole("rowheader", { name: "Nome da escola" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("rowheader", { name: "Tipo de escola" }),
+    ).toBeVisible();
+  });
+
+  it("does not permanently expand evidence notes in cells", () => {
+    render(
+      <ComparisonTable
+        schools={[validConflictingDataSchool, validDirectoryOnlySchool]}
+        selectedSlugs={[
+          validConflictingDataSchool.slug,
+          validDirectoryOnlySchool.slug,
+        ]}
+      />,
+    );
+
+    expect(
+      screen.queryByText("Synthetic sources disagree about the Ganztag model."),
+    ).not.toBeInTheDocument();
+    expect(screen.getByText("Ver nota de evidência")).toBeInTheDocument();
+  });
+
   it("does not render sort controls or winner styling", () => {
     render(<ComparisonTable schools={schools} selectedSlugs={slugs} />);
 
@@ -70,14 +118,6 @@ describe("ComparisonTable", () => {
       screen.queryByRole("button", { name: /ordenar/i }),
     ).not.toBeInTheDocument();
     expect(screen.queryByText(/melhor escola/i)).not.toBeInTheDocument();
-  });
-
-  it("links Editar seleção back to directory with current slugs", () => {
-    render(<ComparisonTable schools={schools} selectedSlugs={slugs} />);
-
-    expect(
-      screen.getByRole("link", { name: "Editar seleção" }),
-    ).toHaveAttribute("href", `/schools?compare=${slugs.join(",")}`);
   });
 
   it("removes a school via column control and updates compare URL", () => {

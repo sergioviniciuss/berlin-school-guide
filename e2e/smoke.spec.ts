@@ -105,7 +105,10 @@ test.describe("compare", () => {
     await page.goto("/schools");
 
     await addSchoolToCompare(page, "Lew-Tolstoi-Schule");
+    await expect(page).toHaveURL(/compare=lew-tolstoi-schule/);
+
     await addSchoolToCompare(page, "Adam-Ries-Schule");
+    await expect(page).toHaveURL(/compare=.*adam-ries-schule/);
 
     await page.getByRole("link", { name: "Comparar escolas" }).click();
 
@@ -146,5 +149,33 @@ test.describe("compare", () => {
       }),
     ).toBeVisible();
     await expect(page.getByText(/Não encontramos:/i)).toBeVisible();
+  });
+
+  test("uses stacked mobile layout without horizontal overflow", async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/compare?schools=lew-tolstoi-schule,adam-ries-schule");
+
+    await expect(
+      page.getByRole("table", { name: "Comparação de critérios" }),
+    ).toBeHidden();
+    await expect(
+      page.getByLabel("Comparação móvel de critérios"),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Tipo de escola", level: 3 }),
+    ).toBeVisible();
+
+    const mobileComparison = page.getByLabel("Comparação móvel de critérios");
+    await expect(mobileComparison.getByText("Lew-Tolstoi-Schule").first()).toBeVisible();
+    await expect(mobileComparison.getByText("Adam-Ries-Schule").first()).toBeVisible();
+
+    const hasHorizontalOverflow = await page.evaluate(
+      () =>
+        document.documentElement.scrollWidth >
+        document.documentElement.clientWidth + 1,
+    );
+    expect(hasHorizontalOverflow).toBe(false);
   });
 });
