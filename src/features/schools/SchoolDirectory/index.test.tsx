@@ -252,4 +252,34 @@ describe("SchoolDirectory", () => {
     expect(screen.queryByText("Abrir filtros")).not.toBeInTheDocument();
     expect(screen.queryByText("Fechar filtros")).not.toBeInTheDocument();
   });
+
+  it("shows few-results tip when one or two schools match", () => {
+    params = new URLSearchParams("q=Lew-Tolstoi");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.getByText("Poucos resultados — tente remover filtros"),
+    ).toBeVisible();
+  });
+
+  it("does not show few-results tip when three or more schools match", () => {
+    params = new URLSearchParams("neighbourhood=Karlshorst");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.queryByText("Poucos resultados — tente remover filtros"),
+    ).not.toBeInTheDocument();
+  });
+
+  it("does not show few-results tip when zero schools match", () => {
+    params = new URLSearchParams("q=sem-resultado-inexistente");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.queryByText("Poucos resultados — tente remover filtros"),
+    ).not.toBeInTheDocument();
+  });
 });

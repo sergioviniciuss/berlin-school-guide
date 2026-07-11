@@ -39,14 +39,16 @@ describe("SchoolCard", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("renders school summary and research coverage", () => {
-    render(<SchoolCard school={getSchoolDirectoryItems()[1]} />);
+  it("renders coverage block with tier label and percentage", () => {
+    render(
+      <SchoolCard school={toSchoolDirectoryItem(validDetailedPublicSchool)} />,
+    );
 
-    expect(
-      screen.getByRole("heading", { name: "Bernhard-Grzimek-Schule" }),
-    ).toBeVisible();
-    expect(screen.getByText(/Número oficial:/)).toBeVisible();
     expect(screen.getByText("Cobertura da pesquisa")).toBeVisible();
+    const coverageBlock = screen
+      .getByText("Cobertura da pesquisa")
+      .closest("div");
+    expect(coverageBlock?.textContent).toMatch(/Pesquisa detalhada · 100%/);
     expect(
       screen.getByText(/mede completude da pesquisa neste nível/),
     ).toBeVisible();
@@ -68,6 +70,45 @@ describe("SchoolCard", () => {
 
     expect(screen.getByText("Perfil detalhado")).toBeVisible();
     expect(screen.getByText(/Pesquisa detalhada/)).toBeVisible();
+  });
+
+  it("shows tier help with aria-label for pesquisa básica", () => {
+    render(
+      <SchoolCard school={toSchoolDirectoryItem(validDirectoryOnlySchool)} />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "O que significa pesquisa básica",
+      }),
+    ).toBeVisible();
+  });
+
+  it("shows tier help with aria-label for pesquisa detalhada", () => {
+    render(
+      <SchoolCard school={toSchoolDirectoryItem(validDetailedPublicSchool)} />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "O que significa pesquisa detalhada",
+      }),
+    ).toBeVisible();
+  });
+
+  it("sets title attribute with tier explanation on help button", () => {
+    render(
+      <SchoolCard school={toSchoolDirectoryItem(validDirectoryOnlySchool)} />,
+    );
+
+    expect(
+      screen.getByRole("button", {
+        name: "O que significa pesquisa básica",
+      }),
+    ).toHaveAttribute(
+      "title",
+      "Pesquisa com dados oficiais do diretório escolar de Berlim. Campos extras ainda não foram verificados de forma independente.",
+    );
   });
 
   it("renders Ver perfil hint text", () => {

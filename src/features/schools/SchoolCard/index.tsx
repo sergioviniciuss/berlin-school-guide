@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, HelpCircle } from "lucide-react";
 
 import type { FieldStatus } from "@/features/evidence/fieldEvidence";
 import type { SchoolDirectoryItem } from "@/features/schools/filterSchools/types";
+import type { CoverageLevel } from "@/features/schools/researchMetadata";
 import {
   formatBoolean,
   formatClassification,
@@ -111,13 +112,16 @@ export function SchoolCard({ school }: SchoolCardProps) {
           ) : null}
         </dl>
 
-        <div className="mt-5 rounded-md bg-neutral-50 p-3">
+        <div className="mt-4 rounded-md bg-neutral-50 p-3">
           <p className="text-sm font-medium text-neutral-950">
             Cobertura da pesquisa
           </p>
           <p className="text-sm text-neutral-700">
-            {school.coverageTierLabel} · {school.evidenceCoverage.percentage}% ·
-            mede completude da pesquisa neste nível, não qualidade da escola.
+            <span className="inline-flex items-center gap-1">
+              {school.coverageTierLabel} · {school.evidenceCoverage.percentage}%
+              <TierHelpButton coverageLevel={school.coverageLevel} />
+            </span>{" "}
+            · mede completude da pesquisa neste nível, não qualidade da escola.
           </p>
         </div>
 
@@ -126,6 +130,31 @@ export function SchoolCard({ school }: SchoolCardProps) {
         </p>
       </article>
     </Link>
+  );
+}
+
+function TierHelpButton({ coverageLevel }: { coverageLevel: CoverageLevel }) {
+  const isBasic = coverageLevel === "directory";
+  const ariaLabel = isBasic
+    ? "O que significa pesquisa básica"
+    : "O que significa pesquisa detalhada";
+  const title = isBasic
+    ? "Pesquisa com dados oficiais do diretório escolar de Berlim. Campos extras ainda não foram verificados de forma independente."
+    : "Pesquisa com fontes adicionais além do diretório oficial. A cobertura mostra quantos campos foram verificados neste nível — não a qualidade da escola.";
+
+  return (
+    <button
+      type="button"
+      title={title}
+      aria-label={ariaLabel}
+      onClick={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+      }}
+      className="inline-flex size-5 shrink-0 items-center justify-center rounded-full text-neutral-500 hover:text-neutral-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
+      <HelpCircle className="size-4" aria-hidden />
+    </button>
   );
 }
 

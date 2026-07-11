@@ -263,6 +263,12 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
             <SchoolDirectorySort value={sortKey} onChange={setSortKey} />
           </div>
 
+          {sortedSchools.length >= 1 && sortedSchools.length <= 2 ? (
+            <p className="text-sm text-neutral-600">
+              Poucos resultados — tente remover filtros
+            </p>
+          ) : null}
+
           <SchoolResults
             schools={sortedSchools}
             filters={filters}
