@@ -131,7 +131,11 @@ Plans:
   1. A Portuguese-language guide page explains how the Berlin primary education system works (Grundschule basics, how enrollment generally works).
   2. At least one practical checklist (school visit or enrollment preparation) is published and usable end to end.
   3. German education terms used across the site (Ganztag, Bezirk, Schulportrait, etc.) are explained in Portuguese context within the guides.
-**Plans**: TBD
+**Plans**: 3 plans (3 waves)
+Plans:
+- [ ] 07-01-PLAN.md — Guide routes, GuidesHub, MDX shell, print CSS (GUID-01–03 foundation)
+- [ ] 07-02-PLAN.md — Editorial MDX: system guide + Primeiros passos checklist + glossary (GUID-01–03)
+- [ ] 07-03-PLAN.md — Guias nav, homepage card, cross-links, filter help URLs, e2e (GUID-01–03)
 **UI hint**: yes
 
 ### Phase 8: Release Readiness
