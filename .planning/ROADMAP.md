@@ -99,7 +99,11 @@ Plans:
   6. Directory layout and filter controls work on a mobile viewport without horizontal scrolling or unusably small tap targets.
   7. Filtering 10 schools shows no perceptible input lag; approach is documented for scaling later.
   8. Cards or list items surface research depth (directory vs detailed, coverage %) so parents can gauge data quality at a glance.
-**Plans**: TBD
+**Plans**: 3 plans (3 waves)
+Plans:
+- [ ] 05-01-PLAN.md — Debounce hook, sortSchools utility, SchoolDirectory URL/pipeline, header counts (DISC-01, DISC-03, DISC-04, DISC-07, DISC-08)
+- [ ] 05-02-PLAN.md — Tiered filters, mobile Sheet drawer, sticky bar, SchoolDirectorySort (DISC-02, DISC-04, DISC-06)
+- [ ] 05-03-PLAN.md — Contextual empty states, SchoolCard tier help, few-results tip, e2e URL share, scaling note (DISC-04, DISC-05, DISC-07, DISC-08)
 **UI hint**: yes
 
 ### Phase 6: School Comparison
@@ -148,7 +152,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 2. Research Process & Attribution | 3/3 | Complete | 2026-07-11 |
 | 3. Homepage, Navigation & Core Journey | 3/3 | Complete | 2026-07-11 |
 | 4. School Detail Profiles | 3/3 | Complete | 2026-07-11 |
-| 5. Directory UX & Discovery | 0/TBD | Not started | - |
+| 5. Directory UX & Discovery | 0/3 | Not started | - |
 | 6. School Comparison | 0/TBD | Not started | - |
 | 7. Essential Parent Guides | 0/TBD | Not started | - |
 | 8. Release Readiness | 0/TBD | Not started | - |
