@@ -55,6 +55,20 @@ describe("SiteHeader", () => {
     expect(escolasLink).toHaveClass("font-semibold");
   });
 
+  it("highlights Escolas when pathname is a school profile route", () => {
+    pathname = "/schools/adam-ries-schule";
+
+    render(<SiteHeader />);
+
+    const nav = screen.getByRole("navigation", {
+      name: "Navegação principal",
+    });
+    const escolasLink = within(nav).getByRole("link", { name: "Escolas" });
+
+    expect(escolasLink).toHaveClass("text-primary");
+    expect(escolasLink).toHaveClass("font-semibold");
+  });
+
   it("highlights only Início when pathname is /", () => {
     pathname = "/";
 
