@@ -1,16 +1,30 @@
 import { expect, test } from "@playwright/test";
 
-test("renders the static home page and MDX guide", async ({ page }) => {
+test("navigates from homepage to school directory via journey CTA", async ({
+  page,
+}) => {
   await page.goto("/");
   await expect(
-    page.getByRole("heading", { name: "Berlin School Guide" }),
+    page.getByRole("heading", {
+      name: "Escolas primárias em Berlim para famílias brasileiras",
+    }),
   ).toBeVisible();
 
-  await page.getByRole("link", { name: "Abrir página MDX" }).click();
-  await expect(page).toHaveURL(/\/guides\/m2-smoke$/);
-  await expect(
-    page.getByRole("heading", { name: "Página MDX de validação" }),
-  ).toBeVisible();
+  await page.getByRole("link", { name: "Ver escolas em Lichtenberg" }).click();
+  await expect(page).toHaveURL(/\/schools$/);
+  await expect(page.getByRole("heading", { name: "Escolas" })).toBeVisible();
+});
+
+test("navigates from homepage to school directory via header nav", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await page
+    .getByRole("navigation", { name: "Navegação principal" })
+    .getByRole("link", { name: "Escolas" })
+    .click();
+  await expect(page).toHaveURL(/\/schools$/);
+  await expect(page.getByRole("heading", { name: "Escolas" })).toBeVisible();
 });
 
 test("searches and filters the static school directory", async ({ page }) => {
