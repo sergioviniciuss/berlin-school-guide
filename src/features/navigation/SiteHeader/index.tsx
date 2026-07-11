@@ -17,14 +17,18 @@ import { cn } from "@/components/ui/utils";
 import { NAV_ITEMS } from "./constants";
 
 function isActive(pathname: string, href: string) {
-  return href === "/" ? pathname === "/" : pathname === href;
+  if (href === "/") return pathname === "/";
+  if (href === "/schools") {
+    return pathname === "/schools" || pathname.startsWith("/schools/");
+  }
+  return pathname === href;
 }
 
 function getDesktopLinkClassName(pathname: string, href: string) {
   return cn(
     "text-sm font-medium text-neutral-700 hover:text-neutral-950",
     isActive(pathname, href) &&
-      "border-b-2 border-primary font-semibold text-primary",
+      "border-b-2 border-b-primary font-semibold text-primary",
   );
 }
 
@@ -32,7 +36,7 @@ function getMobileLinkClassName(pathname: string, href: string) {
   return cn(
     "block py-3 px-4 text-base text-neutral-700 hover:text-neutral-950",
     isActive(pathname, href) &&
-      "border-l-4 border-primary bg-neutral-50 font-semibold text-primary",
+      "border-l-4 border-l-primary bg-neutral-50 font-semibold text-primary",
   );
 }
 
@@ -62,16 +66,24 @@ export function SiteHeader() {
       </nav>
 
       <Sheet open={open} onOpenChange={setOpen}>
-        <Button
-          type="button"
-          variant="outline"
-          aria-label="Abrir menu de navegação"
-          onClick={() => setOpen(true)}
-          className="md:hidden size-11"
+        {!open ? (
+          <Button
+            type="button"
+            variant="outline"
+            aria-label="Abrir menu de navegação"
+            aria-expanded={false}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen(true)}
+            className="md:hidden size-11"
+          >
+            <Menu className="size-5" />
+          </Button>
+        ) : null}
+        <SheetContent
+          side="right"
+          id="mobile-nav"
+          className="w-[280px] max-w-[85vw]"
         >
-          <Menu className="size-5" />
-        </Button>
-        <SheetContent side="right" className="w-[280px] max-w-[85vw]">
           <SheetHeader>
             <SheetTitle>Navegação</SheetTitle>
           </SheetHeader>
