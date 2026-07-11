@@ -81,7 +81,7 @@ Each task was committed atomically (TDD RED → GREEN):
    - `f9fa366` (test) — failing tests for status gating and field paths
    - `4431c96` (feat) — extraction and ProfileFieldRow import update
 
-**Plan metadata:** pending (docs commit)
+**Plan metadata:** `aaef34e` (docs: complete plan)
 
 ## Files Created/Modified
 
