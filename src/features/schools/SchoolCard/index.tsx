@@ -15,121 +15,177 @@ import { getStatusTone, shouldRenderFact } from "./utils";
 
 type SchoolCardProps = {
   school: SchoolDirectoryItem;
+  isCompareSelected?: boolean;
+  onToggleCompare?: () => void;
+  selectionFull?: boolean;
 };
 
-export function SchoolCard({ school }: SchoolCardProps) {
+export function SchoolCard({
+  school,
+  isCompareSelected = false,
+  onToggleCompare,
+  selectionFull = false,
+}: SchoolCardProps) {
   const profileBadge =
     school.coverageLevel === "directory" ? "Perfil básico" : "Perfil detalhado";
+  const compareDisabled = selectionFull && !isCompareSelected;
 
   return (
-    <Link
-      href={`/schools/${school.slug}`}
-      aria-label={`Ver perfil de ${school.name}`}
-      className="block rounded-lg border border-neutral-200 bg-white shadow-sm hover:border-neutral-300 hover:shadow-md transition-shadow cursor-pointer focus-within:ring-2 focus-within:ring-primary"
-    >
-      <article className="p-5">
-        <div className="space-y-2">
-          <h2 className="text-xl font-semibold text-neutral-950">
-            {school.name}
-          </h2>
-          <span className="inline-block text-sm font-medium text-blue-700">
-            {profileBadge}
-          </span>
-          <p className="text-sm text-neutral-700">
-            {school.district ?? formatFieldStatus(school.districtStatus)} ·{" "}
-            {school.neighbourhood ??
-              formatFieldStatus(school.neighbourhoodStatus)}
-          </p>
-          <p className="text-sm text-neutral-600">
-            Número oficial:{" "}
-            {school.schoolNumber ?? formatFieldStatus(school.schoolNumberStatus)}
-          </p>
-        </div>
+    <article className="rounded-lg border border-neutral-200 bg-white shadow-sm hover:border-neutral-300 hover:shadow-md transition-shadow focus-within:ring-2 focus-within:ring-primary">
+      <div className="flex gap-3 p-5">
+        {onToggleCompare ? (
+          <CompareCheckbox
+            schoolName={school.name}
+            checked={isCompareSelected}
+            disabled={compareDisabled}
+            onToggle={onToggleCompare}
+          />
+        ) : null}
+        <div className="min-w-0 flex-1">
+          <Link
+            href={`/schools/${school.slug}`}
+            aria-label={`Ver perfil de ${school.name}`}
+            className="block cursor-pointer"
+          >
+            <div className="space-y-2">
+              <h2 className="text-xl font-semibold text-neutral-950">
+                {school.name}
+              </h2>
+              <span className="inline-block text-sm font-medium text-blue-700">
+                {profileBadge}
+              </span>
+              <p className="text-sm text-neutral-700">
+                {school.district ?? formatFieldStatus(school.districtStatus)} ·{" "}
+                {school.neighbourhood ??
+                  formatFieldStatus(school.neighbourhoodStatus)}
+              </p>
+              <p className="text-sm text-neutral-600">
+                Número oficial:{" "}
+                {school.schoolNumber ??
+                  formatFieldStatus(school.schoolNumberStatus)}
+              </p>
+            </div>
 
-        <dl className="mt-5 grid gap-3 sm:grid-cols-2">
-          {shouldRenderFact(
-            school.classification,
-            school.classificationStatus,
-          ) ? (
-            <Fact
-              label="Tipo"
-              value={formatClassification(school.classification)}
-              status={school.classificationStatus}
-            />
-          ) : null}
-          {shouldRenderFact(school.ganztag, school.ganztagStatus) ? (
-            <Fact
-              label="Ganztag"
-              value={school.ganztag ?? formatFieldStatus(school.ganztagStatus)}
-              status={school.ganztagStatus}
-            />
-          ) : null}
-          {shouldRenderFact(
-            school.bilingualPrograms,
-            school.bilingualStatus,
-          ) ? (
-            <Fact
-              label="Bilíngue"
-              value={formatStringList(
+            <dl className="mt-5 grid gap-3 sm:grid-cols-2">
+              {shouldRenderFact(
+                school.classification,
+                school.classificationStatus,
+              ) ? (
+                <Fact
+                  label="Tipo"
+                  value={formatClassification(school.classification)}
+                  status={school.classificationStatus}
+                />
+              ) : null}
+              {shouldRenderFact(school.ganztag, school.ganztagStatus) ? (
+                <Fact
+                  label="Ganztag"
+                  value={
+                    school.ganztag ?? formatFieldStatus(school.ganztagStatus)
+                  }
+                  status={school.ganztagStatus}
+                />
+              ) : null}
+              {shouldRenderFact(
                 school.bilingualPrograms,
                 school.bilingualStatus,
-              )}
-              status={school.bilingualStatus}
-            />
-          ) : null}
-          {shouldRenderFact(
-            school.welcomeClasses,
-            school.welcomeClassesStatus,
-          ) ? (
-            <Fact
-              label="Willkommensklasse"
-              value={formatBoolean(
+              ) ? (
+                <Fact
+                  label="Bilíngue"
+                  value={formatStringList(
+                    school.bilingualPrograms,
+                    school.bilingualStatus,
+                  )}
+                  status={school.bilingualStatus}
+                />
+              ) : null}
+              {shouldRenderFact(
                 school.welcomeClasses,
                 school.welcomeClassesStatus,
-              )}
-              status={school.welcomeClassesStatus}
-            />
-          ) : null}
-          {shouldRenderFact(school.languages, school.languagesStatus) ? (
-            <Fact
-              label="Idiomas"
-              value={formatStringList(school.languages, school.languagesStatus)}
-              status={school.languagesStatus}
-            />
-          ) : null}
-          {shouldRenderFact(
-            school.inspectionAvailability,
-            school.inspectionAvailabilityStatus,
-          ) ? (
-            <Fact
-              label="Inspeção oficial"
-              value={formatInspectionAvailability(
+              ) ? (
+                <Fact
+                  label="Willkommensklasse"
+                  value={formatBoolean(
+                    school.welcomeClasses,
+                    school.welcomeClassesStatus,
+                  )}
+                  status={school.welcomeClassesStatus}
+                />
+              ) : null}
+              {shouldRenderFact(school.languages, school.languagesStatus) ? (
+                <Fact
+                  label="Idiomas"
+                  value={formatStringList(
+                    school.languages,
+                    school.languagesStatus,
+                  )}
+                  status={school.languagesStatus}
+                />
+              ) : null}
+              {shouldRenderFact(
                 school.inspectionAvailability,
                 school.inspectionAvailabilityStatus,
-              )}
-              status={school.inspectionAvailabilityStatus}
-            />
-          ) : null}
-        </dl>
+              ) ? (
+                <Fact
+                  label="Inspeção oficial"
+                  value={formatInspectionAvailability(
+                    school.inspectionAvailability,
+                    school.inspectionAvailabilityStatus,
+                  )}
+                  status={school.inspectionAvailabilityStatus}
+                />
+              ) : null}
+            </dl>
 
-        <div className="mt-4 rounded-md bg-neutral-50 p-3">
-          <p className="text-sm font-medium text-neutral-950">
-            Cobertura da pesquisa
-          </p>
-          <p className="text-sm text-neutral-700">
-            <span className="inline-flex items-center gap-1">
-              {school.coverageTierLabel} · {school.evidenceCoverage.percentage}%
-              <TierHelpButton coverageLevel={school.coverageLevel} />
-            </span>{" "}
-            · mede completude da pesquisa neste nível, não qualidade da escola.
-          </p>
+            <div className="mt-4 rounded-md bg-neutral-50 p-3">
+              <p className="text-sm font-medium text-neutral-950">
+                Cobertura da pesquisa
+              </p>
+              <p className="text-sm text-neutral-700">
+                <span className="inline-flex items-center gap-1">
+                  {school.coverageTierLabel} · {school.evidenceCoverage.percentage}%
+                  <TierHelpButton coverageLevel={school.coverageLevel} />
+                </span>{" "}
+                · mede completude da pesquisa neste nível, não qualidade da
+                escola.
+              </p>
+            </div>
+
+            <p className="mt-3 text-sm text-blue-700 flex items-center justify-end gap-1">
+              Ver perfil <ChevronRight className="size-4" aria-hidden />
+            </p>
+          </Link>
         </div>
+      </div>
+    </article>
+  );
+}
 
-        <p className="mt-3 text-sm text-blue-700 flex items-center justify-end gap-1">
-          Ver perfil <ChevronRight className="size-4" aria-hidden />
-        </p>
-      </article>
-    </Link>
+type CompareCheckboxProps = {
+  schoolName: string;
+  checked: boolean;
+  disabled: boolean;
+  onToggle: () => void;
+};
+
+function CompareCheckbox({
+  schoolName,
+  checked,
+  disabled,
+  onToggle,
+}: CompareCheckboxProps) {
+  return (
+    <label className="inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center">
+      <input
+        type="checkbox"
+        checked={checked}
+        disabled={disabled}
+        title={disabled ? "Máximo de 4 escolas" : undefined}
+        aria-label={`Selecionar ${schoolName} para comparar`}
+        onChange={onToggle}
+        className="min-h-11 min-w-11 rounded border-neutral-300"
+      />
+    </label>
   );
 }
 
