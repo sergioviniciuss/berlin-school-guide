@@ -39,6 +39,7 @@ created: 2026-07-11
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
 | 02-01-01 | 01 | 1 | RSCH-01 | T-02-01 / — | Workflow doc has checklist headings | manual/doc | Review `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` | ❌ W0 | ⬜ pending |
+| 02-01-02 | 01 | 1 | RSCH-01 | — | Workflow references inferredFrom and validate:data | manual/doc | `rg "inferredFrom|pnpm validate:data|Re-research" docs/research/SCHOOL_RESEARCH_WORKFLOW.md` | ❌ W0 | ⬜ pending |
 | 02-02-01 | 02 | 1 | RSCH-02 | T-02-02 / — | Real schools require coherent research dates | unit | `pnpm test -- src/features/schools/validateResearchDates/index.test.ts` | ❌ W0 | ⬜ pending |
 | 02-02-02 | 02 | 1 | RSCH-02 | — | validate:data passes 10 real schools | integration | `pnpm validate:data` | ✅ | ⬜ pending |
 | 02-03-01 | 03 | 2 | RSCH-03 | T-02-03 / — | Methodology page renders Portuguese content | unit | `pnpm test -- src/app/methodology/page.test.tsx` | ❌ W0 | ⬜ pending |

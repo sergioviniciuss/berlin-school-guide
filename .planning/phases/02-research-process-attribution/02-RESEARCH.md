@@ -401,21 +401,13 @@ import Link from "next/link";
 | A2 | MDX is the preferred methodology composition (Claude's discretion) | Methodology page | TSX would work equally; minor plan adjustment |
 | A3 | `lastSourceChecked >= oldest cited dateAccessed` is sufficient without also requiring `>= max(dateAccessed)` | Date validation | D-16 intent (most recent source) may need stricter max-date check — recommend validating both min and max coherence |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Exact per-school date values during audit**
-   - What we know: All sources currently `2026-07-10`; spike date documented in `REAL_SCHOOL_RESEARCH_SPIKE.md`.
-   - What's unclear: Whether deeper schools (Adam-Ries, Lew-Tolstoi, Richard-Wagner) were checked on different days in practice.
-   - Recommendation: Use spike date as baseline for portrait-only schools; allow staggered dates for multi-source schools if research notes justify it; document assumptions in workflow doc.
+1. **Exact per-school date values during audit** — **RESOLVED:** Use spike date (`2026-07-10`) as baseline for portrait-only schools; allow staggered per-source `dateAccessed` for multi-source schools (Lew-Tolstoi, Richard-Wagner, Adam-Ries) when research notes justify it. Plan 02-02-02 implements this audit.
 
-2. **Should `lastSourceChecked` equal `max(dateAccessed)` exactly?**
-   - What we know: D-16 defines semantics; D-17 only mandates `>= oldest`.
-   - What's unclear: Whether equality to max is required or min-only suffices.
-   - Recommendation: Enforce `>= max(cited source dateAccessed)` for real schools — stronger alignment with D-16.
+2. **Should `lastSourceChecked` equal `max(dateAccessed)` exactly?** — **RESOLVED:** Enforce `lastSourceChecked >= max(cited source dateAccessed)` for real schools (stronger than min-only; aligns with D-16). Plan 02-02-01 implements in `validateResearchDates`.
 
-3. **`pnpm validate:citations` alias**
-   - What we know: Claude's discretion.
-   - Recommendation: Skip alias unless error volume from date checks clutters `validate:data` output; prefer single CI gate.
+3. **`pnpm validate:citations` alias** — **RESOLVED:** Skip alias; keep single `pnpm validate:data` CI gate. Citation checks remain in `schoolSchema.superRefine`.
 
 ## Environment Availability
 
