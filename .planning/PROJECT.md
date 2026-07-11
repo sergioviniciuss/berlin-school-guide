@@ -30,9 +30,11 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Homepage landing page with journey cards to directory and methodology — Phase 3 (2026-07-11)
 - ✓ Shared site header/footer navigation (Início, Escolas, Metodologia) on all pages — Phase 3 (2026-07-11)
 - ✓ Core journey: home → school directory via in-page links (e2e verified) — Phase 3 (2026-07-11)
+- ✓ School detail pages (`/schools/[slug]`) with per-field evidence labels, Fontes section, and 10 static routes — Phase 4 (2026-07-11)
+- ✓ Three detailed school profiles (Adam-Ries, Lew-Tolstoi, Richard-Wagner) with honest audit; seven directory-only profiles — Phase 4 (2026-07-11)
+- ✓ Clickable SchoolCard links from directory to profile pages — Phase 4 (2026-07-11)
 
 ### Active
-- [ ] Build school detail pages (`/schools/[slug]`) with citations and missing-data labels
 - [ ] Build comparison experience without quality rankings
 - [ ] Publish essential parent guides (system understanding + practical decision support)
 - [ ] Release readiness: accessibility, responsive behavior, SEO, static export validation
@@ -70,15 +72,15 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 
 | Area | State |
 |------|-------|
-| School research depth | 3/10 schools have deeper field research (Adam-Ries, Lew-Tolstoi, Richard-Wagner); 7 are `directory_only` |
+| School research depth | 3/10 schools have detailed profiles (Adam-Ries, Lew-Tolstoi, Richard-Wagner); 7 are `directory_only` |
 | Evidence coverage UI | Coverage v2 with level-aware denominators; tier labels on cards (Phase 1) |
 | MDX guides | `methodology.mdx` published |
-| Site navigation | `SiteHeader`/`SiteFooter` on all pages; live nav: Início, Escolas, Metodologia (Phase 3) |
+| Site navigation | `SiteHeader`/`SiteFooter` on all pages; live nav: Início, Escolas, Metodologia; profile route active state (Phase 3–4) |
 | Homepage | Fuller landing with journey cards to `/schools` and `/methodology` (Phase 3) |
 | Research workflow | `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` + `validateResearchDates` in `pnpm validate:data` |
-| Information architecture | Documented in `docs/INFORMATION_ARCHITECTURE.md` but most routes do not exist |
+| Information architecture | `/`, `/schools`, `/schools/[slug]`, `/methodology` live; `/compare` and `/guides` not yet built |
 | Comparison | Philosophy in `docs/COMPARISON.md`; no `/compare` route or feature code |
-| School detail pages | No `src/app/schools/[slug]/` route; `SchoolCard` is not linked anywhere |
+| School detail pages | `src/app/schools/[slug]/` with `SchoolProfile`, `SourcesSection`, evidence-labeled fields (Phase 4) |
 
 #### 3. Resolved in Phase 1 (2026-07-11)
 
@@ -102,19 +104,19 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 
 #### 5. Remaining scaffolding / deferred
 
-All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bildung.berlin.de/Schulverzeichnis/Schulportrait.aspx`). Post-audit (Phase 1), all 10 are classified `directory_only` / `directory`; formerly-detailed schools downgraded per D-19 threshold (<8 independently verified detailed fields).
+All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bildung.berlin.de/Schulverzeichnis/Schulportrait.aspx`). After Phase 4 audit, three schools upgraded to `profile_ready` / `detailed`; seven remain `directory_only` / `directory`.
 
 | School | Official portrait | Independent school sources | Post-audit status |
 |--------|-------------------|--------------------------|-------------------|
-| Adam-Ries-Schule | ✓ | Welcome classes page | `directory_only` / `directory` |
+| Adam-Ries-Schule | ✓ | Welcome classes page | `profile_ready` / `detailed` |
 | Bernhard-Grzimek-Schule | ✓ | — | `directory_only` / `directory` |
 | Bürgermeister-Ziethen-Schule | ✓ | — | `directory_only` / `directory` |
 | Friedrichsfelder Schule | ✓ | — | `directory_only` / `directory` |
 | Grundschule am Tränkegraben | ✓ | — | `directory_only` / `directory` |
 | Schmetterlings-Grundschule | ✓ | — | `directory_only` / `directory` |
 | Karlshorster Schule | ✓ | — | `directory_only` / `directory` |
-| Lew-Tolstoi-Schule | ✓ | Website + Ganztag page | `directory_only` / `directory` |
-| Richard-Wagner-Schule | ✓ | Website, Ganztag, inspection | `directory_only` / `directory` |
+| Lew-Tolstoi-Schule | ✓ | Website + Ganztag page | `profile_ready` / `detailed` |
+| Richard-Wagner-Schule | ✓ | Website, Ganztag, inspection | `profile_ready` / `detailed` |
 | Seepark-Grundschule | ✓ | — | `directory_only` / `directory` |
 
 #### 6. Evidence model after Phase 1
@@ -130,14 +132,14 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 
 #### 8. What prevents usable V1 today
 
-1. **No school detail pages** — directory is a dead end
-2. **No comparison** — key parent workflow missing
-3. **No educational guides** — system explanation not published
+1. **No comparison** — key parent workflow missing
+2. **No educational guides** — system explanation not published
+3. **Directory UX polish** — search/filter/sort usability deferred to Phase 5
 
 #### 9. CONCERNS.md items required before launch
 
 **Must resolve (remaining):**
-- School detail pages linking from directory cards (Phase 4)
+- Comparison experience (Phase 6)
 
 **Should resolve:**
 - Document deployment security headers when host is chosen (Phase 8)
@@ -149,6 +151,11 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 
 **Resolved in Phase 3:**
 - Site-wide navigation, m2-smoke legacy route, e2e homepage journey smoke test
+
+**Resolved in Phase 4:**
+- School detail profiles with evidence labels and Fontes section
+- Directory card → profile navigation
+- Three-school detailed upgrade with honest audit
 
 **Monitor (not blocking at 10 schools):**
 - Client-side filter performance at Berlin-wide scale (M8 deferred)
@@ -202,4 +209,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-11 after Phase 3 completion*
+*Last updated: 2026-07-11 after Phase 4 completion*

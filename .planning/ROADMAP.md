@@ -17,7 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Data & Evidence Audit** - Audit all 10 Lichtenberg records, remove misleading evidence fallbacks and synthetic copy (completed 2026-07-11)
 - [x] **Phase 2: Research Process & Attribution** - Document a repeatable research workflow with dated, citable sources and a parent-facing methodology page (completed 2026-07-11)
 - [x] **Phase 3: Homepage, Navigation & Core Journey** - Replace M2 homepage copy and add shared site navigation (completed 2026-07-11)
-- [ ] **Phase 4: School Detail Profiles** - Build `/schools/[slug]` with per-field evidence labels and consolidated sources
+- [x] **Phase 4: School Detail Profiles** - Build `/schools/[slug]` with per-field evidence labels and consolidated sources (completed 2026-07-11)
 - [ ] **Phase 5: Directory UX & Discovery** - Polish search, filters, sorting, empty states, mobile usability, and discoverability
 - [ ] **Phase 6: School Comparison** - Let families compare selected schools side by side without a quality ranking
 - [ ] **Phase 7: Essential Parent Guides** - Publish the Berlin primary system guide and a practical checklist in Portuguese
@@ -80,10 +80,10 @@ Plans:
   3. Each detail page has a consolidated sources section listing publisher and access date for every citation used on that page.
   4. The three deeply researched schools (Adam-Ries, Lew-Tolstoi, Richard-Wagner) present a fuller "detailed" profile, while the seven directory-only schools show only officially-sourced fields, with everything else clearly marked missing.
   5. Clicking a school card in `/schools` navigates directly to that school's detail page.
-**Plans**: 3 plans (3 waves)
-- [ ] 04-01-PLAN.md — Data layer + field primitives (getSchoolBySlug, collectCitedSources, ProfileFieldRow, StatusBadge)
-- [ ] 04-02-PLAN.md — SchoolProfile + SourcesSection + static route and 404
-- [ ] 04-03-PLAN.md — Three-school upgrade + SchoolCard link + SiteHeader + e2e
+**Plans**: 3 plans (3 waves) — completed 2026-07-11
+- [x] 04-01-PLAN.md — Data layer + field primitives (getSchoolBySlug, collectCitedSources, ProfileFieldRow, StatusBadge)
+- [x] 04-02-PLAN.md — SchoolProfile + SourcesSection + static route and 404
+- [x] 04-03-PLAN.md — Three-school upgrade + SchoolCard link + SiteHeader + e2e
 **UI hint**: yes
 
 ### Phase 5: Directory UX & Discovery
@@ -147,7 +147,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 1. Data & Evidence Audit | 3/3 | Complete | 2026-07-11 |
 | 2. Research Process & Attribution | 3/3 | Complete | 2026-07-11 |
 | 3. Homepage, Navigation & Core Journey | 3/3 | Complete | 2026-07-11 |
-| 4. School Detail Profiles | 0/TBD | Not started | - |
+| 4. School Detail Profiles | 3/3 | Complete | 2026-07-11 |
 | 5. Directory UX & Discovery | 0/TBD | Not started | - |
 | 6. School Comparison | 0/TBD | Not started | - |
 | 7. Essential Parent Guides | 0/TBD | Not started | - |
