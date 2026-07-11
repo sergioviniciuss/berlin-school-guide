@@ -5,6 +5,8 @@ import type {
 import type { Source } from "@/features/evidence/source";
 import type { School } from "@/features/schools/school";
 
+import { inferredFrom } from "./inferredFrom";
+
 const checkedAt = "2026-07-10";
 
 type SourceInput = Omit<Source, "dateAccessed">;
@@ -120,6 +122,12 @@ function primarySchool(input: BaseSchoolInput): School {
   const missingResearch = missing(
     "Information was not found during the real-data spike.",
   );
+  const researchStatus = input.researchStatus ?? "directory_only";
+  const coverageLevel = input.coverageLevel ?? "directory";
+  const afterSchoolCareInferredNote =
+    "Valor inferido a partir do modelo Ganztag; contraturno não foi confirmado de forma independente.";
+  const offersInferredNote =
+    "Perfil inferido a partir das ofertas listadas no retrato oficial; não confirmado de forma independente.";
 
   return {
     id: input.schoolNumber.toLowerCase(),
@@ -144,35 +152,44 @@ function primarySchool(input: BaseSchoolInput): School {
     afterSchoolCare:
       input.afterSchoolCare ??
       (input.ganztag
-        ? field(input.ganztag, directoryEvidence)
+        ? field(
+            input.ganztag,
+            inferredFrom({
+              sourceField: "ganztag",
+              sourceEvidence: directoryEvidence,
+              note: afterSchoolCareInferredNote,
+            }),
+          )
         : field(null, missingResearch)),
     languages: field(input.languages, directoryEvidence),
     bilingualPrograms:
-      input.bilingualPrograms ??
-      field(
-        [],
-        notApplicable(
-          "No bilingual program was identified in the checked official sources.",
-        ),
-      ),
+      input.bilingualPrograms ?? field(null, missingResearch),
     internationalPrograms:
-      input.internationalPrograms ??
-      field(
-        [],
-        notApplicable(
-          "No international program was identified in the checked official sources.",
-        ),
-      ),
+      input.internationalPrograms ?? field(null, missingResearch),
     welcomeClasses: input.welcomeClasses ?? field(null, missingResearch),
     schoolProfile:
       input.schoolProfile ??
       (input.offers?.length
-        ? field(input.offers.join("; "), directoryEvidence)
+        ? field(
+            input.offers.join("; "),
+            inferredFrom({
+              sourceField: "offers",
+              sourceEvidence: directoryEvidence,
+              note: offersInferredNote,
+            }),
+          )
         : field(null, missingResearch)),
     pedagogyFocus:
       input.pedagogyFocus ??
       (input.offers?.length
-        ? field(input.offers, directoryEvidence)
+        ? field(
+            input.offers,
+            inferredFrom({
+              sourceField: "offers",
+              sourceEvidence: directoryEvidence,
+              note: offersInferredNote,
+            }),
+          )
         : field(null, missingResearch)),
     inclusionSupport: input.inclusionSupport ?? field(null, missingResearch),
     transitionAfterGrade6: field(null, missingResearch),
@@ -180,16 +197,23 @@ function primarySchool(input: BaseSchoolInput): School {
       input.familyCommunication ?? field(null, missingResearch),
     inspectionAvailability:
       input.inspectionAvailability ??
-      field("not_confirmed", {
-        ...directoryEvidence,
-        note: "The official portrait was checked, but a specific inspection report was not confirmed for this spike.",
-      }),
+      (researchStatus === "directory_only" || coverageLevel === "directory"
+        ? field(
+            null,
+            missing(
+              "Inspeção oficial não pesquisada para escola com perfil básico.",
+            ),
+          )
+        : field("not_confirmed", {
+            ...directoryEvidence,
+            note: "The official portrait was checked, but a specific inspection report was not confirmed for this spike.",
+          })),
     inspectionData: input.inspectionData ?? field(null, missingResearch),
     facilities: input.facilities ?? field(null, missingResearch),
     sources,
     research: {
-      status: input.researchStatus ?? "directory_only",
-      coverageLevel: input.coverageLevel ?? "directory",
+      status: researchStatus,
+      coverageLevel,
       lastResearched: checkedAt,
       lastSourceChecked: checkedAt,
     },
