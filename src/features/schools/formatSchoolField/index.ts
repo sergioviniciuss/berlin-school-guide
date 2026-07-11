@@ -9,6 +9,7 @@ export function formatFieldStatus(status: FieldStatus) {
     verified: "Verificado",
     missing: "Informação não encontrada",
     unverified: "Informação não verificada",
+    not_confirmed: "Informação inferida, não confirmada",
     outdated: "Precisa de nova verificação",
     conflicting: "Informação conflitante",
     not_applicable: "Não se aplica",
