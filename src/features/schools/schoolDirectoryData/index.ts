@@ -3,30 +3,7 @@ import type { School } from "@/features/schools/school";
 import { schoolSchema } from "@/features/schools/school";
 import { getCoverageTierLabel } from "@/features/schools/getCoverageTierLabel";
 import { realLichtenbergPrimarySchools } from "@/content/schools/real/lichtenbergPrimarySchools";
-import {
-  validConflictingDataSchool,
-  validDetailedPublicSchool,
-  validDirectoryOnlySchool,
-  validMissingDataSchool,
-  validMixedLevelPrimarySchool,
-  validNotApplicableInspectionSchool,
-  validPrivateBilingualSchool,
-} from "@/features/schools/school/fixtures";
 import type { SchoolDirectoryItem } from "@/features/schools/filterSchools/types";
-
-const syntheticSchoolFixtures = [
-  validDirectoryOnlySchool,
-  validDetailedPublicSchool,
-  validPrivateBilingualSchool,
-  validMixedLevelPrimarySchool,
-  validMissingDataSchool,
-  validConflictingDataSchool,
-  validNotApplicableInspectionSchool,
-] satisfies School[];
-
-export function getSyntheticSchools() {
-  return syntheticSchoolFixtures.map((school) => schoolSchema.parse(school));
-}
 
 export function getRealSchools() {
   return realLichtenbergPrimarySchools.map((school) =>
@@ -39,10 +16,11 @@ export function getSchoolDirectoryItems(): SchoolDirectoryItem[] {
 }
 
 export function toSchoolDirectoryItem(school: School): SchoolDirectoryItem {
+  // Dev-only: empty name indicates a data integrity issue in real school records.
   return {
     id: school.id,
     slug: school.slug,
-    name: school.name.value ?? "Escola sintética sem nome",
+    name: school.name.value ?? "",
     schoolNumber: school.schoolNumber.value,
     schoolNumberStatus: school.schoolNumber.evidence.status,
     classification: school.classification.value,

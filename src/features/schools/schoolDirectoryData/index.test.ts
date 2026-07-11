@@ -1,16 +1,17 @@
-import {
-  getRealSchools,
-  getSchoolDirectoryItems,
-  getSyntheticSchools,
-} from ".";
+import { schoolSchema } from "@/features/schools/school";
+import { validDirectoryOnlySchool } from "@/features/schools/school/fixtures";
+
+import { getRealSchools, getSchoolDirectoryItems } from ".";
 
 describe("schoolDirectoryData", () => {
-  it("parses synthetic schools through the validated school schema", () => {
-    expect(getSyntheticSchools()).toHaveLength(7);
-  });
-
   it("parses real schools through the validated school schema", () => {
     expect(getRealSchools()).toHaveLength(10);
+  });
+
+  it("parses synthetic fixtures directly for shape regression", () => {
+    expect(schoolSchema.parse(validDirectoryOnlySchool).id).toBe(
+      "synthetic-directory-school",
+    );
   });
 
   it("transforms schools into directory items with evidence coverage", () => {
