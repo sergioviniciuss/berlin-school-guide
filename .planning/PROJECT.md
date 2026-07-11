@@ -33,6 +33,9 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ School detail pages (`/schools/[slug]`) with per-field evidence labels, Fontes section, and 10 static routes — Phase 4 (2026-07-11)
 - ✓ Three detailed school profiles (Adam-Ries, Lew-Tolstoi, Richard-Wagner) with honest audit; seven directory-only profiles — Phase 4 (2026-07-11)
 - ✓ Clickable SchoolCard links from directory to profile pages — Phase 4 (2026-07-11)
+- ✓ Debounced search with result counts, URL-synced `q` param, and sort by name/coverage/tier — Phase 5 (2026-07-11)
+- ✓ Tiered filter panel (Essenciais/Avançados), mobile Sheet drawer, active-filter summary, contextual empty states — Phase 5 (2026-07-11)
+- ✓ Shareable directory URLs restore search, filters, and sort; research-depth cues on cards and header — Phase 5 (2026-07-11)
 
 ### Active
 - [ ] Build comparison experience without quality rankings
@@ -62,7 +65,7 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 | Static app foundation | `next.config.mjs` (`output: "export"`), CI in `.github/workflows/ci.yml` |
 | School/evidence schema | `src/features/schools/school/index.ts`, `src/features/evidence/*` |
 | Data validation CLI | `pnpm validate:data` via `src/features/schools/validateSchools/` |
-| School directory UI | `src/app/schools/page.tsx`, `SchoolDirectory`, `SchoolFilters`, `SchoolSearch`, `SchoolCard`, `SchoolResults` |
+| School directory UI | `src/app/schools/page.tsx`, `SchoolDirectory`, debounced search, sort, mobile Sheet filters, empty states (Phase 5) |
 | Client-side filtering | `src/features/schools/filterSchools/` with URL query sync |
 | Real Lichtenberg dataset | `src/content/schools/real/lichtenbergPrimarySchools/index.ts` — 10 schools |
 | Research spike documentation | `docs/research/REAL_SCHOOL_RESEARCH_SPIKE.md` |
@@ -209,4 +212,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-11 after Phase 4 completion*
+*Last updated: 2026-07-11 after Phase 5 completion*
