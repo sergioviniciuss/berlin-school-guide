@@ -49,7 +49,11 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Every school record's `lastResearched`/`lastSourceChecked` dates match when that school's data was actually reviewed (checkable via `pnpm validate:data` or an audit script).
   3. A `/methodology` page written in Portuguese explains to a parent how evidence status, missing-data labeling, and coverage scores work.
   4. Every evidence entry across all schools carries a complete, citable source record (publisher, URL, access date) ready to render — no field is marked verified without a linkable source.
-**Plans**: TBD
+**Plans**: 3 plans (2 waves)
+Plans:
+- [ ] 02-01-PLAN.md — School research workflow document (RSCH-01)
+- [ ] 02-02-PLAN.md — Research date validation and citation data audit (RSCH-02, RSCH-04)
+- [ ] 02-03-PLAN.md — Methodology page and directory discoverability link (RSCH-03)
 
 ### Phase 3: Homepage, Navigation & Core Journey
 **Goal**: The product becomes navigable early — a family landing on the site can understand what it is and reach the school directory without typing a URL.
@@ -134,7 +138,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Data & Evidence Audit | 3/3 | Complete | 2026-07-11 |
-| 2. Research Process & Attribution | 0/TBD | Not started | - |
+| 2. Research Process & Attribution | 0/3 | Not started | - |
 | 3. Homepage, Navigation & Core Journey | 0/TBD | Not started | - |
 | 4. School Detail Profiles | 0/TBD | Not started | - |
 | 5. Directory UX & Discovery | 0/TBD | Not started | - |
