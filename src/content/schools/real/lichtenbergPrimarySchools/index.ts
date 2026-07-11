@@ -336,7 +336,7 @@ export const realLichtenbergPrimarySchools = [
         phaseFourAuditDate,
       ),
     ),
-    inspectionData: field(
+    inspectionData: field<string>(
       null,
       missing(
         "Dados de inspeção não encontrados durante a auditoria de perfil detalhado.",
@@ -494,7 +494,7 @@ export const realLichtenbergPrimarySchools = [
         phaseFourAuditDate,
       ),
     ),
-    inspectionData: field(
+    inspectionData: field<string>(
       null,
       missing(
         "Dados de inspeção não encontrados durante a auditoria de perfil detalhado.",

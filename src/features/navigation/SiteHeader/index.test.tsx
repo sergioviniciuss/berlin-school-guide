@@ -37,6 +37,9 @@ describe("SiteHeader", () => {
       "/schools",
     );
     expect(
+      within(nav).getByRole("link", { name: "Comparar" }),
+    ).toHaveAttribute("href", "/compare");
+    expect(
       within(nav).getByRole("link", { name: "Metodologia" }),
     ).toHaveAttribute("href", "/methodology");
   });
@@ -106,6 +109,7 @@ describe("SiteHeader", () => {
     expect(screen.getByRole("heading", { name: "Navegação" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Início" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Escolas" })).toBeVisible();
+    expect(screen.getByRole("link", { name: "Comparar" })).toBeVisible();
     expect(screen.getByRole("link", { name: "Metodologia" })).toBeVisible();
   });
 });

@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 test("navigates from homepage to school directory via journey CTA", async ({
   page,
@@ -87,4 +87,64 @@ test("navigates from directory card to school profile", async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByRole("heading", { name: "Fontes" })).toBeVisible();
   await expect(page.getByText("Verificado").first()).toBeVisible();
+});
+
+test.describe("compare", () => {
+  async function addSchoolToCompare(page: Page, schoolName: string) {
+    const article = page.getByRole("article").filter({
+      has: page.getByRole("heading", { name: schoolName }),
+    });
+    await article
+      .getByRole("button", { name: "Adicionar à comparação" })
+      .click();
+  }
+
+  test("selects schools from directory and opens comparison table", async ({
+    page,
+  }) => {
+    await page.goto("/schools");
+
+    await addSchoolToCompare(page, "Lew-Tolstoi-Schule");
+    await addSchoolToCompare(page, "Adam-Ries-Schule");
+
+    await page.getByRole("link", { name: "Comparar escolas" }).click();
+
+    await expect(page).toHaveURL(/\/compare\?schools=/);
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Comparar" }),
+    ).toBeVisible();
+    await expect(page.getByText("Lew-Tolstoi-Schule").first()).toBeVisible();
+    await expect(page.getByText("Adam-Ries-Schule").first()).toBeVisible();
+  });
+
+  test("restores comparison from shared compare URL", async ({ page }) => {
+    await page.goto(
+      "/compare?schools=lew-tolstoi-schule,adam-ries-schule",
+    );
+
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Comparar" }),
+    ).toBeVisible();
+    await expect(page.getByText("Lew-Tolstoi-Schule").first()).toBeVisible();
+    await expect(page.getByText("Adam-Ries-Schule").first()).toBeVisible();
+    await expect(
+      page.getByText(/não classifica escolas por qualidade/i),
+    ).toBeVisible();
+  });
+
+  test("handles invalid slug in compare URL without crashing", async ({
+    page,
+  }) => {
+    await page.goto("/compare?schools=invalid-slug,also-fake");
+
+    await expect(
+      page.getByRole("heading", { level: 1, name: "Comparar" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        name: "Selecione pelo menos duas escolas",
+      }),
+    ).toBeVisible();
+    await expect(page.getByText(/Não encontramos:/i)).toBeVisible();
+  });
 });
