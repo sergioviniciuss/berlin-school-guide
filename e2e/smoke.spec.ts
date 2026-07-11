@@ -58,8 +58,22 @@ test("searches and filters the static school directory", async ({ page }) => {
   await page.getByLabel("Buscar escola pelo nome").fill("sem resultado");
   await expect(page.getByText("0 de 10 escolas encontradas")).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: "Nenhuma escola encontrada" }),
+    page.getByRole("heading", { name: "Nenhuma escola com esse nome" }),
   ).toBeVisible();
+});
+
+test("restores directory view from shared URL with search and sort", async ({
+  page,
+}) => {
+  await page.goto("/schools?q=Lew-Tolstoi&sort=coverage");
+  await expect(page).toHaveURL(/sort=coverage/);
+  await expect(page.getByText("1 de 10 escolas encontradas")).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Lew-Tolstoi-Schule" }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Ordenar resultados do diretório")).toHaveValue(
+    "coverage",
+  );
 });
 
 test("navigates from directory card to school profile", async ({ page }) => {
