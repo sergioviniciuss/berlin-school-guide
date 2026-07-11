@@ -2,12 +2,16 @@ import type { FieldValue } from "@/features/evidence/fieldEvidence";
 import type { School } from "@/features/schools/school";
 import {
   evidenceCoverageVersion,
-  importantSchoolFieldPathsV1,
+  getImportantFieldPathsForCoverage,
 } from "@/features/schools/school/constants";
 import type { EvidenceCoverage } from "./types";
 
 export function calculateEvidenceCoverage(school: School): EvidenceCoverage {
-  const countableFields = importantSchoolFieldPathsV1
+  const fieldPaths = getImportantFieldPathsForCoverage(
+    school.research.coverageLevel,
+  );
+
+  const countableFields = fieldPaths
     .map((path) => getFieldValue(school, path))
     .filter((field): field is FieldValue<unknown> => Boolean(field))
     .filter((field) => field.evidence.status !== "not_applicable");
