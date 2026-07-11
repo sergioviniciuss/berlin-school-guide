@@ -80,7 +80,10 @@ Plans:
   3. Each detail page has a consolidated sources section listing publisher and access date for every citation used on that page.
   4. The three deeply researched schools (Adam-Ries, Lew-Tolstoi, Richard-Wagner) present a fuller "detailed" profile, while the seven directory-only schools show only officially-sourced fields, with everything else clearly marked missing.
   5. Clicking a school card in `/schools` navigates directly to that school's detail page.
-**Plans**: TBD
+**Plans**: 3 plans (3 waves)
+- [ ] 04-01-PLAN.md — Data layer + field primitives (getSchoolBySlug, collectCitedSources, ProfileFieldRow, StatusBadge)
+- [ ] 04-02-PLAN.md — SchoolProfile + SourcesSection + static route and 404
+- [ ] 04-03-PLAN.md — Three-school upgrade + SchoolCard link + SiteHeader + e2e
 **UI hint**: yes
 
 ### Phase 5: Directory UX & Discovery
