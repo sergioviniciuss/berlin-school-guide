@@ -1,7 +1,7 @@
 ---
 phase: 06-school-comparison
 verified: 2026-07-11T22:15:00Z
-status: human_needed
+status: passed
 score: 4/4
 overrides_applied: 0
 human_verification:
@@ -23,8 +23,8 @@ human_verification:
 
 **Phase Goal:** Families can compare multiple nearby schools side by side, without the product pushing them toward a "best school" ranking.
 **Verified:** 2026-07-11T22:15:00Z
-**Status:** human_needed
-**Re-verification:** No — initial verification
+**Status:** passed
+**Re-verification:** No — initial verification; human UAT approved 2026-07-11
 
 ## Goal Achievement
 
@@ -99,12 +99,10 @@ human_verification:
 
 ## Human Verification Needed
 
-4 items require manual confirmation before closing phase (see frontmatter). Primary focus: mobile compare UX, max-3 gating feel, cross-page selection persistence, and trust copy readability.
+All 4 items confirmed via `/gsd-verify-work 6` (2026-07-11). One issue found and fixed during UAT (profile↔directory sessionStorage race).
 
 ## Gaps
 
-None blocking automated verification.
+None blocking — sessionStorage sync fix shipped during UAT retest.
 
-## VERIFICATION PASSED (automated)
-
-All roadmap truths, CONTEXT decisions, plan artifacts, and automated checks pass. Phase status set to `human_needed` pending UAT sign-off.
+## VERIFICATION PASSED

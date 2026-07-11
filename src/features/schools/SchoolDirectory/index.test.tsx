@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { SchoolDirectory } from ".";
+import { writeStoredCompareSlugs } from "@/features/schools/compareSelection";
 import { getSchoolDirectoryItems } from "@/features/schools/schoolDirectoryData";
 import { sortSchools } from "@/features/schools/sortSchools";
 
@@ -18,6 +19,7 @@ describe("SchoolDirectory", () => {
   beforeEach(() => {
     replace.mockClear();
     params = new URLSearchParams();
+    sessionStorage.clear();
     jest.useFakeTimers();
   });
 
@@ -370,6 +372,16 @@ describe("SchoolDirectory", () => {
       );
 
       expect(container.querySelector(".pb-24")).toBeInTheDocument();
+    });
+
+    it("restores compare selection from sessionStorage when URL has no compare param", () => {
+      writeStoredCompareSlugs(["lew-tolstoi-schule"]);
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+      expect(replace).toHaveBeenCalledWith("/schools?compare=lew-tolstoi-schule", {
+        scroll: false,
+      });
     });
   });
 });

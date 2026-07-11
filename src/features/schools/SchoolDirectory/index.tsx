@@ -132,6 +132,10 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
   const hasRestoredCompare = useRef(false);
 
   useEffect(() => {
+    if (!hasRestoredCompare.current) {
+      return;
+    }
+
     writeStoredCompareSlugs(selectedCompareSlugs);
   }, [selectedCompareSlugs]);
 
@@ -140,10 +144,10 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
       return;
     }
 
-    hasRestoredCompare.current = true;
     const fromUrl = parseCompareSlugs(searchParams.get(COMPARE_PARAM));
 
     if (fromUrl.length > 0) {
+      hasRestoredCompare.current = true;
       writeStoredCompareSlugs(fromUrl);
       return;
     }
@@ -154,8 +158,11 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
         `${pathname}${toQueryString(filters, sortKey, stored)}`,
         { scroll: false },
       );
+      return;
     }
-  }, []);
+
+    hasRestoredCompare.current = true;
+  }, [filters, pathname, router, searchParams, sortKey]);
 
   useEffect(() => {
     if (debouncedQuery === filters.query) {
