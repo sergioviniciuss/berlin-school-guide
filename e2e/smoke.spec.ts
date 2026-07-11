@@ -61,3 +61,16 @@ test("searches and filters the static school directory", async ({ page }) => {
     page.getByRole("heading", { name: "Nenhuma escola encontrada" }),
   ).toBeVisible();
 });
+
+test("navigates from directory card to school profile", async ({ page }) => {
+  await page.goto("/schools");
+  await page
+    .getByRole("link", { name: "Ver perfil de Lew-Tolstoi-Schule" })
+    .click();
+  await expect(page).toHaveURL(/\/schools\/lew-tolstoi-schule$/);
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Lew-Tolstoi-Schule" }),
+  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Fontes" })).toBeVisible();
+  await expect(page.getByText("Verificado").first()).toBeVisible();
+});
