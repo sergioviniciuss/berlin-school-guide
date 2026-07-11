@@ -145,7 +145,7 @@ function isFieldValue(
   );
 }
 
-function collectFieldEvidence(
+export function collectFieldEvidence(
   input: unknown,
   path: (string | number)[] = [],
 ): FieldEvidenceEntry[] {

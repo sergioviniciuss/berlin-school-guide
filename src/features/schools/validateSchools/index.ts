@@ -3,6 +3,7 @@ import { join } from "node:path";
 
 import { realLichtenbergPrimarySchools } from "@/content/schools/real/lichtenbergPrimarySchools";
 import { schoolSchema } from "@/features/schools/school";
+import { validateResearchDates } from "@/features/schools/validateResearchDates";
 
 const fixturesDirectory = join(
   process.cwd(),
@@ -47,7 +48,17 @@ export function validateRealSchools() {
     const result = schoolSchema.safeParse(school);
 
     if (result.success) {
-      return [];
+      const dateErrors = validateResearchDates(result.data);
+      if (dateErrors.length === 0) {
+        return [];
+      }
+
+      return [
+        {
+          fileName: `real:${school.id}`,
+          errors: dateErrors,
+        },
+      ];
     }
 
     return [
