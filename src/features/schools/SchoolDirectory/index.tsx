@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { ActiveFilterSummary } from "@/features/schools/ActiveFilterSummary";
+import { countActiveFilters } from "@/features/schools/countActiveFilters";
 import {
   defaultDirectoryFilters,
   filterSchools,
@@ -14,6 +15,8 @@ import type {
   SchoolDirectoryItem,
 } from "@/features/schools/filterSchools/types";
 import { getDirectoryFilterOptions } from "@/features/schools/getDirectoryFilterOptions";
+import { MobileFilterSheet } from "@/features/schools/MobileFilterSheet";
+import { SchoolDirectorySort } from "@/features/schools/SchoolDirectorySort";
 import { SchoolFilters } from "@/features/schools/SchoolFilters";
 import { SchoolResults } from "@/features/schools/SchoolResults";
 import { SchoolSearch } from "@/features/schools/SchoolSearch";
@@ -48,7 +51,8 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [draftFilters, setDraftFilters] = useState(defaultDirectoryFilters);
 
   const filters = useMemo(
     () => filtersFromSearchParams(searchParams),
@@ -61,6 +65,7 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
   const [searchInput, setSearchInput] = useState(filters.query);
   const debouncedQuery = useDebouncedValue(searchInput, 300);
   const isSearchPending = searchInput !== debouncedQuery;
+  const activeFilterCount = countActiveFilters(filters);
 
   const filterOptions = useMemo(
     () => getDirectoryFilterOptions(schools),
@@ -84,6 +89,12 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
 
   const updateFilters = (nextFilters: DirectoryFilterState) => {
     router.replace(`${pathname}${toQueryString(nextFilters, sortKey)}`, {
+      scroll: false,
+    });
+  };
+
+  const setSortKey = (key: DirectorySortKey) => {
+    router.replace(`${pathname}${toQueryString(filters, key)}`, {
       scroll: false,
     });
   };
@@ -114,6 +125,43 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     updateFilters({ ...filters, [key]: nextValues });
   };
 
+  const draftToggle = (key: keyof DirectoryFilterState, value: string) => {
+    setDraftFilters((draft) => {
+      const current = draft[key];
+      if (!Array.isArray(current)) {
+        return draft;
+      }
+
+      const currentValues = current.map(String);
+      const nextValues = currentValues.includes(value)
+        ? currentValues.filter((entry) => entry !== value)
+        : [...currentValues, value];
+
+      return { ...draft, [key]: nextValues };
+    });
+  };
+
+  const handleSheetOpenChange = (open: boolean) => {
+    if (open) {
+      setDraftFilters(filters);
+      setSheetOpen(true);
+      return;
+    }
+
+    updateFilters(draftFilters);
+    setSheetOpen(false);
+  };
+
+  const handleApplyDraft = () => {
+    updateFilters(draftFilters);
+    setSheetOpen(false);
+  };
+
+  const handleClearAndApply = () => {
+    setDraftFilters(defaultDirectoryFilters);
+    updateFilters(defaultDirectoryFilters);
+  };
+
   const removeFilter = (key: keyof DirectoryFilterState, value?: string) => {
     if (key === "query") {
       updateFilters({ ...filters, query: "" });
@@ -132,6 +180,11 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
   };
 
   const resetFilters = () => updateFilters(defaultDirectoryFilters);
+
+  const mobileFilterLabel =
+    activeFilterCount > 0
+      ? `Filtros (${activeFilterCount} ativos)`
+      : "Filtros";
 
   return (
     <div className="space-y-8">
@@ -156,7 +209,7 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
       </header>
 
       <div className="grid gap-8 lg:grid-cols-[18rem_1fr]">
-        <aside className="hidden lg:block">
+        <aside className="hidden lg:block" role="complementary">
           <div className="sticky top-6 rounded-lg border border-neutral-200 bg-white p-5">
             <h2 className="mb-5 text-lg font-semibold text-neutral-950">
               Filtros
@@ -172,29 +225,27 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
         <section className="space-y-6">
           <SchoolSearch value={searchInput} onChange={setSearchInput} />
 
-          <div className="lg:hidden">
+          <div className="sticky top-0 z-10 border-b border-neutral-200 bg-white py-3 lg:hidden">
             <button
               type="button"
-              onClick={() => setMobileFiltersOpen((open) => !open)}
-              className="rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-900"
-              aria-expanded={mobileFiltersOpen}
-              aria-controls="mobile-school-filters"
+              onClick={() => handleSheetOpenChange(true)}
+              className="min-h-11 rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-900"
+              aria-expanded={sheetOpen}
+              aria-controls="mobile-school-filters-sheet"
             >
-              {mobileFiltersOpen ? "Fechar filtros" : "Abrir filtros"}
+              {mobileFilterLabel}
             </button>
-            {mobileFiltersOpen ? (
-              <div
-                id="mobile-school-filters"
-                className="mt-4 rounded-lg border border-neutral-200 bg-white p-5"
-              >
-                <SchoolFilters
-                  filters={filters}
-                  options={filterOptions}
-                  onToggle={toggleFilter}
-                />
-              </div>
-            ) : null}
           </div>
+
+          <MobileFilterSheet
+            open={sheetOpen}
+            onOpenChange={handleSheetOpenChange}
+            draftFilters={draftFilters}
+            filterOptions={filterOptions}
+            onDraftToggle={draftToggle}
+            onApply={handleApplyDraft}
+            onClearAndApply={handleClearAndApply}
+          />
 
           <ActiveFilterSummary
             filters={filters}
@@ -202,12 +253,15 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
             onReset={resetFilters}
           />
 
-          <p aria-live="polite" className="text-sm text-neutral-700">
-            {sortedSchools.length} de {schools.length} escolas encontradas
-            {isSearchPending ? (
-              <span className="text-neutral-500"> · Atualizando…</span>
-            ) : null}
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p aria-live="polite" className="text-sm text-neutral-700">
+              {sortedSchools.length} de {schools.length} escolas encontradas
+              {isSearchPending ? (
+                <span className="text-neutral-500"> · Atualizando…</span>
+              ) : null}
+            </p>
+            <SchoolDirectorySort value={sortKey} onChange={setSortKey} />
+          </div>
 
           <SchoolResults schools={sortedSchools} />
         </section>
