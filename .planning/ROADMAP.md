@@ -67,7 +67,7 @@ Plans:
 Plans:
 - [x] 03-01-PLAN.md — Site chrome: Sheet, SiteHeader, SiteFooter, layout wiring (NAV-02)
 - [x] 03-02-PLAN.md — Homepage landing: HomeJourneyCards, hero, scope note (NAV-01, NAV-03)
-- [ ] 03-03-PLAN.md — Legacy cleanup: remove m2-smoke, rewrite e2e smoke (NAV-03, D-13–D-15)
+- [x] 03-03-PLAN.md — Legacy cleanup: remove m2-smoke, rewrite e2e smoke (NAV-03, D-13–D-15)
 **UI hint**: yes
 
 ### Phase 4: School Detail Profiles
