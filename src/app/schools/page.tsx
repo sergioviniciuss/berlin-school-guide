@@ -6,7 +6,7 @@ import { getSchoolDirectoryItems } from "@/features/schools/schoolDirectoryData"
 export const metadata = {
   title: "Escolas",
   description:
-    "Diretório estático de escolas sintéticas para validar busca e filtros.",
+    "Diretório de escolas primárias em Berlim com pesquisa parcial em Lichtenberg. Cada fato indica seu status de evidência.",
 };
 
 export default function SchoolsPage() {

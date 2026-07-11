@@ -102,13 +102,14 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     <div className="space-y-8">
       <header className="space-y-3">
         <p className="text-sm font-semibold uppercase text-blue-700">
-          Diretório estático
+          Berlin School Guide
         </p>
         <h1 className="text-4xl font-semibold text-neutral-950">Escolas</h1>
         <p className="max-w-3xl text-lg leading-8 text-neutral-700">
-          Busque e filtre escolas sintéticas para validar a experiência do
-          diretório. A cobertura da pesquisa indica completude dos dados, não
-          qualidade da escola.
+          Explore escolas primárias em Berlim com informações verificadas e
+          transparência sobre o que ainda não confirmamos. Começamos por
+          Lichtenberg — mais distritos em breve. A cobertura da pesquisa mede
+          completude dos dados neste nível, não qualidade da escola.
         </p>
       </header>
 

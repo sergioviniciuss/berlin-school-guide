@@ -7,13 +7,13 @@ export default function HomePage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center gap-8 px-6 py-12">
       <GuideIntro
-        eyebrow="M2"
+        eyebrow="Berlin School Guide"
         title="Berlin School Guide"
-        description="Fundação estática validada para o futuro guia de escolas primárias em Berlim."
+        description="Guia de escolas primárias em Berlim para famílias brasileiras — com transparência sobre fontes e limites da pesquisa."
       />
       <div>
         <Button asChild>
-          <Link href="/guides/m2-smoke">Abrir página MDX</Link>
+          <Link href="/schools">Ver escolas em Lichtenberg</Link>
         </Button>
       </div>
     </main>
