@@ -1,4 +1,5 @@
 import { act, fireEvent, render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { SchoolDirectory } from ".";
 import { getSchoolDirectoryItems } from "@/features/schools/schoolDirectoryData";
@@ -163,5 +164,92 @@ describe("SchoolDirectory", () => {
     expect(
       screen.getByRole("link", { name: /como funciona nossa pesquisa/i }),
     ).toHaveAttribute("href", "/methodology");
+  });
+
+  it('renders "Ordenar por" select with three sort options', () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(screen.getByText("Ordenar por")).toBeVisible();
+    const sortSelect = screen.getByLabelText("Ordenar resultados do diretório");
+    expect(sortSelect).toBeVisible();
+    expect(screen.getByRole("option", { name: "Nome (A–Z)" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("option", { name: "Cobertura da pesquisa" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("option", { name: "Perfil detalhado primeiro" }),
+    ).toBeInTheDocument();
+  });
+
+  it("updates URL immediately when sort changes to coverage", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    fireEvent.change(screen.getByLabelText("Ordenar resultados do diretório"), {
+      target: { value: "coverage" },
+    });
+
+    expect(replace).toHaveBeenLastCalledWith("/schools?sort=coverage", {
+      scroll: false,
+    });
+  });
+
+  it("shows sticky mobile Filtros button with lg:hidden wrapper", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    const stickyBar = screen
+      .getByRole("button", { name: "Filtros" })
+      .closest(".lg\\:hidden");
+    expect(stickyBar).toBeInTheDocument();
+  });
+
+  it('shows "Filtros (2 ativos)" when two filters are active', () => {
+    params = new URLSearchParams("district=Lichtenberg&bilingual=yes");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.getByRole("button", { name: "Filtros (2 ativos)" }),
+    ).toBeVisible();
+  });
+
+  it("does not update URL when toggling a filter inside the mobile sheet until Apply", async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    await user.click(screen.getByRole("button", { name: "Filtros" }));
+    replace.mockClear();
+
+    const sheet = screen.getByRole("dialog");
+    await user.click(within(sheet).getByLabelText("Lichtenberg"));
+
+    expect(replace).not.toHaveBeenCalled();
+  });
+
+  it("applies draft filters when the mobile sheet closes", async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    await user.click(screen.getByRole("button", { name: "Filtros" }));
+
+    const sheet = screen.getByRole("dialog");
+    await user.click(within(sheet).getByLabelText("Lichtenberg"));
+    replace.mockClear();
+
+    await user.click(screen.getByRole("button", { name: "Fechar menu de navegação" }));
+
+    expect(replace).toHaveBeenLastCalledWith("/schools?district=Lichtenberg", {
+      scroll: false,
+    });
+  });
+
+  it("keeps desktop sidebar filters without inline mobile expand controls", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    const aside = screen.getByRole("complementary");
+    expect(within(aside).getByText("Filtros essenciais")).toBeInTheDocument();
+    expect(screen.queryByText("Abrir filtros")).not.toBeInTheDocument();
+    expect(screen.queryByText("Fechar filtros")).not.toBeInTheDocument();
   });
 });
