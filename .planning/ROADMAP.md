@@ -115,11 +115,12 @@ Plans:
   2. The comparison lays the same criteria side by side for each selected school, with no composite score or "best school" ranking shown.
   3. The comparison view surfaces each school's missing-data status and evidence coverage, not just its filled-in facts.
   4. The comparison page explains, in Portuguese, what the comparison can and cannot tell a family.
-**Plans**: 3 plans (3 waves)
+**Plans**: 4 plans (3 waves + gap closure)
 Plans:
 - [x] 06-01-PLAN.md — Comparison utilities and shared field formatting (COMP-03 foundation)
-- [x] 06-02-PLAN.md — Directory compare selection, URL sync, sticky CompareBar (COMP-01)
-- [ ] 06-03-PLAN.md — Comparison page, criteria table, nav, and e2e (COMP-01–COMP-04)
+- [x] 06-02-PLAN.md — Directory compare selection, URL sync, sticky CompareBar (COMP-01; superseded in part by 06-04)
+- [x] 06-04-PLAN.md — Gap closure: toggle button, max 3, profile compare, shared selection (COMP-01)
+- [ ] 06-03-PLAN.md — Comparison page, mobile layout, diff toggle, nav, e2e (COMP-01–COMP-04) — revised, paused
 **UI hint**: yes
 
 ### Phase 7: Essential Parent Guides
