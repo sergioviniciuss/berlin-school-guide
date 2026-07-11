@@ -7,19 +7,25 @@ import {
   formatInspectionAvailability,
   formatStringList,
 } from "@/features/schools/formatSchoolField";
-import { getStatusTone } from "./utils";
+import { getStatusTone, shouldRenderFact } from "./utils";
 
 type SchoolCardProps = {
   school: SchoolDirectoryItem;
 };
 
 export function SchoolCard({ school }: SchoolCardProps) {
+  const profileBadge =
+    school.coverageLevel === "directory" ? "Perfil básico" : "Perfil detalhado";
+
   return (
     <article className="rounded-lg border border-neutral-200 bg-white p-5 shadow-sm">
       <div className="space-y-2">
         <h2 className="text-xl font-semibold text-neutral-950">
           {school.name}
         </h2>
+        <span className="inline-block text-sm font-medium text-blue-700">
+          {profileBadge}
+        </span>
         <p className="text-sm text-neutral-700">
           {school.district ?? formatFieldStatus(school.districtStatus)} ·{" "}
           {school.neighbourhood ??
@@ -32,45 +38,69 @@ export function SchoolCard({ school }: SchoolCardProps) {
       </div>
 
       <dl className="mt-5 grid gap-3 sm:grid-cols-2">
-        <Fact
-          label="Tipo"
-          value={formatClassification(school.classification)}
-          status={school.classificationStatus}
-        />
-        <Fact
-          label="Ganztag"
-          value={school.ganztag ?? formatFieldStatus(school.ganztagStatus)}
-          status={school.ganztagStatus}
-        />
-        <Fact
-          label="Bilíngue"
-          value={formatStringList(
-            school.bilingualPrograms,
-            school.bilingualStatus,
-          )}
-          status={school.bilingualStatus}
-        />
-        <Fact
-          label="Willkommensklasse"
-          value={formatBoolean(
-            school.welcomeClasses,
-            school.welcomeClassesStatus,
-          )}
-          status={school.welcomeClassesStatus}
-        />
-        <Fact
-          label="Idiomas"
-          value={formatStringList(school.languages, school.languagesStatus)}
-          status={school.languagesStatus}
-        />
-        <Fact
-          label="Inspeção oficial"
-          value={formatInspectionAvailability(
-            school.inspectionAvailability,
-            school.inspectionAvailabilityStatus,
-          )}
-          status={school.inspectionAvailabilityStatus}
-        />
+        {shouldRenderFact(
+          school.classification,
+          school.classificationStatus,
+        ) ? (
+          <Fact
+            label="Tipo"
+            value={formatClassification(school.classification)}
+            status={school.classificationStatus}
+          />
+        ) : null}
+        {shouldRenderFact(school.ganztag, school.ganztagStatus) ? (
+          <Fact
+            label="Ganztag"
+            value={school.ganztag ?? formatFieldStatus(school.ganztagStatus)}
+            status={school.ganztagStatus}
+          />
+        ) : null}
+        {shouldRenderFact(
+          school.bilingualPrograms,
+          school.bilingualStatus,
+        ) ? (
+          <Fact
+            label="Bilíngue"
+            value={formatStringList(
+              school.bilingualPrograms,
+              school.bilingualStatus,
+            )}
+            status={school.bilingualStatus}
+          />
+        ) : null}
+        {shouldRenderFact(
+          school.welcomeClasses,
+          school.welcomeClassesStatus,
+        ) ? (
+          <Fact
+            label="Willkommensklasse"
+            value={formatBoolean(
+              school.welcomeClasses,
+              school.welcomeClassesStatus,
+            )}
+            status={school.welcomeClassesStatus}
+          />
+        ) : null}
+        {shouldRenderFact(school.languages, school.languagesStatus) ? (
+          <Fact
+            label="Idiomas"
+            value={formatStringList(school.languages, school.languagesStatus)}
+            status={school.languagesStatus}
+          />
+        ) : null}
+        {shouldRenderFact(
+          school.inspectionAvailability,
+          school.inspectionAvailabilityStatus,
+        ) ? (
+          <Fact
+            label="Inspeção oficial"
+            value={formatInspectionAvailability(
+              school.inspectionAvailability,
+              school.inspectionAvailabilityStatus,
+            )}
+            status={school.inspectionAvailabilityStatus}
+          />
+        ) : null}
       </dl>
 
       <div className="mt-5 rounded-md bg-neutral-50 p-3">
@@ -78,10 +108,14 @@ export function SchoolCard({ school }: SchoolCardProps) {
           Cobertura da pesquisa
         </p>
         <p className="text-sm text-neutral-700">
-          {school.evidenceCoverage.percentage}% · Percentual de campos
-          importantes com informação verificada.
+          {school.coverageTierLabel} · {school.evidenceCoverage.percentage}% ·
+          mede completude da pesquisa neste nível, não qualidade da escola.
         </p>
       </div>
+
+      <p className="mt-3 text-sm text-neutral-600">
+        Perfil completo em breve — estamos expandindo as páginas de detalhe.
+      </p>
     </article>
   );
 }
