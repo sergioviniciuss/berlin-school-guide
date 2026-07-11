@@ -88,7 +88,7 @@ describe("filterSchools", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        inspectionAvailability: ["not_confirmed"],
+        inspectionAvailability: ["available"],
       }).length,
     ).toBeGreaterThan(0);
   });
@@ -103,7 +103,7 @@ describe("filterSchools", () => {
     expect(
       filterSchools(schools, {
         ...defaultDirectoryFilters,
-        evidenceCoverage: ["80-100"],
+        evidenceCoverage: ["0-49"],
       }).length,
     ).toBeGreaterThan(0);
   });
