@@ -281,8 +281,8 @@ export const realLichtenbergPrimarySchools = [
       "zweisprachige Alphabetisierung und Erziehung deutsch-türkisch",
     ],
     sources: [adamRiesWebsite, adamRiesWelcomeClasses],
-    researchStatus: "in_research",
-    coverageLevel: "detailed",
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
     bilingualPrograms: field(
       ["Deutsch-Türkisch"],
       evidence("29355-official-portrait"),
@@ -321,6 +321,8 @@ export const realLichtenbergPrimarySchools = [
       "Regionale Begabtengruppen am Nachmittag",
       "Umwelterziehung",
     ],
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
   }),
   primarySchool({
     portraitId: "28986",
@@ -334,6 +336,8 @@ export const realLichtenbergPrimarySchools = [
     languages: ["Englisch"],
     ganztag: "Offene Ganztagbetreuung (OGB)",
     offers: ["Umwelterziehung"],
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
   }),
   primarySchool({
     portraitId: "29200",
@@ -350,6 +354,8 @@ export const realLichtenbergPrimarySchools = [
       "Schulanfangsphase mit jahrgangsbezogenen Lerngruppen",
       "Schulanfangsphase mit jahrgangsübergreifenden Lerngruppen",
     ],
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
   }),
   primarySchool({
     portraitId: "29773",
@@ -361,6 +367,8 @@ export const realLichtenbergPrimarySchools = [
     neighbourhood: "Friedrichsfelde",
     website: "https://www.gs-traenkegraben.de",
     languages: ["Englisch", "Französisch"],
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
   }),
   primarySchool({
     portraitId: "29699",
@@ -373,6 +381,8 @@ export const realLichtenbergPrimarySchools = [
     website: "https://www.schmetterlings-grundschule.de",
     languages: ["Englisch"],
     ganztag: "Offene Ganztagbetreuung (OGB)",
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
   }),
   primarySchool({
     portraitId: "29352",
@@ -386,6 +396,8 @@ export const realLichtenbergPrimarySchools = [
     languages: ["Englisch"],
     ganztag: "Offene Ganztagbetreuung (OGB)",
     offers: ["gesundheitsbetontes Profil"],
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
   }),
   primarySchool({
     portraitId: "28987",
@@ -400,8 +412,8 @@ export const realLichtenbergPrimarySchools = [
     ganztag: "Gebundener Ganztagbetrieb (GGB)",
     offers: ["Staatliche Europa-Schule Berlin Deutsch/Russisch"],
     sources: [lewTolstoiWebsite, lewTolstoiGanztag],
-    researchStatus: "in_research",
-    coverageLevel: "detailed",
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
     afterSchoolCare: field(
       "Ganztag information and eFöB coordination are published on the school website.",
       evidence("lew-tolstoi-ganztag"),
@@ -451,8 +463,8 @@ export const realLichtenbergPrimarySchools = [
       richardWagnerInspection,
       richardWagnerMusic,
     ],
-    researchStatus: "in_research",
-    coverageLevel: "detailed",
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
     afterSchoolCare: field(
       "The school website identifies Socius - Die Bildungspartner as the Hort contact for open all-day care.",
       evidence("richard-wagner-ganztag"),
@@ -492,5 +504,7 @@ export const realLichtenbergPrimarySchools = [
     neighbourhood: "Karlshorst",
     website: "https://37-grundschule-lichtenberg.de",
     languages: ["Englisch", "Französisch"],
+    researchStatus: "directory_only",
+    coverageLevel: "directory",
   }),
 ] satisfies School[];
