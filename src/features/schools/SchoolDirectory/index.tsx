@@ -263,7 +263,16 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
             <SchoolDirectorySort value={sortKey} onChange={setSortKey} />
           </div>
 
-          <SchoolResults schools={sortedSchools} />
+          <SchoolResults
+            schools={sortedSchools}
+            filters={filters}
+            totalCount={schools.length}
+            onClearSearch={() => {
+              setSearchInput("");
+              updateFilters({ ...filters, query: "" });
+            }}
+            onResetFilters={resetFilters}
+          />
         </section>
       </div>
     </div>

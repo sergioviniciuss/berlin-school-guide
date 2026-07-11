@@ -2,6 +2,8 @@
 
 import type { DirectoryFilterState } from "@/features/schools/filterSchools/types";
 
+import { getActiveFilterChips } from "./utils";
+
 type ActiveFilterSummaryProps = {
   filters: DirectoryFilterState;
   onRemove: (key: keyof DirectoryFilterState, value?: string) => void;
@@ -13,7 +15,7 @@ export function ActiveFilterSummary({
   onRemove,
   onReset,
 }: ActiveFilterSummaryProps) {
-  const chips = getChips(filters);
+  const chips = getActiveFilterChips(filters);
 
   if (chips.length === 0) {
     return null;
@@ -43,62 +45,4 @@ export function ActiveFilterSummary({
       </button>
     </div>
   );
-}
-
-function getChips(filters: DirectoryFilterState) {
-  const chips: Array<{
-    key: keyof DirectoryFilterState;
-    value?: string;
-    label: string;
-  }> = [];
-
-  if (filters.query) {
-    chips.push({ key: "query", label: `Busca: ${filters.query}` });
-  }
-
-  const addValues = <Key extends keyof DirectoryFilterState>(
-    key: Key,
-    label: string,
-  ) => {
-    const value = filters[key];
-    if (Array.isArray(value)) {
-      value.forEach((entry) => {
-        chips.push({
-          key,
-          value: String(entry),
-          label: `${label}: ${formatChipValue(String(entry))}`,
-        });
-      });
-    }
-  };
-
-  addValues("districts", "Distrito");
-  addValues("neighbourhoods", "Bairro");
-  addValues("classifications", "Tipo");
-  addValues("ganztag", "Ganztag");
-  addValues("bilingual", "Bilíngue");
-  addValues("welcomeClasses", "Willkommensklasse");
-  addValues("languages", "Idioma");
-  addValues("educationalFocus", "Foco");
-  addValues("afterSchoolCare", "Contraturno");
-  addValues("inspectionAvailability", "Inspeção");
-  addValues("evidenceCoverage", "Cobertura");
-
-  return chips;
-}
-
-function formatChipValue(value: string) {
-  const labels: Record<string, string> = {
-    public: "Pública",
-    private: "Privada",
-    yes: "Sim",
-    no: "Não",
-    missing_or_unconfirmed: "Faltante ou incerta",
-    verified: "Verificada",
-    available: "Disponível",
-    unavailable: "Indisponível",
-    not_confirmed: "Não confirmada",
-  };
-
-  return labels[value] ?? value;
 }
