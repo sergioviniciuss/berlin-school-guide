@@ -21,7 +21,7 @@ human_verification:
 **Phase Goal:** Publish the Berlin primary system guide and a practical checklist in Portuguese.
 **Verified:** 2026-07-11T23:45:00Z
 **Status:** passed (automated)
-**Re-verification:** No — initial verification; human UAT pending
+**Re-verification:** No — initial verification; human UAT approved 2026-07-12
 
 ## Goal Achievement
 
@@ -65,4 +65,4 @@ human_verification:
 
 ## Human UAT
 
-See `07-HUMAN-UAT.md` — 3 tests pending user confirmation.
+See `07-HUMAN-UAT.md` — 3/3 passed (2026-07-12).
