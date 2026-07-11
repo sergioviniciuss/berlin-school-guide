@@ -20,12 +20,12 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ 10 real Lichtenberg public primary schools from official Berlin school directory portraits — research spike 2026-07-10
 - ✓ CI pipeline: lint, typecheck, test, validate:data, build — existing
 - ✓ Product, research, comparison, data model, IA, editorial, and decision documentation in `docs/` — M1
+- ✓ Lichtenberg school evidence audit — all 10 records field-reviewed with honest statuses — Phase 1 (2026-07-11)
+- ✓ Evidence coverage v2 with level-aware denominators and verified-only numerator — Phase 1 (2026-07-11)
+- ✓ Trust UX on directory cards (research depth badges, tier labels, honest copy, synthetic isolation) — Phase 1 (2026-07-11)
 
 ### Active
 
-- [ ] Audit all 10 Lichtenberg school records for evidence accuracy and misleading defaults
-- [ ] Fix inflated or incorrect evidence coverage scoring (especially `afterSchoolCare` fallback)
-- [ ] Replace misleading "synthetic" / M2 scaffolding copy with honest V1 messaging
 - [ ] Establish reproducible school research workflow with source attribution standards
 - [ ] Build school detail pages (`/schools/[slug]`) with citations and missing-data labels
 - [ ] Build comparison experience without quality rankings
@@ -67,97 +67,80 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 | Area | State |
 |------|-------|
 | School research depth | 3/10 schools have deeper field research (Adam-Ries, Lew-Tolstoi, Richard-Wagner); 7 are `directory_only` |
-| Evidence coverage UI | Shown on cards but can misrepresent completeness due to builder fallbacks |
+| Evidence coverage UI | Coverage v2 with level-aware denominators; tier labels on cards (Phase 1) |
 | MDX guides | Only `m2-smoke` smoke page exists (`src/content/guides/m2-smoke.mdx`) |
 | Information architecture | Documented in `docs/INFORMATION_ARCHITECTURE.md` but most routes do not exist |
 | Comparison | Philosophy in `docs/COMPARISON.md`; no `/compare` route or feature code |
 | School detail pages | No `src/app/schools/[slug]/` route; `SchoolCard` is not linked anywhere |
 
-#### 3. Scaffolding, placeholder, synthetic, or misleading
+#### 3. Resolved in Phase 1 (2026-07-11)
 
-| Issue | Location |
-|-------|----------|
-| Homepage still says "M2" foundation validation | `src/app/page.tsx` — links only to MDX smoke test, not `/schools` |
-| Directory copy says "escolas sintéticas" | `SchoolDirectory/index.tsx`, `src/app/schools/page.tsx` metadata |
-| Synthetic fallback name in production mapper | `toSchoolDirectoryItem` — `"Escola sintética sem nome"` |
-| `getSyntheticSchools()` exported alongside real data | `schoolDirectoryData/index.ts` — test-only, risk of confusion |
-| `ganztag` → `afterSchoolCare` implicit fallback | `lichtenbergPrimarySchools/index.ts` lines 144–148 |
-| `offers` array reused for `schoolProfile` and `pedagogyFocus` | same builder — may over-verify distinct fields from one source |
-| `bilingualPrograms` defaults to `not_applicable` when unset | may be wrong for schools not yet checked |
-| `inspectionAvailability` defaults to `not_confirmed` with portrait citation | weak topical match |
+| Issue | Resolution |
+|-------|------------|
+| Homepage M2 scaffolding copy | Replaced with Berlin School Guide messaging and `/schools` CTA |
+| Directory "escolas sintéticas" copy | Honest Lichtenberg scope messaging |
+| Synthetic fallback name in production mapper | Removed from production paths |
+| `getSyntheticSchools()` in production data module | Removed; tests import fixtures directly |
+| `ganztag` → `afterSchoolCare` implicit verified fallback | `inferredFrom()` returns `not_confirmed` with explicit notes |
+| `offers` reused for `schoolProfile` and `pedagogyFocus` | Explicit inference rules; no silent verified reuse |
+| `bilingualPrograms` defaults to `not_applicable` when unset | Defaults to `missing` unless verified |
+| `inspectionAvailability` weak portrait default | Directory schools use `missing`; independent citations when overridden |
 
-#### 4. Schools researched with official sources
+#### 4. Remaining scaffolding / deferred
 
-All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bildung.berlin.de/Schulverzeichnis/Schulportrait.aspx`). Additional school-website sources for deeper profiles:
+| Issue | Location | Target phase |
+|-------|----------|--------------|
+| Legacy `/guides/m2-smoke` route | `src/app/guides/m2-smoke/` | Phase 3 |
+| `e2e/smoke.spec.ts` stale homepage assertion | `e2e/smoke.spec.ts` | Phase 8 |
 
-| School | Official portrait | School website sources | Research status |
-|--------|-------------------|------------------------|-----------------|
-| Adam-Ries-Schule | ✓ | Welcome classes page | `in_research` / `detailed` |
+#### 5. Schools researched with official sources
+
+All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bildung.berlin.de/Schulverzeichnis/Schulportrait.aspx`). Post-audit (Phase 1), all 10 are classified `directory_only` / `directory`; formerly-detailed schools downgraded per D-19 threshold (<8 independently verified detailed fields).
+
+| School | Official portrait | Independent school sources | Post-audit status |
+|--------|-------------------|--------------------------|-------------------|
+| Adam-Ries-Schule | ✓ | Welcome classes page | `directory_only` / `directory` |
 | Bernhard-Grzimek-Schule | ✓ | — | `directory_only` / `directory` |
 | Bürgermeister-Ziethen-Schule | ✓ | — | `directory_only` / `directory` |
 | Friedrichsfelder Schule | ✓ | — | `directory_only` / `directory` |
 | Grundschule am Tränkegraben | ✓ | — | `directory_only` / `directory` |
 | Schmetterlings-Grundschule | ✓ | — | `directory_only` / `directory` |
 | Karlshorster Schule | ✓ | — | `directory_only` / `directory` |
-| Lew-Tolstoi-Schule | ✓ | Website + Ganztag page | `in_research` / `detailed` |
-| Richard-Wagner-Schule | ✓ | Website, Ganztag, inspection, music pages | `in_research` / `detailed` |
+| Lew-Tolstoi-Schule | ✓ | Website + Ganztag page | `directory_only` / `directory` |
+| Richard-Wagner-Schule | ✓ | Website, Ganztag, inspection | `directory_only` / `directory` |
 | Seepark-Grundschule | ✓ | — | `directory_only` / `directory` |
 
-#### 5. Fields with valid evidence (typical for directory records)
+#### 6. Evidence model after Phase 1
 
-Verified from official portraits for most schools: name, school number, website, classification, level, district, neighbourhood, address, grades served, languages, ganztag (when listed), pedagogyFocus/schoolProfile (when `offers` present in portrait).
-
-#### 6. Fields relying on inference, fallback, or weak evidence
-
-| Field | Problem |
-|-------|---------|
-| `afterSchoolCare` | 7/10 marked `verified` via ganztag reuse; only Lew-Tolstoi and Richard-Wagner have independent after-school research |
-| `bilingualPrograms` | `not_applicable` default without per-school verification for 7 directory-only schools |
-| `welcomeClasses` | `missing` default; only Adam-Ries explicitly verified |
-| `familyCommunication`, `transitionAfterGrade6`, `facilities`, `inclusionSupport` | `missing` for most; some detailed schools partially filled |
-| `inspectionAvailability` | Default `not_confirmed` still counts portrait as citation |
-| `pedagogyFocus` / `schoolProfile` | Both derived from same `offers` list when not overridden |
+- Cross-field inference uses `inferredFrom()` → `not_confirmed` with mandatory Portuguese notes
+- Coverage v2: directory schools scored on 11 portrait fields; detailed tier on 23 fields; numerator counts `verified` only
+- Directory cards show Perfil básico badge and Pesquisa básica tier label
+- Inferred fields (e.g. afterSchoolCare from ganztag) omitted from cards unless independently verified
 
 #### 7. Research process reproducibility
 
-**Partially reproducible.** The spike documents official sources, field difficulty, and schema gaps (`docs/research/REAL_SCHOOL_RESEARCH_SPIKE.md`). The `primarySchool()` builder encodes source patterns. **Missing:** step-by-step research checklist in repo, per-field source requirements, citation snippet/archive notes, automated audit script comparing claims to cited URLs, methodology page for parents.
+**Partially reproducible.** Spike docs and `primarySchool()` builder encode patterns. **Phase 2 scope:** step-by-step workflow, per-field checklist, methodology page for parents.
 
-#### 8. Coverage score accuracy
+#### 8. What prevents usable V1 today
 
-**Partially accurate, currently inflated.** Measured coverage (2026-07-11):
+1. **No school detail pages** — directory is a dead end
+2. **No shared navigation** — cannot move between sections without typing URLs
+3. **No comparison** — key parent workflow missing
+4. **No educational guides** — system explanation not published
+5. **No methodology/transparency page** — parents cannot evaluate research quality (Phase 2)
 
-| School | Verified/Total | % | Notes |
-|--------|----------------|---|-------|
-| Richard-Wagner-Schule | 18/21 | 86% | Most honestly researched |
-| Adam-Ries-Schule | 18/22 | 82% | Strong; afterSchool still from ganztag fallback |
-| Lew-Tolstoi-Schule | 18/23 | 78% | Extra bilingual/international fields |
-| 5 OGB schools | 15/21 | 71% | afterSchool inflated via ganztag |
-| 2 schools without ganztag | 11/21 | 52% | More honest baseline |
+#### 9. CONCERNS.md items required before launch
 
-Coverage measures field *status* counts, not topical validity of citations. `not_applicable` fields are excluded; implicit fallbacks inflate `verified` counts. Spike recommends separate directory vs detailed coverage views.
-
-#### 9. What prevents usable V1 today
-
-1. **No school detail pages** — directory is a dead end; core product promise unfulfilled
-2. **Misleading copy** — homepage and directory describe synthetic/M2 validation data
-3. **No navigation** — cannot move between sections without typing URLs
-4. **No comparison** — key parent workflow missing
-5. **No educational guides** — system explanation (primary V1 goal) not published
-6. **Trust risk** — evidence fallbacks and inflated coverage undermine the evidence-first positioning
-7. **No methodology/transparency page** — parents cannot evaluate research quality
-
-#### 10. CONCERNS.md items required before launch
-
-**Must resolve:**
-- Homepage M2 scaffolding → real V1 entry point with `/schools` CTA
-- Directory "synthetic" copy → honest partial-coverage messaging
-- `ganztag` → `afterSchoolCare` fallback → stop inflating coverage
-- Site-wide navigation for existing routes
+**Must resolve (remaining):**
+- Site-wide navigation for existing routes (Phase 3)
 
 **Should resolve:**
-- Remove or isolate `getSyntheticSchools` from production data module
-- Document deployment security headers when host is chosen
-- Add dependency scanning (Dependabot or `pnpm audit` in CI)
+- Document deployment security headers when host is chosen (Phase 8)
+- Add dependency scanning (Dependabot or `pnpm audit` in CI) (Phase 8)
+- Refresh e2e tests for new homepage journey (Phase 8)
+
+**Resolved in Phase 1:**
+- Homepage M2 scaffolding, directory synthetic copy, ganztag fallbacks, synthetic data isolation
 
 **Monitor (not blocking at 10 schools):**
 - Client-side filter performance at Berlin-wide scale (M8 deferred)
@@ -190,7 +173,7 @@ Coverage measures field *status* counts, not topical validity of citations. `not
 | Field-level evidence model | Core product differentiator | ✓ Good — keep; fix fallbacks |
 | Official Berlin school portraits as primary source | Most authoritative basic metadata | ✓ Good — keep |
 | Lichtenberg-first geographic scope | Owner relevance + manageable research depth | — Pending V1 completion |
-| Evidence coverage = research completeness, not school quality | `docs/DECISIONS.md` 2026-07-10 | ⚠️ Revisit — scoring currently inflated |
+| Evidence coverage = research completeness, not school quality | `docs/DECISIONS.md` 2026-07-10 | ✓ Good — coverage v2 implemented in Phase 1 |
 | Feature-first architecture | `AGENTS.md`, established codebase patterns | ✓ Good — keep |
 
 ## Evolution
@@ -211,4 +194,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-11 after GSD project initialization*
+*Last updated: 2026-07-11 after Phase 1 completion*

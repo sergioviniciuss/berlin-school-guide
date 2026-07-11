@@ -7,12 +7,12 @@
 
 ### Data Integrity & Evidence
 
-- [ ] **DATA-01**: Every Lichtenberg school record is audited field-by-field against its cited sources
-- [ ] **DATA-02**: Implicit evidence fallbacks (`ganztag` → `afterSchoolCare`, `offers` → multiple fields) are removed or explicitly flagged as unsupported inference
-- [ ] **DATA-03**: Evidence coverage score reflects only fields with topically valid, independently cited evidence
-- [ ] **DATA-04**: Directory-only vs detailed research levels are distinguished in data and UI (no detailed claims from directory-only sources)
-- [ ] **DATA-05**: Misleading "synthetic" labels and M2 scaffolding copy are replaced with honest partial-coverage messaging
-- [ ] **DATA-06**: Synthetic test fixtures are isolated from production data paths (`getRealSchools` only in pages)
+- [x] **DATA-01**: Every Lichtenberg school record is audited field-by-field against its cited sources
+- [x] **DATA-02**: Implicit evidence fallbacks (`ganztag` → `afterSchoolCare`, `offers` → multiple fields) are removed or explicitly flagged as unsupported inference
+- [x] **DATA-03**: Evidence coverage score reflects only fields with topically valid, independently cited evidence
+- [x] **DATA-04**: Directory-only vs detailed research levels are distinguished in data and UI (no detailed claims from directory-only sources)
+- [x] **DATA-05**: Misleading "synthetic" labels and M2 scaffolding copy are replaced with honest partial-coverage messaging
+- [x] **DATA-06**: Synthetic test fixtures are isolated from production data paths (`getRealSchools` only in pages)
 
 ### Research Process
 
@@ -108,12 +108,12 @@ Deferred until Lichtenberg V1 is trustworthy and released.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DATA-01 | Phase 1 | Pending |
-| DATA-02 | Phase 1 | Pending |
-| DATA-03 | Phase 1 | Pending |
-| DATA-04 | Phase 1 | Pending |
-| DATA-05 | Phase 1 | Pending |
-| DATA-06 | Phase 1 | Pending |
+| DATA-01 | Phase 1 | Complete |
+| DATA-02 | Phase 1 | Complete |
+| DATA-03 | Phase 1 | Complete |
+| DATA-04 | Phase 1 | Complete |
+| DATA-05 | Phase 1 | Complete |
+| DATA-06 | Phase 1 | Complete |
 | RSCH-01 | Phase 2 | Pending |
 | RSCH-02 | Phase 2 | Pending |
 | RSCH-03 | Phase 2 | Pending |
@@ -158,4 +158,4 @@ Deferred until Lichtenberg V1 is trustworthy and released.
 
 ---
 *Requirements defined: 2026-07-11*
-*Last updated: 2026-07-11 after roadmap phase reorder*
+*Last updated: 2026-07-11 after Phase 1 completion*
