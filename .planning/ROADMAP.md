@@ -115,7 +115,11 @@ Plans:
   2. The comparison lays the same criteria side by side for each selected school, with no composite score or "best school" ranking shown.
   3. The comparison view surfaces each school's missing-data status and evidence coverage, not just its filled-in facts.
   4. The comparison page explains, in Portuguese, what the comparison can and cannot tell a family.
-**Plans**: TBD
+**Plans**: 3 plans (3 waves)
+Plans:
+- [ ] 06-01-PLAN.md — Comparison utilities and shared field formatting (COMP-03 foundation)
+- [ ] 06-02-PLAN.md — Directory compare selection, URL sync, sticky CompareBar (COMP-01)
+- [ ] 06-03-PLAN.md — Comparison page, criteria table, nav, and e2e (COMP-01–COMP-04)
 **UI hint**: yes
 
 ### Phase 7: Essential Parent Guides
@@ -153,7 +157,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 3. Homepage, Navigation & Core Journey | 3/3 | Complete | 2026-07-11 |
 | 4. School Detail Profiles | 3/3 | Complete | 2026-07-11 |
 | 5. Directory UX & Discovery | 3/3 | Complete | 2026-07-11 |
-| 6. School Comparison | 0/TBD | Not started | - |
+| 6. School Comparison | 0/3 | Not started | - |
 | 7. Essential Parent Guides | 0/TBD | Not started | - |
 | 8. Release Readiness | 0/TBD | Not started | - |
 
