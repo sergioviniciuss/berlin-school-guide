@@ -1,6 +1,7 @@
 import { calculateEvidenceCoverage } from "@/features/evidence/calculateEvidenceCoverage";
 import type { School } from "@/features/schools/school";
 import { schoolSchema } from "@/features/schools/school";
+import { getCoverageTierLabel } from "@/features/schools/getCoverageTierLabel";
 import { realLichtenbergPrimarySchools } from "@/content/schools/real/lichtenbergPrimarySchools";
 import {
   validConflictingDataSchool,
@@ -65,5 +66,8 @@ export function toSchoolDirectoryItem(school: School): SchoolDirectoryItem {
     inspectionAvailability: school.inspectionAvailability.value,
     inspectionAvailabilityStatus: school.inspectionAvailability.evidence.status,
     evidenceCoverage: calculateEvidenceCoverage(school),
+    coverageLevel: school.research.coverageLevel,
+    researchStatus: school.research.status,
+    coverageTierLabel: getCoverageTierLabel(school.research.coverageLevel),
   };
 }

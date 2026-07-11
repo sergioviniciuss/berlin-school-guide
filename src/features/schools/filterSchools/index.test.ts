@@ -1,7 +1,57 @@
 import { filterSchools, defaultDirectoryFilters } from ".";
-import { getSchoolDirectoryItems } from "@/features/schools/schoolDirectoryData";
+import {
+  getSchoolDirectoryItems,
+  toSchoolDirectoryItem,
+} from "@/features/schools/schoolDirectoryData";
+import {
+  field,
+  missingEvidence,
+  validDirectoryOnlySchool,
+  verifiedDirectoryEvidence,
+} from "@/features/schools/school/fixtures";
 
 const schools = getSchoolDirectoryItems();
+const mediumCoverageSchool = toSchoolDirectoryItem({
+  ...validDirectoryOnlySchool,
+  id: "synthetic-medium-coverage-school",
+  slug: "synthetic-medium-coverage-school",
+  name: field("Synthetic Medium Coverage School", verifiedDirectoryEvidence),
+  schoolNumber: field("MED-01", verifiedDirectoryEvidence),
+  website: field("https://example.test/medium", verifiedDirectoryEvidence),
+  classification: field("public", verifiedDirectoryEvidence),
+  level: field("primary", verifiedDirectoryEvidence),
+  gradesServed: field(["1", "2", "3", "4"], verifiedDirectoryEvidence),
+  location: {
+    district: field(null, missingEvidence),
+    neighbourhood: field(null, missingEvidence),
+    address: field(null, missingEvidence),
+  },
+  ganztag: field(null, missingEvidence),
+  languages: field(null, missingEvidence),
+});
+const lowCoverageSchool = toSchoolDirectoryItem({
+  ...validDirectoryOnlySchool,
+  id: "synthetic-low-coverage-school",
+  slug: "synthetic-low-coverage-school",
+  name: field("Synthetic Low Coverage School", missingEvidence),
+  schoolNumber: field(null, missingEvidence),
+  website: field(null, missingEvidence),
+  classification: field(null, missingEvidence),
+  level: field(null, missingEvidence),
+  location: {
+    district: field(null, missingEvidence),
+    neighbourhood: field(null, missingEvidence),
+    address: field(null, missingEvidence),
+  },
+  gradesServed: field(null, missingEvidence),
+  ganztag: field(null, missingEvidence),
+  languages: field(null, missingEvidence),
+});
+const schoolsWithCoverageFixtures = [
+  ...schools,
+  mediumCoverageSchool,
+  lowCoverageSchool,
+];
 
 describe("filterSchools", () => {
   it("searches by school name", () => {
@@ -95,13 +145,19 @@ describe("filterSchools", () => {
 
   it("filters evidence coverage by inclusive ranges", () => {
     expect(
-      filterSchools(schools, {
+      filterSchools(schoolsWithCoverageFixtures, {
+        ...defaultDirectoryFilters,
+        evidenceCoverage: ["80-100"],
+      }).length,
+    ).toBeGreaterThan(0);
+    expect(
+      filterSchools(schoolsWithCoverageFixtures, {
         ...defaultDirectoryFilters,
         evidenceCoverage: ["50-79"],
       }).length,
     ).toBeGreaterThan(0);
     expect(
-      filterSchools(schools, {
+      filterSchools(schoolsWithCoverageFixtures, {
         ...defaultDirectoryFilters,
         evidenceCoverage: ["0-49"],
       }).length,

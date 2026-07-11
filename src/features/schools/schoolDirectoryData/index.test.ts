@@ -21,8 +21,13 @@ describe("schoolDirectoryData", () => {
       id: "11g06",
       schoolNumber: "11G06",
       evidenceCoverage: {
-        version: "v1",
+        version: "v2",
       },
+      coverageLevel: expect.stringMatching(/^(directory|detailed)$/),
+      researchStatus: expect.any(String),
+      coverageTierLabel: expect.stringMatching(
+        /^(Pesquisa básica|Pesquisa detalhada)$/,
+      ),
     });
   });
 });
