@@ -9,6 +9,9 @@ type SchoolResultsProps = {
   schools: SchoolDirectoryItem[];
   filters: DirectoryFilterState;
   totalCount: number;
+  selectedCompareSlugs?: string[];
+  onToggleCompare?: (slug: string) => void;
+  maxCompareSelection?: number;
   onClearSearch: () => void;
   onResetFilters: () => void;
 };
@@ -38,9 +41,13 @@ function isSearchOnlyMiss(filters: DirectoryFilterState): boolean {
 export function SchoolResults({
   schools,
   filters,
+  selectedCompareSlugs = [],
+  onToggleCompare,
+  maxCompareSelection = 4,
   onClearSearch,
   onResetFilters,
 }: SchoolResultsProps) {
+  const selectionFull = selectedCompareSlugs.length >= maxCompareSelection;
   if (schools.length === 0) {
     if (isSearchOnlyMiss(filters)) {
       return (
@@ -111,7 +118,17 @@ export function SchoolResults({
   return (
     <section className="space-y-4" aria-label="Resultados de escolas">
       {schools.map((school) => (
-        <SchoolCard key={school.id} school={school} />
+        <SchoolCard
+          key={school.id}
+          school={school}
+          isCompareSelected={selectedCompareSlugs.includes(school.slug)}
+          onToggleCompare={
+            onToggleCompare
+              ? () => onToggleCompare(school.slug)
+              : undefined
+          }
+          selectionFull={selectionFull}
+        />
       ))}
     </section>
   );

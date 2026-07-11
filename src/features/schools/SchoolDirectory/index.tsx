@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
 import { ActiveFilterSummary } from "@/features/schools/ActiveFilterSummary";
+import { CompareBar } from "@/features/schools/CompareBar";
 import { countActiveFilters } from "@/features/schools/countActiveFilters";
 import {
   defaultDirectoryFilters,
@@ -27,6 +28,12 @@ import {
 } from "@/features/schools/sortSchools";
 import type { DirectorySortKey } from "@/features/schools/sortSchools/types";
 import { useDebouncedValue } from "@/features/schools/useDebouncedValue";
+import {
+  COMPARE_PARAM,
+  parseCompareSlugs,
+} from "@/features/schools/parseCompareSlugs";
+
+const MAX_COMPARE_SELECTION = 4;
 
 type SchoolDirectoryProps = {
   schools: SchoolDirectoryItem[];
@@ -62,6 +69,10 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     () => sortFromSearchParams(searchParams),
     [searchParams],
   );
+  const selectedCompareSlugs = useMemo(
+    () => parseCompareSlugs(searchParams.get(COMPARE_PARAM)),
+    [searchParams],
+  );
   const [searchInput, setSearchInput] = useState(filters.query);
   const debouncedQuery = useDebouncedValue(searchInput, 300);
   const isSearchPending = searchInput !== debouncedQuery;
@@ -88,15 +99,35 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
   ).length;
 
   const updateFilters = (nextFilters: DirectoryFilterState) => {
-    router.replace(`${pathname}${toQueryString(nextFilters, sortKey)}`, {
-      scroll: false,
-    });
+    router.replace(
+      `${pathname}${toQueryString(nextFilters, sortKey, selectedCompareSlugs)}`,
+      {
+        scroll: false,
+      },
+    );
   };
 
   const setSortKey = (key: DirectorySortKey) => {
-    router.replace(`${pathname}${toQueryString(filters, key)}`, {
-      scroll: false,
-    });
+    router.replace(
+      `${pathname}${toQueryString(filters, key, selectedCompareSlugs)}`,
+      {
+        scroll: false,
+      },
+    );
+  };
+
+  const toggleCompareSlug = (slug: string) => {
+    const isSelected = selectedCompareSlugs.includes(slug);
+    const nextSlugs = isSelected
+      ? selectedCompareSlugs.filter((entry) => entry !== slug)
+      : selectedCompareSlugs.length >= MAX_COMPARE_SELECTION
+        ? selectedCompareSlugs
+        : [...selectedCompareSlugs, slug];
+
+    router.replace(
+      `${pathname}${toQueryString(filters, sortKey, nextSlugs)}`,
+      { scroll: false },
+    );
   };
 
   useEffect(() => {
@@ -273,6 +304,9 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
             schools={sortedSchools}
             filters={filters}
             totalCount={schools.length}
+            selectedCompareSlugs={selectedCompareSlugs}
+            onToggleCompare={toggleCompareSlug}
+            maxCompareSelection={MAX_COMPARE_SELECTION}
             onClearSearch={() => {
               setSearchInput("");
               updateFilters({ ...filters, query: "" });
@@ -281,6 +315,8 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
           />
         </section>
       </div>
+      {selectedCompareSlugs.length > 0 ? <div className="pb-24" aria-hidden /> : null}
+      <CompareBar selectedSlugs={selectedCompareSlugs} />
     </div>
   );
 }
@@ -321,6 +357,7 @@ function filtersFromSearchParams(
 function toQueryString(
   filters: DirectoryFilterState,
   sortKey: DirectorySortKey = "name",
+  compareSlugs: string[] = [],
 ) {
   const params = new URLSearchParams();
 
@@ -345,6 +382,10 @@ function toQueryString(
 
   if (sortKey !== "name") {
     params.set(SORT_PARAM, sortKey);
+  }
+
+  if (compareSlugs.length > 0) {
+    params.set(COMPARE_PARAM, compareSlugs.join(","));
   }
 
   const queryString = params.toString();

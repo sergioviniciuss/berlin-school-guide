@@ -311,12 +311,31 @@ describe("SchoolDirectory", () => {
 
       fireEvent.click(
         screen.getByRole("checkbox", {
+          name: /Selecionar Lew-Tolstoi-Schule para comparar/,
+        }),
+      );
+
+      expect(replace).toHaveBeenLastCalledWith("/schools?q=Lew&district=Lichtenberg", {
+        scroll: false,
+      });
+    });
+
+    it("preserves active filters when adding another school to compare", () => {
+      params = new URLSearchParams(
+        "district=Lichtenberg&compare=lew-tolstoi-schule",
+      );
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+      replace.mockClear();
+
+      fireEvent.click(
+        screen.getByRole("checkbox", {
           name: /Selecionar Adam-Ries-Schule para comparar/,
         }),
       );
 
       expect(replace).toHaveBeenLastCalledWith(
-        "/schools?q=Lew&district=Lichtenberg&compare=lew-tolstoi-schule,adam-ries-schule",
+        "/schools?district=Lichtenberg&compare=lew-tolstoi-schule%2Cadam-ries-schule",
         { scroll: false },
       );
     });
