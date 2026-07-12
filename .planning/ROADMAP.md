@@ -26,7 +26,7 @@ Full details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 ### 🚧 v1.1 Understand the German & Berlin Education System
 
-- [ ] **Phase 9: Onboarding Guide Visual Foundation** — MDX timeline/diagram components, Berlin callout pattern, route shell for `/guides/german-education-system`
+- [x] **Phase 9: Onboarding Guide Visual Foundation** — MDX timeline/diagram components, Berlin callout pattern, route shell for `/guides/german-education-system`
 - [ ] **Phase 10: Education Pathway Editorial** — Full Kita→higher-ed content, decision points, glossary, Berlin differences woven throughout
 - [ ] **Phase 11: Flagship Discovery & Release** — Homepage/Guides hub prominence, cross-links, berlin-school-system relationship, metadata, e2e, a11y
 
@@ -45,7 +45,7 @@ Full details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 Plans:
 - [x] 09-01-PLAN.md — BerlinCallout + GlossaryTerm components (VIS-03, VIS-01)
 - [x] 09-02-PLAN.md — EducationTimeline branching infographic + TimelineNode (VIS-01, VIS-02)
-- [ ] 09-03-PLAN.md — Route shell, MDX registration, placeholder content, e2e coverage (VIS-01, VIS-02, VIS-03)
+- [x] 09-03-PLAN.md — Route shell, MDX registration, placeholder content, e2e coverage (VIS-01, VIS-02, VIS-03)
 **UI hint**: yes
 
 ### Phase 10: Education Pathway Editorial
@@ -79,7 +79,7 @@ Plans:
 | Phase | Milestone | Plans | Status | Completed |
 |-------|-----------|-------|--------|-----------|
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
-| 9 | v1.1 | 2/3 | In Progress|  |
+| 9 | v1.1 | 3/3 | Complete | 2026-07-12 |
 | 10 | v1.1 | 0/? | Not started | — |
 | 11 | v1.1 | 0/? | Not started | — |
 
