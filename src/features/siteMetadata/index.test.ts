@@ -25,7 +25,9 @@ describe("buildPageMetadata", () => {
     expect(metadata.openGraph?.url).toBe(
       "https://berlin-school-guide.example/schools",
     );
-    expect(metadata.twitter?.card).toBe("summary_large_image");
+    expect(metadata.twitter).toMatchObject({
+      card: "summary_large_image",
+    });
     expect(metadata.openGraph?.images).toEqual([
       {
         url: "/og-default.svg",
