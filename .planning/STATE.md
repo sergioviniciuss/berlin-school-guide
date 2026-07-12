@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: executing
-stopped_at: Phase 08 planned — ready for execution
-last_updated: "2026-07-12T09:00:00Z"
-last_activity: 2026-07-12 -- Phase 08 planning complete
+status: complete
+stopped_at: V1 milestone complete — Phase 08 UAT pending
+last_updated: "2026-07-12T09:35:00Z"
+last_activity: 2026-07-12 -- Phase 08 execution complete
 progress:
   total_phases: 8
-  completed_phases: 7
-  total_plans: 25
-  completed_plans: 22
-  percent: 88
+  completed_phases: 8
+  total_plans: 26
+  completed_plans: 26
+  percent: 100
 ---
 
 # Project State
@@ -21,75 +21,31 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-11)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 08 — release-readiness
+**Current focus:** V1 milestone complete — human UAT for Phase 8 optional before launch
 
 ## Current Position
 
-Phase: 08 (release-readiness) — PLANNED
-Plan: 0 of 4
-Status: Ready for execution
-Last activity: 2026-07-12 -- Phase 08 planning complete
+Phase: 08 (release-readiness) — COMPLETE (UAT pending)
+Plan: 4 of 4
+Status: All 8 phases executed; automated verification 7/7 REL
+Last activity: 2026-07-12 -- Phase 08 execution complete
 
-Progress: [███████░░░] 88%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 22
-- Average duration: -
-- Total execution time: 0 hours
+- Total plans completed: 26
+- Phases completed: 8/8
 
-**By Phase:**
+## Blockers/Concerns
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| 01 | 3 | - | - |
-| 02 | 3 | - | - |
-| 03 | 3 | - | - |
-| 04 | 3 | - | - |
-| 05 | 3 | - | - |
-| 06 | 4 | - | - |
-| 07 | 3 | - | - |
-
-**Recent Trend:**
-
-- Last 5 plans: 07-01, 07-02, 07-03
-- Trend: -
-
-*Updated after each plan completion*
-
-## Accumulated Context
-
-### Decisions
-
-Decisions are logged in PROJECT.md Key Decisions table.
-Recent decisions affecting current work:
-
-- Phase 7 (2026-07-11): Hub shows live guides only; system guide at `/guides/berlin-school-system/`; checklist at `/guides/first-steps/`; filter help links to guide anchors.
-- Brownfield assessment (2026-07-11): Static export, no backend, field-level evidence model, Lichtenberg-first scope confirmed.
-
-### Pending Todos
-
-None.
-
-### Blockers/Concerns
-
-- [Phase 8] E2E suite exists but is not wired into CI — must add before release readiness.
-- [Phase 8] No HTTP security headers or dependency vulnerability scanning documented for static host.
-
-## Deferred Items
-
-Items acknowledged and carried forward — see ROADMAP.md **Future Backlog** for full list.
-
-| Category | Item | Status | Deferred At |
-|----------|------|--------|-------------|
-| Scope | Complete all Lichtenberg Grundschulen | Future backlog | 2026-07-11 roadmap revision |
-| Scope | Additional Berlin districts | Future backlog | 2026-07-11 roadmap revision |
-| Guides | Dedicated enrollment step-by-step guide | Future backlog | Phase 7 D-08 |
+- Phase 8 human UAT (3 tests) optional before public launch
+- README status section still describes early development — update when launching
 
 ## Session Continuity
 
-Last session: 2026-07-12T09:00:00Z
-Stopped at: Phase 08 planned — ready for execution
-Resume file: .planning/phases/08-release-readiness/08-01-PLAN.md
+Last session: 2026-07-12T09:35:00Z
+Stopped at: V1 milestone complete
+Resume file: .planning/phases/08-release-readiness/08-HUMAN-UAT.md

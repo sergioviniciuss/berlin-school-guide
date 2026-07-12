@@ -21,7 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Directory UX & Discovery** - Polish search, filters, sorting, empty states, mobile usability, and discoverability (completed 2026-07-11)
 - [x] **Phase 6: School Comparison** - Let families compare selected schools side by side without a quality ranking (completed 2026-07-11)
 - [x] **Phase 7: Essential Parent Guides** - Publish the Berlin primary system guide and a practical checklist in Portuguese (completed 2026-07-11)
-- [ ] **Phase 8: Release Readiness** - Validate build, data, e2e coverage, SEO, responsiveness, and accessibility before launch
+- [x] **Phase 8: Release Readiness** - Validate build, data, e2e coverage, SEO, responsiveness, and accessibility before launch (completed 2026-07-12)
 
 ## Phase Details
 
@@ -150,10 +150,10 @@ Plans:
   5. Deployment documentation specifies static host requirements (export output directory, recommended response headers).
 **Plans**: 4 plans (3 waves)
 Plans:
-- [ ] 08-01-PLAN.md — CI Playwright smoke gate + path filters + main fuller workflow (REL-01, REL-03)
-- [ ] 08-02-PLAN.md — Shared metadata helper, OG image, canonical/social tags, metadata e2e (REL-04)
-- [ ] 08-03-PLAN.md — Axe accessibility automation, violation fixes, human UAT template (REL-05, REL-06)
-- [ ] 08-04-PLAN.md — DEPLOYMENT.md, env example, release verification (REL-01, REL-02, REL-07)
+- [x] 08-01-PLAN.md — CI Playwright smoke gate + path filters + main fuller workflow (REL-01, REL-03)
+- [x] 08-02-PLAN.md — Shared metadata helper, OG image, canonical/social tags, metadata e2e (REL-04)
+- [x] 08-03-PLAN.md — Axe accessibility automation, violation fixes, human UAT template (REL-05, REL-06)
+- [x] 08-04-PLAN.md — DEPLOYMENT.md, env example, release verification (REL-01, REL-02, REL-07)
 
 ## Progress
 
@@ -169,7 +169,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 5. Directory UX & Discovery | 3/3 | Complete | 2026-07-11 |
 | 6. School Comparison | 4/4 | Complete | 2026-07-11 |
 | 7. Essential Parent Guides | 3/3 | Complete | 2026-07-11 |
-| 8. Release Readiness | 0/4 | Planned | - |
+| 8. Release Readiness | 4/4 | Complete (UAT pending) | 2026-07-12 |
 
 ## Future Backlog
 
