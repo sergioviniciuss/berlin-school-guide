@@ -148,7 +148,12 @@ Plans:
   3. Every page has an appropriate, distinct Portuguese title and description for SEO.
   4. Core pages are usable on both mobile and desktop viewports, with accessibility basics (heading structure, form labels, focus states, contrast) reviewed.
   5. Deployment documentation specifies static host requirements (export output directory, recommended response headers).
-**Plans**: TBD
+**Plans**: 4 plans (3 waves)
+Plans:
+- [ ] 08-01-PLAN.md — CI Playwright smoke gate + path filters + main fuller workflow (REL-01, REL-03)
+- [ ] 08-02-PLAN.md — Shared metadata helper, OG image, canonical/social tags, metadata e2e (REL-04)
+- [ ] 08-03-PLAN.md — Axe accessibility automation, violation fixes, human UAT template (REL-05, REL-06)
+- [ ] 08-04-PLAN.md — DEPLOYMENT.md, env example, release verification (REL-01, REL-02, REL-07)
 
 ## Progress
 
@@ -164,7 +169,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 | 5. Directory UX & Discovery | 3/3 | Complete | 2026-07-11 |
 | 6. School Comparison | 4/4 | Complete | 2026-07-11 |
 | 7. Essential Parent Guides | 3/3 | Complete | 2026-07-11 |
-| 8. Release Readiness | 0/TBD | Not started | - |
+| 8. Release Readiness | 0/4 | Planned | - |
 
 ## Future Backlog
 
