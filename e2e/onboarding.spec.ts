@@ -35,3 +35,21 @@ test("has no horizontal overflow on a mobile viewport", async ({ page }) => {
   );
   expect(hasHorizontalOverflow).toBe(false);
 });
+
+test("has no horizontal overflow on a laptop viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 1366, height: 768 });
+  await page.goto("/guides/german-education-system");
+
+  await expect(
+    page.getByRole("region", {
+      name: "Linha do tempo: da Educação Infantil ao Ensino Superior",
+    }).first(),
+  ).toBeVisible();
+
+  const hasHorizontalOverflow = await page.evaluate(
+    () =>
+      document.documentElement.scrollWidth >
+      document.documentElement.clientWidth + 1,
+  );
+  expect(hasHorizontalOverflow).toBe(false);
+});

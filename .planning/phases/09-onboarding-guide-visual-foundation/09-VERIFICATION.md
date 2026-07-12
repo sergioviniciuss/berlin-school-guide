@@ -1,8 +1,9 @@
 ---
 phase: 09-onboarding-guide-visual-foundation
-verified: 2026-07-12T20:55:00Z
-status: human_needed
+verified: 2026-07-12T22:15:00+02:00
+status: passed
 score: 13/13 must-haves verified
+human_uat: 8/8 passed (2026-07-12)
 overrides_applied: 0
 human_verification:
   - test: "Open /guides/german-education-system at desktop width (≥1024px)"
@@ -23,7 +24,7 @@ human_verification:
 
 **Phase Goal:** Families can open the onboarding guide and immediately see a visual education journey scaffold — timelines, pathway branches, and Berlin callouts — not a text wall.
 **Verified:** 2026-07-12T20:55:00Z
-**Status:** human_needed
+**Status:** passed
 **Re-verification:** No — initial verification
 
 ## Goal Achievement

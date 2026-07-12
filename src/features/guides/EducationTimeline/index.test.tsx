@@ -3,77 +3,96 @@ import userEvent from "@testing-library/user-event";
 
 import { EducationTimeline } from ".";
 import {
-  convergenceStageFixture,
+  GERMANY_WIDE_TRACK_NAMES,
+  GERMANY_WIDE_TRIGGER,
+  grundschuleContextNoteFixture,
+  grundschuleFixture,
+  outcomesFixture,
+  outcomesIntroFixture,
+  PRIMARY_BERLIN_BRANCH_NAMES,
+  secondaryDecisionFixture,
   stageWithoutBranches,
   trunkFixture,
 } from "./fixtures";
 
 const REGION_LABEL = "Linha do tempo: da Educação Infantil ao Ensino Superior";
-const BRANCH_NAMES = [
-  "Gymnasium",
-  "Realschule",
-  "Hauptschule",
-  "Gesamtschule",
-  "Ausbildung",
-];
 
 describe("EducationTimeline", () => {
-  it("renders both desktop and mobile regions with default demo data", () => {
+  it("renders the timeline region with default demo data", () => {
     render(<EducationTimeline />);
 
     expect(
-      screen.getAllByRole("region", { name: REGION_LABEL }),
-    ).toHaveLength(2);
+      screen.getByRole("region", { name: REGION_LABEL }),
+    ).toBeInTheDocument();
   });
 
-  it("renders all 5 secondary/vocational tracks with custom trunk/convergence", () => {
+  it("shows the common beginning, Berlin secondary heading, and Grundschule context note", () => {
     render(
       <EducationTimeline
         trunk={trunkFixture}
-        convergence={convergenceStageFixture}
+        secondaryDecision={secondaryDecisionFixture}
+        outcomes={outcomesFixture}
+        grundschuleContextNote={grundschuleContextNoteFixture}
+        outcomesIntro={outcomesIntroFixture}
       />,
     );
 
-    BRANCH_NAMES.forEach((name) => {
-      expect(screen.getAllByText(name).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText("Idade aproximada: 6–12 anos")).toBeInTheDocument();
+    expect(screen.getByText(grundschuleContextNoteFixture)).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Depois da Grundschule", level: 3 }),
+    ).toBeInTheDocument();
+
+    const grundschuleTrigger = screen.getByRole("button", {
+      name: /Grundschule/,
+    });
+    expect(grundschuleTrigger).not.toHaveTextContent(/Em Berlim/);
+
+    PRIMARY_BERLIN_BRANCH_NAMES.forEach((name) => {
+      expect(screen.getByText(name)).toBeInTheDocument();
     });
   });
 
-  it("keeps mobile 'Outras vias' collapsed until the trigger is clicked", async () => {
+  it("keeps Germany-wide tracks inside the collapsed contextual section until opened", async () => {
     const user = userEvent.setup();
     render(
       <EducationTimeline
         trunk={trunkFixture}
-        convergence={convergenceStageFixture}
+        secondaryDecision={secondaryDecisionFixture}
+        outcomes={outcomesFixture}
       />,
     );
 
-    const mobileRegion = screen.getAllByRole("region", {
-      name: REGION_LABEL,
-    })[1];
-    const trigger = within(mobileRegion).getByRole("button", {
-      name: "Ver as vias do ensino secundário",
+    const region = screen.getByRole("region", { name: REGION_LABEL });
+    const trigger = within(region).getByRole("button", {
+      name: GERMANY_WIDE_TRIGGER,
     });
     expect(trigger).toHaveAttribute("aria-expanded", "false");
-    expect(within(mobileRegion).queryByText("Gymnasium")).not.toBeInTheDocument();
+    GERMANY_WIDE_TRACK_NAMES.forEach((name) => {
+      expect(within(region).queryByText(name)).not.toBeInTheDocument();
+    });
 
     await user.click(trigger);
 
     expect(trigger).toHaveAttribute("aria-expanded", "true");
-    expect(
-      within(mobileRegion).getAllByText("Gymnasium").length,
-    ).toBeGreaterThanOrEqual(1);
+    GERMANY_WIDE_TRACK_NAMES.forEach((name) => {
+      expect(within(region).getByText(name)).toBeInTheDocument();
+    });
   });
 
-  it("shows the Berlin badge on the node's always-visible card face", () => {
+  it("renders outcomes intro and both outcome panels without connector semantics", () => {
     render(
       <EducationTimeline
-        trunk={trunkFixture}
-        convergence={convergenceStageFixture}
+        outcomesIntro={outcomesIntroFixture}
       />,
     );
 
-    expect(screen.getAllByText(/Em Berlim/).length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByText(outcomesIntroFixture)).toBeInTheDocument();
+    expect(screen.getByText("Ausbildung")).toBeInTheDocument();
+    expect(screen.getByText("Universidade / Hochschule")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: "Possíveis destinos", level: 3 }),
+    ).toBeInTheDocument();
   });
 
   it("reveals a node's summary only after its trigger is clicked", async () => {
@@ -81,7 +100,8 @@ describe("EducationTimeline", () => {
     render(
       <EducationTimeline
         trunk={trunkFixture}
-        convergence={convergenceStageFixture}
+        secondaryDecision={secondaryDecisionFixture}
+        outcomes={outcomesFixture}
       />,
     );
 
@@ -89,11 +109,61 @@ describe("EducationTimeline", () => {
       screen.queryByText(stageWithoutBranches.summary),
     ).not.toBeInTheDocument();
 
-    const triggers = screen.getAllByRole("button", {
+    const trigger = screen.getByRole("button", {
       name: new RegExp(stageWithoutBranches.name),
     });
-    await user.click(triggers[0]);
+    await user.click(trigger);
 
     expect(screen.getByText(stageWithoutBranches.summary)).toBeInTheDocument();
+  });
+
+  it("renders Gemeinschaftsschule as a single unbroken title token", () => {
+    render(<EducationTimeline />);
+
+    const trigger = screen.getByRole("button", {
+      name: /Gemeinschaftsschule/,
+    });
+    expect(trigger.textContent).toContain("Gemeinschaftsschule");
+    expect(trigger.textContent).not.toMatch(/Gemeinschaft\s+schule/i);
+  });
+
+  it("expands only the clicked secondary card without revealing other summaries", async () => {
+    const user = userEvent.setup();
+    render(
+      <EducationTimeline
+        trunk={trunkFixture}
+        secondaryDecision={secondaryDecisionFixture}
+        outcomes={outcomesFixture}
+      />,
+    );
+
+    const gymnasium = secondaryDecisionFixture.primaryBranches[0];
+    const iss = secondaryDecisionFixture.primaryBranches[1];
+    const gemeinschaftsschule = secondaryDecisionFixture.primaryBranches[2];
+
+    expect(gymnasium).toBeDefined();
+    expect(iss).toBeDefined();
+    expect(gemeinschaftsschule).toBeDefined();
+
+    const gymnasiumTrigger = screen.getByRole("button", {
+      name: new RegExp(gymnasium!.name),
+    });
+    const issTrigger = screen.getByRole("button", {
+      name: /Integrierte Sekundarschule \(ISS\)/,
+    });
+    const gemeinschaftsschuleTrigger = screen.getByRole("button", {
+      name: new RegExp(gemeinschaftsschule!.name),
+    });
+
+    await user.click(gymnasiumTrigger);
+
+    expect(gymnasiumTrigger).toHaveAttribute("aria-expanded", "true");
+    expect(issTrigger).toHaveAttribute("aria-expanded", "false");
+    expect(gemeinschaftsschuleTrigger).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getByText(gymnasium!.summary)).toBeInTheDocument();
+    expect(screen.queryByText(iss!.summary)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(gemeinschaftsschule!.summary),
+    ).not.toBeInTheDocument();
   });
 });

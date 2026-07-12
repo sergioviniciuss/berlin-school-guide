@@ -1,20 +1,27 @@
-import { DEMO_CONVERGENCE, DEMO_TRUNK } from "./constants";
-import { EducationTimelineDesktop } from "./EducationTimelineDesktop";
-import { EducationTimelineMobile } from "./EducationTimelineMobile";
+import {
+  DEMO_GRUNDSCHULE_CONTEXT_NOTE,
+  DEMO_OUTCOMES,
+  DEMO_OUTCOMES_INTRO,
+  DEMO_SECONDARY_DECISION,
+  DEMO_TRUNK,
+} from "./constants";
+import { EducationTimelineView } from "./EducationTimelineView";
 import type { EducationTimelineProps } from "./types";
 
 export function EducationTimeline({
   trunk = DEMO_TRUNK,
-  convergence = DEMO_CONVERGENCE,
+  secondaryDecision = DEMO_SECONDARY_DECISION,
+  outcomes = DEMO_OUTCOMES,
+  grundschuleContextNote = DEMO_GRUNDSCHULE_CONTEXT_NOTE,
+  outcomesIntro = DEMO_OUTCOMES_INTRO,
 }: EducationTimelineProps = {}) {
   return (
-    <>
-      <div className="hidden lg:block">
-        <EducationTimelineDesktop trunk={trunk} convergence={convergence} />
-      </div>
-      <div className="lg:hidden">
-        <EducationTimelineMobile trunk={trunk} convergence={convergence} />
-      </div>
-    </>
+    <EducationTimelineView
+      trunk={trunk}
+      secondaryDecision={secondaryDecision}
+      outcomes={outcomes}
+      grundschuleContextNote={grundschuleContextNote}
+      outcomesIntro={outcomesIntro}
+    />
   );
 }

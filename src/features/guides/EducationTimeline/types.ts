@@ -6,10 +6,21 @@ export type TimelineStage = {
   summary: string;
   anchorHref?: string;
   berlinNote?: string;
-  branches?: TimelineStage[];
+};
+
+export type SecondaryDecisionBlock = {
+  label: string;
+  primaryBranches: TimelineStage[];
+  germanyWideContext?: {
+    triggerLabel: string;
+    tracks: TimelineStage[];
+  };
 };
 
 export type EducationTimelineProps = {
   trunk?: TimelineStage[];
-  convergence?: TimelineStage;
+  secondaryDecision?: SecondaryDecisionBlock;
+  outcomes?: TimelineStage[];
+  grundschuleContextNote?: string;
+  outcomesIntro?: string;
 };

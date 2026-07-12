@@ -3,13 +3,18 @@
 import * as Collapsible from "@radix-ui/react-collapsible";
 import { ChevronDown } from "lucide-react";
 
+import { cn } from "@/components/ui/utils";
 import { BerlinCallout } from "@/features/guides/BerlinCallout";
+import { timelineTitleClass } from "./titleStyles";
 import type { TimelineStage } from "./types";
 
 type TimelineNodeProps = Pick<
   TimelineStage,
   "name" | "grades" | "ageRange" | "summary" | "anchorHref" | "berlinNote"
->;
+> & {
+  className?: string;
+  variant?: "default" | "outcome";
+};
 
 export function TimelineNode({
   name,
@@ -18,26 +23,34 @@ export function TimelineNode({
   summary,
   anchorHref,
   berlinNote,
+  className,
+  variant = "default",
 }: TimelineNodeProps) {
   return (
-    <Collapsible.Root className="rounded-lg border border-neutral-200 bg-white p-3 lg:p-4">
-      <Collapsible.Trigger className="flex min-h-11 w-full items-start justify-between gap-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
-        <span>
-          <span className="block text-xl font-semibold text-neutral-950">
-            {name}
-          </span>
-          <span className="block text-xs font-semibold text-neutral-600">
+    <Collapsible.Root
+      className={cn(
+        "flex min-h-[8.75rem] flex-col overflow-hidden rounded-lg border border-neutral-200 bg-white p-4 data-[state=open]:[&>button>.guide-print-hide]:rotate-180",
+        variant === "outcome" && "min-h-[9.5rem] bg-neutral-50/50",
+        className,
+      )}
+    >
+      <Collapsible.Trigger className="relative min-h-11 w-full pr-8 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+        <div className="min-w-0">
+          <span className={timelineTitleClass(name)}>{name}</span>
+          <span className="mt-1 block text-xs font-semibold text-neutral-600">
             {grades}
           </span>
           <span className="block text-xs font-normal text-neutral-500">
             {ageRange}
           </span>
           {berlinNote ? (
-            <BerlinCallout variant="inline" note={berlinNote} />
+            <span className="mt-1 block">
+              <BerlinCallout variant="inline" note={berlinNote} />
+            </span>
           ) : null}
-        </span>
+        </div>
         <ChevronDown
-          className="guide-print-hide size-4 shrink-0 text-neutral-500 transition-transform data-[state=open]:rotate-180"
+          className="guide-print-hide absolute right-0 top-1 size-4 shrink-0 text-neutral-500 transition-transform"
           aria-hidden
         />
       </Collapsible.Trigger>
