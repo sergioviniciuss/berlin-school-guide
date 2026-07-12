@@ -18,7 +18,7 @@ human_verification:
 **Phase Goal:** The site is production-ready — clean build, validated data, e2e in CI, SEO metadata, accessibility, deployment docs.
 **Verified:** 2026-07-12T09:30:00Z
 **Status:** passed (automated)
-**Re-verification:** No — initial verification; human UAT pending
+**Re-verification:** No — initial verification; human UAT approved 2026-07-12
 
 ## REL Requirements
 
@@ -47,4 +47,4 @@ human_verification:
 
 ## Human UAT
 
-See `08-HUMAN-UAT.md` — 3 tests pending.
+See `08-HUMAN-UAT.md` — 3/3 passed (2026-07-12).
