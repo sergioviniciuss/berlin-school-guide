@@ -4,6 +4,20 @@
 
 A static Next.js site in Brazilian Portuguese that helps Brazilian families living in Berlin understand the primary school system and compare nearby schools using evidence-backed, source-attributed information. V1 focuses on Lichtenberg public primary schools as the first geographic scope, with architecture that can expand to other Berlin districts later.
 
+## Current Milestone: v1.1 Understand the German & Berlin Education System
+
+**Goal:** Publish the definitive onboarding guide for Brazilian families moving to Germany — full education journey, major decision points, Berlin differences highlighted throughout, with timelines and diagrams instead of text walls.
+
+**Target features:**
+- German education path: Kita → Grundschule → secondary tracks → Abitur/Ausbildung → Uni/Hochschule
+- Non-Gymnasium university pathways (Ausbildung, Duales Studium, Fachabitur, etc.)
+- Berlin-specific differences woven throughout (e.g. 6-year Grundschule), not a Berlin-first structure
+- Visual timelines and decision diagrams; integrated glossary of key German terms
+- Flagship page prominently linked from homepage and `/guides`
+- Clarify relationship with existing `/guides/berlin-school-system` (complementary deep-dive on Berlin primary)
+
+**After v1.1:** Expand school coverage (Lichtenberg complete → districts → Berlin-wide)
+
 ## Core Value
 
 Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
@@ -40,10 +54,17 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Essential parent guides (system guide + Primeiros passos checklist) — Phase 7 (2026-07-11)
 - ✓ Release readiness: CI e2e gates, SEO metadata, axe a11y, deployment docs, human UAT — Phase 8 (2026-07-12)
 
-### Active
+### Active (v1.1)
+
+- [ ] Flagship German education system onboarding guide with visual timelines
+- [ ] Berlin difference callouts integrated throughout Germany-wide narrative
+- [ ] Homepage and Guides hub promote onboarding guide as primary entry point
+
+### Next Milestone (v1.2 — after v1.1)
 
 - [ ] Complete all Lichtenberg Grundschulen beyond the 10-school spike set
-- [ ] Expand to additional Berlin districts after Lichtenberg launch feedback
+- [ ] Expand to additional Berlin districts
+- [ ] Berlin-wide directory import (M8) and detailed pilot profiles (M9) as research capacity allows
 - [ ] Update README status section for public launch
 
 ### Out of Scope
@@ -216,4 +237,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-12 after v1.0 milestone*
+*Last updated: 2026-07-12 after v1.1 milestone kickoff*

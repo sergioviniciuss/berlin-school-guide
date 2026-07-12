@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: Awaiting next milestone
-stopped_at: V1 milestone complete — launch-ready
-last_updated: "2026-07-12T08:03:25.774Z"
-last_activity: 2026-07-12 — Milestone v1.0 completed and archived
+milestone: v1.1
+milestone_name: Understand the German & Berlin Education System
+status: planning
+stopped_at: Milestone v1.1 initialized — ready for Phase 9
+last_updated: "2026-07-12T19:45:00Z"
+last_activity: 2026-07-12 — Milestone v1.1 requirements and roadmap defined
 progress:
-  total_phases: 8
+  total_phases: 11
   completed_phases: 8
   total_plans: 26
   completed_plans: 26
-  percent: 100
+  percent: 73
 ---
 
 # Project State
@@ -21,43 +21,36 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-12)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Planning next milestone — `/gsd-new-milestone`
+**Current focus:** v1.1 onboarding guide — German education system with Berlin differences throughout
 
 ## Current Position
 
-Phase: Milestone v1.0 complete
+Phase: Not started (Phase 9 next)
 Plan: —
-Status: Awaiting next milestone
-Last activity: 2026-07-12 — Milestone v1.0 completed and archived
+Status: Milestone v1.1 planned — 3 phases, 16 requirements mapped
+Last activity: 2026-07-12 — Milestone v1.1 requirements and roadmap defined
+
+Progress: [████████░░] 73% (8/11 phases shipped)
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 26
-- Phases completed: 8/8
+- v1.0 plans completed: 26
+- v1.0 phases completed: 8/8
+- v1.1 phases planned: 3 (9–11)
 
 ## Blockers/Concerns
 
-- README status section still describes early development — update when launching
+- None
 
 ## Session Continuity
 
-Last session: 2026-07-12T09:30:00Z
-Stopped at: V1 milestone complete — launch-ready
+Last session: 2026-07-12T19:45:00Z
+Stopped at: Milestone v1.1 initialized
 Resume file: none
-
-## Deferred Items
-
-Items acknowledged at v1.0 milestone close on 2026-07-12:
-
-| Category | Item | Status |
-|----------|------|--------|
-| verification | Phase 01 VERIFICATION.md frontmatter `human_needed` (stale; UAT resolved) | deferred |
-| verification | Phase 02 VERIFICATION.md frontmatter `human_needed` (stale; shipped) | deferred |
-| docs | README status section still describes early development | open |
-| ops | Dependency scanning in CI (Dependabot / pnpm audit) | deferred |
 
 ## Operator Next Steps
 
-- Start the next milestone with `/gsd-new-milestone`
+- `/gsd-discuss-phase 9` — gather context for visual foundation
+- `/gsd-plan-phase 9` — skip discussion, plan directly
