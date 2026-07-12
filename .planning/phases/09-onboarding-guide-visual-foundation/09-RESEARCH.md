@@ -433,17 +433,17 @@ Note: consider whether the infographic needs a wider container than `max-w-3xl` 
 
 **If this table is empty:** N/A — two low-risk, easily-reversible layout/styling assumptions are logged above; nothing here blocks planning.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Should `EducationTimeline`'s placeholder data live in a `constants.ts` inside the component directory, or in `src/content/`?**
+   - RESOLVED: For Phase 9, keep placeholder stage/branch data as a typed constant colocated with `EducationTimeline` (simplest, matches "don't build abstractions before 2 use cases" guidance). Leave a clear seam (exported `TimelineStage[]` type) so Phase 10 can decide whether to keep it as a TS constant or move it to structured content — this is a Phase 10 planning decision, not a Phase 9 blocker.
    - What we know: Phase 9 explicitly uses placeholder copy (D-04, D-11); Phase 10 will replace it with real editorial content.
    - What's unclear: Whether Phase 10's editorial work will replace the *component's* placeholder data structure in place, or whether the timeline's node data should be designed from the start to live in `src/content/` (MDX-adjacent) so Phase 10 only edits content, not component code.
-   - Recommendation: For Phase 9, keep placeholder stage/branch data as a typed constant colocated with `EducationTimeline` (simplest, matches "don't build abstractions before 2 use cases" guidance). Leave a clear seam (exported `TimelineStage[]` type) so Phase 10 can decide whether to keep it as a TS constant or move it to structured content — this is a Phase 10 planning decision, not a Phase 9 blocker.
 
 2. **Exact node count/labels for the Phase 9 demo (which stages, which get Berlin badges)?**
+   - RESOLVED: Use a representative but not exhaustive placeholder set (e.g. Kita, Grundschule, secondary branch fan-out with the four named tracks, Ausbildung/Abitur convergence) — enough to prove the branching visual works and satisfy D-07's "don't imply Gymnasium is the only path" framing, without trying to pre-author Phase 10's content. This is a copy/data decision for the plan, not a research gap.
    - What we know: D-07 requires showing Gymnasium, Realschule, Hauptschule, Gesamtschule, and vocational/Ausbildung routes; D-09 requires at least one Berlin-badged node in the demo.
    - What's unclear: Whether the Phase 9 demo should already include the full "Kita → Uni" stage list (matching the real eventual content) or a smaller illustrative subset, since full editorial accuracy is explicitly Phase 10's job.
-   - Recommendation: Use a representative but not exhaustive placeholder set (e.g. Kita, Grundschule, secondary branch fan-out with the four named tracks, Ausbildung/Abitur convergence) — enough to prove the branching visual works and satisfy D-07's "don't imply Gymnasium is the only path" framing, without trying to pre-author Phase 10's content. This is a copy/data decision for the plan, not a research gap.
 
 ## Environment Availability
 
