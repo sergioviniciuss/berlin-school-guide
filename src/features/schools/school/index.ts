@@ -26,6 +26,7 @@ export const schoolSchema = z
     id: z.string().min(1),
     slug: slugSchema,
     name: createFieldValueSchema(z.string().min(1)),
+    schoolNumber: createFieldValueSchema(z.string().min(1)),
     website: createFieldValueSchema(z.string().url()),
     classification: createFieldValueSchema(schoolClassificationSchema),
     level: createFieldValueSchema(schoolLevelSchema),
@@ -53,6 +54,7 @@ export const schoolSchema = z
     sources: z.array(sourceSchema).min(1),
     research: researchMetadataSchema,
   })
+  // Citation quality gate (RSCH-04 data layer) — verified fields require acceptable primary/secondary source
   .superRefine((school, context) => {
     const fieldEntries = collectFieldEvidence(school);
 
@@ -144,7 +146,7 @@ function isFieldValue(
   );
 }
 
-function collectFieldEvidence(
+export function collectFieldEvidence(
   input: unknown,
   path: (string | number)[] = [],
 ): FieldEvidenceEntry[] {

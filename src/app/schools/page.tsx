@@ -2,12 +2,14 @@ import { Suspense } from "react";
 
 import { SchoolDirectory } from "@/features/schools/SchoolDirectory";
 import { getSchoolDirectoryItems } from "@/features/schools/schoolDirectoryData";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Escolas",
   description:
-    "Diretório estático de escolas sintéticas para validar busca e filtros.",
-};
+    "Diretório de escolas primárias em Berlim com pesquisa parcial em Lichtenberg. Cada fato indica seu status de evidência.",
+  path: "/schools",
+});
 
 export default function SchoolsPage() {
   return (

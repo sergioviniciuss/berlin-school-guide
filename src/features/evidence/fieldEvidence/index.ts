@@ -4,6 +4,7 @@ export const fieldStatusSchema = z.enum([
   "verified",
   "missing",
   "unverified",
+  "not_confirmed",
   "outdated",
   "conflicting",
   "not_applicable",

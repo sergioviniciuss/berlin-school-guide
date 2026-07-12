@@ -45,3 +45,86 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: Upload static export
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-export
+          path: out
+          retention-days: 1
+
+  # Skip when a PR changes only docs/.planning/README/root markdown (D-02).
+  # Any change under src/, e2e/, .github/, or package.json always runs e2e.
+  detect-e2e:
+    name: Detect e2e scope
+    runs-on: ubuntu-latest
+    outputs:
+      run_e2e: ${{ steps.detect.outputs.run_e2e }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect docs-only pull request
+        id: detect
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "run_e2e=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          BASE="${{ github.event.pull_request.base.sha }}"
+          HEAD="${{ github.event.pull_request.head.sha }}"
+          CHANGED="$(git diff --name-only "$BASE" "$HEAD")"
+
+          if [ -z "$CHANGED" ]; then
+            echo "run_e2e=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          RUN_E2E=false
+          while IFS= read -r file; do
+            case "$file" in
+              docs/*|.planning/*|README.md|AGENTS.md) ;;
+              *.md) ;;
+              *) RUN_E2E=true; break ;;
+            esac
+          done <<< "$CHANGED"
+
+          echo "run_e2e=$RUN_E2E" >> "$GITHUB_OUTPUT"
+
+  e2e-smoke:
+    name: E2E smoke
+    needs: [validate, detect-e2e]
+    if: needs.detect-e2e.outputs.run_e2e == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare pnpm
+        run: corepack prepare pnpm@11.11.0 --activate
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Download static export
+        uses: actions/download-artifact@v4
+        with:
+          name: static-export
+          path: out
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Run smoke e2e
+        run: pnpm exec playwright test --config playwright.ci.config.ts --project=chromium e2e/smoke.spec.ts

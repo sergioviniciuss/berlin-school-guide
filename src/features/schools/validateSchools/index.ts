@@ -1,7 +1,9 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
+import { realLichtenbergPrimarySchools } from "@/content/schools/real/lichtenbergPrimarySchools";
 import { schoolSchema } from "@/features/schools/school";
+import { validateResearchDates } from "@/features/schools/validateResearchDates";
 
 const fixturesDirectory = join(
   process.cwd(),
@@ -41,13 +43,51 @@ export function validateSchoolFixtures() {
   };
 }
 
-if (process.env.NODE_ENV !== "test") {
-  const result = validateSchoolFixtures();
+export function validateRealSchools() {
+  const failures = realLichtenbergPrimarySchools.flatMap((school) => {
+    const result = schoolSchema.safeParse(school);
 
-  if (result.failures.length > 0) {
-    console.error(JSON.stringify(result.failures, null, 2));
+    if (result.success) {
+      const dateErrors = validateResearchDates(result.data);
+      if (dateErrors.length === 0) {
+        return [];
+      }
+
+      return [
+        {
+          fileName: `real:${school.id}`,
+          errors: dateErrors,
+        },
+      ];
+    }
+
+    return [
+      {
+        fileName: `real:${school.id}`,
+        errors: result.error.issues.map(
+          (issue) => `${issue.path.join(".")}: ${issue.message}`,
+        ),
+      },
+    ];
+  });
+
+  return {
+    checked: realLichtenbergPrimarySchools.length,
+    failures,
+  };
+}
+
+if (process.env.NODE_ENV !== "test") {
+  const fixtureResult = validateSchoolFixtures();
+  const realResult = validateRealSchools();
+  const failures = [...fixtureResult.failures, ...realResult.failures];
+
+  if (failures.length > 0) {
+    console.error(JSON.stringify(failures, null, 2));
     process.exit(1);
   }
 
-  console.log(`Validated ${result.checked} school fixture(s).`);
+  console.log(
+    `Validated ${fixtureResult.checked} fixture school(s) and ${realResult.checked} real school record(s).`,
+  );
 }

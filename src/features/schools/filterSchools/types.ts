@@ -1,6 +1,10 @@
 import type { EvidenceCoverage } from "@/features/evidence/calculateEvidenceCoverage/types";
 import type { FieldStatus } from "@/features/evidence/fieldEvidence";
 import type {
+  CoverageLevel,
+  ResearchStatus,
+} from "@/features/schools/researchMetadata";
+import type {
   InspectionAvailability,
   SchoolClassification,
 } from "@/features/schools/schoolClassification";
@@ -28,6 +32,8 @@ export type SchoolDirectoryItem = {
   id: string;
   slug: string;
   name: string;
+  schoolNumber: string | null;
+  schoolNumberStatus: FieldStatus;
   classification: SchoolClassification | null;
   classificationStatus: FieldStatus;
   district: string | null;
@@ -49,4 +55,7 @@ export type SchoolDirectoryItem = {
   inspectionAvailability: InspectionAvailability | null;
   inspectionAvailabilityStatus: FieldStatus;
   evidenceCoverage: EvidenceCoverage;
+  coverageLevel: CoverageLevel;
+  researchStatus: ResearchStatus;
+  coverageTierLabel: "Pesquisa básica" | "Pesquisa detalhada";
 };

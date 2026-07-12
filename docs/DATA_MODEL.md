@@ -45,6 +45,7 @@ Detailed profiles require field-level citations and research notes.
 School profiles should support:
 
 - name;
+- school number;
 - type;
 - public/private;
 - district;
@@ -110,6 +111,7 @@ The canonical list of important V1 fields will be defined during M3 and versione
 Evidence coverage version `v1` uses these important fields:
 
 - name;
+- school number;
 - website;
 - public/private classification;
 - school level;

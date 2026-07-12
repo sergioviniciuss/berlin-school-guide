@@ -25,6 +25,10 @@ export function filterSchools(
   schools: SchoolDirectoryItem[],
   filters: DirectoryFilterState,
 ): SchoolDirectoryItem[] {
+  // Directory filter runs client-side on the full school list passed from static props.
+  // V1 Lichtenberg (~10 schools): memoized filter → sort is sufficient.
+  // If Berlin-wide import (500+ schools): consider pre-normalized search index,
+  // virtualized list rendering, and/or Web Worker for filter — out of V1 scope.
   const query = normalize(filters.query);
 
   return schools.filter((school) => {

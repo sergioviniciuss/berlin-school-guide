@@ -78,10 +78,12 @@ The inspection filter should use `available`, `unavailable`, and `not_confirmed`
 Directory query parameters should use English names:
 
 ```text
-/schools?q=example&district=Mitte&neighbourhood=Moabit&type=public&coverage=80-100
+/schools?q=example&district=Mitte&neighbourhood=Moabit&type=public&coverage=80-100&sort=coverage
 ```
 
 Supported M4 query parameter names should include `q`, `district`, `neighbourhood`, `type`, `ganztag`, `bilingual`, `welcome`, `language`, `focus`, `afterSchool`, `inspection`, and `coverage`.
+
+Sort uses `sort=name|coverage|tier`. Omit `sort` when using the default alphabetical name order (`name`).
 
 ## School Page Journey
 

@@ -1,7 +1,10 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { SchoolDirectory } from ".";
+import { writeStoredCompareSlugs } from "@/features/schools/compareSelection";
 import { getSchoolDirectoryItems } from "@/features/schools/schoolDirectoryData";
+import { sortSchools } from "@/features/schools/sortSchools";
 
 const replace = jest.fn();
 let params = new URLSearchParams();
@@ -16,35 +19,372 @@ describe("SchoolDirectory", () => {
   beforeEach(() => {
     replace.mockClear();
     params = new URLSearchParams();
+    sessionStorage.clear();
+    jest.useFakeTimers();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
   });
 
   it("renders the directory and result count", () => {
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
     expect(screen.getByRole("heading", { name: "Escolas" })).toBeVisible();
-    expect(screen.getByText("7 de 7 escolas encontradas")).toBeVisible();
+    expect(screen.getByText("10 de 10 escolas encontradas")).toBeVisible();
   });
 
-  it("syncs search to URL query parameters", () => {
+  it("does not sync search to URL until debounce elapses", () => {
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
     fireEvent.change(screen.getByLabelText("Buscar escola pelo nome"), {
-      target: { value: "private" },
+      target: { value: "Lew" },
     });
 
-    expect(replace).toHaveBeenLastCalledWith("/schools?q=private", {
+    expect(replace).not.toHaveBeenCalled();
+
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(replace).toHaveBeenLastCalledWith("/schools?q=Lew", {
       scroll: false,
     });
   });
 
+  it("syncs single-character search to URL after debounce", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    fireEvent.change(screen.getByLabelText("Buscar escola pelo nome"), {
+      target: { value: "L" },
+    });
+
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(replace).toHaveBeenLastCalledWith("/schools?q=L", {
+      scroll: false,
+    });
+  });
+
+  it('shows "Atualizando…" while search is pending', () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    fireEvent.change(screen.getByLabelText("Buscar escola pelo nome"), {
+      target: { value: "Lew" },
+    });
+
+    expect(screen.getByText(/Atualizando/)).toBeVisible();
+
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(screen.queryByText(/Atualizando/)).not.toBeInTheDocument();
+  });
+
+  it("applies coverage sort from URL params to rendered results", () => {
+    params = new URLSearchParams("sort=coverage");
+    const schools = getSchoolDirectoryItems();
+    const expectedOrder = sortSchools(schools, "coverage").map(
+      (school) => school.name,
+    );
+
+    render(<SchoolDirectory schools={schools} />);
+
+    const resultsSection = screen.getByLabelText("Resultados de escolas");
+    const headings = within(resultsSection)
+      .getAllByRole("heading", { level: 2 })
+      .map((heading) => heading.textContent);
+
+    expect(headings).toEqual(expectedOrder);
+  });
+
+  it("omits sort param from URL when using default name sort", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    fireEvent.change(screen.getByLabelText("Buscar escola pelo nome"), {
+      target: { value: "Lew" },
+    });
+
+    act(() => {
+      jest.advanceTimersByTime(300);
+    });
+
+    expect(replace).toHaveBeenLastCalledWith("/schools?q=Lew", {
+      scroll: false,
+    });
+  });
+
+  it("renders dynamic research-depth header counts from dataset", () => {
+    const schools = getSchoolDirectoryItems();
+    const detailedCount = schools.filter(
+      (school) => school.coverageLevel === "detailed",
+    ).length;
+    const directoryCount = schools.filter(
+      (school) => school.coverageLevel === "directory",
+    ).length;
+
+    render(<SchoolDirectory schools={schools} />);
+
+    expect(
+      screen.getByText(
+        `${detailedCount} escolas com perfil detalhado · ${directoryCount} com dados oficiais`,
+      ),
+    ).toBeVisible();
+  });
+
+  it("syncs search input when query param changes via navigation", () => {
+    params = new URLSearchParams("q=Adam");
+    const { rerender } = render(
+      <SchoolDirectory schools={getSchoolDirectoryItems()} />,
+    );
+
+    expect(screen.getByLabelText("Buscar escola pelo nome")).toHaveValue("Adam");
+
+    params = new URLSearchParams("q=Lew");
+    rerender(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(screen.getByLabelText("Buscar escola pelo nome")).toHaveValue("Lew");
+  });
+
   it("filters initial results from query parameters", () => {
-    params = new URLSearchParams("district=Mitte");
+    params = new URLSearchParams("neighbourhood=Karlshorst");
 
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
-    expect(screen.getByText("1 de 7 escolas encontradas")).toBeVisible();
+    expect(screen.getByText("4 de 10 escolas encontradas")).toBeVisible();
     expect(
-      screen.getByRole("heading", { name: "Synthetic Directory School" }),
+      screen.getByRole("heading", { name: "Lew-Tolstoi-Schule" }),
     ).toBeVisible();
+  });
+
+  it("links to guides and methodology from the header", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.getByRole("link", { name: /novo em berlim\? comece pelos guias/i }),
+    ).toHaveAttribute("href", "/guides");
+    expect(
+      screen.getByRole("link", { name: /como funciona nossa pesquisa/i }),
+    ).toHaveAttribute("href", "/methodology");
+  });
+
+  it('renders "Ordenar por" select with three sort options', () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(screen.getByText("Ordenar por")).toBeVisible();
+    const sortSelect = screen.getByLabelText("Ordenar resultados do diretório");
+    expect(sortSelect).toBeVisible();
+    expect(screen.getByRole("option", { name: "Nome (A–Z)" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("option", { name: "Cobertura da pesquisa" }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("option", { name: "Perfil detalhado primeiro" }),
+    ).toBeInTheDocument();
+  });
+
+  it("updates URL immediately when sort changes to coverage", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    fireEvent.change(screen.getByLabelText("Ordenar resultados do diretório"), {
+      target: { value: "coverage" },
+    });
+
+    expect(replace).toHaveBeenLastCalledWith("/schools?sort=coverage", {
+      scroll: false,
+    });
+  });
+
+  it("shows sticky mobile Filtros button with lg:hidden wrapper", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    const stickyBar = screen
+      .getByRole("button", { name: "Filtros" })
+      .closest(".lg\\:hidden");
+    expect(stickyBar).toBeInTheDocument();
+  });
+
+  it('shows "Filtros (2 ativos)" when two filters are active', () => {
+    params = new URLSearchParams("district=Lichtenberg&bilingual=yes");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.getByRole("button", { name: "Filtros (2 ativos)" }),
+    ).toBeVisible();
+  });
+
+  it("does not update URL when toggling a filter inside the mobile sheet until Apply", async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    await user.click(screen.getByRole("button", { name: "Filtros" }));
+    replace.mockClear();
+
+    const sheet = screen.getByRole("dialog");
+    await user.click(within(sheet).getByLabelText("Lichtenberg"));
+
+    expect(replace).not.toHaveBeenCalled();
+  });
+
+  it("applies draft filters when the mobile sheet closes", async () => {
+    const user = userEvent.setup({ advanceTimers: jest.advanceTimersByTime });
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    await user.click(screen.getByRole("button", { name: "Filtros" }));
+
+    const sheet = screen.getByRole("dialog");
+    await user.click(within(sheet).getByLabelText("Lichtenberg"));
+    replace.mockClear();
+
+    await user.click(screen.getByRole("button", { name: "Fechar menu de navegação" }));
+
+    expect(replace).toHaveBeenLastCalledWith("/schools?district=Lichtenberg", {
+      scroll: false,
+    });
+  });
+
+  it("keeps desktop sidebar filters without inline mobile expand controls", () => {
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    const aside = screen.getByRole("complementary");
+    expect(within(aside).getByText("Filtros essenciais")).toBeInTheDocument();
+    expect(screen.queryByText("Abrir filtros")).not.toBeInTheDocument();
+    expect(screen.queryByText("Fechar filtros")).not.toBeInTheDocument();
+  });
+
+  it("shows few-results tip when one or two schools match", () => {
+    params = new URLSearchParams("q=Lew-Tolstoi");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.getByText("Poucos resultados — tente remover filtros"),
+    ).toBeVisible();
+  });
+
+  it("does not show few-results tip when three or more schools match", () => {
+    params = new URLSearchParams("neighbourhood=Karlshorst");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.queryByText("Poucos resultados — tente remover filtros"),
+    ).not.toBeInTheDocument();
+  });
+
+  it("does not show few-results tip when zero schools match", () => {
+    params = new URLSearchParams("q=sem-resultado-inexistente");
+
+    render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+    expect(
+      screen.queryByText("Poucos resultados — tente remover filtros"),
+    ).not.toBeInTheDocument();
+  });
+
+  describe("compare selection", () => {
+    it("initializes compare toggles from URL compare param", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule,adam-ries-schule");
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+      expect(screen.getAllByRole("button", { name: "Na comparação" })).toHaveLength(
+        2,
+      );
+    });
+
+    it("updates compare param while preserving search and filter params", () => {
+      params = new URLSearchParams(
+        "q=Lew&district=Lichtenberg&compare=lew-tolstoi-schule",
+      );
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+      replace.mockClear();
+
+      const heading = screen.getByRole("heading", { name: /Lew-Tolstoi-Schule/ });
+      fireEvent.click(
+        within(heading.closest("article")!).getByRole("button", {
+          name: "Na comparação",
+        }),
+      );
+
+      expect(replace).toHaveBeenLastCalledWith("/schools?q=Lew&district=Lichtenberg", {
+        scroll: false,
+      });
+    });
+
+    it("preserves active filters when adding another school to compare", () => {
+      params = new URLSearchParams(
+        "district=Lichtenberg&compare=lew-tolstoi-schule",
+      );
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+      replace.mockClear();
+
+      const heading = screen.getByRole("heading", { name: /Adam-Ries-Schule/ });
+      fireEvent.click(
+        within(heading.closest("article")!).getByRole("button", {
+          name: "Adicionar à comparação",
+        }),
+      );
+
+      expect(replace).toHaveBeenLastCalledWith(
+        "/schools?district=Lichtenberg&compare=lew-tolstoi-schule%2Cadam-ries-schule",
+        { scroll: false },
+      );
+    });
+
+    it("omits compare param from URL when selection is cleared", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule");
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+      replace.mockClear();
+
+      const heading = screen.getByRole("heading", { name: /Lew-Tolstoi-Schule/ });
+      fireEvent.click(
+        within(heading.closest("article")!).getByRole("button", {
+          name: "Na comparação",
+        }),
+      );
+
+      expect(replace).toHaveBeenLastCalledWith("/schools", { scroll: false });
+    });
+
+    it("renders CompareBar when at least one school is selected", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule");
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+      expect(screen.getByText("1 escola selecionada")).toBeVisible();
+      expect(
+        screen.getByRole("region", { name: "Comparação de escolas" }),
+      ).toBeVisible();
+    });
+
+    it("adds bottom spacer when compare bar is visible", () => {
+      params = new URLSearchParams("compare=lew-tolstoi-schule");
+
+      const { container } = render(
+        <SchoolDirectory schools={getSchoolDirectoryItems()} />,
+      );
+
+      expect(container.querySelector(".pb-24")).toBeInTheDocument();
+    });
+
+    it("restores compare selection from sessionStorage when URL has no compare param", () => {
+      writeStoredCompareSlugs(["lew-tolstoi-schule"]);
+
+      render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
+
+      expect(replace).toHaveBeenCalledWith("/schools?compare=lew-tolstoi-schule", {
+        scroll: false,
+      });
+    });
   });
 });

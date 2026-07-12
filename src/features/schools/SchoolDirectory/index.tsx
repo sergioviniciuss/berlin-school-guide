@@ -1,9 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { ActiveFilterSummary } from "@/features/schools/ActiveFilterSummary";
+import { CompareBar } from "@/features/schools/CompareBar";
+import { countActiveFilters } from "@/features/schools/countActiveFilters";
 import {
   defaultDirectoryFilters,
   filterSchools,
@@ -13,9 +16,28 @@ import type {
   SchoolDirectoryItem,
 } from "@/features/schools/filterSchools/types";
 import { getDirectoryFilterOptions } from "@/features/schools/getDirectoryFilterOptions";
+import { MobileFilterSheet } from "@/features/schools/MobileFilterSheet";
+import { SchoolDirectorySort } from "@/features/schools/SchoolDirectorySort";
 import { SchoolFilters } from "@/features/schools/SchoolFilters";
 import { SchoolResults } from "@/features/schools/SchoolResults";
 import { SchoolSearch } from "@/features/schools/SchoolSearch";
+import {
+  SORT_PARAM,
+  sortFromSearchParams,
+  sortSchools,
+} from "@/features/schools/sortSchools";
+import type { DirectorySortKey } from "@/features/schools/sortSchools/types";
+import { useDebouncedValue } from "@/features/schools/useDebouncedValue";
+import {
+  MAX_COMPARE_SCHOOLS,
+  readStoredCompareSlugs,
+  toggleCompareSlug,
+  writeStoredCompareSlugs,
+} from "@/features/schools/compareSelection";
+import {
+  COMPARE_PARAM,
+  parseCompareSlugs,
+} from "@/features/schools/parseCompareSlugs";
 
 type SchoolDirectoryProps = {
   schools: SchoolDirectoryItem[];
@@ -40,12 +62,33 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const [draftFilters, setDraftFilters] = useState(defaultDirectoryFilters);
 
   const filters = useMemo(
     () => filtersFromSearchParams(searchParams),
     [searchParams],
   );
+  const sortKey = useMemo(
+    () => sortFromSearchParams(searchParams),
+    [searchParams],
+  );
+  const selectedCompareSlugs = useMemo(
+    () => parseCompareSlugs(searchParams.get(COMPARE_PARAM)),
+    [searchParams],
+  );
+  const [searchInput, setSearchInput] = useState(filters.query);
+  const [syncedQuery, setSyncedQuery] = useState(filters.query);
+
+  if (filters.query !== syncedQuery) {
+    setSyncedQuery(filters.query);
+    setSearchInput(filters.query);
+  }
+
+  const debouncedQuery = useDebouncedValue(searchInput, 300);
+  const isSearchPending = searchInput !== debouncedQuery;
+  const activeFilterCount = countActiveFilters(filters);
+
   const filterOptions = useMemo(
     () => getDirectoryFilterOptions(schools),
     [schools],
@@ -54,16 +97,87 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     () => filterSchools(schools, filters),
     [schools, filters],
   );
+  const sortedSchools = useMemo(
+    () => sortSchools(filteredSchools, sortKey),
+    [filteredSchools, sortKey],
+  );
+
+  const detailedCount = schools.filter(
+    (school) => school.coverageLevel === "detailed",
+  ).length;
+  const directoryCount = schools.filter(
+    (school) => school.coverageLevel === "directory",
+  ).length;
 
   const updateFilters = (nextFilters: DirectoryFilterState) => {
-    router.replace(`${pathname}${toQueryString(nextFilters)}`, {
-      scroll: false,
-    });
+    router.replace(
+      `${pathname}${toQueryString(nextFilters, sortKey, selectedCompareSlugs)}`,
+      {
+        scroll: false,
+      },
+    );
   };
 
-  const setQuery = (query: string) => {
-    updateFilters({ ...filters, query });
+  const setSortKey = (key: DirectorySortKey) => {
+    router.replace(
+      `${pathname}${toQueryString(filters, key, selectedCompareSlugs)}`,
+      {
+        scroll: false,
+      },
+    );
   };
+
+  const toggleCompareSlugHandler = (slug: string) => {
+    const nextSlugs = toggleCompareSlug(selectedCompareSlugs, slug);
+    writeStoredCompareSlugs(nextSlugs);
+    router.replace(
+      `${pathname}${toQueryString(filters, sortKey, nextSlugs)}`,
+      { scroll: false },
+    );
+  };
+
+  const hasRestoredCompare = useRef(false);
+
+  useEffect(() => {
+    if (!hasRestoredCompare.current) {
+      return;
+    }
+
+    writeStoredCompareSlugs(selectedCompareSlugs);
+  }, [selectedCompareSlugs]);
+
+  useEffect(() => {
+    if (hasRestoredCompare.current) {
+      return;
+    }
+
+    const fromUrl = parseCompareSlugs(searchParams.get(COMPARE_PARAM));
+
+    if (fromUrl.length > 0) {
+      hasRestoredCompare.current = true;
+      writeStoredCompareSlugs(fromUrl);
+      return;
+    }
+
+    const stored = readStoredCompareSlugs();
+    if (stored.length > 0) {
+      router.replace(
+        `${pathname}${toQueryString(filters, sortKey, stored)}`,
+        { scroll: false },
+      );
+      return;
+    }
+
+    hasRestoredCompare.current = true;
+  }, [filters, pathname, router, searchParams, sortKey]);
+
+  useEffect(() => {
+    if (debouncedQuery === filters.query) {
+      return;
+    }
+
+    updateFilters({ ...filters, query: debouncedQuery });
+  }, [debouncedQuery, filters, sortKey, pathname, router]);
 
   const toggleFilter = (key: keyof DirectoryFilterState, value: string) => {
     const current = filters[key];
@@ -77,6 +191,43 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
       : [...current, value];
 
     updateFilters({ ...filters, [key]: nextValues });
+  };
+
+  const draftToggle = (key: keyof DirectoryFilterState, value: string) => {
+    setDraftFilters((draft) => {
+      const current = draft[key];
+      if (!Array.isArray(current)) {
+        return draft;
+      }
+
+      const currentValues = current.map(String);
+      const nextValues = currentValues.includes(value)
+        ? currentValues.filter((entry) => entry !== value)
+        : [...currentValues, value];
+
+      return { ...draft, [key]: nextValues };
+    });
+  };
+
+  const handleSheetOpenChange = (open: boolean) => {
+    if (open) {
+      setDraftFilters(filters);
+      setSheetOpen(true);
+      return;
+    }
+
+    updateFilters(draftFilters);
+    setSheetOpen(false);
+  };
+
+  const handleApplyDraft = () => {
+    updateFilters(draftFilters);
+    setSheetOpen(false);
+  };
+
+  const handleClearAndApply = () => {
+    setDraftFilters(defaultDirectoryFilters);
+    updateFilters(defaultDirectoryFilters);
   };
 
   const removeFilter = (key: keyof DirectoryFilterState, value?: string) => {
@@ -98,22 +249,39 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
 
   const resetFilters = () => updateFilters(defaultDirectoryFilters);
 
+  const mobileFilterLabel =
+    activeFilterCount > 0
+      ? `Filtros (${activeFilterCount} ativos)`
+      : "Filtros";
+
   return (
     <div className="space-y-8">
       <header className="space-y-3">
         <p className="text-sm font-semibold uppercase text-blue-700">
-          Diretório estático
+          Berlin School Guide
         </p>
         <h1 className="text-4xl font-semibold text-neutral-950">Escolas</h1>
         <p className="max-w-3xl text-lg leading-8 text-neutral-700">
-          Busque e filtre escolas sintéticas para validar a experiência do
-          diretório. A cobertura da pesquisa indica completude dos dados, não
-          qualidade da escola.
+          Explore escolas primárias em Berlim com informações verificadas e
+          transparência sobre o que ainda não confirmamos. Começamos por
+          Lichtenberg — mais distritos em breve. A cobertura da pesquisa mede
+          completude dos dados neste nível, não qualidade da escola.{" "}
+          <Link href="/guides" className="font-medium text-blue-700 underline">
+            Novo em Berlim? Comece pelos guias
+          </Link>{" "}
+          ·{" "}
+          <Link href="/methodology" className="font-medium text-blue-700 underline">
+            Como funciona nossa pesquisa?
+          </Link>
+        </p>
+        <p className="text-sm text-neutral-600">
+          {detailedCount} escolas com perfil detalhado · {directoryCount} com
+          dados oficiais
         </p>
       </header>
 
       <div className="grid gap-8 lg:grid-cols-[18rem_1fr]">
-        <aside className="hidden lg:block">
+        <aside className="hidden lg:block" role="complementary">
           <div className="sticky top-6 rounded-lg border border-neutral-200 bg-white p-5">
             <h2 className="mb-5 text-lg font-semibold text-neutral-950">
               Filtros
@@ -127,31 +295,29 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
         </aside>
 
         <section className="space-y-6">
-          <SchoolSearch value={filters.query} onChange={setQuery} />
+          <SchoolSearch value={searchInput} onChange={setSearchInput} />
 
-          <div className="lg:hidden">
+          <div className="sticky top-0 z-10 border-b border-neutral-200 bg-white py-3 lg:hidden">
             <button
               type="button"
-              onClick={() => setMobileFiltersOpen((open) => !open)}
-              className="rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-900"
-              aria-expanded={mobileFiltersOpen}
-              aria-controls="mobile-school-filters"
+              onClick={() => handleSheetOpenChange(true)}
+              className="min-h-11 rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-900"
+              aria-expanded={sheetOpen}
+              aria-controls="mobile-school-filters-sheet"
             >
-              {mobileFiltersOpen ? "Fechar filtros" : "Abrir filtros"}
+              {mobileFilterLabel}
             </button>
-            {mobileFiltersOpen ? (
-              <div
-                id="mobile-school-filters"
-                className="mt-4 rounded-lg border border-neutral-200 bg-white p-5"
-              >
-                <SchoolFilters
-                  filters={filters}
-                  options={filterOptions}
-                  onToggle={toggleFilter}
-                />
-              </div>
-            ) : null}
           </div>
+
+          <MobileFilterSheet
+            open={sheetOpen}
+            onOpenChange={handleSheetOpenChange}
+            draftFilters={draftFilters}
+            filterOptions={filterOptions}
+            onDraftToggle={draftToggle}
+            onApply={handleApplyDraft}
+            onClearAndApply={handleClearAndApply}
+          />
 
           <ActiveFilterSummary
             filters={filters}
@@ -159,13 +325,39 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
             onReset={resetFilters}
           />
 
-          <p aria-live="polite" className="text-sm text-neutral-700">
-            {filteredSchools.length} de {schools.length} escolas encontradas
-          </p>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p aria-live="polite" className="text-sm text-neutral-700">
+              {sortedSchools.length} de {schools.length} escolas encontradas
+              {isSearchPending ? (
+                <span className="text-neutral-500"> · Atualizando…</span>
+              ) : null}
+            </p>
+            <SchoolDirectorySort value={sortKey} onChange={setSortKey} />
+          </div>
 
-          <SchoolResults schools={filteredSchools} />
+          {sortedSchools.length >= 1 && sortedSchools.length <= 2 ? (
+            <p className="text-sm text-neutral-600">
+              Poucos resultados — tente remover filtros
+            </p>
+          ) : null}
+
+          <SchoolResults
+            schools={sortedSchools}
+            filters={filters}
+            totalCount={schools.length}
+            selectedCompareSlugs={selectedCompareSlugs}
+            onToggleCompare={toggleCompareSlugHandler}
+            maxCompareSelection={MAX_COMPARE_SCHOOLS}
+            onClearSearch={() => {
+              setSearchInput("");
+              updateFilters({ ...filters, query: "" });
+            }}
+            onResetFilters={resetFilters}
+          />
         </section>
       </div>
+      {selectedCompareSlugs.length > 0 ? <div className="pb-24" aria-hidden /> : null}
+      <CompareBar selectedSlugs={selectedCompareSlugs} />
     </div>
   );
 }
@@ -203,7 +395,11 @@ function filtersFromSearchParams(
   };
 }
 
-function toQueryString(filters: DirectoryFilterState) {
+function toQueryString(
+  filters: DirectoryFilterState,
+  sortKey: DirectorySortKey = "name",
+  compareSlugs: string[] = [],
+) {
   const params = new URLSearchParams();
 
   if (filters.query) {
@@ -223,6 +419,14 @@ function toQueryString(filters: DirectoryFilterState) {
         params.append(queryParamMap[key], String(value)),
       );
     }
+  }
+
+  if (sortKey !== "name") {
+    params.set(SORT_PARAM, sortKey);
+  }
+
+  if (compareSlugs.length > 0) {
+    params.set(COMPARE_PARAM, compareSlugs.join(","));
   }
 
   const queryString = params.toString();

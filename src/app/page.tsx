@@ -1,21 +1,29 @@
-import Link from "next/link";
-
-import { Button } from "@/components/ui/Button";
 import { GuideIntro } from "@/features/guides/GuideIntro";
+import { HomeJourneyCards } from "@/features/home/HomeJourneyCards";
+import { buildPageMetadata } from "@/features/siteMetadata";
+
+export const metadata = buildPageMetadata({
+  title: "Escolas primárias em Berlim para famílias brasileiras",
+  description:
+    "Informações verificadas com transparência sobre fontes, dados ausentes e limites da pesquisa — para você comparar opções com clareza.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex min-h-screen max-w-3xl flex-col justify-center gap-8 px-6 py-12">
+    <main className="mx-auto max-w-3xl space-y-12 px-6 py-12">
       <GuideIntro
-        eyebrow="M2"
-        title="Berlin School Guide"
-        description="Fundação estática validada para o futuro guia de escolas primárias em Berlim."
+        eyebrow="Berlin School Guide"
+        title="Escolas primárias em Berlim para famílias brasileiras"
+        description="Informações verificadas com transparência sobre fontes, dados ausentes e limites da pesquisa — para você comparar opções com clareza."
       />
-      <div>
-        <Button asChild>
-          <Link href="/guides/m2-smoke">Abrir página MDX</Link>
-        </Button>
-      </div>
+      <HomeJourneyCards />
+      <p className="text-base text-neutral-600">
+        <span className="font-medium">Cobertura inicial</span>
+        {" — "}Começamos com escolas em <strong>Lichtenberg</strong>. Outros
+        distritos de Berlim serão adicionados conforme expandimos a pesquisa —
+        sempre com a mesma transparência sobre fontes e limites.
+      </p>
     </main>
   );
 }

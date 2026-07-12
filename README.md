@@ -70,11 +70,14 @@ pnpm test:coverage
 pnpm validate:data
 pnpm build
 pnpm e2e
+pnpm e2e:ci
 pnpm format:check
 pnpm format
 ```
 
 The production build uses static export and must not require a production backend.
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for hosting, environment variables, and CI gates.
 
 ## Repository Layout
 
