@@ -4,6 +4,20 @@
 
 A static Next.js site in Brazilian Portuguese that helps Brazilian families living in Berlin understand the primary school system and compare nearby schools using evidence-backed, source-attributed information. V1 focuses on Lichtenberg public primary schools as the first geographic scope, with architecture that can expand to other Berlin districts later.
 
+## Current Milestone: v1.1 Understand the German & Berlin Education System
+
+**Goal:** Publish the definitive onboarding guide for Brazilian families moving to Germany — full education journey, major decision points, Berlin differences highlighted throughout, with timelines and diagrams instead of text walls.
+
+**Target features:**
+- German education path: Kita → Grundschule → secondary tracks → Abitur/Ausbildung → Uni/Hochschule
+- Non-Gymnasium university pathways (Ausbildung, Duales Studium, Fachabitur, etc.)
+- Berlin-specific differences woven throughout (e.g. 6-year Grundschule), not a Berlin-first structure
+- Visual timelines and decision diagrams; integrated glossary of key German terms
+- Flagship page prominently linked from homepage and `/guides`
+- Clarify relationship with existing `/guides/berlin-school-system` (complementary deep-dive on Berlin primary)
+
+**After v1.1:** Expand school coverage (Lichtenberg complete → districts → Berlin-wide)
+
 ## Core Value
 
 Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
@@ -36,11 +50,22 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Debounced search with result counts, URL-synced `q` param, and sort by name/coverage/tier — Phase 5 (2026-07-11)
 - ✓ Tiered filter panel (Essenciais/Avançados), mobile Sheet drawer, active-filter summary, contextual empty states — Phase 5 (2026-07-11)
 - ✓ Shareable directory URLs restore search, filters, and sort; research-depth cues on cards and header — Phase 5 (2026-07-11)
+- ✓ School comparison without quality rankings — Phase 6 (2026-07-11)
+- ✓ Essential parent guides (system guide + Primeiros passos checklist) — Phase 7 (2026-07-11)
+- ✓ Release readiness: CI e2e gates, SEO metadata, axe a11y, deployment docs, human UAT — Phase 8 (2026-07-12)
 
-### Active
-- [ ] Build comparison experience without quality rankings
-- [ ] Publish essential parent guides (system understanding + practical decision support)
-- [ ] Release readiness: accessibility, responsive behavior, SEO, static export validation
+### Active (v1.1)
+
+- [ ] Flagship German education system onboarding guide with visual timelines
+- [ ] Berlin difference callouts integrated throughout Germany-wide narrative
+- [ ] Homepage and Guides hub promote onboarding guide as primary entry point
+
+### Next Milestone (v1.2 — after v1.1)
+
+- [ ] Complete all Lichtenberg Grundschulen beyond the 10-school spike set
+- [ ] Expand to additional Berlin districts
+- [ ] Berlin-wide directory import (M8) and detailed pilot profiles (M9) as research capacity allows
+- [ ] Update README status section for public launch
 
 ### Out of Scope
 
@@ -81,9 +106,10 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 | Site navigation | `SiteHeader`/`SiteFooter` on all pages; live nav: Início, Escolas, Metodologia; profile route active state (Phase 3–4) |
 | Homepage | Fuller landing with journey cards to `/schools` and `/methodology` (Phase 3) |
 | Research workflow | `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` + `validateResearchDates` in `pnpm validate:data` |
-| Information architecture | `/`, `/schools`, `/schools/[slug]`, `/methodology` live; `/compare` and `/guides` not yet built |
-| Comparison | Philosophy in `docs/COMPARISON.md`; no `/compare` route or feature code |
-| School detail pages | `src/app/schools/[slug]/` with `SchoolProfile`, `SourcesSection`, evidence-labeled fields (Phase 4) |
+| Information architecture | `/`, `/schools`, `/schools/[slug]`, `/compare`, `/guides`, `/methodology` — all live |
+| Comparison | `/compare` with URL-synced selection, criteria table, limitations copy (Phase 6) |
+| Parent guides | `/guides`, `/guides/berlin-school-system`, `/guides/first-steps` (Phase 7) |
+| Release readiness | CI e2e smoke + a11y + metadata specs; `docs/DEPLOYMENT.md` (Phase 8) |
 
 #### 3. Resolved in Phase 1 (2026-07-11)
 
@@ -133,21 +159,20 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 
 **Reproducible (Phase 2).** `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` provides step-by-step checklist for humans and AI sessions. `validateResearchDates` enforces per-school date coherence; `validateFieldCitations` enforces citation completeness on verified fields. `/methodology` explains evidence and coverage to parents.
 
-#### 8. What prevents usable V1 today
+#### 8. V1 shipped (2026-07-12)
 
-1. **No comparison** — key parent workflow missing
-2. **No educational guides** — system explanation not published
-3. **Directory UX polish** — search/filter/sort usability deferred to Phase 5
+Lichtenberg Trustworthy Launch milestone complete: trustworthy data, full parent journey (home → directory → profile → compare → guides), and release gates (build, validate:data, e2e CI, SEO, a11y, deployment docs).
 
-#### 9. CONCERNS.md items required before launch
+**Optional before public launch:**
+- Set `NEXT_PUBLIC_SITE_URL` for production OG/canonical URLs
+- Update README status section
+- Choose static host and apply security headers from `docs/DEPLOYMENT.md`
 
-**Must resolve (remaining):**
-- Comparison experience (Phase 6)
+#### 9. CONCERNS.md follow-ups (non-blocking)
 
-**Should resolve:**
-- Document deployment security headers when host is chosen (Phase 8)
-- Add dependency scanning (Dependabot or `pnpm audit` in CI) (Phase 8)
-- Refresh e2e tests for new homepage journey (Phase 8)
+**Should resolve post-launch:**
+- Add dependency scanning (Dependabot or `pnpm audit` in CI)
+- Host-specific security headers when deployment target is chosen
 
 **Resolved in Phase 1:**
 - Homepage M2 scaffolding, directory synthetic copy, ganztag fallbacks, synthetic data isolation
@@ -190,7 +215,7 @@ All 10 schools cite **Senatsverwaltung Berlin official school portraits** (`bild
 | Static export, no backend | V1 scope, deploy simplicity, trust through transparency | ✓ Good — keep |
 | Field-level evidence model | Core product differentiator | ✓ Good — keep; fix fallbacks |
 | Official Berlin school portraits as primary source | Most authoritative basic metadata | ✓ Good — keep |
-| Lichtenberg-first geographic scope | Owner relevance + manageable research depth | — Pending V1 completion |
+| Lichtenberg-first geographic scope | Owner relevance + manageable research depth | ✓ Good — V1 shipped 2026-07-12 |
 | Evidence coverage = research completeness, not school quality | `docs/DECISIONS.md` 2026-07-10 | ✓ Good — coverage v2 implemented in Phase 1 |
 | Feature-first architecture | `AGENTS.md`, established codebase patterns | ✓ Good — keep |
 
@@ -212,4 +237,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-11 after Phase 5 completion*
+*Last updated: 2026-07-12 after v1.1 milestone kickoff*
