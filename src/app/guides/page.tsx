@@ -1,11 +1,13 @@
 import { GuideIntro } from "@/features/guides/GuideIntro";
 import { GuidesHub } from "@/features/guides/GuidesHub";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Guias",
   description:
     "Guias práticos para famílias brasileiras entenderem o sistema escolar primário de Berlim.",
-};
+  path: "/guides",
+});
 
 export default function GuidesPage() {
   return (

@@ -3,14 +3,11 @@ import type { ReactNode } from "react";
 
 import { SiteFooter } from "@/features/navigation/SiteFooter";
 import { SiteHeader } from "@/features/navigation/SiteHeader";
+import { siteMetadataDefaults } from "@/features/siteMetadata";
 
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "Berlin School Guide",
-  description:
-    "Guia de escolas primárias em Berlim para famílias brasileiras — com transparência sobre fontes e evidências.",
-};
+export const metadata: Metadata = siteMetadataDefaults;
 
 type RootLayoutProps = {
   children: ReactNode;

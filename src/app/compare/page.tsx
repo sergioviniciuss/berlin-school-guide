@@ -1,12 +1,14 @@
 import { Suspense } from "react";
 
 import { SchoolComparison } from "@/features/schools/SchoolComparison";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Comparar",
   description:
     "Compare critérios de escolas primárias em Berlim lado a lado, com status de evidência e limitações claras — sem ranking de qualidade.",
-};
+  path: "/compare",
+});
 
 export default function ComparePage() {
   return (

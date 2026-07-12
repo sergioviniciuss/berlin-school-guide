@@ -13,6 +13,7 @@
     "test:coverage": "jest --coverage",
     "validate:data": "tsx src/features/schools/validateSchools/index.ts",
     "e2e": "playwright test",
+    "e2e:ci": "playwright test --config playwright.ci.config.ts",
     "format": "prettier . --write",
     "format:check": "prettier . --check"
   },
@@ -32,6 +33,7 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.10.2",
     "@playwright/test": "1.61.1",
     "@tailwindcss/postcss": "4.3.2",
     "@testing-library/jest-dom": "6.9.1",
@@ -49,6 +51,7 @@
     "jest-environment-jsdom": "30.4.1",
     "postcss": "8.5.16",
     "prettier": "3.9.4",
+    "serve": "14.2.4",
     "tailwindcss": "4.3.2",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "4.21.0",

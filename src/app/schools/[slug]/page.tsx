@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getSchoolBySlug } from "@/features/schools/getSchoolBySlug";
 import { SchoolProfile } from "@/features/schools/SchoolProfile";
 import { getRealSchools } from "@/features/schools/schoolDirectoryData";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
 export const dynamicParams = false;
 
@@ -19,10 +20,11 @@ export async function generateMetadata({
   const school = getSchoolBySlug(slug);
   if (!school) return { title: "Escola não encontrada" };
   const district = school.location.district.value ?? "Berlim";
-  return {
-    title: `${school.name.value} — Berlin School Guide`,
+  return buildPageMetadata({
+    title: school.name.value ?? "Escola",
     description: `Perfil de ${school.name.value} em ${district} com status de evidência em cada informação — o que confirmamos, o que falta e de onde veio.`,
-  };
+    path: `/schools/${slug}`,
+  });
 }
 
 export default async function SchoolProfilePage({

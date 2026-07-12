@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { CompareToggleButton } from "@/features/schools/CompareToggleButton";
 import {
@@ -17,11 +17,9 @@ type SchoolProfileCompareActionProps = {
 export function SchoolProfileCompareAction({
   slug,
 }: SchoolProfileCompareActionProps) {
-  const [selectedSlugs, setSelectedSlugs] = useState<string[]>([]);
-
-  useEffect(() => {
-    setSelectedSlugs(readStoredCompareSlugs());
-  }, []);
+  const [selectedSlugs, setSelectedSlugs] = useState(() =>
+    readStoredCompareSlugs(),
+  );
 
   const isSelected = selectedSlugs.includes(slug);
   const selectionFull =

@@ -1,11 +1,13 @@
 import { GuideIntro } from "@/features/guides/GuideIntro";
 import { HomeJourneyCards } from "@/features/home/HomeJourneyCards";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
-export const metadata = {
-  title: "Berlin School Guide",
+export const metadata = buildPageMetadata({
+  title: "Escolas primárias em Berlim para famílias brasileiras",
   description:
-    "Guia de escolas primárias em Berlim para famílias brasileiras — com transparência sobre fontes e evidências.",
-};
+    "Informações verificadas com transparência sobre fontes, dados ausentes e limites da pesquisa — para você comparar opções com clareza.",
+  path: "/",
+});
 
 export default function HomePage() {
   return (

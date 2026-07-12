@@ -1,11 +1,13 @@
 import BerlinSchoolSystemGuide from "@/content/guides/berlin-school-system.mdx";
 import { GuideIntro } from "@/features/guides/GuideIntro";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Sistema escolar primário em Berlim",
   description:
     "Grundschule, matrícula, Einzugsgebiet, Ganztag e o que verificar antes de escolher uma escola primária em Berlim.",
-};
+  path: "/guides/berlin-school-system",
+});
 
 export default function BerlinSchoolSystemPage() {
   return (

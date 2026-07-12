@@ -1,11 +1,13 @@
 import MethodologyGuide from "@/content/guides/methodology.mdx";
 import { GuideIntro } from "@/features/guides/GuideIntro";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Metodologia",
   description:
     "Como interpretamos evidências, dados ausentes e cobertura da pesquisa.",
-};
+  path: "/methodology",
+});
 
 export default function MethodologyPage() {
   return (

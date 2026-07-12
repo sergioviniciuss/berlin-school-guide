@@ -1,12 +1,14 @@
 import FirstStepsGuide from "@/content/guides/first-steps.mdx";
 import { GuideIntro } from "@/features/guides/GuideIntro";
 import { GuidePrintButton } from "@/features/guides/GuidePrintButton";
+import { buildPageMetadata } from "@/features/siteMetadata";
 
-export const metadata = {
+export const metadata = buildPageMetadata({
   title: "Primeiros passos",
   description:
     "Checklist prática para famílias recém-chegadas: área de matrícula, documentos, visitas e perguntas antes de iniciar a matrícula em Berlim.",
-};
+  path: "/guides/first-steps",
+});
 
 export default function FirstStepsPage() {
   return (

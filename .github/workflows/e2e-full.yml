@@ -1,0 +1,58 @@
+name: E2E Full
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  e2e-full:
+    name: E2E (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox, webkit]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare pnpm
+        run: corepack prepare pnpm@11.11.0 --activate
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test
+
+      - name: Validate data
+        run: pnpm validate:data
+
+      - name: Build
+        run: pnpm build
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install ${{ matrix.browser }} --with-deps
+
+      - name: Run full e2e suite
+        run: pnpm exec playwright test --config playwright.ci.config.ts --project=${{ matrix.browser }}
+        env:
+          PLAYWRIGHT_PROJECT: ${{ matrix.browser }}

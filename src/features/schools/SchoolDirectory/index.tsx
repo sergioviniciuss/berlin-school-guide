@@ -78,6 +78,13 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
     [searchParams],
   );
   const [searchInput, setSearchInput] = useState(filters.query);
+  const [syncedQuery, setSyncedQuery] = useState(filters.query);
+
+  if (filters.query !== syncedQuery) {
+    setSyncedQuery(filters.query);
+    setSearchInput(filters.query);
+  }
+
   const debouncedQuery = useDebouncedValue(searchInput, 300);
   const isSearchPending = searchInput !== debouncedQuery;
   const activeFilterCount = countActiveFilters(filters);
@@ -171,10 +178,6 @@ export function SchoolDirectory({ schools }: SchoolDirectoryProps) {
 
     updateFilters({ ...filters, query: debouncedQuery });
   }, [debouncedQuery, filters, sortKey, pathname, router]);
-
-  useEffect(() => {
-    setSearchInput(filters.query);
-  }, [filters.query]);
 
   const toggleFilter = (key: keyof DirectoryFilterState, value: string) => {
     const current = filters[key];
