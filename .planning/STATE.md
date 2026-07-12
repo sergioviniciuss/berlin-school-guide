@@ -4,14 +4,14 @@ milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
 status: executing
 stopped_at: Phase 9 context gathered
-last_updated: "2026-07-12T18:29:01.366Z"
-last_activity: 2026-07-12 -- Phase 9 planning complete
+last_updated: "2026-07-12T18:36:08.861Z"
+last_activity: 2026-07-12
 progress:
   total_phases: 3
   completed_phases: 0
   total_plans: 3
-  completed_plans: 0
-  percent: 0
+  completed_plans: 1
+  percent: 33
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-12)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** v1.1 onboarding guide — German education system with Berlin differences throughout
+**Current focus:** Phase 9 — Onboarding Guide Visual Foundation
 
 ## Current Position
 
-Phase: Not started (Phase 9 next)
-Plan: —
+Phase: 9 (Onboarding Guide Visual Foundation) — EXECUTING
+Plan: 2 of 3
 Status: Ready to execute
-Last activity: 2026-07-12 -- Phase 9 planning complete
+Last activity: 2026-07-12
 
-Progress: [████████░░] 73% (8/11 phases shipped)
+Progress: [███░░░░░░░] 33%
 
 ## Performance Metrics
 
@@ -40,15 +40,24 @@ Progress: [████████░░] 73% (8/11 phases shipped)
 - v1.0 phases completed: 8/8
 - v1.1 phases planned: 3 (9–11)
 
+| Plan | Duration | Tasks | Files |
+|------|----------|-------|-------|
+| Phase 09 P01 | 25min | 2 tasks | 5 files |
+
+## Decisions
+
+- GlossaryTerm omits types.ts; two-field prop type stays local to index.tsx per StatusBadge convention
+- BerlinCallout summary variant is an unmargined block-level aside so it composes freely in MDX/prose
+
 ## Blockers/Concerns
 
 - None
 
 ## Session Continuity
 
-Last session: 2026-07-12T17:59:38.644Z
+Last session: 2026-07-12T18:34:36.412Z
 Stopped at: Phase 9 context gathered
-Resume file: .planning/phases/09-onboarding-guide-visual-foundation/09-CONTEXT.md
+Resume file: None
 
 ## Operator Next Steps
 

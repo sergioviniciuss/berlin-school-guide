@@ -43,7 +43,7 @@ Full details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
   4. Components are responsive on mobile and desktop without horizontal overflow
 **Plans**: 3 plans
 Plans:
-- [ ] 09-01-PLAN.md — BerlinCallout + GlossaryTerm components (VIS-03, VIS-01)
+- [x] 09-01-PLAN.md — BerlinCallout + GlossaryTerm components (VIS-03, VIS-01)
 - [ ] 09-02-PLAN.md — EducationTimeline branching infographic + TimelineNode (VIS-01, VIS-02)
 - [ ] 09-03-PLAN.md — Route shell, MDX registration, placeholder content, e2e coverage (VIS-01, VIS-02, VIS-03)
 **UI hint**: yes

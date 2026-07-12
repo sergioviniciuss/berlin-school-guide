@@ -18,9 +18,9 @@
 
 ### Visual Communication
 
-- [ ] **VIS-01**: Education journey is communicated with visual timeline(s), minimizing long unstructured text blocks
+- [x] **VIS-01**: Education journey is communicated with visual timeline(s), minimizing long unstructured text blocks
 - [ ] **VIS-02**: Pathway decision points use diagrams or structured visual branches (e.g. Gymnasium vs Realschule vs other tracks)
-- [ ] **VIS-03**: Berlin-specific callouts are visually distinct from Germany-wide content so families can scan differences quickly
+- [x] **VIS-03**: Berlin-specific callouts are visually distinct from Germany-wide content so families can scan differences quickly
 
 ### Discovery & Integration
 
@@ -67,9 +67,9 @@ Deferred until v1.1 ships.
 | ONBD-04 | Phase 10 | Pending |
 | ONBD-05 | Phase 10 | Pending |
 | ONBD-06 | Phase 11 | Pending |
-| VIS-01 | Phase 9 | Pending |
+| VIS-01 | Phase 9 | Complete |
 | VIS-02 | Phase 9 | Pending |
-| VIS-03 | Phase 9 | Pending |
+| VIS-03 | Phase 9 | Complete |
 | DISC-01 | Phase 11 | Pending |
 | DISC-02 | Phase 11 | Pending |
 | DISC-03 | Phase 11 | Pending |
