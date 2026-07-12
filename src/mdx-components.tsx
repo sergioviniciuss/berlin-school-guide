@@ -1,5 +1,8 @@
 import type { MDXComponents } from "mdx/types";
 
+import { BerlinCallout } from "@/features/guides/BerlinCallout";
+import { EducationTimeline } from "@/features/guides/EducationTimeline";
+import { GlossaryTerm } from "@/features/guides/GlossaryTerm";
 import {
   getTextContent,
   slugifyHeading,
@@ -56,6 +59,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     strong: ({ children }) => (
       <strong className="font-semibold text-neutral-950">{children}</strong>
     ),
+    EducationTimeline,
+    BerlinCallout,
+    GlossaryTerm,
     ...components,
   };
 }
