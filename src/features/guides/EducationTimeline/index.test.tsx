@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { EducationTimeline } from ".";
@@ -48,16 +48,21 @@ describe("EducationTimeline", () => {
       />,
     );
 
-    const trigger = screen.getByRole("button", {
+    const mobileRegion = screen.getAllByRole("region", {
+      name: REGION_LABEL,
+    })[1];
+    const trigger = within(mobileRegion).getByRole("button", {
       name: "Ver as vias do ensino secundário",
     });
     expect(trigger).toHaveAttribute("aria-expanded", "false");
-    expect(screen.queryByText("Gymnasium")).not.toBeInTheDocument();
+    expect(within(mobileRegion).queryByText("Gymnasium")).not.toBeInTheDocument();
 
     await user.click(trigger);
 
     expect(trigger).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getAllByText("Gymnasium").length).toBeGreaterThanOrEqual(1);
+    expect(
+      within(mobileRegion).getAllByText("Gymnasium").length,
+    ).toBeGreaterThanOrEqual(1);
   });
 
   it("shows the Berlin badge on the node's always-visible card face", () => {

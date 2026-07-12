@@ -25,6 +25,11 @@ body {
     display: none !important;
   }
 
+  .guide-print-expand {
+    display: block !important;
+    height: auto !important;
+  }
+
   header,
   footer {
     display: none !important;
