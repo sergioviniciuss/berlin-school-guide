@@ -6,8 +6,8 @@ const KITA: TimelineStage = {
   grades: "Educação infantil",
   ageRange: "Idade aprox. 0–6 anos",
   summary:
-    "A Kita é o primeiro contato com o sistema alemão de educação, com foco em cuidado e desenvolvimento infantil. Vagas e custos variam por Bezirk. (Conteúdo completo chega na Fase 10.)",
-  anchorHref: "#o-caminho-da-kita-a-universidade",
+    "A Kita é o primeiro contato de muitas famílias com o sistema alemão de educação, com foco em cuidado e desenvolvimento infantil. A frequência não é obrigatória, mas costuma facilitar a transição para a Grundschule. Organização e custos variam por município e Bezirk.",
+  anchorHref: "#antes-da-escola",
 };
 
 const GRUNDSCHULE: TimelineStage = {
@@ -16,8 +16,9 @@ const GRUNDSCHULE: TimelineStage = {
   grades: "1ª à 6ª série",
   ageRange: "Idade aproximada: 6–12 anos",
   summary:
-    "Em Berlim, a Grundschule dura seis anos antes da escolha do percurso secundário. Matrícula e área de captura dependem do Bezirk onde a família mora. (Conteúdo completo chega na Fase 10.)",
-  anchorHref: "#o-caminho-da-kita-a-universidade",
+    "A Grundschule é a escola primária obrigatória e a base comum de todas as crianças. Em Berlim ela dura seis anos, mais tempo do que na maioria dos outros estados alemães. Nela se formam as primeiras recomendações sobre o caminho secundário.",
+  berlinNote: "dura 6 anos, até a 6ª série",
+  anchorHref: "#ensino-primario",
 };
 
 const GYMNASIUM: TimelineStage = {
@@ -26,7 +27,8 @@ const GYMNASIUM: TimelineStage = {
   grades: "7ª à 12ª/13ª série",
   ageRange: "Idade aprox. 12–18/19 anos",
   summary:
-    "Caminho acadêmico que costuma levar ao Abitur, a qualificação de acesso à universidade. Não é a única via para o ensino superior. (Conteúdo completo chega na Fase 10.)",
+    "Percurso acadêmico que costuma preparar para o Abitur, a qualificação clássica de acesso à universidade. Em Berlim é uma das opções após a Grundschule, com o mesmo peso visual das demais vias. Não é o único caminho para o ensino superior.",
+  anchorHref: "#os-caminhos-possiveis",
 };
 
 const ISS: TimelineStage = {
@@ -35,7 +37,8 @@ const ISS: TimelineStage = {
   grades: "7ª à 10ª série",
   ageRange: "Idade aprox. 12–16 anos",
   summary:
-    "Modelo comum em Berlim que integra diferentes percursos no ensino secundário, com possibilidade de seguir para qualificações profissionais ou acadêmicas. (Conteúdo completo chega na Fase 10.)",
+    "Modelo comum em Berlim que reúne diferentes percursos no ensino secundário. A família pode mirar qualificações profissionais, o MSA ou rotas até o Abitur/Fachabitur, conforme o perfil da escola. É uma alternativa de peso equivalente ao Gymnasium.",
+  anchorHref: "#os-caminhos-possiveis",
 };
 
 const GEMEINSCHAFTSSCHULE: TimelineStage = {
@@ -44,7 +47,8 @@ const GEMEINSCHAFTSSCHULE: TimelineStage = {
   grades: "1ª à 10ª ou 13ª série",
   ageRange: "Idade aprox. 6–18/19 anos",
   summary:
-    "Escola comunitária berlinense que reúne primária e secundária no mesmo campus, com transição mais gradual entre etapas. (Conteúdo completo chega na Fase 10.)",
+    "Escola comunitária berlinense que pode reunir etapas primária e secundária no mesmo campus. A transição entre anos costuma ser mais gradual, com percursos acadêmicos e profissionais possíveis. É outra via principal no mapa berlinense pós-Grundschule.",
+  anchorHref: "#os-caminhos-possiveis",
 };
 
 const REALSCHULE: TimelineStage = {
@@ -53,7 +57,7 @@ const REALSCHULE: TimelineStage = {
   grades: "5ª à 10ª série",
   ageRange: "Idade aprox. 10–16 anos",
   summary:
-    "Modelo comum fora de Berlim; pode levar ao Fachabitur ou à Ausbildung. (Conteúdo completo chega na Fase 10.)",
+    "Modelo ainda comum em muitos estados alemães fora de Berlim. Costuma preparar para o ensino médio intermediário e pode abrir caminho para Fachabitur ou Ausbildung. Ajuda a entender como o sistema nacional difere do mapa berlinense.",
 };
 
 const HAUPTSCHULE: TimelineStage = {
@@ -62,7 +66,7 @@ const HAUPTSCHULE: TimelineStage = {
   grades: "5ª à 9ª/10ª série",
   ageRange: "Idade aprox. 10–15/16 anos",
   summary:
-    "Modelo comum fora de Berlim, voltado à formação profissional prática e à Ausbildung. (Conteúdo completo chega na Fase 10.)",
+    "Tipo de escola ainda presente em vários estados alemães, com ênfase prática e proximidade da formação profissional. Pode conduzir à Ausbildung e a qualificações escolares intermediárias. Em Berlim o papel correspondente costuma aparecer dentro de outros modelos.",
 };
 
 const AUSBILDUNG: TimelineStage = {
@@ -71,7 +75,8 @@ const AUSBILDUNG: TimelineStage = {
   grades: "Formação dual (escola + empresa)",
   ageRange: "Idade aprox. 16+ anos",
   summary:
-    "Formação profissional dual que combina aulas e trabalho remunerado em uma empresa, com rotas possíveis até o Duales Studium. (Conteúdo completo chega na Fase 10.)",
+    "Formação profissional dual que combina aulas na Berufsschule ou OSZ com trabalho remunerado em uma empresa. É uma rota consolidada no mercado alemão e não depende do Gymnasium. Em alguns casos abre portas para Duales Studium ou continuidade acadêmica.",
+  anchorHref: "#formacao-profissional",
 };
 
 const ENSINO_SUPERIOR: TimelineStage = {
@@ -80,8 +85,8 @@ const ENSINO_SUPERIOR: TimelineStage = {
   grades: "Graduação, Duales Studium ou pós-Abitur",
   ageRange: "Idade aprox. 18+ anos",
   summary:
-    "Depois do Abitur, Fachabitur ou de qualificações equivalentes, famílias avaliam universidade, Duales Studium ou formação avançada. (Conteúdo completo chega na Fase 10.)",
-  anchorHref: "#o-caminho-da-kita-a-universidade",
+    "Depois do Abitur, Fachabitur ou qualificações equivalentes, famílias avaliam Universität, Hochschule ou Duales Studium. O ponto de chegada importa menos do que o caminho que a família construiu até aqui. Várias rotas secundárias e profissionais podem chegar a este estágio.",
+  anchorHref: "#ensino-superior",
 };
 
 export const DEMO_TRUNK: TimelineStage[] = [KITA, GRUNDSCHULE];

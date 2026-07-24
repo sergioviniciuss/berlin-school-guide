@@ -14,7 +14,7 @@ export const grundschuleFixture: TimelineStage = {
   grades: "1ª à 6ª série",
   ageRange: "Idade aproximada: 6–12 anos",
   summary: "Resumo sintético de teste para a Grundschule.",
-  anchorHref: "#o-caminho-da-kita-a-universidade",
+  anchorHref: "#ensino-primario",
 };
 
 export const secondaryDecisionFixture: SecondaryDecisionBlock = {
