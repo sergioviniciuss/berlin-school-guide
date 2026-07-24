@@ -424,22 +424,25 @@ export function GlossaryTerm({ term, children }: GlossaryTermProps) {
 | A3 | No Fontes section required for system-level facts (Phase 7 berlin-school-system also omits one) | Editorial | If user wants citations, add a short Fontes with Senate links without blocking narrative |
 | A4 | Existing page metadata is good enough until Phase 11 REL-01 | Deferred scope | SEO suboptimal until Phase 11 — acceptable per CONTEXT |
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Secondary timeline anchors: shared vs per-H3?**
    - What we know: Only H2 auto-ids exist today; D-04 allows secondary paths “as applicable”; discretion covers the choice.
    - What's unclear: Whether “Ver seção completa” on Gymnasium should land on Gymnasium H3 specifically.
    - Recommendation: Start shared `#os-caminhos-possiveis`; add `h3` id mapping in `mdx-components.tsx` only if UAT asks for per-track jumps.
+   - RESOLVED: Use shared `#os-caminhos-possiveis` for all secondary timeline nodes. No `h3` ids / no `mdx-components.tsx` change in Phase 10 (locked in 10-01 / 10-03 plans).
 
 2. **Empfehlung vs Förderprognose terminology**
    - What we know: CONTEXT/D-13 list Empfehlung; Berlin official pages emphasize Förderprognose for the Jahrgang 7 transition.
    - What's unclear: Exact Portuguese gloss pairing.
    - Recommendation: Use Empfehlung for Germany-wide framing; introduce Förderprognose as Berlin’s written prognosis document; put both in Glossário.
+   - RESOLVED: Use both — Empfehlung for Germany-wide framing; Förderprognose as Berlin’s written prognosis. Both appear in transition prose (Plan 02) and Glossário (Plan 03). No Probejahr framing.
 
 3. **Should MDX add a Fontes section?**
    - What we know: EDITORIAL_GUIDE requires citations for school factual claims; system guides historically explain without a sources block.
    - What's unclear: Whether v1.1 onboarding should cite Senate URLs.
    - Recommendation: Optional short Fontes with 1–3 official links if transition/qualification claims need trust reinforcement; not a phase blocker.
+   - RESOLVED: Omit a dedicated Fontes section in Phase 10. Optional in-prose `https://` Senate links allowed where trust needs reinforcement; not required for ship.
 
 ## Environment Availability
 
