@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
 status: executing
-stopped_at: Completed 10-00-PLAN.md
-last_updated: "2026-07-24T21:00:57.496Z"
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-07-24T21:03:35.659Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 3
   completed_phases: 1
   total_plans: 7
-  completed_plans: 4
-  percent: 57
+  completed_plans: 5
+  percent: 71
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-07-12)
 ## Current Position
 
 Phase: 10 (Education Pathway Editorial) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 Status: Ready to execute
 Last activity: 2026-07-24
 
-Progress: [██████░░░░] 57%
+Progress: [███████░░░] 71%
 
 ## Performance Metrics
 
@@ -46,6 +46,7 @@ Progress: [██████░░░░] 57%
 | Phase 09 P02 | 20min | 3 tasks | 11 files |
 | Phase 09 P03 | 20min | 3 tasks | 4 files |
 | Phase 10 P00 | 1min | 2 tasks | 2 files |
+| Phase 10 P01 | 1min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -56,6 +57,8 @@ Progress: [██████░░░░] 57%
 - [Phase 09-03]: Route shell, MDX content, and Playwright tests followed the plan verbatim with no deviations; MDX heading text chosen to slugify exactly to the anchorHref already baked into EducationTimeline's demo data
 - [Phase 10-00]: Wave 0 ships tests only — no GlossaryTerm or constants.ts production changes
 - [Phase 10-00]: Anchor contract uses stage ids (kita, grundschule, …) for lookups
+- [Phase 10-01]: Shared secondary hash #os-caminhos-possiveis for Gymnasium/ISS/Gemeinschaftsschule (no mdx h3 remapping)
+- [Phase 10-01]: Grundschule berlinNote is concept-level only; no Einzugsgebiet/Anmeldung procedure copy
 
 ## Blockers/Concerns
 
@@ -63,8 +66,8 @@ Progress: [██████░░░░] 57%
 
 ## Session Continuity
 
-Last session: 2026-07-24T21:00:57.486Z
-Stopped at: Completed 10-00-PLAN.md
+Last session: 2026-07-24T21:03:35.648Z
+Stopped at: Completed 10-01-PLAN.md
 Resume file: None
 
 ## Operator Next Steps

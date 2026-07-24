@@ -9,7 +9,7 @@
 
 ### Onboarding Guide Content
 
-- [ ] **ONBD-01**: Flagship guide explains the full German education path from Kita through secondary school, vocational training, and higher education
+- [x] **ONBD-01**: Flagship guide explains the full German education path from Kita through secondary school, vocational training, and higher education
 - [ ] **ONBD-02**: Guide covers major decision points (school transitions, track selection, qualification routes) in plain Brazilian Portuguese
 - [ ] **ONBD-03**: Guide explains non-Gymnasium pathways to university or higher education (e.g. Ausbildung, Duales Studium, Fachabitur)
 - [ ] **ONBD-04**: Berlin-specific differences are highlighted throughout the Germany-wide narrative (not structured as a Berlin guide with a German appendix)
@@ -61,7 +61,7 @@ Deferred until v1.1 ships.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ONBD-01 | Phase 10 | Pending |
+| ONBD-01 | Phase 10 | Complete |
 | ONBD-02 | Phase 10 | Pending |
 | ONBD-03 | Phase 10 | Pending |
 | ONBD-04 | Phase 10 | Pending |
