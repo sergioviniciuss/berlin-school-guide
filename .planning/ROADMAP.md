@@ -61,7 +61,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 10-00-PLAN.md — Wave 0: GlossaryTerm id tests + timeline anchor contract tests
+- [x] 10-00-PLAN.md — Wave 0: GlossaryTerm id tests + timeline anchor contract tests
 - [ ] 10-01-PLAN.md — GlossaryTerm deep-link ids + EducationTimeline constants/fixtures sync
 - [ ] 10-02-PLAN.md — Early journey MDX (Antes → Depois da 6ª série) + verify #1
 - [ ] 10-03-PLAN.md — Pathways, vocational/higher-ed, Glossário, Berlin summary, e2e + human review
@@ -86,7 +86,7 @@ Plans:
 |-------|-----------|-------|--------|-----------|
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9 | v1.1 | 3/3 | Complete | 2026-07-12 |
-| 10 | v1.1 | 0/? | Not started | — |
+| 10 | v1.1 | 1/4 | In Progress|  |
 | 11 | v1.1 | 0/? | Not started | — |
 
 ## Future Backlog

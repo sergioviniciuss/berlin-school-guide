@@ -13,7 +13,7 @@
 - [ ] **ONBD-02**: Guide covers major decision points (school transitions, track selection, qualification routes) in plain Brazilian Portuguese
 - [ ] **ONBD-03**: Guide explains non-Gymnasium pathways to university or higher education (e.g. Ausbildung, Duales Studium, Fachabitur)
 - [ ] **ONBD-04**: Berlin-specific differences are highlighted throughout the Germany-wide narrative (not structured as a Berlin guide with a German appendix)
-- [ ] **ONBD-05**: Integrated glossary explains key German terms (Ganztag, Hort, Willkommensklasse, Ausbildung, Duales Studium, Fachabitur, and related concepts)
+- [x] **ONBD-05**: Integrated glossary explains key German terms (Ganztag, Hort, Willkommensklasse, Ausbildung, Duales Studium, Fachabitur, and related concepts)
 - [ ] **ONBD-06**: Guide positions the site as definitive onboarding for Brazilian families moving to Germany, with clear next steps toward directory/comparison/guides
 
 ### Visual Communication
@@ -65,7 +65,7 @@ Deferred until v1.1 ships.
 | ONBD-02 | Phase 10 | Pending |
 | ONBD-03 | Phase 10 | Pending |
 | ONBD-04 | Phase 10 | Pending |
-| ONBD-05 | Phase 10 | Pending |
+| ONBD-05 | Phase 10 | Complete |
 | ONBD-06 | Phase 11 | Pending |
 | VIS-01 | Phase 9 | Complete |
 | VIS-02 | Phase 9 | Complete |
