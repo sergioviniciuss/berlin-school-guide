@@ -128,7 +128,7 @@ describe("EducationTimeline", () => {
     expect(trigger.textContent).not.toMatch(/Gemeinschaft\s+schule/i);
   });
 
-  it("frames DEMO Grundschule Germany-first with Berlin duration as callout", () => {
+  it("frames DEMO Grundschule Germany-first with Berlin duration as typographic line", () => {
     render(<EducationTimeline />);
 
     const trigger = screen.getByRole("button", {
@@ -136,8 +136,8 @@ describe("EducationTimeline", () => {
     });
     expect(trigger).toHaveTextContent("1ª à 4ª série");
     expect(trigger).toHaveTextContent("Idade aproximada: 6–10 anos");
-    expect(trigger).toHaveTextContent(/Em Berlim/);
-    expect(trigger).toHaveTextContent(/dura 6 anos, até a 6ª série/);
+    expect(trigger).toHaveTextContent("Berlim: 6 anos (até a 6ª série)");
+    expect(trigger).not.toHaveTextContent(/Em Berlim/);
   });
 
   it("expands only the clicked secondary card without revealing other summaries", async () => {

@@ -17,7 +17,7 @@ const GRUNDSCHULE: TimelineStage = {
   ageRange: "Idade aproximada: 6–10 anos",
   summary:
     "A Grundschule é a escola primária obrigatória e a base comum de todas as crianças. Na maioria dos estados alemães ela vai até a 4ª série; em Berlim dura seis anos. Nela se formam as primeiras recomendações sobre o caminho secundário.",
-  berlinNote: "dura 6 anos, até a 6ª série",
+  berlinNote: "6 anos (até a 6ª série)",
   anchorHref: "#ensino-primario",
 };
 

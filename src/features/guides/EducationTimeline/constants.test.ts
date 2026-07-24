@@ -38,7 +38,7 @@ describe("EducationTimeline DEMO constants anchor contract", () => {
     const grundschule = stageById("grundschule");
     expect(grundschule.grades).toBe("1ª à 4ª série");
     expect(grundschule.ageRange).toBe("Idade aproximada: 6–10 anos");
-    expect(grundschule.berlinNote).toBe("dura 6 anos, até a 6ª série");
+    expect(grundschule.berlinNote).toBe("6 anos (até a 6ª série)");
   });
 
   it("bans Phase 10 placeholders and the stub hash", () => {
