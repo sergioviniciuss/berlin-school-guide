@@ -1,10 +1,11 @@
 ---
 phase: 10
 slug: education-pathway-editorial
-status: draft
+status: approved
 shadcn_initialized: true
 preset: new-york / neutral / cssVariables
 created: 2026-07-24
+reviewed_at: 2026-07-24T22:36:00+02:00
 ---
 
 # Phase 10 — UI Design Contract
@@ -209,6 +210,8 @@ MDX body:
 ---
 
 ## Layout Specifications
+
+**Primary-screen focal point:** `GuideIntro` H1 is the title focal point; `EducationTimeline` is the primary visual anchor above the journey chapters; chapter H2s are secondary reading hierarchy.
 
 ### Route shell
 
