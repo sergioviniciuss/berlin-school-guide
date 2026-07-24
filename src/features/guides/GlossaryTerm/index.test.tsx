@@ -30,4 +30,19 @@ describe("GlossaryTerm", () => {
     expect(screen.getByText("Ganztag")).toBeVisible();
     expect(screen.getByText("Hort")).toBeVisible();
   });
+
+  it("sets id from slugifyHeading(term) for deep links", () => {
+    const { container } = render(
+      <GlossaryTerm term="Duales Studium">Definição.</GlossaryTerm>,
+    );
+    expect(container.querySelector("#duales-studium")).not.toBeNull();
+    expect(document.getElementById("duales-studium")).not.toBeNull();
+  });
+
+  it("adds scroll-mt-20 on the root dl", () => {
+    const { container } = render(
+      <GlossaryTerm term="Ganztag">Definição.</GlossaryTerm>,
+    );
+    expect(container.querySelector("dl")?.className).toContain("scroll-mt-20");
+  });
 });
