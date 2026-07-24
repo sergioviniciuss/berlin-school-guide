@@ -34,10 +34,11 @@ describe("EducationTimeline DEMO constants anchor contract", () => {
     expect(stageById("ensino-superior").anchorHref).toBe("#ensino-superior");
   });
 
-  it("sets Grundschule berlinNote for the 6-year Berlin difference", () => {
-    expect(stageById("grundschule").berlinNote).toBe(
-      "dura 6 anos, até a 6ª série",
-    );
+  it("frames Grundschule Germany-first with Berlin as the exception", () => {
+    const grundschule = stageById("grundschule");
+    expect(grundschule.grades).toBe("1ª à 4ª série");
+    expect(grundschule.ageRange).toBe("Idade aproximada: 6–10 anos");
+    expect(grundschule.berlinNote).toBe("dura 6 anos, até a 6ª série");
   });
 
   it("bans Phase 10 placeholders and the stub hash", () => {

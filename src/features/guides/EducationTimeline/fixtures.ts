@@ -11,8 +11,8 @@ export const stageWithoutBranches: TimelineStage = {
 export const grundschuleFixture: TimelineStage = {
   id: "grundschule",
   name: "Grundschule",
-  grades: "1ª à 6ª série",
-  ageRange: "Idade aproximada: 6–12 anos",
+  grades: "1ª à 4ª série",
+  ageRange: "Idade aproximada: 6–10 anos",
   summary: "Resumo sintético de teste para a Grundschule.",
   anchorHref: "#ensino-primario",
 };

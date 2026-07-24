@@ -13,10 +13,10 @@ const KITA: TimelineStage = {
 const GRUNDSCHULE: TimelineStage = {
   id: "grundschule",
   name: "Grundschule",
-  grades: "1ª à 6ª série",
-  ageRange: "Idade aproximada: 6–12 anos",
+  grades: "1ª à 4ª série",
+  ageRange: "Idade aproximada: 6–10 anos",
   summary:
-    "A Grundschule é a escola primária obrigatória e a base comum de todas as crianças. Em Berlim ela dura seis anos, mais tempo do que na maioria dos outros estados alemães. Nela se formam as primeiras recomendações sobre o caminho secundário.",
+    "A Grundschule é a escola primária obrigatória e a base comum de todas as crianças. Na maioria dos estados alemães ela vai até a 4ª série; em Berlim dura seis anos. Nela se formam as primeiras recomendações sobre o caminho secundário.",
   berlinNote: "dura 6 anos, até a 6ª série",
   anchorHref: "#ensino-primario",
 };
