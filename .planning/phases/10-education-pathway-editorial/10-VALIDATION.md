@@ -46,8 +46,8 @@ updated: 2026-07-24
 | 10-02-01 | 02 | 2 | ONBD-01 | T-10-02-01 | relative links only | grep + unit | H2 presence; `pnpm test -- EducationTimeline GlossaryTerm` | ✅ MDX | ⬜ pending |
 | 10-02-02 | 02 | 2 | ONBD-02 / ONBD-04 | T-10-02-02 | no year-locked calendars | grep | exactly 1 verify; Förderprognose; no Probejahr | ✅ MDX | ⬜ pending |
 | 10-03-01 | 03 | 3 | ONBD-03 / ONBD-04 | T-10-03-01 | one summary callout | grep | peer H3s; 2 verifies; 1 BerlinCallout summary | ✅ MDX | ⬜ pending |
-| 10-03-02 | 03 | 3 | ONBD-01–05 | T-10-03-02 | https externals if any | grep + unit + e2e | 3 verifies; GlossaryTerm set; `pnpm test` + `e2e/onboarding.spec.ts` | ✅ | ⬜ pending |
-| 10-03-03 | 03 | 3 | ONBD-01–05 | — | N/A | manual | Human content checklist | manual | ⬜ pending |
+| 10-03-02 | 03 | 3 | ONBD-01–05 | T-10-03-02 | https externals if any | grep + unit | 3 verifies; ONBD-05 narrative `#` links; GlossaryTerm set; `pnpm test -- GlossaryTerm EducationTimeline` | ✅ | ⬜ pending |
+| 10-03-03 | 03 | 3 | ONBD-01–05 | — | N/A | e2e + manual | `pnpm exec playwright test e2e/onboarding.spec.ts` + human content checklist | ✅ e2e | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
