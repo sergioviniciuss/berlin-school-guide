@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
 status: executing
-stopped_at: Completed 10-01-PLAN.md
-last_updated: "2026-07-24T21:03:35.659Z"
+stopped_at: Completed 10-02-PLAN.md
+last_updated: "2026-07-24T21:06:33.521Z"
 last_activity: 2026-07-24
 progress:
   total_phases: 3
   completed_phases: 1
   total_plans: 7
-  completed_plans: 5
-  percent: 71
+  completed_plans: 6
+  percent: 86
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-07-12)
 ## Current Position
 
 Phase: 10 (Education Pathway Editorial) — EXECUTING
-Plan: 3 of 4
+Plan: 4 of 4
 Status: Ready to execute
 Last activity: 2026-07-24
 
-Progress: [███████░░░] 71%
+Progress: [█████████░] 86%
 
 ## Performance Metrics
 
@@ -47,6 +47,7 @@ Progress: [███████░░░] 71%
 | Phase 09 P03 | 20min | 3 tasks | 4 files |
 | Phase 10 P00 | 1min | 2 tasks | 2 files |
 | Phase 10 P01 | 1min | 2 tasks | 3 files |
+| Phase 10 P02 | 2min | 2 tasks | 1 files |
 
 ## Decisions
 
@@ -59,6 +60,8 @@ Progress: [███████░░░] 71%
 - [Phase 10-00]: Anchor contract uses stage ids (kita, grundschule, …) for lookups
 - [Phase 10-01]: Shared secondary hash #os-caminhos-possiveis for Gymnasium/ISS/Gemeinschaftsschule (no mdx h3 remapping)
 - [Phase 10-01]: Grundschule berlinNote is concept-level only; no Einzugsgebiet/Anmeldung procedure copy
+- [Phase 10-02]: Verify #1 optional links: first-steps + berlin-school-system (two allowed max)
+- [Phase 10-02]: Deferred Glossário and BerlinCallout summary to Plan 03 so D-13 set ships complete once
 
 ## Blockers/Concerns
 
@@ -66,8 +69,8 @@ Progress: [███████░░░] 71%
 
 ## Session Continuity
 
-Last session: 2026-07-24T21:03:35.648Z
-Stopped at: Completed 10-01-PLAN.md
+Last session: 2026-07-24T21:06:25.282Z
+Stopped at: Completed 10-02-PLAN.md
 Resume file: None
 
 ## Operator Next Steps
