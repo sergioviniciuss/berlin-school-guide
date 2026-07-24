@@ -58,7 +58,13 @@ Plans:
   3. Berlin differences (including 6-year Grundschule) appear as integrated callouts, not a separate Berlin-only section bolted on at the end
   4. Glossary entries for Ganztag, Hort, Willkommensklasse, Ausbildung, Duales Studium, Fachabitur, and related terms are linked from the narrative
   5. Editorial tone matches `docs/EDITORIAL_GUIDE.md` — practical, honest, no ranking language
-**Plans**: TBD (via `/gsd-plan-phase 10`)
+**Plans**: 4 plans
+
+Plans:
+- [ ] 10-00-PLAN.md — Wave 0: GlossaryTerm id tests + timeline anchor contract tests
+- [ ] 10-01-PLAN.md — GlossaryTerm deep-link ids + EducationTimeline constants/fixtures sync
+- [ ] 10-02-PLAN.md — Early journey MDX (Antes → Depois da 6ª série) + verify #1
+- [ ] 10-03-PLAN.md — Pathways, vocational/higher-ed, Glossário, Berlin summary, e2e + human review
 **UI hint**: yes (content-heavy; visual components from Phase 9)
 
 ### Phase 11: Flagship Discovery & Release

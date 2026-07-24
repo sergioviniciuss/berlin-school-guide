@@ -1,10 +1,11 @@
 ---
 phase: 10
 slug: education-pathway-editorial
-status: draft
-nyquist_compliant: false
+status: ready
+nyquist_compliant: true
 wave_0_complete: false
 created: 2026-07-24
+updated: 2026-07-24
 ---
 
 # Phase 10 — Validation Strategy
@@ -38,26 +39,25 @@ created: 2026-07-24
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 10-00-01 | 00 | 0 | ONBD-05 | — | N/A | unit | `pnpm test -- GlossaryTerm` | ⚠️ extend | ⬜ pending |
-| 10-00-02 | 00 | 0 | anchors | — | N/A | unit/grep | constants `anchorHref` vs H2 slugs | ❌ W0 | ⬜ pending |
-| TBD | 01+ | 1+ | ONBD-01 | — | N/A | manual + e2e | Manual headings; optional Playwright | ❌ optional | ⬜ pending |
-| TBD | 01+ | 1+ | ONBD-02 | — | N/A | content review | Three “O que verificar” moments (D-06) | ❌ content | ⬜ pending |
-| TBD | 01+ | 1+ | ONBD-03 | — | N/A | grep/manual | Grep MDX for Ausbildung, Duales Studium, Fachabitur | ❌ content | ⬜ pending |
-| TBD | 01+ | 1+ | ONBD-04 | — | N/A | unit + manual | `pnpm test -- BerlinCallout`; ≤1 summary callout | ✅ component | ⬜ pending |
-| TBD | 01+ | 1+ | ONBD-05 | — | N/A | unit | `pnpm test -- GlossaryTerm` | ⚠️ extend | ⬜ pending |
-| TBD | 01+ | 1+ | regression | — | N/A | e2e | `pnpm exec playwright test e2e/onboarding.spec.ts` | ✅ | ⬜ pending |
+| 10-00-01 | 00 | 0 | ONBD-05 | T-10-00-01 | N/A | unit | `pnpm test -- GlossaryTerm` (expect RED) | ⚠️ extend | ⬜ pending |
+| 10-00-02 | 00 | 0 | anchors | T-10-00-01 | N/A | unit | `pnpm test -- EducationTimeline/constants` (expect RED) | ❌ W0 create | ⬜ pending |
+| 10-01-01 | 01 | 1 | ONBD-05 | T-10-01-01 | slugifyHeading id only | unit | `pnpm test -- GlossaryTerm` | ✅ after 01 | ⬜ pending |
+| 10-01-02 | 01 | 1 | ONBD-01 | T-10-01-02 | relative `#` hashes only | unit | `pnpm test -- EducationTimeline/constants` | ✅ after 01 | ⬜ pending |
+| 10-02-01 | 02 | 2 | ONBD-01 | T-10-02-01 | relative links only | grep + unit | H2 presence; `pnpm test -- EducationTimeline GlossaryTerm` | ✅ MDX | ⬜ pending |
+| 10-02-02 | 02 | 2 | ONBD-02 / ONBD-04 | T-10-02-02 | no year-locked calendars | grep | exactly 1 verify; Förderprognose; no Probejahr | ✅ MDX | ⬜ pending |
+| 10-03-01 | 03 | 3 | ONBD-03 / ONBD-04 | T-10-03-01 | one summary callout | grep | peer H3s; 2 verifies; 1 BerlinCallout summary | ✅ MDX | ⬜ pending |
+| 10-03-02 | 03 | 3 | ONBD-01–05 | T-10-03-02 | https externals if any | grep + unit + e2e | 3 verifies; GlossaryTerm set; `pnpm test` + `e2e/onboarding.spec.ts` | ✅ | ⬜ pending |
+| 10-03-03 | 03 | 3 | ONBD-01–05 | — | N/A | manual | Human content checklist | manual | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
-
-*Planner fills exact Task IDs when PLAN.md files are written.*
 
 ---
 
 ## Wave 0 Requirements
 
-- [ ] Extend `src/features/guides/GlossaryTerm/index.test.tsx` — assert `id` equals `slugifyHeading(term)` (ONBD-05 / D-14)
-- [ ] Optional: unit test or acceptance grep that `EducationTimeline/constants.ts` `anchorHref` values match locked H2 slugs and contain no `Fase 10` / placeholder hash
-- [ ] Optional (not required): Playwright assertions for key H2s / Glossário — content e2e beyond shell remains Phase 11 REL-*
+- [ ] Extend `src/features/guides/GlossaryTerm/index.test.tsx` — assert `id` equals `slugifyHeading(term)` (ONBD-05 / D-14) — Plan 00 Task 1
+- [ ] Create `src/features/guides/EducationTimeline/constants.test.ts` — locked H2 `anchorHref` map; ban `Fase 10` / placeholder hash — Plan 00 Task 2
+- [ ] Optional (not required): Playwright assertions for key H2s / Glossário — deferred to Phase 11 REL-*
 
 *Framework install: none — existing infrastructure covers phase requirements.*
 
@@ -77,11 +77,11 @@ created: 2026-07-24
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 120s
-- [ ] `nyquist_compliant: true` set in frontmatter
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency < 120s
+- [x] `nyquist_compliant: true` set in frontmatter
 
-**Approval:** pending
+**Approval:** ready for execute-phase
