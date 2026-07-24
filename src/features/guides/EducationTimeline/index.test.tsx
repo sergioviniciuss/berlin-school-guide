@@ -37,7 +37,8 @@ describe("EducationTimeline", () => {
       />,
     );
 
-    expect(screen.getByText("Idade aproximada: 6–12 anos")).toBeInTheDocument();
+    expect(screen.getByText("Idade aproximada: 6–10 anos")).toBeInTheDocument();
+    expect(screen.getByText("1ª à 4ª série")).toBeInTheDocument();
     expect(screen.getByText(grundschuleContextNoteFixture)).toBeInTheDocument();
     expect(
       screen.getByRole("heading", { name: "Depois da Grundschule", level: 3 }),
@@ -125,6 +126,18 @@ describe("EducationTimeline", () => {
     });
     expect(trigger.textContent).toContain("Gemeinschaftsschule");
     expect(trigger.textContent).not.toMatch(/Gemeinschaft\s+schule/i);
+  });
+
+  it("frames DEMO Grundschule Germany-first with Berlin duration as typographic line", () => {
+    render(<EducationTimeline />);
+
+    const trigger = screen.getByRole("button", {
+      name: /Grundschule/,
+    });
+    expect(trigger).toHaveTextContent("1ª à 4ª série");
+    expect(trigger).toHaveTextContent("Idade aproximada: 6–10 anos");
+    expect(trigger).toHaveTextContent("Berlim: 6 anos (até a 6ª série)");
+    expect(trigger).not.toHaveTextContent(/Em Berlim/);
   });
 
   it("expands only the clicked secondary card without revealing other summaries", async () => {

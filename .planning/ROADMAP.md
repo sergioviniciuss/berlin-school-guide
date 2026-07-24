@@ -27,7 +27,7 @@ Full details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 ### 🚧 v1.1 Understand the German & Berlin Education System
 
 - [x] **Phase 9: Onboarding Guide Visual Foundation** — MDX timeline/diagram components, Berlin callout pattern, route shell for `/guides/german-education-system`
-- [ ] **Phase 10: Education Pathway Editorial** — Full Kita→higher-ed content, decision points, glossary, Berlin differences woven throughout
+- [x] **Phase 10: Education Pathway Editorial** — Full Kita→higher-ed content, decision points, glossary, Berlin differences woven throughout (completed 2026-07-24)
 - [ ] **Phase 11: Flagship Discovery & Release** — Homepage/Guides hub prominence, cross-links, berlin-school-system relationship, metadata, e2e, a11y
 
 ## Phase Details
@@ -58,7 +58,13 @@ Plans:
   3. Berlin differences (including 6-year Grundschule) appear as integrated callouts, not a separate Berlin-only section bolted on at the end
   4. Glossary entries for Ganztag, Hort, Willkommensklasse, Ausbildung, Duales Studium, Fachabitur, and related terms are linked from the narrative
   5. Editorial tone matches `docs/EDITORIAL_GUIDE.md` — practical, honest, no ranking language
-**Plans**: TBD (via `/gsd-plan-phase 10`)
+**Plans**: 4 plans
+
+Plans:
+- [x] 10-00-PLAN.md — Wave 0: GlossaryTerm id tests + timeline anchor contract tests
+- [x] 10-01-PLAN.md — GlossaryTerm deep-link ids + EducationTimeline constants/fixtures sync
+- [x] 10-02-PLAN.md — Early journey MDX (Antes → Depois da 6ª série) + verify #1
+- [x] 10-03-PLAN.md — Pathways, vocational/higher-ed, Glossário, Berlin summary, e2e + human review
 **UI hint**: yes (content-heavy; visual components from Phase 9)
 
 ### Phase 11: Flagship Discovery & Release
@@ -80,7 +86,7 @@ Plans:
 |-------|-----------|-------|--------|-----------|
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9 | v1.1 | 3/3 | Complete | 2026-07-12 |
-| 10 | v1.1 | 0/? | Not started | — |
+| 10 | v1.1 | 4/4 | Complete    | 2026-07-24 |
 | 11 | v1.1 | 0/? | Not started | — |
 
 ## Future Backlog

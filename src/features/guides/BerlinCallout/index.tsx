@@ -5,9 +5,9 @@ import type { BerlinCalloutProps } from "./types";
 export function BerlinCallout(props: BerlinCalloutProps) {
   if (props.variant === "inline") {
     return (
-      <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-800">
-        Em Berlim
-        <span className="font-normal text-blue-700">— {props.note}</span>
+      <span className="mt-1 block border-l-2 border-l-primary pl-2 text-xs leading-snug text-blue-800">
+        <span className="font-semibold">Berlim:</span>{" "}
+        <span className="font-normal">{props.note}</span>
       </span>
     );
   }
