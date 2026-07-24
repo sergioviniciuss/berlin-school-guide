@@ -53,11 +53,11 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ School comparison without quality rankings — Phase 6 (2026-07-11)
 - ✓ Essential parent guides (system guide + Primeiros passos checklist) — Phase 7 (2026-07-11)
 - ✓ Release readiness: CI e2e gates, SEO metadata, axe a11y, deployment docs, human UAT — Phase 8 (2026-07-12)
+- ✓ Flagship German education system onboarding guide with visual timelines — Phase 10 (2026-07-24)
+- ✓ Berlin difference callouts integrated throughout Germany-wide narrative — Phase 10 (2026-07-24)
 
 ### Active (v1.1)
 
-- [ ] Flagship German education system onboarding guide with visual timelines
-- [ ] Berlin difference callouts integrated throughout Germany-wide narrative
 - [ ] Homepage and Guides hub promote onboarding guide as primary entry point
 
 ### Next Milestone (v1.2 — after v1.1)
@@ -237,4 +237,5 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-12 after v1.1 milestone kickoff*
+*Last updated: 2026-07-24 after Phase 10 Education Pathway Editorial*
+
