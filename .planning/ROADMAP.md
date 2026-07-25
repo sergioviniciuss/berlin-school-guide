@@ -28,7 +28,7 @@ Full details: [milestones/v1.0-ROADMAP.md](milestones/v1.0-ROADMAP.md)
 
 - [x] **Phase 9: Onboarding Guide Visual Foundation** — MDX timeline/diagram components, Berlin callout pattern, route shell for `/guides/german-education-system`
 - [x] **Phase 10: Education Pathway Editorial** — Full Kita→higher-ed content, decision points, glossary, Berlin differences woven throughout (completed 2026-07-24)
-- [ ] **Phase 11: Flagship Discovery & Release** — Homepage/Guides hub prominence, cross-links, berlin-school-system relationship, metadata, e2e, a11y
+- [x] **Phase 11: Flagship Discovery & Release** — Homepage/Guides hub prominence, cross-links, berlin-school-system relationship, metadata, e2e, a11y (completed 2026-07-25)
 
 ## Phase Details
 
@@ -77,7 +77,7 @@ Plans:
   3. Cross-links connect onboarding ↔ berlin-school-system ↔ first-steps ↔ directory; relationship to berlin-school-system is stated in copy
   4. Page metadata (title, description, OG) is distinct and in Portuguese; e2e smoke covers homepage → onboarding guide
   5. Axe/accessibility checks pass on the new route
-**Plans:** 5/6 plans executed
+**Plans:** 6/6 plans complete
 
 Plans:
 - [x] 11-00-PLAN.md — Wave 0: e2e metadata/a11y/smoke scaffolds for onboarding discovery
@@ -85,7 +85,7 @@ Plans:
 - [x] 11-02-PLAN.md — Guides hub flagship stack + Berlin retitle on hub (DISC-02)
 - [x] 11-03-PLAN.md — GuideIntro ReactNode + complementary intros + Berlin metadata (DISC-03/04, REL-01)
 - [x] 11-04-PLAN.md — Próximos passos MDX + first-steps tip (ONBD-06, DISC-03)
-- [ ] 11-05-PLAN.md — Full test gate + human visual/editorial checkpoint
+- [x] 11-05-PLAN.md — Full test gate + human visual/editorial checkpoint
 
 **UI hint**: yes
 
@@ -96,7 +96,7 @@ Plans:
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9 | v1.1 | 3/3 | Complete | 2026-07-12 |
 | 10 | v1.1 | 4/4 | Complete    | 2026-07-24 |
-| 11 | v1.1 | 5/6 | In Progress|  |
+| 11 | v1.1 | 6/6 | Complete   | 2026-07-25 |
 
 ## Future Backlog
 

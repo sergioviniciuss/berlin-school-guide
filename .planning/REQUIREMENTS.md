@@ -32,8 +32,8 @@
 ### Release Quality
 
 - [x] **REL-01**: New guide route has Portuguese SEO metadata and passes existing metadata e2e patterns
-- [ ] **REL-02**: Guide page meets accessibility basics (heading structure, landmark navigation, print-friendly where applicable)
-- [ ] **REL-03**: Playwright smoke covers homepage → onboarding guide journey
+- [x] **REL-02**: Guide page meets accessibility basics (heading structure, landmark navigation, print-friendly where applicable)
+- [x] **REL-03**: Playwright smoke covers homepage → onboarding guide journey
 
 ## v1.2 Requirements (Next Milestone — School Coverage)
 
@@ -75,8 +75,8 @@ Deferred until v1.1 ships.
 | DISC-03 | Phase 11 | Complete |
 | DISC-04 | Phase 11 | Complete |
 | REL-01 | Phase 11 | Complete |
-| REL-02 | Phase 11 | Pending |
-| REL-03 | Phase 11 | Pending |
+| REL-02 | Phase 11 | Complete |
+| REL-03 | Phase 11 | Complete |
 
 **Coverage:**
 - v1.1 requirements: 16 total
