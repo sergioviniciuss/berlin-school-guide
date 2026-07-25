@@ -26,12 +26,12 @@
 
 - [x] **DISC-01**: Homepage prominently links to the onboarding guide as a primary journey entry
 - [x] **DISC-02**: `/guides` hub positions the onboarding guide as the flagship card above other guides
-- [ ] **DISC-03**: Cross-links connect onboarding guide ↔ existing Berlin primary guide ↔ directory ↔ first-steps checklist
-- [ ] **DISC-04**: Relationship between new onboarding guide and `/guides/berlin-school-system` is explicit (complementary, not duplicate)
+- [x] **DISC-03**: Cross-links connect onboarding guide ↔ existing Berlin primary guide ↔ directory ↔ first-steps checklist
+- [x] **DISC-04**: Relationship between new onboarding guide and `/guides/berlin-school-system` is explicit (complementary, not duplicate)
 
 ### Release Quality
 
-- [ ] **REL-01**: New guide route has Portuguese SEO metadata and passes existing metadata e2e patterns
+- [x] **REL-01**: New guide route has Portuguese SEO metadata and passes existing metadata e2e patterns
 - [ ] **REL-02**: Guide page meets accessibility basics (heading structure, landmark navigation, print-friendly where applicable)
 - [ ] **REL-03**: Playwright smoke covers homepage → onboarding guide journey
 
@@ -72,9 +72,9 @@ Deferred until v1.1 ships.
 | VIS-03 | Phase 9 | Complete |
 | DISC-01 | Phase 11 | Complete |
 | DISC-02 | Phase 11 | Complete |
-| DISC-03 | Phase 11 | Pending |
-| DISC-04 | Phase 11 | Pending |
-| REL-01 | Phase 11 | Pending |
+| DISC-03 | Phase 11 | Complete |
+| DISC-04 | Phase 11 | Complete |
+| REL-01 | Phase 11 | Complete |
 | REL-02 | Phase 11 | Pending |
 | REL-03 | Phase 11 | Pending |
 

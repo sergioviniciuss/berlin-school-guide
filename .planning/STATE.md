@@ -4,14 +4,14 @@ milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
 status: executing
 stopped_at: Completed 11-02-PLAN.md
-last_updated: "2026-07-25T18:33:49.384Z"
+last_updated: "2026-07-25T18:40:17.499Z"
 last_activity: 2026-07-25
 progress:
   total_phases: 3
   completed_phases: 2
   total_plans: 13
-  completed_plans: 10
-  percent: 77
+  completed_plans: 11
+  percent: 85
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-07-12)
 ## Current Position
 
 Phase: 11 (flagship-discovery-release) — EXECUTING
-Plan: 3 of 6
+Plan: 4 of 6
 Status: Ready to execute
 Last activity: 2026-07-25
 
-Progress: [████████░░] 77%
+Progress: [█████████░] 85%
 
 ## Performance Metrics
 
@@ -51,6 +51,7 @@ Progress: [████████░░] 77%
 | Phase 10 P03 | 2min | 3 tasks | 7 files |
 | Phase 11 P01 | 6min | 2 tasks | 3 files |
 | Phase 11 P02 | 5min | 2 tasks | 3 files |
+| Phase 11 P03 | 8min | 2 tasks | 5 files |
 
 ## Decisions
 
@@ -69,6 +70,7 @@ Progress: [████████░░] 77%
 - [Phase 10-03]: BerlinCallout inline variant replaced chip with left-ruled typographic line for timeline cards
 - [Phase 11-01]: Removed guides-hub and methodology homepage cards entirely (not hidden) per D-03; still discoverable via nav
 - [Phase 11-02]: Kept Berlin hub CTA label exactly 'Ler guia do sistema escolar' while giving the flagship CTA the distinct label 'Ler guia do sistema educacional' to avoid getByRole name collisions
+- [Phase 11-03]: Widened GuideIntro.description to ReactNode instead of adding a second prop/paragraph, per D-09's no-separate-section intent
 
 ## Blockers/Concerns
 
@@ -76,7 +78,7 @@ Progress: [████████░░] 77%
 
 ## Session Continuity
 
-Last session: 2026-07-25T18:33:49.376Z
+Last session: 2026-07-25T18:38:40.718Z
 Stopped at: Completed 11-02-PLAN.md
 Resume file: None
 
