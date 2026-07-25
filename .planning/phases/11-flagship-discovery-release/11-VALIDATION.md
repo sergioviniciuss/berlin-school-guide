@@ -2,8 +2,8 @@
 phase: 11
 slug: flagship-discovery-release
 status: draft
-nyquist_compliant: false
-wave_0_complete: false
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-07-25
 ---
 
@@ -57,9 +57,9 @@ created: 2026-07-25
 
 ## Wave 0 Requirements
 
-- [ ] `e2e/metadata.spec.ts` — add `/guides/german-education-system` to `CORE_ROUTES` (REL-01)
-- [ ] `e2e/a11y.spec.ts` — add `/guides/german-education-system` to `CORE_A11Y_ROUTES` (REL-02)
-- [ ] `e2e/smoke.spec.ts` — add homepage → onboarding journey; rewrite/remove obsolete homepage → `/guides` card test (REL-03)
+- [x] `e2e/metadata.spec.ts` — add `/guides/german-education-system` to `CORE_ROUTES` (REL-01)
+- [x] `e2e/a11y.spec.ts` — add `/guides/german-education-system` to `CORE_A11Y_ROUTES` (REL-02)
+- [x] `e2e/smoke.spec.ts` — add homepage → onboarding journey; rewrite/remove obsolete homepage → `/guides` card test (REL-03)
 
 *No new test framework or config — Jest and Playwright already configured.*
 
@@ -76,11 +76,11 @@ created: 2026-07-25
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency acceptable
-- [ ] `nyquist_compliant: true` set in frontmatter after plans land
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency acceptable
+- [x] `nyquist_compliant: true` set in frontmatter after plans land
 
 **Approval:** pending
