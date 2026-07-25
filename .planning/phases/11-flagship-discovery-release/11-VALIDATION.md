@@ -38,10 +38,18 @@ created: 2026-07-25
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| TBD | 00 | 0 | REL-01 | — | N/A | e2e | `pnpm e2e -- e2e/metadata.spec.ts` | ⚠️ W0 gap | ⬜ pending |
-| TBD | 00 | 0 | REL-02 | — | N/A | e2e | `pnpm e2e -- e2e/a11y.spec.ts` | ⚠️ W0 gap | ⬜ pending |
-| TBD | 00 | 0 | REL-03 | — | N/A | e2e | `pnpm e2e -- e2e/smoke.spec.ts` | ⚠️ W0 gap | ⬜ pending |
-| TBD | 01+ | 1+ | DISC-01–04, ONBD-06 | T-11 XSS (mitigated via ReactNode) | No dangerouslySetInnerHTML | unit + e2e | See RESEARCH Validation Architecture | ✅ / extend | ⬜ pending |
+| 11-00-T1 | 00 | 0 | REL-01, REL-02 | T-11-00-* | N/A | e2e arrays | `rg german-education-system e2e/metadata.spec.ts e2e/a11y.spec.ts` | ✅ | ⬜ pending |
+| 11-00-T2 | 00 | 0 | REL-03 | T-11-00-* | N/A | e2e smoke | `rg "Começar pelo guia do sistema" e2e/smoke.spec.ts` | ✅ | ⬜ pending |
+| 11-01-T1 | 01 | 1 | DISC-01 | T-11-01-* | Hardcoded hrefs | unit | `pnpm test -- --testPathPattern="HomeJourneyCards\|app/page.test"` | ✅ | ⬜ pending |
+| 11-01-T2 | 01 | 1 | DISC-01 | T-11-01-01 | No query-derived hrefs | unit | same | ✅ | ⬜ pending |
+| 11-02-T1 | 02 | 1 | DISC-02 | T-11-02-* | Hardcoded hrefs | unit | `pnpm test -- --testPathPattern="GuidesHub\|guides/page.test"` | ✅ | ⬜ pending |
+| 11-02-T2 | 02 | 1 | DISC-02 | T-11-02-01 | Distinct CTA labels | unit | same | ✅ | ⬜ pending |
+| 11-03-T1 | 03 | 2 | DISC-03, DISC-04 | T-11-03-01 | No dangerouslySetInnerHTML | unit | `pnpm test -- --testPathPattern="GuideIntro"` | ✅ | ⬜ pending |
+| 11-03-T2 | 03 | 2 | DISC-03, DISC-04, REL-01 | T-11-03-* | JSX Link only | unit | `pnpm test -- --testPathPattern="berlin-school-system/page.test"` | ✅ | ⬜ pending |
+| 11-04-T1 | 04 | 2 | ONBD-06, DISC-03 | T-11-04-01 | Static MDX paths | e2e + rg | `rg "## Próximos passos" src/content/guides/german-education-system.mdx` | ✅ | ⬜ pending |
+| 11-04-T2 | 04 | 2 | DISC-03 | T-11-04-* | Soft tip, no callout | rg | `rg "Novo em Berlim" src/content/guides/first-steps.mdx` | ✅ | ⬜ pending |
+| 11-05-T1 | 05 | 3 | REL-01–03 + all | T-11-05-02 | Full green gate | unit+e2e | `pnpm test && pnpm e2e:ci` | ✅ | ⬜ pending |
+| 11-05-T2 | 05 | 3 | DISC/ONBD manual | — | N/A | manual | Human checkpoint | N/A | ⬜ pending |
 
 *Planner fills concrete Task IDs when PLAN.md files are written. Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
