@@ -19,4 +19,28 @@ describe("GuideIntro", () => {
       screen.getByText("Componente mínimo para validar React Testing Library."),
     ).toBeVisible();
   });
+
+  it("renders a linked description with an accessible sibling-guide link", () => {
+    render(
+      <GuideIntro
+        eyebrow="Test"
+        title="Título"
+        description={
+          <>
+            Texto com{" "}
+            <a href="/guides/berlin-school-system">
+              Como funciona o sistema escolar público de Berlim
+            </a>
+            .
+          </>
+        }
+      />,
+    );
+
+    expect(
+      screen.getByRole("link", {
+        name: "Como funciona o sistema escolar público de Berlim",
+      }),
+    ).toHaveAttribute("href", "/guides/berlin-school-system");
+  });
 });

@@ -1,7 +1,9 @@
+import type { ReactNode } from "react";
+
 type GuideIntroProps = {
   eyebrow: string;
   title: string;
-  description: string;
+  description: ReactNode;
 };
 
 export function GuideIntro({ eyebrow, title, description }: GuideIntroProps) {
