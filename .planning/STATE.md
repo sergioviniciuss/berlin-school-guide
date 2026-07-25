@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
 status: executing
-stopped_at: Phase 11 UI-SPEC approved
-last_updated: "2026-07-25T18:19:24.736Z"
-last_activity: 2026-07-25 -- Phase 11 execution started
+stopped_at: Completed 11-01-PLAN.md
+last_updated: "2026-07-25T18:27:54.603Z"
+last_activity: 2026-07-25
 progress:
   total_phases: 3
   completed_phases: 2
   total_plans: 13
-  completed_plans: 7
-  percent: 54
+  completed_plans: 9
+  percent: 69
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-07-12)
 ## Current Position
 
 Phase: 11 (flagship-discovery-release) — EXECUTING
-Plan: 1 of 6
-Status: Executing Phase 11
-Last activity: 2026-07-25 -- Phase 11 execution started
+Plan: 2 of 6
+Status: Ready to execute
+Last activity: 2026-07-25
 
-Progress: [██████████] 100%
+Progress: [███████░░░] 69%
 
 ## Performance Metrics
 
@@ -49,6 +49,7 @@ Progress: [██████████] 100%
 | Phase 10 P01 | 1min | 2 tasks | 3 files |
 | Phase 10 P02 | 2min | 2 tasks | 1 files |
 | Phase 10 P03 | 2min | 3 tasks | 7 files |
+| Phase 11 P01 | 6min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -65,6 +66,7 @@ Progress: [██████████] 100%
 - [Phase 10-02]: Deferred Glossário and BerlinCallout summary to Plan 03 so D-13 set ships complete once
 - [Phase 10-03]: Human content review approved after UAT: Germany-first Grundschule grades + typographic Berlin line
 - [Phase 10-03]: BerlinCallout inline variant replaced chip with left-ruled typographic line for timeline cards
+- [Phase 11-01]: Removed guides-hub and methodology homepage cards entirely (not hidden) per D-03; still discoverable via nav
 
 ## Blockers/Concerns
 
@@ -72,9 +74,9 @@ Progress: [██████████] 100%
 
 ## Session Continuity
 
-Last session: 2026-07-25T15:44:38.241Z
-Stopped at: Phase 11 UI-SPEC approved
-Resume file: .planning/phases/11-flagship-discovery-release/11-UI-SPEC.md
+Last session: 2026-07-25T18:27:54.593Z
+Stopped at: Completed 11-01-PLAN.md
+Resume file: None
 
 ## Operator Next Steps
 
