@@ -44,17 +44,32 @@ test("navigates to guides hub and system guide via header nav", async ({
   await expect(page).toHaveURL(/\/guides\/berlin-school-system$/);
   await expect(
     page.getByRole("heading", {
-      name: "Como funciona a escola primária em Berlim",
+      name: "Como funciona o sistema escolar público de Berlim",
       level: 1,
     }),
   ).toBeVisible();
 });
 
-test("navigates from homepage journey card to guides hub", async ({ page }) => {
+test("navigates from homepage to onboarding guide via start-here CTA", async ({
+  page,
+}) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "Ver guias para famílias" }).click();
-  await expect(page).toHaveURL(/\/guides$/);
-  await expect(page.getByRole("heading", { name: "Guias", level: 1 })).toBeVisible();
+  await expect(
+    page.getByRole("heading", {
+      name: "Escolas primárias em Berlim para famílias brasileiras",
+    }),
+  ).toBeVisible();
+
+  await page
+    .getByRole("link", { name: "Começar pelo guia do sistema" })
+    .click();
+  await expect(page).toHaveURL(/\/guides\/german-education-system$/);
+  await expect(
+    page.getByRole("heading", {
+      name: "Como funciona o sistema educacional na Alemanha",
+      level: 1,
+    }),
+  ).toBeVisible();
 });
 
 test("searches and filters the static school directory", async ({ page }) => {
