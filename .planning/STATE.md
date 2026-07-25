@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
 status: executing
-stopped_at: Completed 11-01-PLAN.md
-last_updated: "2026-07-25T18:27:54.603Z"
+stopped_at: Completed 11-02-PLAN.md
+last_updated: "2026-07-25T18:33:49.384Z"
 last_activity: 2026-07-25
 progress:
   total_phases: 3
   completed_phases: 2
   total_plans: 13
-  completed_plans: 9
-  percent: 69
+  completed_plans: 10
+  percent: 77
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-07-12)
 ## Current Position
 
 Phase: 11 (flagship-discovery-release) — EXECUTING
-Plan: 2 of 6
+Plan: 3 of 6
 Status: Ready to execute
 Last activity: 2026-07-25
 
-Progress: [███████░░░] 69%
+Progress: [████████░░] 77%
 
 ## Performance Metrics
 
@@ -50,6 +50,7 @@ Progress: [███████░░░] 69%
 | Phase 10 P02 | 2min | 2 tasks | 1 files |
 | Phase 10 P03 | 2min | 3 tasks | 7 files |
 | Phase 11 P01 | 6min | 2 tasks | 3 files |
+| Phase 11 P02 | 5min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -67,6 +68,7 @@ Progress: [███████░░░] 69%
 - [Phase 10-03]: Human content review approved after UAT: Germany-first Grundschule grades + typographic Berlin line
 - [Phase 10-03]: BerlinCallout inline variant replaced chip with left-ruled typographic line for timeline cards
 - [Phase 11-01]: Removed guides-hub and methodology homepage cards entirely (not hidden) per D-03; still discoverable via nav
+- [Phase 11-02]: Kept Berlin hub CTA label exactly 'Ler guia do sistema escolar' while giving the flagship CTA the distinct label 'Ler guia do sistema educacional' to avoid getByRole name collisions
 
 ## Blockers/Concerns
 
@@ -74,8 +76,8 @@ Progress: [███████░░░] 69%
 
 ## Session Continuity
 
-Last session: 2026-07-25T18:27:54.593Z
-Stopped at: Completed 11-01-PLAN.md
+Last session: 2026-07-25T18:33:49.376Z
+Stopped at: Completed 11-02-PLAN.md
 Resume file: None
 
 ## Operator Next Steps
