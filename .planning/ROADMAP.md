@@ -77,7 +77,16 @@ Plans:
   3. Cross-links connect onboarding ↔ berlin-school-system ↔ first-steps ↔ directory; relationship to berlin-school-system is stated in copy
   4. Page metadata (title, description, OG) is distinct and in Portuguese; e2e smoke covers homepage → onboarding guide
   5. Axe/accessibility checks pass on the new route
-**Plans**: TBD (via `/gsd-plan-phase 11`)
+**Plans:** 6 plans
+
+Plans:
+- [ ] 11-00-PLAN.md — Wave 0: e2e metadata/a11y/smoke scaffolds for onboarding discovery
+- [ ] 11-01-PLAN.md — Homepage two-card Start here → onboarding (DISC-01)
+- [ ] 11-02-PLAN.md — Guides hub flagship stack + Berlin retitle on hub (DISC-02)
+- [ ] 11-03-PLAN.md — GuideIntro ReactNode + complementary intros + Berlin metadata (DISC-03/04, REL-01)
+- [ ] 11-04-PLAN.md — Próximos passos MDX + first-steps tip (ONBD-06, DISC-03)
+- [ ] 11-05-PLAN.md — Full test gate + human visual/editorial checkpoint
+
 **UI hint**: yes
 
 ## Progress
@@ -87,7 +96,7 @@ Plans:
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9 | v1.1 | 3/3 | Complete | 2026-07-12 |
 | 10 | v1.1 | 4/4 | Complete    | 2026-07-24 |
-| 11 | v1.1 | 0/? | Not started | — |
+| 11 | v1.1 | 0/6 | Planned | — |
 
 ## Future Backlog
 
