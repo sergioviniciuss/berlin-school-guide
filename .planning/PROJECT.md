@@ -55,10 +55,11 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Release readiness: CI e2e gates, SEO metadata, axe a11y, deployment docs, human UAT — Phase 8 (2026-07-12)
 - ✓ Flagship German education system onboarding guide with visual timelines — Phase 10 (2026-07-24)
 - ✓ Berlin difference callouts integrated throughout Germany-wide narrative — Phase 10 (2026-07-24)
+- ✓ Homepage and Guides hub promote onboarding guide as primary entry point — Validated in Phase 11: Flagship Discovery & Release (2026-07-25)
 
 ### Active (v1.1)
 
-- [ ] Homepage and Guides hub promote onboarding guide as primary entry point
+_None — v1.1 phases 9–11 complete._
 
 ### Next Milestone (v1.2 — after v1.1)
 
@@ -104,11 +105,11 @@ This project was initially built with Codex (milestones M1–M4 largely complete
 | Evidence coverage UI | Coverage v2 with level-aware denominators; tier labels on cards (Phase 1) |
 | MDX guides | `methodology.mdx` published |
 | Site navigation | `SiteHeader`/`SiteFooter` on all pages; live nav: Início, Escolas, Metodologia; profile route active state (Phase 3–4) |
-| Homepage | Fuller landing with journey cards to `/schools` and `/methodology` (Phase 3) |
+| Homepage | Two-card Start here → onboarding + Explorar escolas (Phase 11); methodology via nav |
 | Research workflow | `docs/research/SCHOOL_RESEARCH_WORKFLOW.md` + `validateResearchDates` in `pnpm validate:data` |
 | Information architecture | `/`, `/schools`, `/schools/[slug]`, `/compare`, `/guides`, `/methodology` — all live |
 | Comparison | `/compare` with URL-synced selection, criteria table, limitations copy (Phase 6) |
-| Parent guides | `/guides`, `/guides/berlin-school-system`, `/guides/first-steps` (Phase 7) |
+| Parent guides | `/guides` flagship onboarding + Berlin complementary + first-steps (Phases 7, 10–11) |
 | Release readiness | CI e2e smoke + a11y + metadata specs; `docs/DEPLOYMENT.md` (Phase 8) |
 
 #### 3. Resolved in Phase 1 (2026-07-11)
@@ -237,5 +238,5 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-24 after Phase 10 Education Pathway Editorial*
+*Last updated: 2026-07-25 after Phase 11 Flagship Discovery & Release — Phase 11 complete*
 

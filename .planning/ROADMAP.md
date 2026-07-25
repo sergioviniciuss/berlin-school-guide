@@ -96,7 +96,7 @@ Plans:
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9 | v1.1 | 3/3 | Complete | 2026-07-12 |
 | 10 | v1.1 | 4/4 | Complete    | 2026-07-24 |
-| 11 | v1.1 | 6/6 | Complete   | 2026-07-25 |
+| 11 | v1.1 | 6/6 | Complete    | 2026-07-25 |
 
 ## Future Backlog
 
