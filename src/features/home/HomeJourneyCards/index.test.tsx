@@ -3,18 +3,23 @@ import { render, screen } from "@testing-library/react";
 import { HomeJourneyCards } from ".";
 
 describe("HomeJourneyCards", () => {
-  it("renders journey headings for schools, guides, and methodology", () => {
+  it("renders exactly two journey headings: Comece por aqui and Explorar escolas", () => {
     render(<HomeJourneyCards />);
 
     expect(
+      screen.getByRole("heading", { name: "Comece por aqui" }),
+    ).toBeVisible();
+    expect(
       screen.getByRole("heading", { name: "Explorar escolas" }),
     ).toBeVisible();
+  });
+
+  it('links "Começar pelo guia do sistema" to /guides/german-education-system', () => {
+    render(<HomeJourneyCards />);
+
     expect(
-      screen.getByRole("heading", { name: "Entender o sistema escolar" }),
-    ).toBeVisible();
-    expect(
-      screen.getByRole("heading", { name: "Entender nossa metodologia" }),
-    ).toBeVisible();
+      screen.getByRole("link", { name: "Começar pelo guia do sistema" }),
+    ).toHaveAttribute("href", "/guides/german-education-system");
   });
 
   it('links "Ver escolas em Lichtenberg" to /schools', () => {
@@ -25,30 +30,29 @@ describe("HomeJourneyCards", () => {
     ).toHaveAttribute("href", "/schools");
   });
 
-  it('links "Ver guias para famílias" to /guides', () => {
-    render(<HomeJourneyCards />);
-
-    expect(
-      screen.getByRole("link", { name: "Ver guias para famílias" }),
-    ).toHaveAttribute("href", "/guides");
-  });
-
-  it('links "Como funciona nossa pesquisa" to /methodology', () => {
-    render(<HomeJourneyCards />);
-
-    expect(
-      screen.getByRole("link", { name: "Como funciona nossa pesquisa" }),
-    ).toHaveAttribute("href", "/methodology");
-  });
-
-  it("applies left accent class to the primary card article", () => {
+  it("applies primary accent chrome only to the Comece por aqui card", () => {
     const { container } = render(<HomeJourneyCards />);
 
     const primaryCard = screen
+      .getByRole("heading", { name: "Comece por aqui" })
+      .closest("article");
+    const secondaryCard = screen
       .getByRole("heading", { name: "Explorar escolas" })
       .closest("article");
 
     expect(primaryCard).toHaveClass("border-l-primary");
-    expect(container.querySelectorAll("article")).toHaveLength(3);
+    expect(secondaryCard).not.toHaveClass("border-l-primary");
+    expect(container.querySelectorAll("article")).toHaveLength(2);
+  });
+
+  it("no longer exposes the guides hub or methodology journey CTAs", () => {
+    render(<HomeJourneyCards />);
+
+    expect(
+      screen.queryByRole("link", { name: "Ver guias para famílias" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("link", { name: "Como funciona nossa pesquisa" }),
+    ).not.toBeInTheDocument();
   });
 });
