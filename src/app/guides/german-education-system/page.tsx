@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import GermanEducationSystemGuide from "@/content/guides/german-education-system.mdx";
 import { GuideIntro } from "@/features/guides/GuideIntro";
 import { buildPageMetadata } from "@/features/siteMetadata";
@@ -15,7 +17,20 @@ export default function GermanEducationSystemPage() {
       <GuideIntro
         eyebrow="Berlin School Guide"
         title="Como funciona o sistema educacional na Alemanha"
-        description="Um panorama visual da jornada escolar — do Kita à universidade — com as diferenças de Berlim destacadas ao longo do caminho."
+        description={
+          <>
+            Um panorama visual da jornada escolar — do Kita à universidade —
+            com as diferenças de Berlim destacadas ao longo do caminho.
+            Depois, veja{" "}
+            <Link
+              href="/guides/berlin-school-system"
+              className="text-blue-700 underline"
+            >
+              Como funciona o sistema escolar público de Berlim
+            </Link>
+            .
+          </>
+        }
       />
       <GermanEducationSystemGuide />
     </main>

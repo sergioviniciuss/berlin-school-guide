@@ -18,6 +18,10 @@ const CORE_ROUTES = [
     title: /Guias/i,
   },
   {
+    path: "/guides/german-education-system",
+    title: /Sistema educacional alemão|Como funciona o sistema educacional/i,
+  },
+  {
     path: "/methodology",
     title: /Metodologia|Como funciona nossa pesquisa/i,
   },

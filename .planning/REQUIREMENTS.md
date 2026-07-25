@@ -14,7 +14,7 @@
 - [x] **ONBD-03**: Guide explains non-Gymnasium pathways to university or higher education (e.g. Ausbildung, Duales Studium, Fachabitur)
 - [x] **ONBD-04**: Berlin-specific differences are highlighted throughout the Germany-wide narrative (not structured as a Berlin guide with a German appendix)
 - [x] **ONBD-05**: Integrated glossary explains key German terms (Ganztag, Hort, Willkommensklasse, Ausbildung, Duales Studium, Fachabitur, and related concepts)
-- [ ] **ONBD-06**: Guide positions the site as definitive onboarding for Brazilian families moving to Germany, with clear next steps toward directory/comparison/guides
+- [x] **ONBD-06**: Guide positions the site as definitive onboarding for Brazilian families moving to Germany, with clear next steps toward directory/comparison/guides
 
 ### Visual Communication
 
@@ -24,16 +24,16 @@
 
 ### Discovery & Integration
 
-- [ ] **DISC-01**: Homepage prominently links to the onboarding guide as a primary journey entry
-- [ ] **DISC-02**: `/guides` hub positions the onboarding guide as the flagship card above other guides
-- [ ] **DISC-03**: Cross-links connect onboarding guide ↔ existing Berlin primary guide ↔ directory ↔ first-steps checklist
-- [ ] **DISC-04**: Relationship between new onboarding guide and `/guides/berlin-school-system` is explicit (complementary, not duplicate)
+- [x] **DISC-01**: Homepage prominently links to the onboarding guide as a primary journey entry
+- [x] **DISC-02**: `/guides` hub positions the onboarding guide as the flagship card above other guides
+- [x] **DISC-03**: Cross-links connect onboarding guide ↔ existing Berlin primary guide ↔ directory ↔ first-steps checklist
+- [x] **DISC-04**: Relationship between new onboarding guide and `/guides/berlin-school-system` is explicit (complementary, not duplicate)
 
 ### Release Quality
 
-- [ ] **REL-01**: New guide route has Portuguese SEO metadata and passes existing metadata e2e patterns
-- [ ] **REL-02**: Guide page meets accessibility basics (heading structure, landmark navigation, print-friendly where applicable)
-- [ ] **REL-03**: Playwright smoke covers homepage → onboarding guide journey
+- [x] **REL-01**: New guide route has Portuguese SEO metadata and passes existing metadata e2e patterns
+- [x] **REL-02**: Guide page meets accessibility basics (heading structure, landmark navigation, print-friendly where applicable)
+- [x] **REL-03**: Playwright smoke covers homepage → onboarding guide journey
 
 ## v1.2 Requirements (Next Milestone — School Coverage)
 
@@ -66,17 +66,17 @@ Deferred until v1.1 ships.
 | ONBD-03 | Phase 10 | Complete |
 | ONBD-04 | Phase 10 | Complete |
 | ONBD-05 | Phase 10 | Complete |
-| ONBD-06 | Phase 11 | Pending |
+| ONBD-06 | Phase 11 | Complete |
 | VIS-01 | Phase 9 | Complete |
 | VIS-02 | Phase 9 | Complete |
 | VIS-03 | Phase 9 | Complete |
-| DISC-01 | Phase 11 | Pending |
-| DISC-02 | Phase 11 | Pending |
-| DISC-03 | Phase 11 | Pending |
-| DISC-04 | Phase 11 | Pending |
-| REL-01 | Phase 11 | Pending |
-| REL-02 | Phase 11 | Pending |
-| REL-03 | Phase 11 | Pending |
+| DISC-01 | Phase 11 | Complete |
+| DISC-02 | Phase 11 | Complete |
+| DISC-03 | Phase 11 | Complete |
+| DISC-04 | Phase 11 | Complete |
+| REL-01 | Phase 11 | Complete |
+| REL-02 | Phase 11 | Complete |
+| REL-03 | Phase 11 | Complete |
 
 **Coverage:**
 - v1.1 requirements: 16 total

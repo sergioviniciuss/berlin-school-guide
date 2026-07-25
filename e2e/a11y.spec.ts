@@ -9,6 +9,7 @@ const CORE_A11Y_ROUTES = [
   "/compare?schools=lew-tolstoi-schule,adam-ries-schule",
   "/guides",
   "/guides/berlin-school-system",
+  "/guides/german-education-system",
   "/methodology",
 ];
 

@@ -40,13 +40,10 @@ describe("HomePage", () => {
     render(<HomePage />);
 
     expect(
+      screen.getByRole("link", { name: "Começar pelo guia do sistema" }),
+    ).toHaveAttribute("href", "/guides/german-education-system");
+    expect(
       screen.getByRole("link", { name: "Ver escolas em Lichtenberg" }),
     ).toHaveAttribute("href", "/schools");
-    expect(
-      screen.getByRole("link", { name: "Ver guias para famílias" }),
-    ).toHaveAttribute("href", "/guides");
-    expect(
-      screen.getByRole("link", { name: "Como funciona nossa pesquisa" }),
-    ).toHaveAttribute("href", "/methodology");
   });
 });

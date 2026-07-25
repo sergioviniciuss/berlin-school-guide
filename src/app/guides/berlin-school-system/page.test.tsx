@@ -18,7 +18,7 @@ describe("BerlinSchoolSystemPage", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /como funciona a escola primária em berlim/i,
+        name: /como funciona o sistema escolar público de berlim/i,
       }),
     ).toBeVisible();
     expect(

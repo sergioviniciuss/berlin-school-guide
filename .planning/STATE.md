@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
-status: ready_to_plan
-stopped_at: Completed 10-03-PLAN.md
-last_updated: "2026-07-24T21:48:59.554Z"
-last_activity: 2026-07-24 -- Phase 10 marked complete
+status: milestone_complete
+stopped_at: Completed 11-05-PLAN.md
+last_updated: "2026-07-25T19:23:38.671Z"
+last_activity: 2026-07-25
 progress:
   total_phases: 3
-  completed_phases: 3
-  total_plans: 7
-  completed_plans: 7
-  percent: 100
+  completed_phases: 4
+  total_plans: 13
+  completed_plans: 13
+  percent: 133
 ---
 
 # Project State
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-12)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 10 — Education Pathway Editorial
+**Current focus:** Phase 11 — flagship-discovery-release
 
 ## Current Position
 
 Phase: 11
 Plan: Not started
-Status: Ready to plan
-Last activity: 2026-07-24
+Status: Milestone complete
+Last activity: 2026-07-25
 
 Progress: [██████████] 100%
 
@@ -49,6 +49,11 @@ Progress: [██████████] 100%
 | Phase 10 P01 | 1min | 2 tasks | 3 files |
 | Phase 10 P02 | 2min | 2 tasks | 1 files |
 | Phase 10 P03 | 2min | 3 tasks | 7 files |
+| Phase 11 P01 | 6min | 2 tasks | 3 files |
+| Phase 11 P02 | 5min | 2 tasks | 3 files |
+| Phase 11 P03 | 8min | 2 tasks | 5 files |
+| Phase 11 P04 | 12min | 2 tasks | 3 files |
+| Phase 11 P05 | 4min | 2 tasks | 1 files |
 
 ## Decisions
 
@@ -65,6 +70,11 @@ Progress: [██████████] 100%
 - [Phase 10-02]: Deferred Glossário and BerlinCallout summary to Plan 03 so D-13 set ships complete once
 - [Phase 10-03]: Human content review approved after UAT: Germany-first Grundschule grades + typographic Berlin line
 - [Phase 10-03]: BerlinCallout inline variant replaced chip with left-ruled typographic line for timeline cards
+- [Phase 11-01]: Removed guides-hub and methodology homepage cards entirely (not hidden) per D-03; still discoverable via nav
+- [Phase 11-02]: Kept Berlin hub CTA label exactly 'Ler guia do sistema escolar' while giving the flagship CTA the distinct label 'Ler guia do sistema educacional' to avoid getByRole name collisions
+- [Phase 11-03]: Widened GuideIntro.description to ReactNode instead of adding a second prop/paragraph, per D-09's no-separate-section intent
+- [Phase 11-04]: Scoped e2e Próximos passos assertions via CSS sibling selector h2:has-text(...) ~ ol since MDX headings have no <section> wrapper
+- [Phase 11-05]: No production code changes needed at the phase gate — full green bar and human approval confirmed Plans 01-04 already satisfied all phase success criteria
 
 ## Blockers/Concerns
 
@@ -72,11 +82,11 @@ Progress: [██████████] 100%
 
 ## Session Continuity
 
-Last session: 2026-07-24T21:42:23.810Z
-Stopped at: Completed 10-03-PLAN.md
+Last session: 2026-07-25T19:23:38.663Z
+Stopped at: Completed 11-05-PLAN.md
 Resume file: None
 
 ## Operator Next Steps
 
-- `/gsd-verify-work 10` — validate Phase 10 against ONBD success criteria
-- `/gsd-plan-phase 11` — Flagship Discovery & Release
+- `/gsd-verify-work 11` — validate Phase 11 against DISC/REL success criteria
+- Milestone v1.1 (Phases 9–11) is fully executed pending final verification
