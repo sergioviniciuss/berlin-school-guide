@@ -48,8 +48,8 @@ created: 2026-07-25
 | 11-03-T2 | 03 | 2 | DISC-03, DISC-04, REL-01 | T-11-03-* | JSX Link only | unit | `pnpm test -- --testPathPattern="berlin-school-system/page.test"` | ✅ | ⬜ pending |
 | 11-04-T1 | 04 | 2 | ONBD-06, DISC-03 | T-11-04-01 | Static MDX paths | e2e + rg | `rg "## Próximos passos" src/content/guides/german-education-system.mdx` | ✅ | ⬜ pending |
 | 11-04-T2 | 04 | 2 | DISC-03 | T-11-04-* | Soft tip, no callout | rg | `rg "Novo em Berlim" src/content/guides/first-steps.mdx` | ✅ | ⬜ pending |
-| 11-05-T1 | 05 | 3 | REL-01–03 + all | T-11-05-02 | Full green gate | unit+e2e | `pnpm test && pnpm e2e:ci` | ✅ | ⬜ pending |
-| 11-05-T2 | 05 | 3 | DISC/ONBD manual | — | N/A | manual | Human checkpoint | N/A | ⬜ pending |
+| 11-05-T1 | 05 | 3 | REL-01–03 + all | T-11-05-02 | Full green gate | unit+e2e | `pnpm test && pnpm e2e:ci` | ✅ | ✅ green |
+| 11-05-T2 | 05 | 3 | DISC/ONBD manual | — | N/A | manual | Human checkpoint | N/A | ✅ green |
 
 *Planner fills concrete Task IDs when PLAN.md files are written. Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
@@ -67,10 +67,10 @@ created: 2026-07-25
 
 ## Manual-Only Verifications
 
-| Behavior | Requirement | Why Manual | Test Instructions |
-|----------|-------------|------------|-------------------|
-| Editorial tone of complementary intros / Próximos passos copy | ONBD-06, DISC-04 | Tone/honesty judgment per EDITORIAL_GUIDE | Read both guide intros + closing section; confirm complementary (not duplicate) framing and linear next steps |
-| Homepage visual hierarchy (Start here stronger vs schools secondary) | DISC-01 | Visual weight is hard to assert fully in unit tests | Spot-check homepage: primary accent on Start here; schools secondary but visible |
+| Behavior | Requirement | Why Manual | Test Instructions | Status |
+|----------|-------------|------------|-------------------|--------|
+| Editorial tone of complementary intros / Próximos passos copy | ONBD-06, DISC-04 | Tone/honesty judgment per EDITORIAL_GUIDE | Read both guide intros + closing section; confirm complementary (not duplicate) framing and linear next steps | [x] Done |
+| Homepage visual hierarchy (Start here stronger vs schools secondary) | DISC-01 | Visual weight is hard to assert fully in unit tests | Spot-check homepage: primary accent on Start here; schools secondary but visible | [x] Done |
 
 ---
 
@@ -83,4 +83,4 @@ created: 2026-07-25
 - [x] Feedback latency acceptable
 - [x] `nyquist_compliant: true` set in frontmatter after plans land
 
-**Approval:** pending
+**Approval:** approved — human verification of homepage hierarchy and complementary editorial tone confirmed 2026-07-25
