@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
 status: executing
-stopped_at: Completed 11-02-PLAN.md
-last_updated: "2026-07-25T18:40:17.499Z"
+stopped_at: Completed 11-04-PLAN.md
+last_updated: "2026-07-25T18:49:39.596Z"
 last_activity: 2026-07-25
 progress:
   total_phases: 3
   completed_phases: 2
   total_plans: 13
-  completed_plans: 11
-  percent: 85
+  completed_plans: 12
+  percent: 92
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-07-12)
 ## Current Position
 
 Phase: 11 (flagship-discovery-release) — EXECUTING
-Plan: 4 of 6
+Plan: 5 of 6
 Status: Ready to execute
 Last activity: 2026-07-25
 
-Progress: [█████████░] 85%
+Progress: [█████████░] 92%
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Progress: [█████████░] 85%
 | Phase 11 P01 | 6min | 2 tasks | 3 files |
 | Phase 11 P02 | 5min | 2 tasks | 3 files |
 | Phase 11 P03 | 8min | 2 tasks | 5 files |
+| Phase 11 P04 | 12min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -71,6 +72,7 @@ Progress: [█████████░] 85%
 - [Phase 11-01]: Removed guides-hub and methodology homepage cards entirely (not hidden) per D-03; still discoverable via nav
 - [Phase 11-02]: Kept Berlin hub CTA label exactly 'Ler guia do sistema escolar' while giving the flagship CTA the distinct label 'Ler guia do sistema educacional' to avoid getByRole name collisions
 - [Phase 11-03]: Widened GuideIntro.description to ReactNode instead of adding a second prop/paragraph, per D-09's no-separate-section intent
+- [Phase 11-04]: Scoped e2e Próximos passos assertions via CSS sibling selector h2:has-text(...) ~ ol since MDX headings have no <section> wrapper
 
 ## Blockers/Concerns
 
@@ -78,8 +80,8 @@ Progress: [█████████░] 85%
 
 ## Session Continuity
 
-Last session: 2026-07-25T18:38:40.718Z
-Stopped at: Completed 11-02-PLAN.md
+Last session: 2026-07-25T18:49:39.589Z
+Stopped at: Completed 11-04-PLAN.md
 Resume file: None
 
 ## Operator Next Steps
