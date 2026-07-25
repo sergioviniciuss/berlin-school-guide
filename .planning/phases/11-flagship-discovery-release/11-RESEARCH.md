@@ -495,17 +495,15 @@ Not applicable in the traditional sense (no external library/framework version d
 
 **If this table is empty:** N/A — 2 assumptions logged above, both low-risk internal-consistency items already flagged for explicit planner decision, not scope-affecting.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Should `/guides/berlin-school-system`'s `<title>` metadata (not just H1) be updated to match the D-08 retitle?**
-   - What we know: The page's `buildPageMetadata({ title: "Sistema escolar primário em Berlim", ... })` call is independent of the `GuideIntro` H1 prop; D-08 only explicitly mandates retitling "the Berlin guide (hub card **and** page `GuideIntro`/H1)".
-   - What's unclear: Whether REL-01 ("Page metadata... is distinct and in Portuguese") implies the `<title>` tag should also reflect "sistema escolar público" wording for consistency, or whether the current title remains acceptable since it's not explicitly named in D-08.
-   - Recommendation: Planner should default to updating the metadata title/description together with the H1 for editorial consistency (low cost, one-line change, no test currently pins the old string), unless the user's discussion intent was narrower.
+1. **Should `/guides/berlin-school-system`'s `<title>` metadata (not just H1) be updated to match the D-08 retitle?** — **RESOLVED** (Plan 03 / UI-SPEC): Yes. Berlin page metadata title is `"Sistema escolar público em Berlim"` (with polished Portuguese description), updated together with the D-08 H1 retitle for editorial consistency and REL-01. Onboarding metadata title stays `"Sistema educacional alemão"`.
+   - What we knew: The page's `buildPageMetadata({ title: ... })` call is independent of the `GuideIntro` H1 prop; D-08 only explicitly mandates hub card + H1.
+   - Resolution: Plan 03 Task 2 sets `title: "Sistema escolar público em Berlim"` per UI-SPEC locked copy.
 
-2. **Does the Berlin guide's own intro need a reciprocal complementary line (D-09 says "both guide intros"), and should it be a *conditional* recommendation (matching D-10's Berlin example, which is conditional: "Se você ainda não conhece...") or unconditional?**
-   - What we know: CONTEXT's D-10 example for the Berlin guide is explicitly conditional in phrasing ("Se você ainda não conhece a estrutura do sistema educacional alemão, recomendamos começar por...").
-   - What's unclear: Nothing structurally — the example copy is already given verbatim in CONTEXT D-10. This is flagged only so the planner copies the CONTEXT example text (or a light edit of it) rather than re-deriving new wording, since D-10 already provides locked example copy for both guides.
-   - Recommendation: Use the CONTEXT D-10 example copy directly (light editorial polish allowed per `docs/EDITORIAL_GUIDE.md` tone rules), wired through the widened `GuideIntro.description: ReactNode` prop (Pattern 1).
+2. **Does the Berlin guide's own intro need a reciprocal complementary line (D-09 says "both guide intros"), and should it be a *conditional* recommendation (matching D-10's Berlin example, which is conditional: "Se você ainda não conhece...") or unconditional?** — **RESOLVED** (Plan 03 / D-10): Yes — conditional reciprocal JSX `Link` in Berlin `GuideIntro.description` (ReactNode), using CONTEXT D-10 conditional phrasing ("Se você ainda não conhece…") linking to `/guides/german-education-system`. Onboarding intro gets the complementary link to Berlin in the same pattern.
+   - What we knew: CONTEXT D-10 already locked conditional example copy for Berlin.
+   - Resolution: Plan 03 widens `description: ReactNode` and wires both intros with inline `Link`s; Berlin uses the conditional recommendation form.
 
 ## Environment Availability
 

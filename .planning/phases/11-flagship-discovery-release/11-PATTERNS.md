@@ -1,8 +1,8 @@
 # Phase 11: Flagship Discovery & Release - Pattern Map
 
 **Mapped:** 2026-07-25
-**Files analyzed:** 19
-**Analogs found:** 19 / 19
+**Files analyzed:** 20
+**Analogs found:** 20 / 20
 
 ## File Classification
 
@@ -25,10 +25,11 @@
 | `e2e/smoke.spec.ts` | test | request-response (browser) | self — homepage → onboarding journey pattern | exact |
 | `e2e/metadata.spec.ts` | test | request-response (browser) | self — `CORE_ROUTES` array extension | exact |
 | `e2e/a11y.spec.ts` | test | request-response (browser) | self — `CORE_A11Y_ROUTES` + `expectNoAccessibilityViolations` | exact |
+| `e2e/onboarding.spec.ts` | test | request-response (browser) | self — Plan 04 extends with Próximos passos assertions | exact |
 | `src/app/page.tsx` | route | request-response (static SSR) | self — composition already wires `HomeJourneyCards`; likely unchanged | exact |
 | `src/app/guides/page.tsx` | route | request-response (static SSR) | self — composition already wires `GuidesHub`; likely unchanged | exact |
 
-**Not modified (by design):** `src/app/guides/first-steps/page.tsx` (D-11 tip lives in MDX), directory `/schools` intro (D-12), `e2e/onboarding.spec.ts` (route already covered; smoke owns discovery journey).
+**Not modified (by design):** `src/app/guides/first-steps/page.tsx` (D-11 tip lives in MDX), directory `/schools` intro (D-12).
 
 ## Pattern Assignments
 
