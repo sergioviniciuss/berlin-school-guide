@@ -117,7 +117,7 @@ Plans:
 |-------|-----------|-------|--------|-----------|
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9–11 | v1.1 | 13/13 | Shipped | 2026-07-26 |
-| 12. Editorial & Research Framework | v1.2 | 4/4 | Complete   | 2026-07-26 |
+| 12. Editorial & Research Framework | v1.2 | 4/4 | Complete    | 2026-07-26 |
 | 13. Evidence & Tag Schema Layer | v1.2 | 0/? | Not started | - |
 | 14. Pilot Profile Content | v1.2 | 0/? | Not started | - |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |

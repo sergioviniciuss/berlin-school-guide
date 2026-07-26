@@ -21,7 +21,7 @@ A static Next.js site in Brazilian Portuguese that helps Brazilian families in B
 
 **v1.1 delivered:** Visual education journey (`EducationTimeline`, `BerlinCallout`, `GlossaryTerm`), full Kita→higher-ed editorial with Berlin differences and glossary, homepage Start here → onboarding, guides hub flagship stack, complementary Berlin/first-steps cross-links, and release gates (metadata, a11y, smoke, Jest + e2e CI).
 
-**Building:** v1.2 Evidence-Based School Profiles — pilot evidence-backed tags + editorial on 3–5 schools; methodology as a first-class deliverable.
+**Building:** v1.2 Evidence-Based School Profiles — Phase 12 complete (editorial & research framework + `/methodology` update + named pilot set); next is schema layer (Phase 13) then pilot content (Phase 14).
 
 ## Core Value
 
@@ -60,13 +60,16 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Homepage and Guides hub promote onboarding guide as primary entry point — v1.1
 - ✓ Complementary cross-links: onboarding ↔ Berlin guide ↔ first-steps ↔ directory — v1.1
 - ✓ Portuguese SEO metadata + a11y + homepage→onboarding smoke — v1.1
+- ✓ Editorial & research framework (source hierarchy, independence rules, tag taxonomy v1, Perfil voice, qualitative cadence) — Validated in Phase 12: Editorial & Research Framework
+- ✓ Public `/methodology` explains evidence-backed tags, source tiers, and confidence labels — Validated in Phase 12
+- ✓ Written pilot-selection rationale naming 3–5 schools (incl. low-documentation) — Validated in Phase 12
 
 ### Active
 
 - [ ] Evidence-backed school profile model (structured tags + PT-BR editorial) on school profile pages
-- [ ] Editorial & research framework (evidence standards, source hierarchy, voice, tag taxonomy, citations, maintenance)
 - [ ] Pilot qualitative profiles for 3–5 representative Lichtenberg schools
 - [ ] Explicit official vs community evidence labeling; community only when triangulated
+- [ ] Schema + validators for tags, journalism/community source types, independence log (Phase 13)
 
 ### Out of Scope
 
@@ -127,9 +130,9 @@ Next.js (static export), TypeScript, Tailwind 4, shadcn/ui, MDX, Jest/RTL, Playw
 | `GuideIntro.description` as `ReactNode` | Inline sibling links without a separate section | ✓ Good — v1.1 |
 | Feature-first architecture | `AGENTS.md`, established codebase patterns | ✓ Good — keep |
 | “What kind of school?” not “Is it good?” | Match-making over ranking; easier to defend and maintain | — Pending v1.2 |
-| Evidence hierarchy: official → journalism → triangulated community | Community never sole basis for tags; always labeled non-official | — Pending v1.2 |
-| Profile-only pilot (3–5 schools) before directory/compare surfaces | Validate methodology and maintenance cost before scale | — Pending v1.2 |
-| Methodology framework as milestone deliverable | Repeatable expansion asset, not one-off profiles | — Pending v1.2 |
+| Evidence hierarchy: official → journalism → triangulated community | Community never sole basis for tags; always labeled non-official | ✓ Phase 12 — locked in docs + `/methodology` |
+| Profile-only pilot (3–5 schools) before directory/compare surfaces | Validate methodology and maintenance cost before scale | ✓ Phase 12 — named set in `docs/research/PILOT_SELECTION.md` |
+| Methodology framework as milestone deliverable | Repeatable expansion asset, not one-off profiles | ✓ Phase 12 — RESEARCH/EDITORIAL/DATA_MODEL/DECISIONS |
 
 ## Evolution
 
@@ -149,4 +152,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-26 — Milestone v1.2 started*
+*Last updated: 2026-07-26 — Phase 12 complete (editorial & research framework)*
