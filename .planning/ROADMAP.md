@@ -37,7 +37,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
 ### 🚧 v1.2 Evidence-Based School Profiles
 
-- [ ] **Phase 12: Editorial & Research Framework** — Evidence standards, source hierarchy, editorial voice, tag taxonomy v1, pilot-selection criteria, qualitative review cadence
+- [x] **Phase 12: Editorial & Research Framework** — Evidence standards, source hierarchy, editorial voice, tag taxonomy v1, pilot-selection criteria, qualitative review cadence (completed 2026-07-26)
 - [ ] **Phase 13: Evidence & Tag Schema Layer** — Structured tags, journalism/triangulated-community source tiers, triangulation validation, confidence labels
 - [ ] **Phase 14: Pilot Profile Content** — 3–5 Lichtenberg schools tagged and narrated, including a lower-documentation school and a triangulated-community example
 - [ ] **Phase 15: Profile UI (Tags & Narrative)** — TagsSection + editorial narrative rendering, official-vs-community distinction, extended Fontes and correction path
@@ -60,7 +60,7 @@ Plans:
 - [x] 12-01-PLAN.md — Extend docs/RESEARCH.md + docs/DATA_MODEL.md (source hierarchy, independence rules, tag taxonomy shape, qualitative cadence field semantics)
 - [x] 12-02-PLAN.md — Extend docs/EDITORIAL_GUIDE.md + docs/DECISIONS.md (banned/attributed-reputation voice, Perfil da escola voice, 4 dated ADR entries)
 - [x] 12-03-PLAN.md — Extend public /methodology page (source tiers, tags vs facts, confidence labels, version marker)
-- [ ] 12-04-PLAN.md — Write docs/research/PILOT_SELECTION.md (named 3-5 school pilot set + community-evidence candidate)
+- [x] 12-04-PLAN.md — Write docs/research/PILOT_SELECTION.md (named 3-5 school pilot set + community-evidence candidate)
 **UI hint**: yes (methodology page content update)
 
 ### Phase 13: Evidence & Tag Schema Layer
@@ -117,7 +117,7 @@ Plans:
 |-------|-----------|-------|--------|-----------|
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9–11 | v1.1 | 13/13 | Shipped | 2026-07-26 |
-| 12. Editorial & Research Framework | v1.2 | 3/4 | In Progress|  |
+| 12. Editorial & Research Framework | v1.2 | 4/4 | Complete   | 2026-07-26 |
 | 13. Evidence & Tag Schema Layer | v1.2 | 0/? | Not started | - |
 | 14. Pilot Profile Content | v1.2 | 0/? | Not started | - |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |

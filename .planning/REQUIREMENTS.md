@@ -12,7 +12,7 @@
 
 - [x] **FRAME-01**: Editorial & research framework in `docs/` defines evidence standards, source hierarchy (official → journalism → triangulated community), editorial voice, tag taxonomy v1, citation rules, and maintenance guidelines
 - [x] **FRAME-02**: Public `/methodology` page is updated and versioned to explain the evidence-backed profile model to families
-- [ ] **FRAME-03**: Written pilot-selection criteria include ≥1 lower-documentation school and are recorded before tagging begins
+- [x] **FRAME-03**: Written pilot-selection criteria include ≥1 lower-documentation school and are recorded before tagging begins
 - [x] **FRAME-04**: Qualitative content has an explicit review cadence separate from factual field recheck
 
 ### Evidence model & tags
@@ -81,7 +81,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | FRAME-01 | Phase 12 | Complete |
 | FRAME-02 | Phase 12 | Complete |
-| FRAME-03 | Phase 12 | Pending |
+| FRAME-03 | Phase 12 | Complete |
 | FRAME-04 | Phase 12 | Complete |
 | TAG-01 | Phase 13 | Pending |
 | TAG-02 | Phase 13 | Pending |
