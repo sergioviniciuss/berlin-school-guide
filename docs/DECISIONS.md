@@ -332,3 +332,83 @@ Use `tsx` for the `pnpm validate:data` script.
 ### Consequences
 
 Static data validation can run directly from TypeScript source. This adds a small development dependency but keeps validation scripts straightforward.
+
+## 2026-07-26: Introduce Tag Taxonomy V1
+
+### Context
+
+The evidence-based profile model (v1.2) needs a way to describe a school's character beyond factual fields, without slipping into ranking or reputation claims. Families need to know what kind of school it is, not just what it has.
+
+### Decision
+
+Introduce a closed tag taxonomy v1 of exactly 10 tags across 4 categories: academic focus (`stem-focus`, `languages-focus`, `arts-music-focus`), learning model (`bilingual-program`, `special-pedagogical-model`, `all-day-model`), student support (`inclusion-support`, `transition-support`), and school environment (`structured-learning-environment`, `active-school-community`). A tag requires official and/or journalism evidence, except `active-school-community`, which may additionally use independently triangulated community evidence and never as the sole basis for the tag.
+
+### Alternatives Considered
+
+- A flat tag list without categories.
+- Including a "High demand" tag for admissions pressure or popularity.
+- Allowing community evidence for all tags, not only `active-school-community`.
+
+### Consequences
+
+Tag scope stays closed and auditable for the pilot. This introduces Metodologia v1, the first explicitly tracked methodology version, mirrored publicly in `src/content/guides/methodology.mdx`. Expanding or revising the taxonomy is deferred until pilot validation (see `docs/research/PILOT_SELECTION.md`).
+
+## 2026-07-26: Extend Source Hierarchy With Journalism And Triangulated Community
+
+### Context
+
+The existing source hierarchy in `docs/RESEARCH.md` reserved a single anecdotal tier and did not distinguish independent journalism or triangulated community evidence from unverified anecdote.
+
+### Decision
+
+Add `journalism` as a displayable source type, and add `triangulated_community` as a new, displayable source type distinct from the reserved `anecdotal_reserved` tier. A community source is independent when it could reasonably have arisen from a separate publisher or community origin — echoes, cross-posts, and reposts of the same discussion do not count. Conflicting independent sources fail closed: no tag is published.
+
+### Alternatives Considered
+
+- Leaving all community signals under the reserved `anecdotal_reserved` tier.
+- Displaying any single community source without requiring independent corroboration.
+- Treating journalism the same as school-published (secondary) sources without a distinct type.
+
+### Consequences
+
+The site can display a narrow, auditable slice of community evidence for one tag (`active-school-community`) while keeping the broader anecdotal tier reserved. Phase 13 implements independence-log validation in the schema.
+
+## 2026-07-26: Qualitative Richness Is Not A Quality Signal
+
+### Context
+
+The 2026-07-10 "Evidence Coverage Measures Research Completeness" decision already established that coverage percentage must not be read as school quality. Tags and narrative introduce a second axis of qualitative content that carries the same risk: a school with many tags could be misread as "better" than one with few or none.
+
+### Decision
+
+Extend the coverage-is-not-quality principle to qualitative content: tag and narrative density measures how much evidence was found and triangulated, never school quality. A sparse profile with one tag, or none, is a complete and honest result, not an incomplete one. Absence of a tag means insufficient evidence, not a negative signal.
+
+### Alternatives Considered
+
+- Leaving qualitative richness ungoverned by an explicit principle.
+- Requiring a minimum number of tags per pilot school before publication.
+- Treating a sparse profile as a placeholder to be filled in later.
+
+### Consequences
+
+The editorial guide and methodology page must both explain sparse-but-honest profiles as a first-class success. The pilot deliberately includes low-documentation schools to prove this holds under thin evidence.
+
+## 2026-07-26: Introduce Qualitative Review Cadence Distinct From Research Status
+
+### Context
+
+`research_status`, `lastResearched`, and `lastSourceChecked` were designed for slow-moving factual fields. Qualitative content (tags, "Perfil da escola") can go stale on a different timeline — a forum thread ages out, or a new Schulleitung arrives — while those factual timestamps still read as current.
+
+### Decision
+
+Track qualitative review separately via a new field, `qualitativeLastReviewed`, documented in `docs/DATA_MODEL.md` and implemented in Phase 13. Qualitative content is reviewed on a hybrid cadence: an annual periodic baseline (community-backed `active-school-community` tags revalidated at least every ~12 months), plus event-driven triggers (major school website updates, significant press coverage, curriculum or program changes, repeated correction reports, or a methodology version change). A methodology version change requires re-reviewing every pilot school's qualitative content before the new version is declared live.
+
+### Alternatives Considered
+
+- Reusing `research.lastResearched` for qualitative content.
+- A periodic-only cadence with no event triggers.
+- No explicit cadence, relying on ad hoc review.
+
+### Consequences
+
+Qualitative staleness can be tracked and reviewed independently of factual rechecking. Phase 13 must add `qualitativeLastReviewed` to the school schema; Phase 16 gates on the cadence being followed for the pilot set.
