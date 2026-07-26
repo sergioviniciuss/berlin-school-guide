@@ -2,35 +2,33 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Understand the German & Berlin Education System
-status: milestone_complete
+status: Awaiting next milestone
 stopped_at: Completed 11-05-PLAN.md
-last_updated: "2026-07-25T19:23:38.671Z"
-last_activity: 2026-07-25
+last_updated: "2026-07-26T08:17:39.784Z"
+last_activity: 2026-07-26 — Milestone v1.1 completed and archived
 progress:
   total_phases: 3
-  completed_phases: 4
+  completed_phases: 3
   total_plans: 13
   completed_plans: 13
-  percent: 133
+  percent: 100
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-07-12)
+See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 11 — flagship-discovery-release
+**Current focus:** Planning next milestone (v1.2 School Coverage Expansion)
 
 ## Current Position
 
-Phase: 11
-Plan: Not started
-Status: Milestone complete
-Last activity: 2026-07-25
-
-Progress: [██████████] 100%
+Phase: Milestone v1.1 complete
+Plan: —
+Status: Awaiting next milestone
+Last activity: 2026-07-26 — Milestone v1.1 completed and archived
 
 ## Performance Metrics
 
@@ -80,6 +78,15 @@ Progress: [██████████] 100%
 
 - None
 
+## Deferred Items
+
+Items acknowledged and deferred at milestone close on 2026-07-26:
+
+| Category | Item | Status |
+|----------|------|--------|
+| uat_gap | Phase 09 `09-HUMAN-UAT.md` (4 pending visual/UX scenarios) | partial |
+| audit | No `v1.1-MILESTONE-AUDIT.md` run before close | skipped |
+
 ## Session Continuity
 
 Last session: 2026-07-25T19:23:38.663Z
@@ -88,5 +95,4 @@ Resume file: None
 
 ## Operator Next Steps
 
-- `/gsd-verify-work 11` — validate Phase 11 against DISC/REL success criteria
-- Milestone v1.1 (Phases 9–11) is fully executed pending final verification
+- Start the next milestone with /gsd-new-milestone
