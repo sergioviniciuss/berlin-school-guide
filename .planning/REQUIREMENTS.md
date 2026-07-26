@@ -79,31 +79,31 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| FRAME-01 | — | Pending |
-| FRAME-02 | — | Pending |
-| FRAME-03 | — | Pending |
-| FRAME-04 | — | Pending |
-| TAG-01 | — | Pending |
-| TAG-02 | — | Pending |
-| TAG-03 | — | Pending |
-| TAG-04 | — | Pending |
-| NARR-01 | — | Pending |
-| NARR-02 | — | Pending |
-| NARR-03 | — | Pending |
-| NARR-04 | — | Pending |
-| NARR-05 | — | Pending |
-| NARR-06 | — | Pending |
-| PILOT-01 | — | Pending |
-| PILOT-02 | — | Pending |
-| PILOT-03 | — | Pending |
-| VAL-01 | — | Pending |
-| VAL-02 | — | Pending |
+| FRAME-01 | Phase 12 | Pending |
+| FRAME-02 | Phase 12 | Pending |
+| FRAME-03 | Phase 12 | Pending |
+| FRAME-04 | Phase 12 | Pending |
+| TAG-01 | Phase 13 | Pending |
+| TAG-02 | Phase 13 | Pending |
+| TAG-03 | Phase 13 | Pending |
+| TAG-04 | Phase 13 | Pending |
+| NARR-01 | Phase 15 | Pending |
+| NARR-02 | Phase 14 | Pending |
+| NARR-03 | Phase 15 | Pending |
+| NARR-04 | Phase 15 | Pending |
+| NARR-05 | Phase 15 | Pending |
+| NARR-06 | Phase 15 | Pending |
+| PILOT-01 | Phase 14 | Pending |
+| PILOT-02 | Phase 14 | Pending |
+| PILOT-03 | Phase 14 | Pending |
+| VAL-01 | Phase 16 | Pending |
+| VAL-02 | Phase 16 | Pending |
 
 **Coverage:**
 - v1.2 requirements: 19 total
-- Mapped to phases: 0
-- Unmapped: 19 ⚠️ (filled by roadmapper)
+- Mapped to phases: 19
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-07-26*
-*Last updated: 2026-07-26 after v1.2 requirements confirmation*
+*Last updated: 2026-07-26 — roadmap created, Phases 12–16 mapped (19/19 requirements)*

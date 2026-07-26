@@ -2,12 +2,12 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: Defining requirements
+status: Roadmap ready
 stopped_at: null
-last_updated: "2026-07-26T08:48:00.000Z"
-last_activity: 2026-07-26 — Milestone v1.2 started
+last_updated: "2026-07-26T18:56:00.000Z"
+last_activity: 2026-07-26 — Roadmap created, Phases 12–16 defined
 progress:
-  total_phases: 0
+  total_phases: 5
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Milestone v1.2 Evidence-Based School Profiles — defining requirements
+**Current focus:** Milestone v1.2 Evidence-Based School Profiles — roadmap ready, awaiting Phase 12 planning
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: 12 — Editorial & Research Framework (not started)
 Plan: —
-Status: Defining requirements
-Last activity: 2026-07-26 — Milestone v1.2 started
+Status: Roadmap ready — next is `/gsd-plan-phase 12`
+Last activity: 2026-07-26 — Roadmap created: Phases 12–16 defined, 19/19 requirements mapped
 
 ## Performance Metrics
 
@@ -75,6 +75,8 @@ Last activity: 2026-07-26 — Milestone v1.2 started
 - [Phase 11-04]: Scoped e2e Próximos passos assertions via CSS sibling selector h2:has-text(...) ~ ol since MDX headings have no <section> wrapper
 - [Phase 11-05]: No production code changes needed at the phase gate — full green bar and human approval confirmed Plans 01-04 already satisfied all phase success criteria
 - v1.2 milestone: Evidence-Based School Profiles — match-making over ranking; methodology framework is a first-class deliverable; pilot 3–5 schools profile-only
+- [Roadmap]: v1.2 phase order follows research SUMMARY.md build order — framework docs (12) → schema layer (13) → pilot content (14) → profile UI (15) → validation/release gates (16); directory/compare tag promotion stays explicitly out of scope
+- [Roadmap]: NARR-02 (Perfil da escola content rule) mapped to Phase 14 (pilot content authors it) rather than Phase 15 (UI only renders it); NARR-04 (removable without breaking) mapped to Phase 15 as an observable rendering behavior
 
 ## Blockers/Concerns
 
