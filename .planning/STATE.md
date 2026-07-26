@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: Phase 12 context gathered — next is `/gsd-plan-phase 12`
-stopped_at: Phase 12 context gathered
-last_updated: "2026-07-26T18:50:00.000Z"
-last_activity: 2026-07-26 — Phase 12 discuss-phase complete; CONTEXT.md ready for planning
+status: executing
+last_updated: "2026-07-26T20:33:13.233Z"
+last_activity: 2026-07-26
 progress:
   total_phases: 5
   completed_phases: 0
-  total_plans: 0
-  completed_plans: 0
+  total_plans: 4
+  completed_plans: 1
+  percent: 25
 ---
 
 # Project State
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Milestone v1.2 Evidence-Based School Profiles — Phase 12 context gathered, awaiting planning
+**Current focus:** Phase 12 — editorial-research-framework
 
 ## Current Position
 
-Phase: 12 — Editorial & Research Framework (context gathered)
-Plan: —
-Status: Context gathered — next is `/gsd-plan-phase 12`
-Last activity: 2026-07-26 — Phase 12 discuss-phase complete; see `.planning/phases/12-editorial-research-framework/12-CONTEXT.md`
+Phase: 12 (editorial-research-framework) — EXECUTING
+Plan: 2 of 4
+Status: Ready to execute
+Last activity: 2026-07-26
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Last activity: 2026-07-26 — Phase 12 discuss-phase complete; see `.planning/ph
 | Phase 11 P03 | 8min | 2 tasks | 5 files |
 | Phase 11 P04 | 12min | 2 tasks | 3 files |
 | Phase 11 P05 | 4min | 2 tasks | 1 files |
+| Phase 12 P01 | 12min | 2 tasks | 2 files |
 
 ## Decisions
 
@@ -76,6 +77,8 @@ Last activity: 2026-07-26 — Phase 12 discuss-phase complete; see `.planning/ph
 - v1.2 milestone: Evidence-Based School Profiles — match-making over ranking; methodology framework is a first-class deliverable; pilot 3–5 schools profile-only
 - [Roadmap]: v1.2 phase order follows research SUMMARY.md build order — framework docs (12) → schema layer (13) → pilot content (14) → profile UI (15) → validation/release gates (16); directory/compare tag promotion stays explicitly out of scope
 - [Roadmap]: NARR-02 (Perfil da escola content rule) mapped to Phase 14 (pilot content authors it) rather than Phase 15 (UI only renders it); NARR-04 (removable without breaking) mapped to Phase 15 as an observable rendering behavior
+- [Phase 12-01]: Extended Source Hierarchy with journalism + triangulated-community tiers and a Community Source Independence definition in docs/RESEARCH.md, kept tiers 1-4 and all other sections untouched
+- [Phase 12-01]: Documented closed Tag Taxonomy v1 (10 tag IDs, 4 categories) and qualitativeLastReviewed field semantics in docs/DATA_MODEL.md, cross-referenced to RESEARCH.md's Qualitative Review Cadence
 
 ## Blockers/Concerns
 
