@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-07-26T20:37:57.080Z"
+last_updated: "2026-07-26T20:42:32.676Z"
 last_activity: 2026-07-26
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 4
-  completed_plans: 2
-  percent: 50
+  completed_plans: 3
+  percent: 75
 ---
 
 # Project State
@@ -25,8 +25,8 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 ## Current Position
 
 Phase: 12 (editorial-research-framework) — EXECUTING
-Plan: 3 of 4
-Status: Plan 12-02 complete; ready to execute Plan 12-03
+Plan: 4 of 4
+Status: Ready to execute
 Last activity: 2026-07-26
 
 ## Performance Metrics
@@ -54,6 +54,7 @@ Last activity: 2026-07-26
 | Phase 11 P05 | 4min | 2 tasks | 1 files |
 | Phase 12 P01 | 12min | 2 tasks | 2 files |
 | Phase 12 P02 | 8min | 2 tasks | 2 files |
+| Phase 12 P03 | 6min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -81,6 +82,7 @@ Last activity: 2026-07-26
 - [Phase 12-01]: Extended Source Hierarchy with journalism + triangulated-community tiers and a Community Source Independence definition in docs/RESEARCH.md, kept tiers 1-4 and all other sections untouched
 - [Phase 12-01]: Documented closed Tag Taxonomy v1 (10 tag IDs, 4 categories) and qualitativeLastReviewed field semantics in docs/DATA_MODEL.md, cross-referenced to RESEARCH.md's Qualitative Review Cadence
 - [Phase 12-02]: Appended four dated 2026-07-26 ADR entries tracing to CONTEXT.md D-01–D-23: tag taxonomy v1, source hierarchy extension, qualitative-richness-is-not-quality, and qualitative review cadence
+- [Phase 12-03]: Placed source-tier and tag sections between Cobertura da pesquisa and Termos em alemão per UI-SPEC Content Extension Contract; version marker v1 dated 2026-07-26
 
 ## Blockers/Concerns
 
