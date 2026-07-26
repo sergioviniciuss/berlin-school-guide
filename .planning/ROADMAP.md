@@ -58,7 +58,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 **Plans**: 4 plans
 Plans:
 - [x] 12-01-PLAN.md — Extend docs/RESEARCH.md + docs/DATA_MODEL.md (source hierarchy, independence rules, tag taxonomy shape, qualitative cadence field semantics)
-- [ ] 12-02-PLAN.md — Extend docs/EDITORIAL_GUIDE.md + docs/DECISIONS.md (banned/attributed-reputation voice, Perfil da escola voice, 4 dated ADR entries)
+- [x] 12-02-PLAN.md — Extend docs/EDITORIAL_GUIDE.md + docs/DECISIONS.md (banned/attributed-reputation voice, Perfil da escola voice, 4 dated ADR entries)
 - [ ] 12-03-PLAN.md — Extend public /methodology page (source tiers, tags vs facts, confidence labels, version marker)
 - [ ] 12-04-PLAN.md — Write docs/research/PILOT_SELECTION.md (named 3-5 school pilot set + community-evidence candidate)
 **UI hint**: yes (methodology page content update)
@@ -117,7 +117,7 @@ Plans:
 |-------|-----------|-------|--------|-----------|
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9–11 | v1.1 | 13/13 | Shipped | 2026-07-26 |
-| 12. Editorial & Research Framework | v1.2 | 1/4 | In Progress|  |
+| 12. Editorial & Research Framework | v1.2 | 2/4 | In Progress|  |
 | 13. Evidence & Tag Schema Layer | v1.2 | 0/? | Not started | - |
 | 14. Pilot Profile Content | v1.2 | 0/? | Not started | - |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |
