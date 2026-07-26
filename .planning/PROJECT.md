@@ -2,7 +2,18 @@
 
 ## What This Is
 
-A static Next.js site in Brazilian Portuguese that helps Brazilian families in Berlin understand the German education system and compare nearby primary schools using evidence-backed, source-attributed information. The site leads with a flagship Germany-first onboarding guide (`/guides/german-education-system`), then connects families to Berlin practice, a Lichtenberg school directory, comparison, and practical checklists. Architecture supports expanding geographic coverage beyond Lichtenberg.
+A static Next.js site in Brazilian Portuguese that helps Brazilian families in Berlin understand the German education system and compare nearby primary schools using evidence-backed, source-attributed information. The site leads with a flagship Germany-first onboarding guide (`/guides/german-education-system`), then connects families to Berlin practice, a Lichtenberg school directory, comparison, and practical checklists. Direction of travel: become a decision-support tool that answers “what kind of school is this?” and whether it may match a child’s needs — not a ranking directory. Architecture supports expanding geographic coverage beyond Lichtenberg.
+
+## Current Milestone: v1.2 Evidence-Based School Profiles
+
+**Goal:** Prove that an evidence-backed school profile model is trustworthy, repeatable, and maintainable — helping families understand what kind of school this is and whether it matches their needs, rather than ranking schools or maximizing coverage.
+
+**Target features:**
+- Evidence-backed school profile model on profiles only: structured tags + short PT-BR “Perfil da escola” / community narrative (no rankings, scores, or “better than X”)
+- Explicit editorial & research framework deliverable: evidence standards, source hierarchy (official → journalism → triangulated community), editorial voice, tag taxonomy, citation rules, update/maintenance guidelines
+- Pilot on 3–5 representative Lichtenberg schools to validate methodology before broader rollout
+- Directory stays factual/lightweight; tags on cards/compare deferred to a later iteration
+- Coverage expansion remains secondary this milestone
 
 ## Current State
 
@@ -10,7 +21,7 @@ A static Next.js site in Brazilian Portuguese that helps Brazilian families in B
 
 **v1.1 delivered:** Visual education journey (`EducationTimeline`, `BerlinCallout`, `GlossaryTerm`), full Kita→higher-ed editorial with Berlin differences and glossary, homepage Start here → onboarding, guides hub flagship stack, complementary Berlin/first-steps cross-links, and release gates (metadata, a11y, smoke, Jest + e2e CI).
 
-**Next:** v1.2 School Coverage Expansion — deepen Lichtenberg coverage, then additional districts.
+**Building:** v1.2 Evidence-Based School Profiles — pilot evidence-backed tags + editorial on 3–5 schools; methodology as a first-class deliverable.
 
 ## Core Value
 
@@ -50,20 +61,24 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Complementary cross-links: onboarding ↔ Berlin guide ↔ first-steps ↔ directory — v1.1
 - ✓ Portuguese SEO metadata + a11y + homepage→onboarding smoke — v1.1
 
-### Active (v1.2 candidates)
+### Active
 
-- [ ] Complete all Lichtenberg Grundschulen beyond the 10-school spike set
-- [ ] Expand to additional Berlin districts
-- [ ] Berlin-wide directory import (M8) and detailed pilot profiles (M9) as research capacity allows
-- [ ] Update README status section for public launch
+- [ ] Evidence-backed school profile model (structured tags + PT-BR editorial) on school profile pages
+- [ ] Editorial & research framework (evidence standards, source hierarchy, voice, tag taxonomy, citations, maintenance)
+- [ ] Pilot qualitative profiles for 3–5 representative Lichtenberg schools
+- [ ] Explicit official vs community evidence labeling; community only when triangulated
 
 ### Out of Scope
 
 - Backend database or production server-side APIs — static-first V1 per `docs/PRODUCT.md` and `docs/DECISIONS.md`
 - User accounts, authentication, personalized dashboards — not V1
-- Broad Berlin-wide directory import (M8) — defer until Lichtenberg coverage is trustworthy (v1.2+)
-- 20–30 pilot profiles across Berlin (M9) — defer; deepen Lichtenberg set first
+- Stars, numeric scores, “top N”, “excellent school”, or “better than School X” language — anti-ranking product philosophy
+- Promoting profile tags to directory cards or compare views — deferred until the pilot model is proven
+- Maximizing school count as the v1.2 success metric — coverage expansion is secondary
+- Broad Berlin-wide directory import (M8) — defer until Lichtenberg depth is trustworthy
+- 20–30 pilot profiles across Berlin (M9) — defer
 - User-generated ratings, subjective school rankings, AI recommendations without evidence
+- Community sources as the sole basis for a tag or reputation statement
 - Mobile app, multilingual support beyond Brazilian Portuguese, live transit, enrollment management
 - Automatic scraping of third-party review sites
 
@@ -111,6 +126,10 @@ Next.js (static export), TypeScript, Tailwind 4, shadcn/ui, MDX, Jest/RTL, Playw
 | Homepage two-card Start here / Explorar escolas | Onboarding is default entry; methodology via nav | ✓ Good — v1.1 |
 | `GuideIntro.description` as `ReactNode` | Inline sibling links without a separate section | ✓ Good — v1.1 |
 | Feature-first architecture | `AGENTS.md`, established codebase patterns | ✓ Good — keep |
+| “What kind of school?” not “Is it good?” | Match-making over ranking; easier to defend and maintain | — Pending v1.2 |
+| Evidence hierarchy: official → journalism → triangulated community | Community never sole basis for tags; always labeled non-official | — Pending v1.2 |
+| Profile-only pilot (3–5 schools) before directory/compare surfaces | Validate methodology and maintenance cost before scale | — Pending v1.2 |
+| Methodology framework as milestone deliverable | Repeatable expansion asset, not one-off profiles | — Pending v1.2 |
 
 ## Evolution
 
@@ -130,4 +149,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-26 after v1.1 milestone*
+*Last updated: 2026-07-26 — Milestone v1.2 started*

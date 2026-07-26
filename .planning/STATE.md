@@ -1,17 +1,17 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: Understand the German & Berlin Education System
-status: Awaiting next milestone
-stopped_at: Completed 11-05-PLAN.md
-last_updated: "2026-07-26T08:17:39.784Z"
-last_activity: 2026-07-26 — Milestone v1.1 completed and archived
+milestone: v1.2
+milestone_name: Evidence-Based School Profiles
+status: Defining requirements
+stopped_at: null
+last_updated: "2026-07-26T08:48:00.000Z"
+last_activity: 2026-07-26 — Milestone v1.2 started
 progress:
-  total_phases: 3
-  completed_phases: 3
-  total_plans: 13
-  completed_plans: 13
-  percent: 100
+  total_phases: 0
+  completed_phases: 0
+  total_plans: 0
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Planning next milestone (v1.2 School Coverage Expansion)
+**Current focus:** Milestone v1.2 Evidence-Based School Profiles — defining requirements
 
 ## Current Position
 
-Phase: Milestone v1.1 complete
+Phase: Not started (defining requirements)
 Plan: —
-Status: Awaiting next milestone
-Last activity: 2026-07-26 — Milestone v1.1 completed and archived
+Status: Defining requirements
+Last activity: 2026-07-26 — Milestone v1.2 started
 
 ## Performance Metrics
 
@@ -37,6 +37,7 @@ Last activity: 2026-07-26 — Milestone v1.1 completed and archived
 - v1.0 plans completed: 26
 - v1.0 phases completed: 8/8
 - v1.1 phases planned: 3 (9–11)
+- v1.1 plans completed: 13
 
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
@@ -73,26 +74,20 @@ Last activity: 2026-07-26 — Milestone v1.1 completed and archived
 - [Phase 11-03]: Widened GuideIntro.description to ReactNode instead of adding a second prop/paragraph, per D-09's no-separate-section intent
 - [Phase 11-04]: Scoped e2e Próximos passos assertions via CSS sibling selector h2:has-text(...) ~ ol since MDX headings have no <section> wrapper
 - [Phase 11-05]: No production code changes needed at the phase gate — full green bar and human approval confirmed Plans 01-04 already satisfied all phase success criteria
+- v1.2 milestone: Evidence-Based School Profiles — match-making over ranking; methodology framework is a first-class deliverable; pilot 3–5 schools profile-only
 
 ## Blockers/Concerns
 
 - None
 
-## Deferred Items
+## Accumulated Context
 
-Items acknowledged and deferred at milestone close on 2026-07-26:
+### Prior milestones
 
-| Category | Item | Status |
-|----------|------|--------|
-| uat_gap | Phase 09 `09-HUMAN-UAT.md` (4 pending visual/UX scenarios) | partial |
-| audit | No `v1.1-MILESTONE-AUDIT.md` run before close | skipped |
+- v1.0 Lichtenberg Trustworthy Launch — shipped 2026-07-12 (phases 1–8)
+- v1.1 Understand the German & Berlin Education System — shipped 2026-07-26 (phases 9–11)
 
-## Session Continuity
+### Known deferred at v1.1 close
 
-Last session: 2026-07-25T19:23:38.663Z
-Stopped at: Completed 11-05-PLAN.md
-Resume file: None
-
-## Operator Next Steps
-
-- Start the next milestone with /gsd-new-milestone
+- Phase 09 human UAT (`09-HUMAN-UAT.md`) still `partial` — 4 subjective visual scenarios pending
+- No formal `v1.1-MILESTONE-AUDIT.md` run before close
