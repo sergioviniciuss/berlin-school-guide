@@ -2,9 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: Roadmap ready — next is `/gsd-plan-phase 12`
-last_updated: "2026-07-26T18:49:20.501Z"
-last_activity: "2026-07-26 — Roadmap created: Phases 12–16 defined, 19/19 requirements mapped"
+status: Phase 12 context gathered — next is `/gsd-plan-phase 12`
+stopped_at: Phase 12 context gathered
+last_updated: "2026-07-26T18:50:00.000Z"
+last_activity: 2026-07-26 — Phase 12 discuss-phase complete; CONTEXT.md ready for planning
 progress:
   total_phases: 5
   completed_phases: 0
@@ -19,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Milestone v1.2 Evidence-Based School Profiles — roadmap ready, awaiting Phase 12 planning
+**Current focus:** Milestone v1.2 Evidence-Based School Profiles — Phase 12 context gathered, awaiting planning
 
 ## Current Position
 
-Phase: 12 — Editorial & Research Framework (not started)
+Phase: 12 — Editorial & Research Framework (context gathered)
 Plan: —
-Status: Roadmap ready — next is `/gsd-plan-phase 12`
-Last activity: 2026-07-26 — Roadmap created: Phases 12–16 defined, 19/19 requirements mapped
+Status: Context gathered — next is `/gsd-plan-phase 12`
+Last activity: 2026-07-26 — Phase 12 discuss-phase complete; see `.planning/phases/12-editorial-research-framework/12-CONTEXT.md`
 
 ## Performance Metrics
 
