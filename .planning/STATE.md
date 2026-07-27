@@ -1,36 +1,33 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: Understand the German & Berlin Education System
-status: milestone_complete
-stopped_at: Completed 11-05-PLAN.md
-last_updated: "2026-07-25T19:23:38.671Z"
-last_activity: 2026-07-25
+milestone: v1.2
+milestone_name: Evidence-Based School Profiles
+status: ready_to_plan
+last_updated: "2026-07-26T20:47:13.520Z"
+last_activity: 2026-07-26
 progress:
-  total_phases: 3
-  completed_phases: 4
-  total_plans: 13
-  completed_plans: 13
-  percent: 133
+  total_phases: 5
+  completed_phases: 2
+  total_plans: 4
+  completed_plans: 4
+  percent: 40
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-07-12)
+See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 11 — flagship-discovery-release
+**Current focus:** Phase 12 — editorial-research-framework
 
 ## Current Position
 
-Phase: 11
+Phase: 13
 Plan: Not started
-Status: Milestone complete
-Last activity: 2026-07-25
-
-Progress: [██████████] 100%
+Status: Ready to plan
+Last activity: 2026-07-26
 
 ## Performance Metrics
 
@@ -39,6 +36,7 @@ Progress: [██████████] 100%
 - v1.0 plans completed: 26
 - v1.0 phases completed: 8/8
 - v1.1 phases planned: 3 (9–11)
+- v1.1 plans completed: 13
 
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
@@ -54,6 +52,10 @@ Progress: [██████████] 100%
 | Phase 11 P03 | 8min | 2 tasks | 5 files |
 | Phase 11 P04 | 12min | 2 tasks | 3 files |
 | Phase 11 P05 | 4min | 2 tasks | 1 files |
+| Phase 12 P01 | 12min | 2 tasks | 2 files |
+| Phase 12 P02 | 8min | 2 tasks | 2 files |
+| Phase 12 P03 | 6min | 2 tasks | 3 files |
+| Phase 12 P04 | 8min | 1 tasks | 1 files |
 
 ## Decisions
 
@@ -75,18 +77,27 @@ Progress: [██████████] 100%
 - [Phase 11-03]: Widened GuideIntro.description to ReactNode instead of adding a second prop/paragraph, per D-09's no-separate-section intent
 - [Phase 11-04]: Scoped e2e Próximos passos assertions via CSS sibling selector h2:has-text(...) ~ ol since MDX headings have no <section> wrapper
 - [Phase 11-05]: No production code changes needed at the phase gate — full green bar and human approval confirmed Plans 01-04 already satisfied all phase success criteria
+- v1.2 milestone: Evidence-Based School Profiles — match-making over ranking; methodology framework is a first-class deliverable; pilot 3–5 schools profile-only
+- [Roadmap]: v1.2 phase order follows research SUMMARY.md build order — framework docs (12) → schema layer (13) → pilot content (14) → profile UI (15) → validation/release gates (16); directory/compare tag promotion stays explicitly out of scope
+- [Roadmap]: NARR-02 (Perfil da escola content rule) mapped to Phase 14 (pilot content authors it) rather than Phase 15 (UI only renders it); NARR-04 (removable without breaking) mapped to Phase 15 as an observable rendering behavior
+- [Phase 12-01]: Extended Source Hierarchy with journalism + triangulated-community tiers and a Community Source Independence definition in docs/RESEARCH.md, kept tiers 1-4 and all other sections untouched
+- [Phase 12-01]: Documented closed Tag Taxonomy v1 (10 tag IDs, 4 categories) and qualitativeLastReviewed field semantics in docs/DATA_MODEL.md, cross-referenced to RESEARCH.md's Qualitative Review Cadence
+- [Phase 12-02]: Appended four dated 2026-07-26 ADR entries tracing to CONTEXT.md D-01–D-23: tag taxonomy v1, source hierarchy extension, qualitative-richness-is-not-quality, and qualitative review cadence
+- [Phase 12-03]: Placed source-tier and tag sections between Cobertura da pesquisa and Termos em alemão per UI-SPEC Content Extension Contract; version marker v1 dated 2026-07-26
+- [Phase 12-04]: Named the 5-school pilot set verbatim from 12-RESEARCH.md's Pilot Candidate Analysis, independently re-verified against the real dataset before committing
 
 ## Blockers/Concerns
 
 - None
 
-## Session Continuity
+## Accumulated Context
 
-Last session: 2026-07-25T19:23:38.663Z
-Stopped at: Completed 11-05-PLAN.md
-Resume file: None
+### Prior milestones
 
-## Operator Next Steps
+- v1.0 Lichtenberg Trustworthy Launch — shipped 2026-07-12 (phases 1–8)
+- v1.1 Understand the German & Berlin Education System — shipped 2026-07-26 (phases 9–11)
 
-- `/gsd-verify-work 11` — validate Phase 11 against DISC/REL success criteria
-- Milestone v1.1 (Phases 9–11) is fully executed pending final verification
+### Known deferred at v1.1 close
+
+- Phase 09 human UAT (`09-HUMAN-UAT.md`) still `partial` — 4 subjective visual scenarios pending
+- No formal `v1.1-MILESTONE-AUDIT.md` run before close

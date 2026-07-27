@@ -1,5 +1,30 @@
 # Milestones
 
+## v1.1 Understand the German & Berlin Education System (Shipped: 2026-07-26)
+
+**Phases completed:** 3 phases, 13 plans, 29 tasks
+
+Known deferred items at close: 2 (see STATE.md Deferred Items)
+
+**Delivered:** Flagship Germany-first onboarding guide with visual journey scaffold, Berlin-integrated editorial, homepage/hub discovery path, complementary cross-links, and release gates.
+
+**Key accomplishments:**
+
+- Two leaf React components — `BerlinCallout` (inline "Em Berlim" badge + "Berlin em destaque" summary box linking to the Berlin guide) and `GlossaryTerm` (dl/dt/dd term-definition shell) — both server components, no external dependencies, fully unit-tested.
+- Responsive branching infographic (`EducationTimeline`) built with `@radix-ui/react-collapsible` — desktop fan-out diagram and mobile stacked stepper sharing one `TimelineNode` card, covering all 5 secondary/vocational tracks and forcing expanded summaries on print.
+- Wires the `EducationTimeline`, `BerlinCallout`, and `GlossaryTerm` components (built in Plans 01-02) into a live, public route — `/guides/german-education-system` — via global MDX registration, a route shell mirroring `berlin-school-system/page.tsx`, placeholder editorial content with Phase 10 heading stubs, and Playwright coverage confirming no mobile overflow.
+- RED GlossaryTerm deep-link tests and EducationTimeline locked H2 anchor contract so Plan 01 cannot ship broken glossary hashes or stub timeline links
+- Germany-first MDX through Depois da 6ª série with Förderprognose framing and the first self-contained O que verificar block
+- Complete flagship MDX through Glossário with peer secondary paths, three verify moments, one Berlin summary callout, and ONBD-05 narrative deep-links — human-approved after two UAT visual fixes
+- Extended Playwright metadata/a11y route arrays for the onboarding guide and rewrote the homepage smoke journey to target onboarding, with two assertions intentionally RED until Plans 01 and 03 ship the corresponding UI.
+- Restructured `HomeJourneyCards` from three cards to exactly two — "Comece por aqui" (primary, linking to the onboarding guide) and "Explorar escolas" (secondary, linking to the school directory) — making the onboarding guide the homepage's default entry point for new families.
+- GuidesHub's "Entenda o sistema" section now stacks the onboarding flagship card (primary chrome, links to `/guides/german-education-system`) above the retitled Berlin public-school card (secondary chrome, D-08 heading), with D-06 role copy on all three hub cards.
+- Widened `GuideIntro.description` to `ReactNode` and used it to wire a complementary, cross-linked reading path between the onboarding and Berlin guide intros, while retitling the Berlin guide to "Como funciona o sistema escolar público de Berlim" with matching Portuguese metadata polish.
+- Added a "Próximos passos" MDX ordered list (Berlin guide → /schools → first-steps, no /compare) immediately before Glossário in the onboarding guide, plus a soft italic top tip in first-steps.mdx linking back to onboarding, completing the linear Germany → Berlin → schools → act discovery path.
+- Full `pnpm test && pnpm e2e:ci` green bar plus human-approved homepage hierarchy and complementary editorial tone close out Phase 11's flagship discovery release with all eight requirements (REL-01–03, DISC-01–04, ONBD-06) confirmed end-to-end.
+
+---
+
 ## v1.0 Lichtenberg Trustworthy Launch (Shipped: 2026-07-12)
 
 **Phases completed:** 8 phases, 26 plans, 52 tasks

@@ -153,6 +153,29 @@ The data model may reserve space for anecdotal parent signals, but these should 
 
 No third-party review scraping should be implemented in V1.
 
+## Tag Taxonomy
+
+Tags are a closed, versioned taxonomy - v1 defines exactly 10 tag IDs across 4 categories. A tag describes a sustained, decision-relevant characteristic of a school, not an isolated project, a generic claim, or documentation richness. A tag differs from a factual field: a factual field answers "what does this school have?"; a tag answers "what kind of school is this?" (for example, a verified `ganztag` value does not automatically justify the `all-day-model` tag, and a bilingual/SESB program does not automatically justify `bilingual-program`).
+
+### v1 Tag Categories
+
+- **Academic focus:** `stem-focus`, `languages-focus`, `arts-music-focus`.
+- **Learning model:** `bilingual-program`, `special-pedagogical-model`, `all-day-model`.
+- **Student support:** `inclusion-support`, `transition-support`.
+- **School environment:** `structured-learning-environment`, `active-school-community`.
+
+Each tag must cite at least one evidence source and carry a qualitative confidence label describing evidence strength, never school quality (see `docs/EDITORIAL_GUIDE.md`).
+
+`active-school-community` is the only v1 tag that may be supported by community evidence, and only when corroborated by an independent source per `docs/RESEARCH.md`'s Community Source Independence rules; it may never be the sole basis, and it never implies that the community is "better." All other v1 tags require official and/or journalism sources only.
+
+A "High demand" tag (admissions pressure or popularity) is explicitly out of v1 - it measures demand, not school-child match, and cannot be evidenced comparably across schools. Full taxonomy IDs, categories, and evidence rules are structural decisions recorded in `docs/DECISIONS.md`.
+
+## Qualitative Review Tracking
+
+Qualitative content (tags and the "Perfil da escola" narrative) is tracked with its own field, `qualitativeLastReviewed`, separate from the factual `research.lastResearched` and `research.lastSourceChecked` fields. `research_status` and its recheck cadence continue to describe only factual field completeness; `qualitativeLastReviewed` describes when a school's tags and narrative were last reviewed under the qualitative review cadence.
+
+This section documents the field's intended semantics; Phase 13 implements it on the school schema. `qualitativeLastReviewed` should record an ISO `YYYY-MM-DD` date and be updated whenever a school's qualitative content is reviewed under the cadence documented in `docs/RESEARCH.md`'s Qualitative Review Cadence section - whether the periodic annual baseline or an event-driven trigger.
+
 ## Open Day Questions
 
 Detailed school profiles should include generated or curated questions for families to ask during school visits.

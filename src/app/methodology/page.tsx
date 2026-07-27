@@ -5,7 +5,7 @@ import { buildPageMetadata } from "@/features/siteMetadata";
 export const metadata = buildPageMetadata({
   title: "Metodologia",
   description:
-    "Como interpretamos evidências, dados ausentes e cobertura da pesquisa.",
+    "Como interpretamos evidências, características da escola e cobertura da pesquisa.",
   path: "/methodology",
 });
 

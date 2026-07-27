@@ -1,88 +1,109 @@
-# Requirements: Berlin School Guide — v1.1
+# Requirements: Berlin School Guide — v1.2
 
-**Defined:** 2026-07-12
+**Defined:** 2026-07-26
 **Core Value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
+**Milestone:** v1.2 Evidence-Based School Profiles
 
-**Milestone:** v1.1 Understand the German & Berlin Education System
+**Success criterion:** Prove that the evidence-backed school profile model is trustworthy, repeatable, and maintainable — helping families understand what kind of school this is and whether it matches their needs — rather than ranking schools or maximizing coverage.
 
-## v1.1 Requirements
+## v1.2 Requirements
 
-### Onboarding Guide Content
+### Framework & methodology
 
-- [x] **ONBD-01**: Flagship guide explains the full German education path from Kita through secondary school, vocational training, and higher education
-- [x] **ONBD-02**: Guide covers major decision points (school transitions, track selection, qualification routes) in plain Brazilian Portuguese
-- [x] **ONBD-03**: Guide explains non-Gymnasium pathways to university or higher education (e.g. Ausbildung, Duales Studium, Fachabitur)
-- [x] **ONBD-04**: Berlin-specific differences are highlighted throughout the Germany-wide narrative (not structured as a Berlin guide with a German appendix)
-- [x] **ONBD-05**: Integrated glossary explains key German terms (Ganztag, Hort, Willkommensklasse, Ausbildung, Duales Studium, Fachabitur, and related concepts)
-- [x] **ONBD-06**: Guide positions the site as definitive onboarding for Brazilian families moving to Germany, with clear next steps toward directory/comparison/guides
+- [x] **FRAME-01**: Editorial & research framework in `docs/` defines evidence standards, source hierarchy (official → journalism → triangulated community), editorial voice, tag taxonomy v1, citation rules, and maintenance guidelines
+- [x] **FRAME-02**: Public `/methodology` page is updated and versioned to explain the evidence-backed profile model to families
+- [x] **FRAME-03**: Written pilot-selection criteria include ≥1 lower-documentation school and are recorded before tagging begins
+- [x] **FRAME-04**: Qualitative content has an explicit review cadence separate from factual field recheck
 
-### Visual Communication
+### Evidence model & tags
 
-- [x] **VIS-01**: Education journey is communicated with visual timeline(s), minimizing long unstructured text blocks
-- [x] **VIS-02**: Pathway decision points use diagrams or structured visual branches (e.g. Gymnasium vs Realschule vs other tracks)
-- [x] **VIS-03**: Berlin-specific callouts are visually distinct from Germany-wide content so families can scan differences quickly
+- [ ] **TAG-01**: School records support structured tags with per-tag citations and evidence status
+- [ ] **TAG-02**: Source model supports `journalism` and a displayable triangulated-community tier (distinct from hidden reserved anecdotal)
+- [ ] **TAG-03**: Community evidence requires ≥2 independent sources, an independence log, and can never be the sole basis for a tag
+- [ ] **TAG-04**: Each tag shows a qualitative confidence label that means evidence strength, not school quality
 
-### Discovery & Integration
+### Profile narrative & UI
 
-- [x] **DISC-01**: Homepage prominently links to the onboarding guide as a primary journey entry
-- [x] **DISC-02**: `/guides` hub positions the onboarding guide as the flagship card above other guides
-- [x] **DISC-03**: Cross-links connect onboarding guide ↔ existing Berlin primary guide ↔ directory ↔ first-steps checklist
-- [x] **DISC-04**: Relationship between new onboarding guide and `/guides/berlin-school-system` is explicit (complementary, not duplicate)
+- [ ] **NARR-01**: Pilot school profiles render structured tags (grouped, cited, with evidence-strength labels)
+- [ ] **NARR-02**: Short PT-BR `Perfil da escola` synthesizes existing cited evidence only — never introduces uncited claims or ranking language
+- [ ] **NARR-03**: UI clearly distinguishes official information from community observations
+- [ ] **NARR-04**: Every qualitative element (tag or narrative block) is independently supported and removable without breaking the profile
+- [ ] **NARR-05**: Fontes includes citations from tags and narrative as well as existing fields
+- [ ] **NARR-06**: Correction / report-an-issue path explicitly covers tags and narrative
 
-### Release Quality
+### Pilot & validation
 
-- [x] **REL-01**: New guide route has Portuguese SEO metadata and passes existing metadata e2e patterns
-- [x] **REL-02**: Guide page meets accessibility basics (heading structure, landmark navigation, print-friendly where applicable)
-- [x] **REL-03**: Playwright smoke covers homepage → onboarding guide journey
+- [ ] **PILOT-01**: 3–5 representative Lichtenberg schools ship fully tagged and narrated profiles
+- [ ] **PILOT-02**: Pilot set includes ≥1 lower-documentation school
+- [ ] **PILOT-03**: At least one triangulated-community example is exercised end-to-end
+- [ ] **VAL-01**: Non-pilot school profiles remain unchanged; coverage % is not silently altered by tags/editorial
+- [ ] **VAL-02**: Automated tests cover schema/triangulation rules, tags/narrative UI, and Fontes merge
 
-## v1.2 Requirements (Next Milestone — School Coverage)
+## Future Requirements
 
-Deferred until v1.1 ships.
+Deferred beyond v1.2. Tracked but not in current roadmap.
 
-### Directory Expansion
+### After pilot validation
 
-- **EXP-01**: Complete research coverage for all Lichtenberg public primary schools beyond the current 10-school set
-- **EXP-02**: Expand to additional Berlin districts using district-scoped content modules
-- **EXP-03**: Berlin-wide directory import from official sources (M8)
-- **EXP-04**: 20–30 detailed cross-Berlin pilot profiles (M9)
+- **FUT-01**: Tag provenance / changelog UI (added date, evidence at addition, last reviewed)
+- **FUT-02**: Promote validated tags to directory cards and comparison views
+- **FUT-03**: Expand / revise tag taxonomy based on pilot gaps
+- **FUT-04**: Tag-aware Open Day questions
+- **FUT-05**: Apply evidence-backed profile model to remaining Lichtenberg schools
+- **FUT-06**: Expand coverage to additional Berlin districts
+
+### Longer-term
+
+- **FUT-07**: User-configurable compatibility framing (fit, not quality ranking)
+- **FUT-08**: Structured community-observation submission intake
+- **FUT-09**: Berlin-wide directory import (M8) and cross-Berlin detailed profiles (M9)
 
 ## Out of Scope
 
 | Feature | Reason |
 |---------|--------|
-| Berlin-only guide structure (Germany as appendix) | User direction: Germany-first onboarding with Berlin woven throughout |
-| Interactive pathway calculators or quizzes | Static MDX milestone; avoid scope creep |
-| Replacing `/guides/berlin-school-system` entirely | Complementary Berlin primary deep-dive remains valuable |
-| School data research in v1.1 | Explicitly deferred to v1.2 after onboarding guide ships |
-| Multilingual content beyond Brazilian Portuguese | Product constraint unchanged |
-| User accounts or personalized pathway recommendations | Out of V1 scope |
+| Numeric/star scores, “top N,” “excellent school,” “better than X” | Anti-ranking philosophy; match-making over ranking |
+| Confidence labels as school-quality signals | Confidence means evidence strength only |
+| Community as sole basis for a tag | Triangulation rule; trust model |
+| Tags on directory cards or compare this milestone | Deferred until pilot model is proven |
+| Maximizing school count as success metric | Coverage expansion is secondary |
+| AI-generated tags/narrative without human citation trail | Trust / evidence requirements |
+| School-authored or paid “premium profile” tags | Conflict of interest |
+| Aggregated parent star ratings | Misleading; banned by existing decisions |
+| Backend DB, auth, personalized dashboards | Static-first V1 |
+| Multilingual beyond Brazilian Portuguese | Product constraint unchanged |
 
 ## Traceability
 
+Which phases cover which requirements. Updated during roadmap creation.
+
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ONBD-01 | Phase 10 | Complete |
-| ONBD-02 | Phase 10 | Complete |
-| ONBD-03 | Phase 10 | Complete |
-| ONBD-04 | Phase 10 | Complete |
-| ONBD-05 | Phase 10 | Complete |
-| ONBD-06 | Phase 11 | Complete |
-| VIS-01 | Phase 9 | Complete |
-| VIS-02 | Phase 9 | Complete |
-| VIS-03 | Phase 9 | Complete |
-| DISC-01 | Phase 11 | Complete |
-| DISC-02 | Phase 11 | Complete |
-| DISC-03 | Phase 11 | Complete |
-| DISC-04 | Phase 11 | Complete |
-| REL-01 | Phase 11 | Complete |
-| REL-02 | Phase 11 | Complete |
-| REL-03 | Phase 11 | Complete |
+| FRAME-01 | Phase 12 | Complete |
+| FRAME-02 | Phase 12 | Complete |
+| FRAME-03 | Phase 12 | Complete |
+| FRAME-04 | Phase 12 | Complete |
+| TAG-01 | Phase 13 | Pending |
+| TAG-02 | Phase 13 | Pending |
+| TAG-03 | Phase 13 | Pending |
+| TAG-04 | Phase 13 | Pending |
+| NARR-01 | Phase 15 | Pending |
+| NARR-02 | Phase 14 | Pending |
+| NARR-03 | Phase 15 | Pending |
+| NARR-04 | Phase 15 | Pending |
+| NARR-05 | Phase 15 | Pending |
+| NARR-06 | Phase 15 | Pending |
+| PILOT-01 | Phase 14 | Pending |
+| PILOT-02 | Phase 14 | Pending |
+| PILOT-03 | Phase 14 | Pending |
+| VAL-01 | Phase 16 | Pending |
+| VAL-02 | Phase 16 | Pending |
 
 **Coverage:**
-- v1.1 requirements: 16 total
-- Mapped to phases: 16
+- v1.2 requirements: 19 total
+- Mapped to phases: 19
 - Unmapped: 0 ✓
 
 ---
-*Requirements defined: 2026-07-12*
-*Last updated: 2026-07-12 after v1.1 roadmap creation*
+*Requirements defined: 2026-07-26*
+*Last updated: 2026-07-26 — roadmap created, Phases 12–16 mapped (19/19 requirements)*

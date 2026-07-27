@@ -15,7 +15,7 @@ export default function GuidesPage() {
       <GuideIntro
         eyebrow="Berlin School Guide"
         title="Guias"
-        description="Comece pelo sistema escolar berlinense, depois use checklists práticas para visitar escolas e se preparar para a matrícula."
+        description="Comece pelo guia do sistema educacional alemão, depois veja como as regras se aplicam a Berlim e use checklists práticas para visitar escolas e se preparar para a matrícula."
       />
       <GuidesHub />
     </main>

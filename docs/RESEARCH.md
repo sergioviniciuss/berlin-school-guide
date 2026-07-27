@@ -14,9 +14,11 @@ Sources should be evaluated in this order:
 2. Official school inspection or quality reports.
 3. Individual school websites.
 4. Public statistical datasets.
-5. Parent reviews, forums, Google ratings, and social media.
+5. Independent journalism from established news outlets.
+6. Triangulated community sources - independently corroborated community observations meeting the Community Source Independence rules below. May currently be cited only for the `active-school-community` tag (see `docs/DATA_MODEL.md`).
+7. Parent reviews, forums, Google ratings, and social media.
 
-Anecdotal parent signals are reserved in the data model but should not be displayed in V1.
+Anecdotal parent signals (tier 7) remain reserved in the data model and are not displayed in V1, except for the triangulated community sources described in tier 6 above.
 
 ## Canonical Source Types
 
@@ -26,6 +28,8 @@ Structured data should use these source types:
 - `official_inspection`: official school inspection, quality report, or equivalent public accountability document.
 - `school_website`: information published by the school itself.
 - `public_dataset`: public statistical or directory dataset from a reliable institution.
+- `journalism`: reporting from an established, independent news outlet.
+- `triangulated_community`: a community observation independently corroborated per the Community Source Independence rules below; may currently be cited only for the `active-school-community` tag.
 - `anecdotal_reserved`: parent reviews, forums, Google ratings, social media, or similar anecdotal signals reserved for possible future use.
 
 ## Reliability Levels
@@ -33,9 +37,22 @@ Structured data should use these source types:
 Reliability levels should reflect source authority, not whether the information is favorable to a school:
 
 - `primary`: official government, district, inspection, or public education source.
-- `secondary`: school-published information or reliable public dataset.
-- `anecdotal`: subjective parent or community signal. Reserved in the data model but not displayed in V1.
+- `secondary`: school-published information, reliable public dataset, or independent journalism.
+- `triangulated_community`: independently corroborated community observation meeting the Community Source Independence rules below; may be cited only for the `active-school-community` tag, never as the sole basis for a tag.
+- `anecdotal`: subjective parent or community signal that has not been triangulated. Reserved in the data model but not displayed in V1.
 - `unknown`: source reliability has not yet been classified.
+
+## Community Source Independence
+
+Community-sourced observations may only be used for the `active-school-community` tag (see `docs/DATA_MODEL.md`'s Tag Taxonomy) and never as the sole basis for any tag; official corroboration should be sought where applicable.
+
+- **Independence** means a different publisher or community origin - not merely a different URL or a different individual within the same venue. The guiding question is whether the observations could reasonably have arisen separately, not merely been repeated.
+- **Echoes do not count** as independent corroboration: same-thread comments, cross-posts, screenshots or reposts of the same discussion, two Reddit threads about the same original post, or the same article republished elsewhere.
+- **Acceptable independence examples:** a Reddit thread and a Facebook parent group; two unrelated Facebook groups with different moderation and membership; a parent blog and a Reddit thread; a local parent forum and a Facebook group.
+- **Conflict fails closed:** when independent sources disagree, no tag is published. The research log may record supporting evidence, opposing evidence, and the reason for withholding the tag. Absence of a tag means insufficient evidence, not a negative signal.
+- **Minimum source quality:** an active, multi-voice venue with more than one participant, recent enough to reflect the current school, and containing substantive discussion. A single testimonial or an abandoned page with one comment does not qualify.
+- **Independence log:** each community source cited for a tag must be logged with venue/publisher, URL or stable identifier, date accessed, a one-line independence rationale versus the other corroborating source(s), and an echo-check note. Longer research reasoning belongs in research notes, not this required log.
+- **Recency:** community sources should normally be within approximately 24 months of authoring or review. Older material may be used only when it clearly describes a durable characteristic still confirmed by current official information or other up-to-date evidence.
 
 ## Citation Requirements
 
@@ -83,6 +100,14 @@ A school may have one of these statuses:
 - `profile_ready`: detailed profile meets the minimum publication standard;
 - `needs_review`: published or draft data needs source rechecking;
 - `blocked`: research cannot proceed because key sources are unavailable or contradictory.
+
+## Qualitative Review Cadence
+
+Qualitative content - tags and the "Perfil da escola" narrative - is reviewed on a cadence distinct from the factual `research_status` recheck cycle. Qualitative review tracks its own field, `qualitativeLastReviewed`, defined in `docs/DATA_MODEL.md`, separate from `lastResearched` and `lastSourceChecked`. The cadence is hybrid: periodic and event-driven.
+
+- **Periodic baseline:** all qualitative content is reviewed at least annually. Community-backed `active-school-community` tags must be revalidated at least every ~12 months, and community observations are revalidated on every qualitative review pass.
+- **Event-driven triggers:** a qualitative review is also triggered by a major school website update, significant press coverage, a curriculum or program change, repeated correction reports about a school's qualitative content, or a methodology version change.
+- **Methodology version changes:** when the methodology version changes (see `docs/DECISIONS.md`), every pilot school's qualitative content - tags and narrative - must be re-reviewed before the new methodology version is declared live.
 
 ## Correction Workflow
 
