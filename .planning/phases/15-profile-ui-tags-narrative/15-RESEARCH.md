@@ -479,21 +479,19 @@ const href = `mailto:${CORRECTION_EMAIL}?subject=${subject}&body=${body}`;
 
 **If empty rows appear later:** Prefer verifying A1–A3 with user before execution locks copy/email.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
-1. **Narrative association for Fontes cite-back (D-17 / NARR-05)**
+1. **Narrative association for Fontes cite-back (D-17 / NARR-05)** — RESOLVED
    - What we know: `perfilDaEscola` is plain text with **no** citation array (Phase 14 D-10). Tag + field citations are machine-collectable. Editorial rule: narrative synthesizes already-cited evidence only.
-   - What's unclear: Whether success criterion 4 requires an explicit “Citado em: Perfil da escola” line on some source cards.
-   - Recommendation: **Implement field+tag merge + cite-back for fields/tags only.** Do not invent associations. Treat NARR-05 narrative coverage as satisfied because narrative cannot introduce uncitable sources. Document in PLAN acceptance notes. Escalate only if product insists on narrative cite-back → would need a Phase 14 schema reopen (out of scope).
+   - **RESOLVED:** Implement field+tag merge + cite-back for fields/tags only. Do not invent perfil→sourceId associations. NARR-05 narrative coverage is satisfied because narrative cannot introduce uncitable sources (A2). Locked in plans 15-02 / 15-05. Escalating to narrative cite-back would require a Phase 14 schema reopen (out of scope).
 
-2. **Correction inbox address**
+2. **Correction inbox address** — RESOLVED
    - What we know: No `mailto:` or contact email in `siteMetadata` / footer today `[VERIFIED: codebase grep]`.
-   - What's unclear: Exact address / whether env-driven.
-   - Recommendation: Add `CORRECTION_EMAIL` (or `NEXT_PUBLIC_CORRECTION_EMAIL`) in `ReportCorrection/constants.ts`; placeholder blocked on human value before release. UI-SPEC fallback copy covers blocked mailto clients.
+   - **RESOLVED:** Use `NEXT_PUBLIC_CORRECTION_EMAIL` with a `CORRECTION_EMAIL` fallback constant in `ReportCorrection/constants.ts` (plan 15-04 `user_setup`). Production inbox value is a release config step, not a planning blocker. UI-SPEC fallback copy covers blocked mailto clients.
 
-3. **`qualitativeLastReviewed` UI**
+3. **`qualitativeLastReviewed` UI** — RESOLVED
    - What we know: Discretion allows optional small metadata.
-   - Recommendation: **Omit** in Phase 15 to reduce scope; Phase 16/FUT-01 can add provenance UI later.
+   - **RESOLVED:** Omit in Phase 15 to reduce scope; Phase 16/FUT-01 can add provenance UI later. Locked in planner discretion notes.
 
 ## Environment Availability
 
