@@ -501,22 +501,16 @@ Recommended `schoolTagSchema` field names (discretion): `id`, `confidence`, `cit
 
 **If this table is empty:** All claims in this research were verified or cited — no user confirmation needed.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **Should `SOURCE_TYPE_ORDER` / Fontes grouping include journalism + triangulated_community in Phase 13?**
-   - What we know: Tag→Fontes merge is Phase 15; field citations could theoretically use journalism after enum exists.
-   - What's unclear: Whether any field will cite journalism before Phase 14/15.
-   - Recommendation: Extend order + format labels now (cheap, prevents silent drop); do not collect tag citations yet (A4).
+   - **RESOLVED:** Yes — extend `SOURCE_TYPE_ORDER` + `formatSourceType` labels in Plan 13-01 (A4). Do not merge tag citations into Fontes (Phase 15).
 
 2. **How strict should confidence consistency be (one-way vs bidirectional)?**
-   - What we know: D-20 requires consistency examples; methodology defines three meanings.
-   - What's unclear: Whether authors may choose `partial` when multi-source evidence exists (under-claim).
-   - Recommendation: Bidirectional (A2) — strongest trust model; document in PLAN.
+   - **RESOLVED:** Bidirectional — derived expected confidence from citations must equal declared confidence (A2). Encoded in Plan 13-03 `validateTagEvidence`.
 
 3. **Machine check for distinct community venues?**
-   - What we know: Independence = different publisher/origin (Phase 12 D-08); full echo detection is human.
-   - What's unclear: Whether unequal `venue` strings are sufficient.
-   - Recommendation: Enforce distinct sourceIds + required logs; optionally require distinct `venue` (A6); never claim full independence automation.
+   - **RESOLVED:** Enforce distinct community `sourceId`s + full independence logs; also require distinct `venue` strings between community logs (A6). Full echo/semantic independence remains human judgment (Phase 14).
 
 ## Environment Availability
 
