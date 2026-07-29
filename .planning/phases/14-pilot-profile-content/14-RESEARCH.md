@@ -444,7 +444,7 @@ Non-pilots (untouched): Adam-Ries, Bürgermeister-Ziethen, Tränkegraben, Schmet
 
 **If empty table were required:** A1–A4 need planner/executor confirmation only where marked; locked decisions do not.
 
-## Open Questions
+## Open Questions (RESOLVED)
 
 1. **ROADMAP vs CONTEXT on PILOT-03** — **RESOLVED (planning 2026-07-29)**
    - Locked: Plan acceptance = CONTEXT D-14 (attempt + publish **or** documented withhold). ROADMAP SC#3 is satisfied by the documented triangulation exercise; a published community tag is not mandatory for phase completion. Optional ROADMAP wording cleanup deferred to Phase 16.
