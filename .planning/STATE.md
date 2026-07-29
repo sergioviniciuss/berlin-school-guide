@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-07-29T20:03:52.577Z"
+last_updated: "2026-07-29T20:05:45.101Z"
 last_activity: 2026-07-29
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 13
-  completed_plans: 9
-  percent: 69
+  completed_plans: 10
+  percent: 77
 ---
 
 # Project State
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 ## Current Position
 
 Phase: 14 (pilot-profile-content) — EXECUTING
-Plan: 2 of 5
+Plan: 3 of 5
 Status: Ready to execute
-Last activity: 2026-07-29 -- Completed 14-01-PLAN.md
+Last activity: 2026-07-29 -- Completed 14-02-PLAN.md
 
 ## Performance Metrics
 
@@ -61,6 +61,7 @@ Last activity: 2026-07-29 -- Completed 14-01-PLAN.md
 | Phase 13 P03 | 1min | 2 tasks | 3 files |
 | Phase 13 P04 | 2min | 2 tasks | 3 files |
 | Phase 14 P01 | 8min | 2 tasks | 3 files |
+| Phase 14 P02 | 1min | 2 tasks | 2 files |
 
 ## Decisions
 
@@ -101,6 +102,8 @@ Last activity: 2026-07-29 -- Completed 14-01-PLAN.md
 - [Phase 14-01]: perfilDaEscola and qualitativeResearchNotes are plain trimmed optional strings; no Zod .max() (D-09)
 - [Phase 14]: qualitativeResearchNotes alone does not require qualitativeLastReviewed (RESEARCH A4)
 - [Phase 14]: Empty tags: [] remains the no-tags path (length > 0 gate)
+- [Phase 14]: Factory passthrough (not post-spread) locked for all five pilots in later plans — Plan 14-02 discretion Pattern 4
+- [Phase 14]: Conditional spreads omit undefined qualitative fields so non-pilot School objects stay identical — Plan 14-02 discretion Pattern 4
 
 ## Blockers/Concerns
 
