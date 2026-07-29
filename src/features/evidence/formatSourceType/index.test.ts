@@ -9,6 +9,16 @@ describe("formatSourceType", () => {
     expect(formatSourceType("school_website")).toBe("Site da escola");
   });
 
+  it('returns "Jornalismo independente" for journalism', () => {
+    expect(formatSourceType("journalism")).toBe("Jornalismo independente");
+  });
+
+  it('returns "Fontes comunitárias trianguladas" for triangulated_community', () => {
+    expect(formatSourceType("triangulated_community")).toBe(
+      "Fontes comunitárias trianguladas",
+    );
+  });
+
   it("returns null for anecdotal_reserved", () => {
     expect(formatSourceType("anecdotal_reserved")).toBeNull();
   });
