@@ -2,8 +2,8 @@
 phase: 13
 slug: evidence-tag-schema-layer
 status: draft
-nyquist_compliant: false
-wave_0_complete: false
+nyquist_compliant: true
+wave_0_complete: true
 created: 2026-07-29
 ---
 
@@ -39,25 +39,27 @@ created: 2026-07-29
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| TBD | TBD | TBD | TAG-01 | — | Optional tags + conditional qualitativeLastReviewed | unit | `pnpm exec jest src/features/schools/school --no-coverage` | ⚠️ extend | ⬜ pending |
-| TBD | TBD | TBD | TAG-02 | — | journalism + triangulated_community source types | unit | `pnpm exec jest src/features/evidence/sourceTypes --no-coverage` | ⚠️ extend | ⬜ pending |
-| TBD | TBD | TBD | TAG-03 | T-13 | Never sole basis + independence log | unit | `pnpm exec jest src/features/evidence/validateTagEvidence --no-coverage` | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | TAG-04 | — | Confidence enum + citation consistency | unit | `pnpm exec jest src/features/evidence/validateTagEvidence --no-coverage` | ❌ Wave 0 | ⬜ pending |
-| TBD | TBD | TBD | D-05 | — | Factual allowlist rejects community | unit | `pnpm exec jest src/features/evidence/validateFieldCitations --no-coverage` | ⚠️ extend | ⬜ pending |
-| TBD | TBD | TBD | VAL-01 | — | 10 real schools remain valid untagged | gate | `pnpm validate:data` | ✅ | ⬜ pending |
+| 13-01-T1 | 01 | 1 | TAG-02 | T-13-01, T-13-02 | journalism + triangulated_community; reliability four-value; D-06 doc | unit | `pnpm exec jest src/features/evidence/sourceTypes --no-coverage` | ⚠️ extend | ⬜ pending |
+| 13-01-T2 | 01 | 1 | TAG-02 / D-05 | T-13-01, T-13-03 | Factual allowlist in field citations; format labels; SOURCE_TYPE_ORDER | unit | `pnpm exec jest src/features/evidence/validateFieldCitations src/features/evidence/formatSourceType --no-coverage` | ⚠️ extend | ⬜ pending |
+| 13-02-T1 | 02 | 1 | TAG-01 | T-13-06, T-13-08 | Independence log + tag citation schemas | unit | `pnpm exec jest src/features/evidence/independenceLog src/features/evidence/tagCitation --no-coverage` | ❌ create | ⬜ pending |
+| 13-02-T2 | 02 | 1 | TAG-01 / TAG-04 | T-13-05, T-13-07 | Taxonomy + confidence enum + format helpers | unit | `pnpm exec jest src/features/schools/tagTaxonomy src/features/evidence/formatTagConfidence --no-coverage` | ❌ create | ⬜ pending |
+| 13-03-T1 | 03 | 2 | TAG-03 / TAG-04 | T-13-09–12 | RED validateTagEvidence matrix | unit | `pnpm exec jest src/features/evidence/validateTagEvidence --no-coverage` | ❌ create | ⬜ pending |
+| 13-03-T2 | 03 | 2 | TAG-03 / TAG-04 | T-13-09–12 | GREEN never-sole-basis + confidence consistency | unit | `pnpm exec jest src/features/evidence/validateTagEvidence --no-coverage` | ❌ create | ⬜ pending |
+| 13-04-T1 | 04 | 3 | TAG-01 / TAG-03 | T-13-13, T-13-14 | schoolSchema tags + qualitativeLastReviewed gate | unit | `pnpm exec jest src/features/schools/school --no-coverage` | ⚠️ extend | ⬜ pending |
+| 13-04-T2 | 04 | 3 | VAL-01 preview | T-13-15 | 10 real schools remain valid untagged | gate | `pnpm validate:data` | ✅ | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
-*Planner fills Task ID / Plan / Wave columns when PLAN.md files are written.*
+*Wave 0: covered by Plan 02/03 creating new test units with implementation (tdd_mode false; Plan 03 is type:tdd RED→GREEN).*
 
 ---
 
 ## Wave 0 Requirements
 
-- [ ] `src/features/evidence/validateTagEvidence/index.ts` + `index.test.ts` — TAG-03/TAG-04 matrix
-- [ ] Independence-log / tag-citation schema units + tests as planned
-- [ ] Extend `sourceTypes`, `formatSourceType`, `validateFieldCitations`, `school` fixtures/tests
-- [ ] Existing Jest + `pnpm validate:data` infrastructure — no new test runner
+- [x] `validateTagEvidence` tests planned in 13-03 (RED then GREEN)
+- [x] Independence-log / tag-citation / tagTaxonomy / formatTagConfidence units planned in 13-02
+- [x] Extend `sourceTypes`, `formatSourceType`, `validateFieldCitations`, `school` fixtures/tests planned in 13-01/13-04
+- [x] Existing Jest + `pnpm validate:data` infrastructure — no new test runner
 
 ---
 
@@ -71,11 +73,11 @@ created: 2026-07-29
 
 ## Validation Sign-Off
 
-- [ ] All tasks have `<automated>` verify or Wave 0 dependencies
-- [ ] Sampling continuity: no 3 consecutive tasks without automated verify
-- [ ] Wave 0 covers all MISSING references
-- [ ] No watch-mode flags
-- [ ] Feedback latency < 30s
-- [ ] `nyquist_compliant: true` set in frontmatter after plans land
+- [x] All tasks have `<automated>` verify or Wave 0 dependencies
+- [x] Sampling continuity: no 3 consecutive tasks without automated verify
+- [x] Wave 0 covers all MISSING references
+- [x] No watch-mode flags
+- [x] Feedback latency < 30s
+- [x] `nyquist_compliant: true` set in frontmatter after plans land
 
-**Approval:** pending
+**Approval:** pending execution

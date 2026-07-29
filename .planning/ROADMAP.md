@@ -73,7 +73,12 @@ Plans:
   3. A `validateTagEvidence` rule rejects any tag whose only evidence is a single, non-corroborated community source, and requires an independence-log entry for community-sourced tags
   4. Each tag's confidence label is drawn from a fixed, qualitative vocabulary that code and documentation both describe as evidence strength, not school quality
   5. Fixture-based unit tests demonstrate both valid and invalid tag/evidence combinations are correctly accepted or rejected
-**Plans**: TBD
+**Plans**: 4 plans
+Plans:
+- [ ] 13-01-PLAN.md — Extend source types, factual allowlist, formatSourceType, D-06 Reliability Levels fix
+- [ ] 13-02-PLAN.md — Tag taxonomy, confidence enum, independence log, tag citation, format helpers
+- [ ] 13-03-PLAN.md — validateTagEvidence triangulation + confidence consistency (TDD)
+- [ ] 13-04-PLAN.md — Wire schoolSchema tags + qualitativeLastReviewed; keep validate:data green
 
 ### Phase 14: Pilot Profile Content
 **Goal**: 3–5 representative Lichtenberg schools have real, evidence-backed tags and narrative authored against the Phase 13 schema, deliberately exercising triangulation and documentation-bias edge cases.
