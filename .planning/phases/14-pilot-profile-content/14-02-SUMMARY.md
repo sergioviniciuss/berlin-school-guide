@@ -65,7 +65,7 @@ Each task was committed atomically:
 1. **Task 1: Document perfilDaEscola and notes in DATA_MODEL** - `fe084b8` (docs)
 2. **Task 2: Extend primarySchool qualitative passthrough** - `d97d770` (feat)
 
-**Plan metadata:** (pending final docs commit)
+**Plan metadata:** `1d7153c` (docs: complete plan)
 
 ## Files Created/Modified
 
