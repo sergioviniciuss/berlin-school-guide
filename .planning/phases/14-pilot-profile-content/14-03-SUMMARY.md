@@ -64,7 +64,7 @@ Each task was committed atomically:
 1. **Task 1: Author Seepark and Friedrichsfelder sparse profiles** - `8b677b9` (feat)
 2. **Task 2: Author Bernhard-Grzimek sparse profile** - `beffae8` (feat)
 
-**Plan metadata:** (see final docs commit)
+**Plan metadata:** `0d0c4ef` (docs: complete plan)
 
 ## Files Created/Modified
 
