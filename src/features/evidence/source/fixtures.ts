@@ -30,3 +30,34 @@ export const anecdotalSource: Source = {
   publisher: "Synthetic forum",
   dateAccessed: "2026-07-10",
 };
+
+export const journalismSource: Source = {
+  id: "independent-journalism",
+  title: "Synthetic independent journalism",
+  url: "https://example.test/journalism",
+  type: "journalism",
+  reliability: "secondary",
+  publisher: "Synthetic news outlet",
+  dateAccessed: "2026-07-10",
+  datePublished: "2026-06-01",
+};
+
+export const communitySourceA: Source = {
+  id: "community-reddit",
+  title: "Synthetic Reddit parent discussion",
+  url: "https://example.test/reddit-thread",
+  type: "triangulated_community",
+  reliability: "anecdotal",
+  publisher: "Synthetic Reddit venue",
+  dateAccessed: "2026-07-10",
+};
+
+export const communitySourceB: Source = {
+  id: "community-facebook",
+  title: "Synthetic Facebook parent group",
+  url: "https://example.test/facebook-group",
+  type: "triangulated_community",
+  reliability: "anecdotal",
+  publisher: "Synthetic Facebook group",
+  dateAccessed: "2026-07-10",
+};
