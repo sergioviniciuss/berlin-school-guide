@@ -376,6 +376,9 @@ export const realLichtenbergPrimarySchools = [
     ],
     researchStatus: "directory_only",
     coverageLevel: "directory",
+    perfilDaEscola:
+      "A Bernhard-Grzimek-Schule fica em Friedrichsfelde, Lichtenberg. O retrato oficial lista inglês, Offene Ganztagbetreuung (OGB), um perfil matemático-natural (mathematisch-naturwissenschaftliches Profil), grupos regionais de talentos à tarde e educação ambiental. Esse perfil MINT aparece só na lista de ofertas do retrato e ainda não foi confirmado de forma independente além dessa fonte; inspeção e detalhes de implementação também permanecem sem confirmação.",
+    qualitativeLastReviewed: "2026-07-29",
   }),
   primarySchool({
     portraitId: "28986",
