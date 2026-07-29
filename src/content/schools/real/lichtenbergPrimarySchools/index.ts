@@ -383,7 +383,7 @@ export const realLichtenbergPrimarySchools = [
     researchStatus: "directory_only",
     coverageLevel: "directory",
     perfilDaEscola:
-      "A Bernhard-Grzimek-Schule fica em Friedrichsfelde, Lichtenberg. O retrato oficial lista inglês, Offene Ganztagbetreuung (OGB), um perfil matemático-natural (mathematisch-naturwissenschaftliches Profil), grupos regionais de talentos à tarde e educação ambiental. Esse perfil MINT aparece só na lista de ofertas do retrato e ainda não foi confirmado de forma independente além dessa fonte; inspeção e detalhes de implementação também permanecem sem confirmação.",
+      "A Bernhard-Grzimek-Schule fica em Friedrichsfelde, Lichtenberg. O cadastro oficial da escola informa inglês, Offene Ganztagbetreuung (OGB), um perfil matemático-natural (mathematisch-naturwissenschaftliches Profil), grupos regionais de talentos à tarde e educação ambiental. Esse perfil MINT aparece só na lista de ofertas do cadastro oficial. Até o momento, não houve confirmação independente desse perfil MINT, da inspeção ou dos detalhes de implementação além dessa fonte.",
     qualitativeLastReviewed: "2026-07-29",
   }),
   primarySchool({
@@ -419,7 +419,7 @@ export const realLichtenbergPrimarySchools = [
     researchStatus: "directory_only",
     coverageLevel: "directory",
     perfilDaEscola:
-      "A Friedrichsfelder Schule fica em Friedrichsfelde, Lichtenberg. No retrato oficial constam inglês, Offene Ganztagbetreuung (OGB) e a organização da Schulanfangsphase em grupos por ano e em grupos mistos. Fora dessas anotações do diretório, não há confirmação independente de perfil especializado, bilinguismo ou inspeção.",
+      "A Friedrichsfelder Schule fica em Friedrichsfelde, Lichtenberg. Segundo o diretório oficial de Berlim, constam inglês, Offene Ganztagbetreuung (OGB) e a organização da Schulanfangsphase em grupos por ano e em grupos mistos. Fora dessas anotações do diretório, até o momento, não houve confirmação independente de perfil especializado, bilinguismo ou inspeção.",
     qualitativeLastReviewed: "2026-07-29",
   }),
   primarySchool({
@@ -538,7 +538,7 @@ export const realLichtenbergPrimarySchools = [
       },
     ],
     perfilDaEscola:
-      "A Lew-Tolstoi-Schule, em Karlshorst, é uma Staatliche Europa-Schule Berlin (SESB) com eixo Deutsch/Russisch: o retrato oficial e o site descrevem ensino bilíngue contínuo desde o 1º ano em grupos integrados. O site também explica o modelo SESB e critérios de ingresso por competência linguística. Há Gebundener Ganztagbetrieb (GGB) com informações de Hort/eFöB no site; inspeção oficial ainda não foi pesquisada neste perfil. A tag de comunidade ativa foi omitida após triangulação ao vivo sem venues comunitárias independentes suficientes (ver qualitativeResearchNotes).",
+      "A Lew-Tolstoi-Schule, em Karlshorst, é uma Staatliche Europa-Schule Berlin (SESB) com eixo Deutsch/Russisch: as informações oficiais disponíveis e o site descrevem ensino bilíngue contínuo desde o 1º ano em grupos integrados. O site também explica o modelo SESB e critérios de ingresso por competência linguística. Há Gebundener Ganztagbetrieb (GGB) com informações de Hort/eFöB no site. Até o momento, não houve confirmação independente sobre inspeção oficial neste perfil. Não foi possível confirmar, com evidências suficientes, características sobre a participação da comunidade escolar além das informações oficiais disponíveis.",
     qualitativeLastReviewed: "2026-07-29",
     qualitativeResearchNotes:
       "active-school-community withheld 2026-07-29: Eltern/Förderverein corroboration found, but live research did not yield ≥2 independent community venues meeting Community Source Independence. See docs/research/PHASE14_COMMUNITY_TRIANGULATION.md.",
@@ -604,7 +604,7 @@ export const realLichtenbergPrimarySchools = [
       },
     ],
     perfilDaEscola:
-      "A Richard-Wagner-Schule, em Karlshorst, apresenta-se como Grundschule com ênfase musical: o site dedica uma página à Musikbetonung e o retrato oficial lista musikbetontes Profil. Também consta Hochbegabtenförderung no retrato, sem tag de modelo pedagógico especial — o campo factual não basta sozinho. Há Offene Ganztagbetreuung (OGB) com parceiro Socius no Hort; o site liga relatórios de inspeção (2018 e 2007). Inglês aparece como língua no diretório.",
+      "A Richard-Wagner-Schule, em Karlshorst, apresenta-se como Grundschule com ênfase musical: o site dedica uma página à Musikbetonung e o cadastro oficial da escola informa musikbetontes Profil. Também consta Hochbegabtenförderung nas informações oficiais disponíveis — sem classificação adicional de modelo pedagógico especial, pois o campo factual não basta sozinho. Há Offene Ganztagbetreuung (OGB) com parceiro Socius no Hort; o site liga relatórios de inspeção (2018 e 2007). Inglês aparece como língua no diretório.",
     qualitativeLastReviewed: "2026-07-29",
   }),
   primarySchool({
@@ -620,7 +620,7 @@ export const realLichtenbergPrimarySchools = [
     researchStatus: "directory_only",
     coverageLevel: "directory",
     perfilDaEscola:
-      "A Seepark-Grundschule fica em Karlshorst, Lichtenberg. No retrato oficial constam inglês e francês como línguas; o modelo de Ganztag e ofertas específicas não aparecem nesse registro. Ainda não há confirmação independente de contraturno, perfil pedagógico ou inspeção além do retrato do Senado.",
+      "A Seepark-Grundschule fica em Karlshorst, Lichtenberg. As informações oficiais disponíveis indicam inglês e francês como línguas; o modelo de Ganztag e ofertas específicas não aparecem nesse registro. Até o momento, não houve confirmação independente de contraturno, perfil pedagógico ou inspeção além do cadastro do Senado.",
     qualitativeLastReviewed: "2026-07-29",
   }),
 ] satisfies School[];
