@@ -1,13 +1,16 @@
 import { schoolSchema } from ".";
 import {
   invalidAnecdotalVerifiedSource,
+  invalidCommunityOnlyTag,
   invalidMixedLevelWithoutPrimaryDescription,
+  invalidTaggedWithoutReviewDate,
   invalidUnknownSourceCitation,
   invalidVerifiedWithoutCitation,
   validDetailedPublicSchool,
   validDirectoryOnlySchool,
   validMixedLevelPrimarySchool,
   validPrivateBilingualSchool,
+  validTaggedSchool,
 } from "./fixtures";
 
 describe("schoolSchema", () => {
@@ -33,6 +36,41 @@ describe("schoolSchema", () => {
     expect(schoolSchema.parse(validMixedLevelPrimarySchool)).toEqual(
       validMixedLevelPrimarySchool,
     );
+  });
+
+  it("accepts a school with empty tags and no qualitativeLastReviewed", () => {
+    expect(
+      schoolSchema.parse({
+        ...validDirectoryOnlySchool,
+        tags: [],
+      }),
+    ).toMatchObject({
+      ...validDirectoryOnlySchool,
+      tags: [],
+    });
+  });
+
+  it("accepts a valid tagged school with qualitativeLastReviewed YYYY-MM-DD", () => {
+    expect(schoolSchema.parse(validTaggedSchool)).toEqual(validTaggedSchool);
+  });
+
+  it("rejects qualitativeLastReviewed that is not YYYY-MM-DD", () => {
+    expect(() =>
+      schoolSchema.parse({
+        ...validDirectoryOnlySchool,
+        qualitativeLastReviewed: "2026-07-29T12:00:00Z",
+      }),
+    ).toThrow();
+  });
+
+  it("rejects tagged schools missing qualitativeLastReviewed", () => {
+    expect(() =>
+      schoolSchema.parse(invalidTaggedWithoutReviewDate),
+    ).toThrow();
+  });
+
+  it("rejects community-only active-school-community tags via validateTagEvidence", () => {
+    expect(() => schoolSchema.parse(invalidCommunityOnlyTag)).toThrow();
   });
 
   it("rejects verified fields without citations", () => {

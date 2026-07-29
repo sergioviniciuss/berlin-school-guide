@@ -4,9 +4,13 @@ import type {
 } from "@/features/evidence/fieldEvidence";
 import {
   anecdotalSource,
+  communitySourceA,
+  communitySourceB,
+  journalismSource,
   officialDirectorySource,
   schoolWebsiteSource,
 } from "@/features/evidence/source/fixtures";
+import { communityOnlyTag } from "@/features/evidence/validateTagEvidence/fixtures";
 import type { School } from ".";
 
 export const verifiedDirectoryEvidence: FieldEvidence = {
@@ -256,4 +260,51 @@ export const invalidAnecdotalVerifiedSource = {
 export const invalidMixedLevelWithoutPrimaryDescription = {
   ...validDetailedPublicSchool,
   level: field("mixed_with_primary", verifiedWebsiteEvidence),
+};
+
+export const validTaggedSchool = {
+  ...validDirectoryOnlySchool,
+  sources: [
+    officialDirectorySource,
+    schoolWebsiteSource,
+    journalismSource,
+    communitySourceA,
+    communitySourceB,
+  ],
+  tags: [
+    {
+      id: "stem-focus" as const,
+      confidence: "confirmed_official" as const,
+      citations: [{ sourceId: schoolWebsiteSource.id }],
+    },
+  ],
+  qualitativeLastReviewed: "2026-07-29",
+};
+
+export const invalidTaggedWithoutReviewDate = {
+  ...validDirectoryOnlySchool,
+  sources: [
+    officialDirectorySource,
+    schoolWebsiteSource,
+    journalismSource,
+  ],
+  tags: [
+    {
+      id: "stem-focus" as const,
+      confidence: "confirmed_official" as const,
+      citations: [{ sourceId: schoolWebsiteSource.id }],
+    },
+  ],
+};
+
+export const invalidCommunityOnlyTag = {
+  ...validDirectoryOnlySchool,
+  sources: [
+    officialDirectorySource,
+    schoolWebsiteSource,
+    communitySourceA,
+    communitySourceB,
+  ],
+  tags: [communityOnlyTag],
+  qualitativeLastReviewed: "2026-07-29",
 };
