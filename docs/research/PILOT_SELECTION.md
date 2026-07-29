@@ -38,6 +38,8 @@ Lew-Tolstoi-Schule is the provisional candidate to exercise the full triangulati
 
 This candidate is provisional: whether an independent, corroborated community venue actually exists can only be confirmed during Phase 14's research pass. If no qualifying independent venue is found, the `active-school-community` tag fails closed and is withheld for this school per [docs/RESEARCH.md](../RESEARCH.md)'s Community Source Independence rules - that outcome is a successful validation of the model, not a phase failure.
 
+**Phase 14 outcome:** Live triangulation attempted 2026-07-29 — **withhold** `active-school-community` (Eltern/Förderverein corroboration present; ≥2 independent community venues not met). Full research log: [PHASE14_COMMUNITY_TRIANGULATION.md](./PHASE14_COMMUNITY_TRIANGULATION.md).
+
 ## Data Source
 
 School evidence referenced above (`researchStatus`, `offers`, source counts) is drawn from `src/content/schools/real/lichtenbergPrimarySchools/index.ts` as of 2026-07-26. Any future changes to that dataset should be checked against this rationale before pilot tagging begins.
