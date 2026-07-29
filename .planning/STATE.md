@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: planning
-last_updated: "2026-07-29T17:01:59.815Z"
-last_activity: 2026-07-26
+status: executing
+last_updated: "2026-07-29T17:46:09.549Z"
+last_activity: 2026-07-29
 progress:
   total_phases: 5
   completed_phases: 1
-  total_plans: 4
-  completed_plans: 4
-  percent: 100
+  total_plans: 8
+  completed_plans: 5
+  percent: 63
 ---
 
 # Project State
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 12 — editorial-research-framework
+**Current focus:** Phase 13 — evidence-tag-schema-layer
 
 ## Current Position
 
-Phase: 13
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-07-26
+Phase: 13 (evidence-tag-schema-layer) — EXECUTING
+Plan: 2 of 4
+Status: Ready to execute
+Last activity: 2026-07-29 -- Completed 13-01-PLAN.md
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Last activity: 2026-07-26
 | Phase 12 P02 | 8min | 2 tasks | 2 files |
 | Phase 12 P03 | 6min | 2 tasks | 3 files |
 | Phase 12 P04 | 8min | 1 tasks | 1 files |
+| Phase 13 P01 | 1min | 2 tasks | 9 files |
 
 ## Decisions
 
@@ -85,6 +86,8 @@ Last activity: 2026-07-26
 - [Phase 12-02]: Appended four dated 2026-07-26 ADR entries tracing to CONTEXT.md D-01–D-23: tag taxonomy v1, source hierarchy extension, qualitative-richness-is-not-quality, and qualitative review cadence
 - [Phase 12-03]: Placed source-tier and tag sections between Cobertura da pesquisa and Termos em alemão per UI-SPEC Content Extension Contract; version marker v1 dated 2026-07-26
 - [Phase 12-04]: Named the 5-school pilot set verbatim from 12-RESEARCH.md's Pilot Candidate Analysis, independently re-verified against the real dataset before committing
+- [Phase 13-01]: Factual allowlist includes official types + journalism; excludes community/anecdotal
+- [Phase 13-01]: Reliability Levels in RESEARCH.md point community evidence to Canonical Source Types + Community Source Independence
 
 ## Blockers/Concerns
 
