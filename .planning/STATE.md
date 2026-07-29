@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-07-29T19:58:34.246Z"
-last_activity: 2026-07-29 -- Phase 14 planning complete
+last_updated: "2026-07-29T20:03:52.577Z"
+last_activity: 2026-07-29
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 13
-  completed_plans: 8
-  percent: 62
+  completed_plans: 9
+  percent: 69
 ---
 
 # Project State
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 13 — evidence-tag-schema-layer
+**Current focus:** Phase 14 — pilot-profile-content
 
 ## Current Position
 
-Phase: 14
-Plan: Not started
+Phase: 14 (pilot-profile-content) — EXECUTING
+Plan: 2 of 5
 Status: Ready to execute
-Last activity: 2026-07-29 -- Phase 14 planning complete
+Last activity: 2026-07-29 -- Completed 14-01-PLAN.md
 
 ## Performance Metrics
 
@@ -60,6 +60,7 @@ Last activity: 2026-07-29 -- Phase 14 planning complete
 | Phase 13 P02 | 1min | 2 tasks | 8 files |
 | Phase 13 P03 | 1min | 2 tasks | 3 files |
 | Phase 13 P04 | 2min | 2 tasks | 3 files |
+| Phase 14 P01 | 8min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -97,6 +98,9 @@ Last activity: 2026-07-29 -- Phase 14 planning complete
 - [Phase 13-03]: Distinct independenceLog.venue enforced across community citations on the same tag (A6)
 - [Phase 13-04]: qualitativeLastReviewed required iff (tags?.length ?? 0) > 0 — empty tags[] does not require it
 - [Phase 13-04]: Real Lichtenberg schools left untagged; validate:data green without placeholder dates
+- [Phase 14-01]: perfilDaEscola and qualitativeResearchNotes are plain trimmed optional strings; no Zod .max() (D-09)
+- [Phase 14]: qualitativeResearchNotes alone does not require qualitativeLastReviewed (RESEARCH A4)
+- [Phase 14]: Empty tags: [] remains the no-tags path (length > 0 gate)
 
 ## Blockers/Concerns
 
