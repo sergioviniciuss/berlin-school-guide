@@ -19,7 +19,7 @@
 
 - [x] **TAG-01**: School records support structured tags with per-tag citations and evidence status
 - [x] **TAG-02**: Source model supports `journalism` and a displayable triangulated-community tier (distinct from hidden reserved anecdotal)
-- [ ] **TAG-03**: Community evidence requires ≥2 independent sources, an independence log, and can never be the sole basis for a tag
+- [x] **TAG-03**: Community evidence requires ≥2 independent sources, an independence log, and can never be the sole basis for a tag
 - [x] **TAG-04**: Each tag shows a qualitative confidence label that means evidence strength, not school quality
 
 ### Profile narrative & UI
@@ -85,7 +85,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FRAME-04 | Phase 12 | Complete |
 | TAG-01 | Phase 13 | Complete |
 | TAG-02 | Phase 13 | Complete |
-| TAG-03 | Phase 13 | Pending |
+| TAG-03 | Phase 13 | Complete |
 | TAG-04 | Phase 13 | Complete |
 | NARR-01 | Phase 15 | Pending |
 | NARR-02 | Phase 14 | Pending |
