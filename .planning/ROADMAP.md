@@ -76,7 +76,7 @@ Plans:
 **Plans**: 4 plans
 Plans:
 - [x] 13-01-PLAN.md — Extend source types, factual allowlist, formatSourceType, D-06 Reliability Levels fix
-- [ ] 13-02-PLAN.md — Tag taxonomy, confidence enum, independence log, tag citation, format helpers
+- [x] 13-02-PLAN.md — Tag taxonomy, confidence enum, independence log, tag citation, format helpers
 - [ ] 13-03-PLAN.md — validateTagEvidence triangulation + confidence consistency (TDD)
 - [ ] 13-04-PLAN.md — Wire schoolSchema tags + qualitativeLastReviewed; keep validate:data green
 
@@ -123,7 +123,7 @@ Plans:
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9–11 | v1.1 | 13/13 | Shipped | 2026-07-26 |
 | 12. Editorial & Research Framework | v1.2 | 4/4 | Complete    | 2026-07-26 |
-| 13. Evidence & Tag Schema Layer | v1.2 | 1/4 | In Progress|  |
+| 13. Evidence & Tag Schema Layer | v1.2 | 2/4 | In Progress|  |
 | 14. Pilot Profile Content | v1.2 | 0/? | Not started | - |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
