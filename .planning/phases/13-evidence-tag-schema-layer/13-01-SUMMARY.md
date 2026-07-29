@@ -78,7 +78,7 @@ Each task was committed atomically (TDD RED → GREEN):
 3. **Task 2 RED:** `26beed5` — test(13-01): add failing tests for citation allowlist and format labels
 4. **Task 2 GREEN:** `a9d9b0d` — feat(13-01): wire factual allowlist into citations and format labels
 
-**Plan metadata:** (pending final docs commit)
+**Plan metadata:** `6d481d4` (docs: complete plan)
 
 ## Files Created/Modified
 
