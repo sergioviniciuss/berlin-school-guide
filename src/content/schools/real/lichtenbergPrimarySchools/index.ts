@@ -271,6 +271,12 @@ const lewTolstoiGanztag = schoolWebsiteSource(
   "https://www.lew-tolstoi-schule.de/ganztag/",
   "2026-07-11",
 );
+const lewTolstoiSesb = schoolWebsiteSource(
+  "lew-tolstoi-sesb",
+  "Lew-Tolstoi-Schule",
+  "https://lew-tolstoi-schule.de/gallery/",
+  "2026-07-29",
+);
 const richardWagnerWebsite = schoolWebsiteSource(
   "richard-wagner-website",
   "Richard-Wagner-Schule",
@@ -470,11 +476,11 @@ export const realLichtenbergPrimarySchools = [
     languages: ["Englisch", "Deutsch", "Russisch"],
     ganztag: "Gebundener Ganztagbetrieb (GGB)",
     offers: ["Staatliche Europa-Schule Berlin Deutsch/Russisch"],
-    sources: [lewTolstoiWebsite, lewTolstoiGanztag],
+    sources: [lewTolstoiWebsite, lewTolstoiGanztag, lewTolstoiSesb],
     researchStatus: "profile_ready",
     coverageLevel: "detailed",
     lastResearched: phaseFourAuditDate,
-    lastSourceChecked: lewTolstoiGanztag.dateAccessed,
+    lastSourceChecked: lewTolstoiSesb.dateAccessed,
     afterSchoolCare: field(
       "Ganztag information and eFöB coordination are published on the school website.",
       evidence("lew-tolstoi-ganztag", lewTolstoiGanztag.dateAccessed),
@@ -521,6 +527,21 @@ export const realLichtenbergPrimarySchools = [
         phaseFourAuditDate,
       ),
     ),
+    tags: [
+      {
+        id: "bilingual-program",
+        confidence: "confirmed_multi_source",
+        citations: [
+          { sourceId: "lew-tolstoi-sesb" },
+          { sourceId: "28987-official-portrait" },
+        ],
+      },
+    ],
+    perfilDaEscola:
+      "A Lew-Tolstoi-Schule, em Karlshorst, é uma Staatliche Europa-Schule Berlin (SESB) com eixo Deutsch/Russisch: o retrato oficial e o site descrevem ensino bilíngue contínuo desde o 1º ano em grupos integrados. O site também explica o modelo SESB e critérios de ingresso por competência linguística. Há Gebundener Ganztagbetrieb (GGB) com informações de Hort/eFöB no site; inspeção oficial ainda não foi pesquisada neste perfil. A tag de comunidade ativa foi omitida após triangulação ao vivo sem venues comunitárias independentes suficientes (ver qualitativeResearchNotes).",
+    qualitativeLastReviewed: "2026-07-29",
+    qualitativeResearchNotes:
+      "active-school-community withheld 2026-07-29: Eltern/Förderverein corroboration found, but live research did not yield ≥2 independent community venues meeting Community Source Independence. See docs/research/PHASE14_COMMUNITY_TRIANGULATION.md.",
   }),
   primarySchool({
     portraitId: "29344",
@@ -572,6 +593,19 @@ export const realLichtenbergPrimarySchools = [
       ["Nachmittagsbetrieb / Hort contact", "music-focused school profile"],
       evidence("richard-wagner-ganztag", richardWagnerGanztag.dateAccessed),
     ),
+    tags: [
+      {
+        id: "arts-music-focus",
+        confidence: "confirmed_multi_source",
+        citations: [
+          { sourceId: "richard-wagner-music" },
+          { sourceId: "29344-official-portrait" },
+        ],
+      },
+    ],
+    perfilDaEscola:
+      "A Richard-Wagner-Schule, em Karlshorst, apresenta-se como Grundschule com ênfase musical: o site dedica uma página à Musikbetonung e o retrato oficial lista musikbetontes Profil. Também consta Hochbegabtenförderung no retrato, sem tag de modelo pedagógico especial — o campo factual não basta sozinho. Há Offene Ganztagbetreuung (OGB) com parceiro Socius no Hort; o site liga relatórios de inspeção (2018 e 2007). Inglês aparece como língua no diretório.",
+    qualitativeLastReviewed: "2026-07-29",
   }),
   primarySchool({
     portraitId: "29799",
