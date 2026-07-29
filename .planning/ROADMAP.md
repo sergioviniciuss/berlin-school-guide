@@ -38,7 +38,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 ### 🚧 v1.2 Evidence-Based School Profiles
 
 - [x] **Phase 12: Editorial & Research Framework** — Evidence standards, source hierarchy, editorial voice, tag taxonomy v1, pilot-selection criteria, qualitative review cadence (completed 2026-07-26)
-- [ ] **Phase 13: Evidence & Tag Schema Layer** — Structured tags, journalism/triangulated-community source tiers, triangulation validation, confidence labels
+- [x] **Phase 13: Evidence & Tag Schema Layer** — Structured tags, journalism/triangulated-community source tiers, triangulation validation, confidence labels (completed 2026-07-29)
 - [ ] **Phase 14: Pilot Profile Content** — 3–5 Lichtenberg schools tagged and narrated, including a lower-documentation school and a triangulated-community example
 - [ ] **Phase 15: Profile UI (Tags & Narrative)** — TagsSection + editorial narrative rendering, official-vs-community distinction, extended Fontes and correction path
 - [ ] **Phase 16: Validation & Release Gates** — Non-pilot regression proof, schema/UI/Fontes test coverage, full CI green
@@ -78,7 +78,7 @@ Plans:
 - [x] 13-01-PLAN.md — Extend source types, factual allowlist, formatSourceType, D-06 Reliability Levels fix
 - [x] 13-02-PLAN.md — Tag taxonomy, confidence enum, independence log, tag citation, format helpers
 - [x] 13-03-PLAN.md — validateTagEvidence triangulation + confidence consistency (TDD)
-- [ ] 13-04-PLAN.md — Wire schoolSchema tags + qualitativeLastReviewed; keep validate:data green
+- [x] 13-04-PLAN.md — Wire schoolSchema tags + qualitativeLastReviewed; keep validate:data green
 
 ### Phase 14: Pilot Profile Content
 **Goal**: 3–5 representative Lichtenberg schools have real, evidence-backed tags and narrative authored against the Phase 13 schema, deliberately exercising triangulation and documentation-bias edge cases.
@@ -123,7 +123,7 @@ Plans:
 | 1–8 | v1.0 | 26/26 | Shipped | 2026-07-12 |
 | 9–11 | v1.1 | 13/13 | Shipped | 2026-07-26 |
 | 12. Editorial & Research Framework | v1.2 | 4/4 | Complete    | 2026-07-26 |
-| 13. Evidence & Tag Schema Layer | v1.2 | 3/4 | In Progress|  |
+| 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete   | 2026-07-29 |
 | 14. Pilot Profile Content | v1.2 | 0/? | Not started | - |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
