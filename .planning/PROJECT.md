@@ -21,7 +21,7 @@ A static Next.js site in Brazilian Portuguese that helps Brazilian families in B
 
 **v1.1 delivered:** Visual education journey (`EducationTimeline`, `BerlinCallout`, `GlossaryTerm`), full Kita→higher-ed editorial with Berlin differences and glossary, homepage Start here → onboarding, guides hub flagship stack, complementary Berlin/first-steps cross-links, and release gates (metadata, a11y, smoke, Jest + e2e CI).
 
-**Building:** v1.2 Evidence-Based School Profiles — Phase 12 complete (editorial & research framework + `/methodology` update + named pilot set); next is schema layer (Phase 13) then pilot content (Phase 14).
+**Building:** v1.2 Evidence-Based School Profiles — Phases 12–13 complete (framework + Zod tag/evidence schema); next is pilot content authoring (Phase 14), then profile UI (Phase 15).
 
 ## Core Value
 
@@ -63,13 +63,13 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Editorial & research framework (source hierarchy, independence rules, tag taxonomy v1, Perfil voice, qualitative cadence) — Validated in Phase 12: Editorial & Research Framework
 - ✓ Public `/methodology` explains evidence-backed tags, source tiers, and confidence labels — Validated in Phase 12
 - ✓ Written pilot-selection rationale naming 3–5 schools (incl. low-documentation) — Validated in Phase 12
+- ✓ Tag/evidence schema + validators (`journalism`/`triangulated_community`, independence log, never-sole-basis, confidence enum) — Validated in Phase 13: Evidence & Tag Schema Layer
 
 ### Active
 
 - [ ] Evidence-backed school profile model (structured tags + PT-BR editorial) on school profile pages
 - [ ] Pilot qualitative profiles for 3–5 representative Lichtenberg schools
 - [ ] Explicit official vs community evidence labeling; community only when triangulated
-- [ ] Schema + validators for tags, journalism/community source types, independence log (Phase 13)
 
 ### Out of Scope
 
@@ -152,4 +152,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-26 — Phase 12 complete (editorial & research framework)*
+*Last updated: 2026-07-29 — Phase 13 complete (evidence & tag schema layer)*
