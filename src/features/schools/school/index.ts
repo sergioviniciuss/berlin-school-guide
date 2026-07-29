@@ -57,6 +57,8 @@ export const schoolSchema = z
     research: researchMetadataSchema,
     tags: z.array(schoolTagSchema).optional(),
     qualitativeLastReviewed: z.string().date().optional(),
+    perfilDaEscola: z.string().trim().min(1).optional(),
+    qualitativeResearchNotes: z.string().trim().min(1).optional(),
   })
   // Citation quality gate (RSCH-04 data layer) — verified fields require acceptable factual sources
   .superRefine((school, context) => {
@@ -138,12 +140,23 @@ export const schoolSchema = z
       }
     }
 
-    if ((school.tags?.length ?? 0) > 0 && !school.qualitativeLastReviewed) {
+    const hasTags = (school.tags?.length ?? 0) > 0;
+    const hasPerfil = Boolean(school.perfilDaEscola);
+
+    if (hasTags && !school.perfilDaEscola) {
+      context.addIssue({
+        code: "custom",
+        path: ["perfilDaEscola"],
+        message: "Schools with tags must include perfilDaEscola.",
+      });
+    }
+
+    if ((hasTags || hasPerfil) && !school.qualitativeLastReviewed) {
       context.addIssue({
         code: "custom",
         path: ["qualitativeLastReviewed"],
         message:
-          "Schools with tags must include qualitativeLastReviewed (YYYY-MM-DD).",
+          "Schools with tags or perfilDaEscola must include qualitativeLastReviewed (YYYY-MM-DD).",
       });
     }
   });
