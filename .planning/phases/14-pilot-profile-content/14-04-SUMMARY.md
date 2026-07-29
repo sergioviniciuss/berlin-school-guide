@@ -69,7 +69,7 @@ Each task was committed atomically:
 1. **Task 1: Live Tolstoi community research + PHASE14 log** - `a24b0ae` (docs)
 2. **Task 2: Author Wagner + Tolstoi perfil/tags and apply triangulation outcome** - `8bfbf73` (feat)
 
-**Plan metadata:** (pending final docs commit)
+**Plan metadata:** `b7ae0a1` (docs: complete plan)
 
 ## Files Created/Modified
 
