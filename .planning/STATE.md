@@ -24,11 +24,11 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 
 ## Current Position
 
-Phase: 15 (profile-ui-tags-narrative) — CONTEXT GATHERED
+Phase: 15 (profile-ui-tags-narrative) — UI-SPEC APPROVED
 Plan: —
-Status: Ready for planning (15-CONTEXT.md)
-Last activity: 2026-07-29 -- Phase 15 context gathered
-Resume file: .planning/phases/15-profile-ui-tags-narrative/15-CONTEXT.md
+Status: Ready for planning (15-CONTEXT.md + 15-UI-SPEC.md)
+Last activity: 2026-07-29 -- Phase 15 UI-SPEC approved
+Resume file: .planning/phases/15-profile-ui-tags-narrative/15-UI-SPEC.md
 
 ## Performance Metrics
 
