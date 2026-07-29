@@ -67,7 +67,7 @@ Each task was committed atomically:
 1. **Task 1: RED — perfil cross-field fixtures and failing tests** - `d04721e` (test)
 2. **Task 2: GREEN — schema fields and D-03/D-04 superRefine** - `522c8ff` (feat)
 
-**Plan metadata:** (pending docs commit)
+**Plan metadata:** `56af77d` (docs: complete plan)
 
 _Note: TDD tasks produce test → feat commits; no refactor needed_
 
