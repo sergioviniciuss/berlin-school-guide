@@ -39,7 +39,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 
 - [x] **Phase 12: Editorial & Research Framework** — Evidence standards, source hierarchy, editorial voice, tag taxonomy v1, pilot-selection criteria, qualitative review cadence (completed 2026-07-26)
 - [x] **Phase 13: Evidence & Tag Schema Layer** — Structured tags, journalism/triangulated-community source tiers, triangulation validation, confidence labels (completed 2026-07-29)
-- [ ] **Phase 14: Pilot Profile Content** — 3–5 Lichtenberg schools tagged and narrated, including a lower-documentation school and a triangulated-community example
+- [x] **Phase 14: Pilot Profile Content** — 3–5 Lichtenberg schools tagged and narrated, including a lower-documentation school and a triangulated-community example (completed 2026-07-29)
 - [ ] **Phase 15: Profile UI (Tags & Narrative)** — TagsSection + editorial narrative rendering, official-vs-community distinction, extended Fontes and correction path
 - [ ] **Phase 16: Validation & Release Gates** — Non-pilot regression proof, schema/UI/Fontes test coverage, full CI green
 
@@ -98,7 +98,7 @@ Plans:
 - [x] 14-02-PLAN.md — DATA_MODEL docs + primarySchool qualitative passthrough
 - [x] 14-03-PLAN.md — Sparse perfil/tags for Seepark, Friedrichsfelder, Grzimek (PILOT-02)
 - [x] 14-04-PLAN.md — Wagner + Tolstoi content + live community triangulation log (PILOT-03)
-- [ ] 14-05-PLAN.md — Automated gate + human editorial/VAL-01 checkpoint
+- [x] 14-05-PLAN.md — Automated gate + human editorial/VAL-01 checkpoint
 
 ### Phase 15: Profile UI (Tags & Narrative)
 **Goal**: Pilot school profile pages render tags and narrative with clear evidence provenance, without altering non-pilot pages.
@@ -132,7 +132,7 @@ Plans:
 | 9–11 | v1.1 | 13/13 | Shipped | 2026-07-26 |
 | 12. Editorial & Research Framework | v1.2 | 4/4 | Complete    | 2026-07-26 |
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
-| 14. Pilot Profile Content | v1.2 | 4/5 | In Progress|  |
+| 14. Pilot Profile Content | v1.2 | 5/5 | Complete    | 2026-07-29 |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 

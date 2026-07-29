@@ -62,7 +62,7 @@ completed: 2026-07-29
 Each task was committed atomically:
 
 1. **Task 1: Pre-flight automated gates** — verified in-session (no code change; gates green)
-2. **Task 2: Human editorial review + wording polish** — (see editorial commit hash below)
+2. **Task 2: Human editorial review + wording polish** — `4a59dc1` (editorial)
 
 **Plan metadata:** (recorded after STATE/ROADMAP update)
 

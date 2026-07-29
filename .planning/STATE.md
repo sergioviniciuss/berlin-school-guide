@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: executing
-last_updated: "2026-07-29T20:12:29.159Z"
+status: planning
+last_updated: "2026-07-29T20:25:00.000Z"
 last_activity: 2026-07-29
 progress:
   total_phases: 5
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 13
-  completed_plans: 12
-  percent: 92
+  completed_plans: 13
+  percent: 100
 ---
 
 # Project State
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 14 — pilot-profile-content
+**Current focus:** Phase 15 — profile-ui (Tags & Narrative)
 
 ## Current Position
 
-Phase: 14 (pilot-profile-content) — EXECUTING
-Plan: 5 of 5
-Status: Ready to execute
-Last activity: 2026-07-29 -- Completed 14-04-PLAN.md
+Phase: 15 (profile-ui) — READY TO DISCUSS/PLAN
+Plan: —
+Status: Phase 14 complete; next is discuss/plan Phase 15
+Last activity: 2026-07-29 -- Completed 14-05-PLAN.md + phase verification
 
 ## Performance Metrics
 
@@ -64,6 +64,7 @@ Last activity: 2026-07-29 -- Completed 14-04-PLAN.md
 | Phase 14 P02 | 1min | 2 tasks | 2 files |
 | Phase 14 P03 | 1min | 2 tasks | 1 files |
 | Phase 14 P04 | 3min | 2 tasks | 3 files |
+| Phase 14 P05 | 8min | 2 tasks | 1 files |
 
 ## Decisions
 
@@ -111,6 +112,8 @@ Last activity: 2026-07-29 -- Completed 14-04-PLAN.md
 - [Phase 14-04]: Withheld active-school-community on Tolstoi — Eltern/Förderverein present but ≥2 independent community venues not found (D-13)
 - [Phase 14-04]: Published arts-music-focus on Wagner citing musikbetonung page + official portrait
 - [Phase 14-04]: Published bilingual-program on Tolstoi citing dedicated SESB page + official portrait
+- [Phase 14-05]: Human approved with three family-facing perfil wording refinements before close
+- [Phase 14-05]: Stock unconfirmed phrase locked to "Até o momento, não houve confirmação independente…"
 
 ## Blockers/Concerns
 
