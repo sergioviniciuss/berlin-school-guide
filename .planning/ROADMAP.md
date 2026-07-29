@@ -96,7 +96,7 @@ Plans:
 Plans:
 - [x] 14-01-PLAN.md — Schema: perfilDaEscola + qualitativeResearchNotes + D-03/D-04 cross-field gates (TDD)
 - [x] 14-02-PLAN.md — DATA_MODEL docs + primarySchool qualitative passthrough
-- [ ] 14-03-PLAN.md — Sparse perfil/tags for Seepark, Friedrichsfelder, Grzimek (PILOT-02)
+- [x] 14-03-PLAN.md — Sparse perfil/tags for Seepark, Friedrichsfelder, Grzimek (PILOT-02)
 - [ ] 14-04-PLAN.md — Wagner + Tolstoi content + live community triangulation log (PILOT-03)
 - [ ] 14-05-PLAN.md — Automated gate + human editorial/VAL-01 checkpoint
 
@@ -132,7 +132,7 @@ Plans:
 | 9–11 | v1.1 | 13/13 | Shipped | 2026-07-26 |
 | 12. Editorial & Research Framework | v1.2 | 4/4 | Complete    | 2026-07-26 |
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
-| 14. Pilot Profile Content | v1.2 | 2/5 | In Progress|  |
+| 14. Pilot Profile Content | v1.2 | 3/5 | In Progress|  |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 

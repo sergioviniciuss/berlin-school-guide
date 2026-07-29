@@ -33,8 +33,8 @@
 
 ### Pilot & validation
 
-- [ ] **PILOT-01**: 3–5 representative Lichtenberg schools ship fully tagged and narrated profiles
-- [ ] **PILOT-02**: Pilot set includes ≥1 lower-documentation school
+- [x] **PILOT-01**: 3–5 representative Lichtenberg schools ship fully tagged and narrated profiles
+- [x] **PILOT-02**: Pilot set includes ≥1 lower-documentation school
 - [ ] **PILOT-03**: At least one triangulated-community example is exercised end-to-end
 - [ ] **VAL-01**: Non-pilot school profiles remain unchanged; coverage % is not silently altered by tags/editorial
 - [ ] **VAL-02**: Automated tests cover schema/triangulation rules, tags/narrative UI, and Fontes merge
@@ -93,8 +93,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NARR-04 | Phase 15 | Pending |
 | NARR-05 | Phase 15 | Pending |
 | NARR-06 | Phase 15 | Pending |
-| PILOT-01 | Phase 14 | Pending |
-| PILOT-02 | Phase 14 | Pending |
+| PILOT-01 | Phase 14 | Complete |
+| PILOT-02 | Phase 14 | Complete |
 | PILOT-03 | Phase 14 | Pending |
 | VAL-01 | Phase 16 | Pending |
 | VAL-02 | Phase 16 | Pending |
