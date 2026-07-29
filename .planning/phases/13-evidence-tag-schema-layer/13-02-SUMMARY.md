@@ -77,7 +77,7 @@ Each task was committed atomically (TDD RED → GREEN):
 3. **Task 2 RED: Tag taxonomy + confidence helper tests** - `933fc8d` (test)
 4. **Task 2 GREEN: Tag taxonomy, confidence enum, format helpers** - `76d9f97` (feat)
 
-**Plan metadata:** _(pending final docs commit)_
+**Plan metadata:** `06ebae1` (docs: complete plan)
 
 ## Files Created/Modified
 
