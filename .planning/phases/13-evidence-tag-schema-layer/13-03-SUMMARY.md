@@ -69,7 +69,7 @@ Each task was committed atomically (TDD RED → GREEN):
 1. **Task 1 RED: failing validateTagEvidence test matrix** - `2c58b41` (test)
 2. **Task 2 GREEN: implement validateTagEvidence rules** - `522b70b` (feat)
 
-**Plan metadata:** _(pending final docs commit)_
+**Plan metadata:** `1737e65` (docs: complete plan)
 
 ## TDD Gate Compliance
 
