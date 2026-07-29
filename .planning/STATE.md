@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-07-29T20:07:46.262Z"
+last_updated: "2026-07-29T20:12:29.159Z"
 last_activity: 2026-07-29
 progress:
   total_phases: 5
   completed_phases: 2
   total_plans: 13
-  completed_plans: 11
-  percent: 85
+  completed_plans: 12
+  percent: 92
 ---
 
 # Project State
@@ -25,9 +25,9 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 ## Current Position
 
 Phase: 14 (pilot-profile-content) — EXECUTING
-Plan: 4 of 5
+Plan: 5 of 5
 Status: Ready to execute
-Last activity: 2026-07-29 -- Completed 14-03-PLAN.md
+Last activity: 2026-07-29 -- Completed 14-04-PLAN.md
 
 ## Performance Metrics
 
@@ -63,6 +63,7 @@ Last activity: 2026-07-29 -- Completed 14-03-PLAN.md
 | Phase 14 P01 | 8min | 2 tasks | 3 files |
 | Phase 14 P02 | 1min | 2 tasks | 2 files |
 | Phase 14 P03 | 1min | 2 tasks | 1 files |
+| Phase 14 P04 | 3min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -107,6 +108,9 @@ Last activity: 2026-07-29 -- Completed 14-03-PLAN.md
 - [Phase 14]: Conditional spreads omit undefined qualitative fields so non-pilot School objects stay identical — Plan 14-02 discretion Pattern 4
 - [Phase 14-03]: Withheld stem-focus on Grzimek — portrait MINT offer alone fails facts≠tags (D-05)
 - [Phase 14-03]: All three thin/mid pilots ship zero tags + perfil + qualitativeLastReviewed 2026-07-29
+- [Phase 14-04]: Withheld active-school-community on Tolstoi — Eltern/Förderverein present but ≥2 independent community venues not found (D-13)
+- [Phase 14-04]: Published arts-music-focus on Wagner citing musikbetonung page + official portrait
+- [Phase 14-04]: Published bilingual-program on Tolstoi citing dedicated SESB page + official portrait
 
 ## Blockers/Concerns
 
