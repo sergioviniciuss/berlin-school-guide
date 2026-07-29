@@ -125,6 +125,10 @@ type BaseSchoolInput = {
   >;
   inspectionData?: FieldValue<string>;
   facilities?: FieldValue<string[]>;
+  tags?: School["tags"];
+  perfilDaEscola?: string;
+  qualitativeLastReviewed?: string;
+  qualitativeResearchNotes?: string;
 };
 
 function primarySchool(input: BaseSchoolInput): School {
@@ -233,6 +237,16 @@ function primarySchool(input: BaseSchoolInput): School {
       lastResearched: input.lastResearched ?? spikeFullReviewDate,
       lastSourceChecked: input.lastSourceChecked ?? maxDateAccessed(sources),
     },
+    ...(input.tags !== undefined ? { tags: input.tags } : {}),
+    ...(input.perfilDaEscola !== undefined
+      ? { perfilDaEscola: input.perfilDaEscola }
+      : {}),
+    ...(input.qualitativeLastReviewed !== undefined
+      ? { qualitativeLastReviewed: input.qualitativeLastReviewed }
+      : {}),
+    ...(input.qualitativeResearchNotes !== undefined
+      ? { qualitativeResearchNotes: input.qualitativeResearchNotes }
+      : {}),
   };
 }
 
