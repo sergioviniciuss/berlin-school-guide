@@ -2,9 +2,9 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: completed
+status: planning
 last_updated: "2026-07-29T20:48:28.213Z"
-last_activity: 2026-07-29 -- Completed 14-05-PLAN.md + phase verification
+last_activity: 2026-07-29
 progress:
   total_phases: 5
   completed_phases: 3
@@ -24,10 +24,11 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 
 ## Current Position
 
-Phase: 15 (profile-ui) — READY TO DISCUSS/PLAN
+Phase: 15 (profile-ui-tags-narrative) — CONTEXT GATHERED
 Plan: —
-Status: Phase 14 complete; next is discuss/plan Phase 15
-Last activity: 2026-07-29 -- Completed 14-05-PLAN.md + phase verification
+Status: Ready for planning (15-CONTEXT.md)
+Last activity: 2026-07-29 -- Phase 15 context gathered
+Resume file: .planning/phases/15-profile-ui-tags-narrative/15-CONTEXT.md
 
 ## Performance Metrics
 
