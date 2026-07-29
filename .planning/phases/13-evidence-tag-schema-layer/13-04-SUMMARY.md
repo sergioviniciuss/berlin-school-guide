@@ -71,7 +71,7 @@ Each task was committed atomically (TDD RED → GREEN; Task 2 verification-only)
 2. **Task 1 GREEN: wire optional tags and qualitativeLastReviewed** - `4ca58d0` (feat)
 3. **Task 2: Prove validate:data green** - no code commit (gate already green; no real-school edits)
 
-**Plan metadata:** _(pending final docs commit)_
+**Plan metadata:** `2b78a28` (docs: complete plan)
 
 ## TDD Gate Compliance
 
