@@ -110,7 +110,14 @@ Plans:
   3. Removing any single tag or narrative block from a pilot school's data does not break profile rendering — each qualitative element renders independently
   4. The `Fontes` section on a pilot school page includes citations sourced from tags and narrative in addition to existing fields, with no duplicate entries
   5. The correction/report-an-issue affordance on profile pages explicitly covers tags and narrative content
-**Plans**: TBD
+**Plans**: 6 plans
+Plans:
+- [ ] 15-00-PLAN.md — Wave 0 RED test stubs for TagsSection, EditorialNarrative, Fontes merge, SchoolProfile, ReportCorrection
+- [ ] 15-01-PLAN.md — Tag taxonomy category helpers (getTagCategory / formatTagCategory)
+- [ ] 15-02-PLAN.md — Fontes field+tag merge with citedBy + Citado em: in SourcesSection
+- [ ] 15-03-PLAN.md — EditorialNarrative + TagsSection (category groups + evidence expand)
+- [ ] 15-04-PLAN.md — /report-correction/ page with school prefill + mailto (NARR-06)
+- [ ] 15-05-PLAN.md — Wire SchoolProfile editorial zone, Perfil oficial rename, correction CTA
 **UI hint**: yes
 
 ### Phase 16: Validation & Release Gates
@@ -133,7 +140,7 @@ Plans:
 | 12. Editorial & Research Framework | v1.2 | 4/4 | Complete    | 2026-07-26 |
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
 | 14. Pilot Profile Content | v1.2 | 5/5 | Complete    | 2026-07-29 |
-| 15. Profile UI (Tags & Narrative) | v1.2 | 0/? | Not started | - |
+| 15. Profile UI (Tags & Narrative) | v1.2 | 0/6 | Planned | - |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 
 ## Future Backlog
