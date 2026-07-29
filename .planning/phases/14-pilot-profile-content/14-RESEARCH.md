@@ -446,19 +446,14 @@ Non-pilots (untouched): Adam-Ries, Bürgermeister-Ziethen, Tränkegraben, Schmet
 
 ## Open Questions
 
-1. **ROADMAP vs CONTEXT on PILOT-03**
-   - What we know: CONTEXT D-14 locks attempt+outcome (publish or withhold). ROADMAP SC#3 still reads as requiring a published community-backed tag.
-   - What's unclear: Whether roadmap text will be amended in-phase or at Phase 16.
-   - Recommendation: Plan acceptance = CONTEXT 1A; add a one-line note in plan/verification that ROADMAP SC#3 is satisfied by documented triangulation exercise.
+1. **ROADMAP vs CONTEXT on PILOT-03** — **RESOLVED (planning 2026-07-29)**
+   - Locked: Plan acceptance = CONTEXT D-14 (attempt + publish **or** documented withhold). ROADMAP SC#3 is satisfied by the documented triangulation exercise; a published community tag is not mandatory for phase completion. Optional ROADMAP wording cleanup deferred to Phase 16.
 
-2. **What official signal corroborates `active-school-community`?**
-   - What we know: Never-sole-basis requires ≥1 allowlisted non-community citation; editorial seeks official corroboration of community participation.
-   - What's unclear: Whether a generic school website homepage is enough vs. Elternbeirat/Förderverein pages.
-   - Recommendation: Prefer pages that mention Eltern/Förderverein/community activity; if only generic site + community chatter, lean fail-closed.
+2. **What official signal corroborates `active-school-community`?** — **RESOLVED (planning 2026-07-29)**
+   - Locked: Prefer Eltern/Förderverein/community-activity pages for official corroboration. If only a generic school site + community chatter exists → fail-closed (omit tag).
 
-3. **Should DATA_MODEL document `perfilDaEscola` in this phase?**
-   - What we know: DATA_MODEL mentions Perfil narratively under Qualitative Review Tracking but has no field shape yet.
-   - Recommendation: Yes — small docs update alongside schema (source of truth per AGENTS.md).
+3. **Should DATA_MODEL document `perfilDaEscola` in this phase?** — **RESOLVED (planning 2026-07-29)**
+   - Locked: Yes — Plan 02 updates `docs/DATA_MODEL.md` with `perfilDaEscola` (+ `qualitativeResearchNotes`) field shapes and the extended qualitativeLastReviewed gate. Research log filename locked to `docs/research/PHASE14_COMMUNITY_TRIANGULATION.md`.
 
 ## Environment Availability
 

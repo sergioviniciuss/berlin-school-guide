@@ -88,9 +88,17 @@ Plans:
   1. 3–5 schools in `lichtenbergPrimarySchools` have authored tags and a populated "Perfil da escola" narrative
   2. The pilot set includes at least one school explicitly selected for lower existing documentation, per the Phase 12 selection rationale
   3. At least one tag on a pilot school is backed by ≥2 independent, logged community sources, exercising the triangulation rule end-to-end
+     *(Phase 14 acceptance per CONTEXT D-14: documented triangulation attempt + publish **or** documented withhold satisfies this criterion; a published community tag is not mandatory.)*
   4. Each pilot school's "Perfil da escola" narrative synthesizes only already-cited evidence, with no uncited claims and no ranking or superlative language
   5. `pnpm validate:data` passes for all schools after pilot content is authored, and the remaining 5–7 non-pilot schools are left untouched
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 14-01-PLAN.md — Schema: perfilDaEscola + qualitativeResearchNotes + D-03/D-04 cross-field gates (TDD)
+- [ ] 14-02-PLAN.md — DATA_MODEL docs + primarySchool qualitative passthrough
+- [ ] 14-03-PLAN.md — Sparse perfil/tags for Seepark, Friedrichsfelder, Grzimek (PILOT-02)
+- [ ] 14-04-PLAN.md — Wagner + Tolstoi content + live community triangulation log (PILOT-03)
+- [ ] 14-05-PLAN.md — Automated gate + human editorial/VAL-01 checkpoint
 
 ### Phase 15: Profile UI (Tags & Narrative)
 **Goal**: Pilot school profile pages render tags and narrative with clear evidence provenance, without altering non-pilot pages.
