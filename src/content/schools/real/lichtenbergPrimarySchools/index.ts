@@ -409,6 +409,9 @@ export const realLichtenbergPrimarySchools = [
     ],
     researchStatus: "directory_only",
     coverageLevel: "directory",
+    perfilDaEscola:
+      "A Friedrichsfelder Schule fica em Friedrichsfelde, Lichtenberg. No retrato oficial constam inglês, Offene Ganztagbetreuung (OGB) e a organização da Schulanfangsphase em grupos por ano e em grupos mistos. Fora dessas anotações do diretório, não há confirmação independente de perfil especializado, bilinguismo ou inspeção.",
+    qualitativeLastReviewed: "2026-07-29",
   }),
   primarySchool({
     portraitId: "29773",
@@ -579,5 +582,8 @@ export const realLichtenbergPrimarySchools = [
     languages: ["Englisch", "Französisch"],
     researchStatus: "directory_only",
     coverageLevel: "directory",
+    perfilDaEscola:
+      "A Seepark-Grundschule fica em Karlshorst, Lichtenberg. No retrato oficial constam inglês e francês como línguas; o modelo de Ganztag e ofertas específicas não aparecem nesse registro. Ainda não há confirmação independente de contraturno, perfil pedagógico ou inspeção além do retrato do Senado.",
+    qualitativeLastReviewed: "2026-07-29",
   }),
 ] satisfies School[];
