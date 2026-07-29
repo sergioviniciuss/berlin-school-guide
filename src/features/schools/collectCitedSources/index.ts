@@ -9,6 +9,8 @@ const SOURCE_TYPE_ORDER: SourceType[] = [
   "official_inspection",
   "school_website",
   "public_dataset",
+  "journalism",
+  "triangulated_community",
 ];
 
 export function collectCitedSources(school: School): GroupedCitedSources[] {
