@@ -23,7 +23,7 @@ re_verification: false
 | 1 | 3–5 schools in `lichtenbergPrimarySchools` have authored tags and/or a populated "Perfil da escola" narrative | ✓ VERIFIED | All five named pilots have `perfilDaEscola` + `qualitativeLastReviewed`. Wagner has `arts-music-focus`; Tolstoi has `bilingual-program`. Thin/mid pilots (Seepark, Friedrichsfelder, Grzimek) intentionally ship **zero tags** with perfiles (sparse-but-honest). |
 | 2 | Pilot set includes ≥1 lower-documentation school | ✓ VERIFIED | Seepark + Friedrichsfelder remain `directory_only` / `coverageLevel: "directory"` with short perfiles and no tags (`docs/research/PILOT_SELECTION.md`). |
 | 3 | Triangulation rule exercised end-to-end (publish **or** documented withhold per CONTEXT D-14) | ✓ VERIFIED | Live Tolstoi research logged in `docs/research/PHASE14_COMMUNITY_TRIANGULATION.md` with **withhold**; school has matching `qualitativeResearchNotes`; no `active-school-community` tag. |
-| 4 | Each pilot "Perfil da escola" synthesizes only already-cited evidence; no ranking/superlatives | ✓ VERIFIED | Human editorial checkpoint (Plan 05) approved NARR-02; post-approval family-facing wording polish applied (`4a59dc1`). |
+| 4 | Each pilot "Perfil da escola" synthesizes only already-cited evidence; no ranking/superlatives | ✓ VERIFIED | Human editorial checkpoint (Plan 05) approved NARR-02; post-approval family-facing wording polish applied (`003053e`). |
 | 5 | `pnpm validate:data` passes; non-pilot schools left untouched | ✓ VERIFIED | validate:data: 2 fixtures + 10 real schools. Non-pilots lack `perfilDaEscola` (adam-ries, ziethen, träkegraben, schmetterling, karlshorster). |
 
 **Score:** 5/5 truths verified
