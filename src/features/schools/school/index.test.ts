@@ -3,14 +3,18 @@ import {
   invalidAnecdotalVerifiedSource,
   invalidCommunityOnlyTag,
   invalidMixedLevelWithoutPrimaryDescription,
+  invalidPerfilWithoutReviewDate,
+  invalidTaggedWithoutPerfil,
   invalidTaggedWithoutReviewDate,
   invalidUnknownSourceCitation,
   invalidVerifiedWithoutCitation,
   validDetailedPublicSchool,
   validDirectoryOnlySchool,
   validMixedLevelPrimarySchool,
+  validPerfilOnlySchool,
   validPrivateBilingualSchool,
   validTaggedSchool,
+  validWithResearchNotes,
 } from "./fixtures";
 
 describe("schoolSchema", () => {
@@ -38,7 +42,7 @@ describe("schoolSchema", () => {
     );
   });
 
-  it("accepts a school with empty tags and no qualitativeLastReviewed", () => {
+  it("accepts a school with empty tags and no perfil or qualitativeLastReviewed", () => {
     expect(
       schoolSchema.parse({
         ...validDirectoryOnlySchool,
@@ -50,8 +54,32 @@ describe("schoolSchema", () => {
     });
   });
 
-  it("accepts a valid tagged school with qualitativeLastReviewed YYYY-MM-DD", () => {
+  it("accepts a valid tagged school with perfilDaEscola and qualitativeLastReviewed", () => {
     expect(schoolSchema.parse(validTaggedSchool)).toEqual(validTaggedSchool);
+  });
+
+  it("accepts a perfil-only school with qualitativeLastReviewed and no tags", () => {
+    expect(schoolSchema.parse(validPerfilOnlySchool)).toEqual(
+      validPerfilOnlySchool,
+    );
+  });
+
+  it("accepts research notes with perfil and date without requiring tags", () => {
+    expect(schoolSchema.parse(validWithResearchNotes)).toEqual(
+      validWithResearchNotes,
+    );
+  });
+
+  it("accepts research notes alone without qualitativeLastReviewed", () => {
+    expect(
+      schoolSchema.parse({
+        ...validDirectoryOnlySchool,
+        qualitativeResearchNotes: "Withhold note.",
+      }),
+    ).toMatchObject({
+      ...validDirectoryOnlySchool,
+      qualitativeResearchNotes: "Withhold note.",
+    });
   });
 
   it("rejects qualitativeLastReviewed that is not YYYY-MM-DD", () => {
@@ -66,6 +94,16 @@ describe("schoolSchema", () => {
   it("rejects tagged schools missing qualitativeLastReviewed", () => {
     expect(() =>
       schoolSchema.parse(invalidTaggedWithoutReviewDate),
+    ).toThrow();
+  });
+
+  it("rejects tagged schools missing perfilDaEscola", () => {
+    expect(() => schoolSchema.parse(invalidTaggedWithoutPerfil)).toThrow();
+  });
+
+  it("rejects perfil-only schools missing qualitativeLastReviewed", () => {
+    expect(() =>
+      schoolSchema.parse(invalidPerfilWithoutReviewDate),
     ).toThrow();
   });
 

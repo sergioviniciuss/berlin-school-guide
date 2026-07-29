@@ -278,7 +278,19 @@ export const validTaggedSchool = {
       citations: [{ sourceId: schoolWebsiteSource.id }],
     },
   ],
+  perfilDaEscola: "Parágrafo sintético de teste.",
   qualitativeLastReviewed: "2026-07-29",
+};
+
+export const validPerfilOnlySchool = {
+  ...validDirectoryOnlySchool,
+  perfilDaEscola: "Parágrafo sintético de teste.",
+  qualitativeLastReviewed: "2026-07-29",
+};
+
+export const validWithResearchNotes = {
+  ...validPerfilOnlySchool,
+  qualitativeResearchNotes: "Withhold note.",
 };
 
 export const invalidTaggedWithoutReviewDate = {
@@ -295,6 +307,28 @@ export const invalidTaggedWithoutReviewDate = {
       citations: [{ sourceId: schoolWebsiteSource.id }],
     },
   ],
+};
+
+export const invalidTaggedWithoutPerfil = {
+  ...validDirectoryOnlySchool,
+  sources: [
+    officialDirectorySource,
+    schoolWebsiteSource,
+    journalismSource,
+  ],
+  tags: [
+    {
+      id: "stem-focus" as const,
+      confidence: "confirmed_official" as const,
+      citations: [{ sourceId: schoolWebsiteSource.id }],
+    },
+  ],
+  qualitativeLastReviewed: "2026-07-29",
+};
+
+export const invalidPerfilWithoutReviewDate = {
+  ...validDirectoryOnlySchool,
+  perfilDaEscola: "Parágrafo sintético de teste.",
 };
 
 export const invalidCommunityOnlyTag = {
