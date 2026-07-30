@@ -47,3 +47,44 @@ const tagIdLabels: Record<TagTaxonomyId, string> = {
 export function formatTagId(id: TagTaxonomyId): string {
   return tagIdLabels[id];
 }
+
+export type TagCategoryId =
+  | "academic_focus"
+  | "learning_model"
+  | "student_support"
+  | "school_environment";
+
+export const TAG_CATEGORY_ORDER: TagCategoryId[] = [
+  "academic_focus",
+  "learning_model",
+  "student_support",
+  "school_environment",
+];
+
+const tagCategoryById: Record<TagTaxonomyId, TagCategoryId> = {
+  "stem-focus": "academic_focus",
+  "languages-focus": "academic_focus",
+  "arts-music-focus": "academic_focus",
+  "bilingual-program": "learning_model",
+  "special-pedagogical-model": "learning_model",
+  "all-day-model": "learning_model",
+  "inclusion-support": "student_support",
+  "transition-support": "student_support",
+  "structured-learning-environment": "school_environment",
+  "active-school-community": "school_environment",
+};
+
+const tagCategoryLabels: Record<TagCategoryId, string> = {
+  academic_focus: "Foco acadêmico",
+  learning_model: "Modelo de aprendizagem",
+  student_support: "Apoio ao aluno",
+  school_environment: "Ambiente escolar",
+};
+
+export function getTagCategory(id: TagTaxonomyId): TagCategoryId {
+  return tagCategoryById[id];
+}
+
+export function formatTagCategory(categoryId: TagCategoryId): string {
+  return tagCategoryLabels[categoryId];
+}
