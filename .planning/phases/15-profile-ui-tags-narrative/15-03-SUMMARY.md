@@ -71,6 +71,8 @@ Each task was committed atomically:
 1. **Task 1: Implement EditorialNarrative** - `d02cb02` (feat)
 2. **Task 2: Implement TagsSection with category groups and evidence expand** - `65da599` (feat)
 
+**Plan metadata:** `56455f0` (docs: complete plan)
+
 ## Files Created/Modified
 - `src/features/schools/EditorialNarrative/index.tsx` — server narrative section
 - `src/features/schools/TagsSection/utils.ts` — `groupTagsByCategory`
