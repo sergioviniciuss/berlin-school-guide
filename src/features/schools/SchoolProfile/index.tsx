@@ -3,6 +3,7 @@ import { ExternalLink } from "lucide-react";
 
 import { calculateEvidenceCoverage } from "@/features/evidence/calculateEvidenceCoverage";
 import { collectCitedSources } from "@/features/schools/collectCitedSources";
+import { EditorialNarrative } from "@/features/schools/EditorialNarrative";
 import { formatFieldStatus } from "@/features/schools/formatSchoolField";
 import { getCoverageTierLabel } from "@/features/schools/getCoverageTierLabel";
 import { getSchoolFieldByPath } from "@/features/schools/getSchoolFieldByPath";
@@ -11,6 +12,7 @@ import { ProfileSection } from "@/features/schools/ProfileSection";
 import { SchoolProfileCompareAction } from "@/features/schools/SchoolProfileCompareAction";
 import type { School } from "@/features/schools/school";
 import { SourcesSection } from "@/features/schools/SourcesSection";
+import { TagsSection } from "@/features/schools/TagsSection";
 
 import { PROFILE_SECTIONS, profileFieldLabels } from "./constants";
 
@@ -117,6 +119,13 @@ export function SchoolProfile({ school }: SchoolProfileProps) {
         ) : null}
       </header>
 
+      {school.perfilDaEscola ? (
+        <EditorialNarrative text={school.perfilDaEscola} />
+      ) : null}
+      {school.tags && school.tags.length > 0 ? (
+        <TagsSection tags={school.tags} sources={school.sources} />
+      ) : null}
+
       {PROFILE_SECTIONS.map((section) => (
         <ProfileSection key={section.key} heading={section.heading}>
           {section.fields.map((fieldPath) => {
@@ -139,6 +148,13 @@ export function SchoolProfile({ school }: SchoolProfileProps) {
       ))}
 
       <SourcesSection groupedSources={groupedSources} />
+
+      <a
+        href={`/report-correction/?school=${school.slug}`}
+        className="inline-flex min-h-11 items-center text-sm font-medium text-blue-700 underline"
+      >
+        Sugerir correção ou atualização
+      </a>
     </div>
   );
 }

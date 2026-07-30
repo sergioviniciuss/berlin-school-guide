@@ -74,7 +74,7 @@ export const profileFieldLabels: Record<
   bilingualPrograms: "Programas bilíngues",
   internationalPrograms: "Programas internacionais",
   welcomeClasses: "Willkommensklasse",
-  schoolProfile: "Perfil da escola",
+  schoolProfile: "Perfil oficial",
   pedagogyFocus: "Foco pedagógico",
   inclusionSupport: "Apoio à inclusão",
   transitionAfterGrade6: "Transição após o 6º ano",
