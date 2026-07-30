@@ -37,30 +37,30 @@ created: 2026-07-29
 ## Per-Task Verification Map
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
-|---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|
-| 15-W0-01 | 00 | 0 | NARR-01/03 | — | N/A | unit | `pnpm test -- TagsSection` | ❌ W0 | ⬜ pending |
-| 15-W0-02 | 00 | 0 | NARR-04 | — | N/A | unit | `pnpm test -- EditorialNarrative` | ❌ W0 | ⬜ pending |
-| 15-W0-03 | 00 | 0 | NARR-05 | — | N/A | unit | `pnpm test -- collectCitedSources` | ⚠️ partial | ⬜ pending |
-| 15-W0-04 | 00 | 0 | NARR-04/06 | — | N/A | unit | `pnpm test -- SchoolProfile` | ⚠️ exists | ⬜ pending |
-| 15-W0-05 | 00 | 0 | NARR-06 | T-15-01 | No PII in mailto beyond slug/context | unit | `pnpm test -- ReportCorrection` | ❌ W0 | ⬜ pending |
+|---------|------|------|-------------|-----------------|-----------|-------------------|-------------|--------|
+| 15-W0-01 | 00 | 0 | NARR-01/03 | — | N/A | unit | `pnpm test -- TagsSection` | ✅ created (plan 00) | ❌ red |
+| 15-W0-02 | 00 | 0 | NARR-04 | — | N/A | unit | `pnpm test -- EditorialNarrative` | ✅ created (plan 00) | ❌ red |
+| 15-W0-03 | 00 | 0 | NARR-05 | — | N/A | unit | `pnpm test -- collectCitedSources` | ✅ extended (plan 00) | ❌ red |
+| 15-W0-04 | 00 | 0 | NARR-04/06 | — | N/A | unit | `pnpm test -- SchoolProfile` | ✅ extended (plan 00) | ❌ red |
+| 15-W0-05 | 00 | 0 | NARR-06 | T-15-01 | No PII in mailto beyond slug/context | unit | `pnpm test -- ReportCorrection` | ✅ created (plan 00) | ❌ red |
 | TBD | 01+ | 1+ | NARR-* | T-15-* | Per plan threat_model | unit | Per-plan verify | — | ⬜ pending |
 
 *Status: ⬜ pending · ✅ green · ❌ red · ⚠️ flaky*
 
-*Planner fills concrete Task IDs when PLAN.md files are written.*
+*Wave 0 file scaffolds landed in plan 00; greens deferred to plans 01–05. `wave_0_complete` stays false until RED suites turn green.*
 
 ---
 
 ## Wave 0 Requirements
 
-- [ ] `src/features/schools/TagsSection/index.test.tsx` — NARR-01/03/04 expand + empty omit
-- [ ] `src/features/schools/EditorialNarrative/index.test.tsx` — heading + body; absent when undefined
-- [ ] Extend `collectCitedSources/index.test.ts` — tag-only source; dedupe field+tag; `citedBy`
-- [ ] Extend `SourcesSection` tests (create if missing) — “Citado em:” present/absent
-- [ ] Extend `SchoolProfile/index.test.tsx` — editorial order; “Perfil oficial”; correction link; non-pilot absence
-- [ ] `src/features/schools/ReportCorrection/index.test.tsx` — prefill, missing slug copy, mailto href
-- [ ] `tagTaxonomy` tests for category helpers
-- [ ] Framework install: none — Jest already configured
+- [x] `src/features/schools/TagsSection/index.test.tsx` — NARR-01/03/04 expand + empty omit
+- [x] `src/features/schools/EditorialNarrative/index.test.tsx` — heading + body; absent when undefined
+- [x] Extend `collectCitedSources/index.test.ts` — tag-only source; dedupe field+tag; `citedBy`
+- [x] Extend `SourcesSection` tests (create if missing) — “Citado em:” present/absent
+- [x] Extend `SchoolProfile/index.test.tsx` — editorial order; “Perfil oficial”; correction link; non-pilot absence
+- [x] `src/features/schools/ReportCorrection/index.test.tsx` — prefill, missing slug copy, mailto href
+- [x] `tagTaxonomy` tests for category helpers
+- [x] Framework install: none — Jest already configured
 
 ---
 
