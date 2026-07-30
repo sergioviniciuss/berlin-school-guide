@@ -94,19 +94,26 @@ describe("formatTagId", () => {
 });
 
 describe("tag categories", () => {
+  const expectedCategoryById = {
+    "stem-focus": "academic_focus",
+    "languages-focus": "academic_focus",
+    "arts-music-focus": "academic_focus",
+    "bilingual-program": "learning_model",
+    "special-pedagogical-model": "learning_model",
+    "all-day-model": "learning_model",
+    "inclusion-support": "student_support",
+    "transition-support": "student_support",
+    "structured-learning-environment": "school_environment",
+    "active-school-community": "school_environment",
+  } as const;
+
   it("maps all 10 taxonomy ids to the four locked categories", () => {
-    expect(getTagCategory("stem-focus")).toBe("academic_focus");
-    expect(getTagCategory("languages-focus")).toBe("academic_focus");
-    expect(getTagCategory("arts-music-focus")).toBe("academic_focus");
-    expect(getTagCategory("bilingual-program")).toBe("learning_model");
-    expect(getTagCategory("special-pedagogical-model")).toBe("learning_model");
-    expect(getTagCategory("all-day-model")).toBe("learning_model");
-    expect(getTagCategory("inclusion-support")).toBe("student_support");
-    expect(getTagCategory("transition-support")).toBe("student_support");
-    expect(getTagCategory("structured-learning-environment")).toBe(
-      "school_environment",
-    );
-    expect(getTagCategory("active-school-community")).toBe("school_environment");
+    expect(taxonomyIds).toHaveLength(10);
+    for (const id of taxonomyIds) {
+      const category = getTagCategory(id);
+      expect(category).toBeDefined();
+      expect(category).toBe(expectedCategoryById[id]);
+    }
   });
 
   it("formats category labels in PT-BR", () => {
