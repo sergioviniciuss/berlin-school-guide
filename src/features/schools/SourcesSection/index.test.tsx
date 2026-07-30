@@ -2,6 +2,8 @@ import { render, screen } from "@testing-library/react";
 
 import { SourcesSection } from ".";
 import { collectCitedSources } from "@/features/schools/collectCitedSources";
+import type { GroupedCitedSources } from "@/features/schools/collectCitedSources";
+import { officialDirectorySource } from "@/features/evidence/source/fixtures";
 import {
   validDetailedPublicSchool,
   validDirectoryOnlySchool,
@@ -55,5 +57,45 @@ describe("SourcesSection", () => {
     expect(
       screen.getByText("Nenhuma fonte citada nesta página."),
     ).toBeVisible();
+  });
+
+  it('renders "Citado em:" with joined labels when citedBy is non-empty', () => {
+    const groupedSources: GroupedCitedSources[] = [
+      {
+        type: "official_government",
+        entries: [
+          {
+            source: officialDirectorySource,
+            citations: [],
+            citedBy: ["Ganztag", "Foco em STEM"],
+          },
+        ],
+      },
+    ];
+
+    render(<SourcesSection groupedSources={groupedSources} />);
+
+    expect(screen.getByText(/Citado em:/)).toBeVisible();
+    expect(screen.getByText(/Ganztag/)).toBeVisible();
+    expect(screen.getByText(/Foco em STEM/)).toBeVisible();
+  });
+
+  it('omits "Citado em:" when citedBy is empty', () => {
+    const groupedSources: GroupedCitedSources[] = [
+      {
+        type: "official_government",
+        entries: [
+          {
+            source: officialDirectorySource,
+            citations: [],
+            citedBy: [],
+          },
+        ],
+      },
+    ];
+
+    render(<SourcesSection groupedSources={groupedSources} />);
+
+    expect(screen.queryByText(/Citado em:/)).toBeNull();
   });
 });
