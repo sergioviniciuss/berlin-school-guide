@@ -3,8 +3,16 @@ import userEvent from "@testing-library/user-event";
 
 import { formatSourceType } from "@/features/evidence/formatSourceType";
 import { formatTagConfidence } from "@/features/evidence/formatTagConfidence";
+import {
+  communitySourceA,
+  schoolWebsiteSource,
+} from "@/features/evidence/source/fixtures";
 import { validTaggedSchool } from "@/features/schools/school/fixtures";
-import { formatTagId } from "@/features/schools/tagTaxonomy";
+import {
+  formatTagCategory,
+  formatTagId,
+  type SchoolTag,
+} from "@/features/schools/tagTaxonomy";
 
 import { TagsSection } from ".";
 
@@ -65,6 +73,53 @@ describe("TagsSection", () => {
 
     expect(
       screen.queryByRole("heading", { name: "Características da escola" }),
+    ).toBeNull();
+  });
+
+  it("groups tags into non-empty category H3s only", () => {
+    const tags: SchoolTag[] = [
+      {
+        id: "stem-focus",
+        confidence: "confirmed_official",
+        citations: [{ sourceId: schoolWebsiteSource.id }],
+      },
+      {
+        id: "inclusion-support",
+        confidence: "partial",
+        citations: [{ sourceId: communitySourceA.id }],
+      },
+    ];
+
+    render(
+      <TagsSection
+        tags={tags}
+        sources={[schoolWebsiteSource, communitySourceA]}
+      />,
+    );
+
+    expect(
+      screen.getByRole("heading", {
+        level: 3,
+        name: formatTagCategory("academic_focus"),
+      }),
+    ).toBeVisible();
+    expect(
+      screen.getByRole("heading", {
+        level: 3,
+        name: formatTagCategory("student_support"),
+      }),
+    ).toBeVisible();
+    expect(
+      screen.queryByRole("heading", {
+        level: 3,
+        name: formatTagCategory("learning_model"),
+      }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole("heading", {
+        level: 3,
+        name: formatTagCategory("school_environment"),
+      }),
     ).toBeNull();
   });
 });
