@@ -29,7 +29,7 @@
 - [x] **NARR-03**: UI clearly distinguishes official information from community observations
 - [x] **NARR-04**: Every qualitative element (tag or narrative block) is independently supported and removable without breaking the profile
 - [x] **NARR-05**: Fontes includes citations from tags and narrative as well as existing fields
-- [ ] **NARR-06**: Correction / report-an-issue path explicitly covers tags and narrative
+- [x] **NARR-06**: Correction / report-an-issue path explicitly covers tags and narrative
 
 ### Pilot & validation
 
@@ -92,7 +92,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NARR-03 | Phase 15 | Complete |
 | NARR-04 | Phase 15 | Complete |
 | NARR-05 | Phase 15 | Complete |
-| NARR-06 | Phase 15 | Pending |
+| NARR-06 | Phase 15 | Complete |
 | PILOT-01 | Phase 14 | Complete |
 | PILOT-02 | Phase 14 | Complete |
 | PILOT-03 | Phase 14 | Complete |
