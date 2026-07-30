@@ -28,7 +28,7 @@
 - [x] **NARR-02**: Short PT-BR `Perfil da escola` synthesizes existing cited evidence only — never introduces uncited claims or ranking language
 - [ ] **NARR-03**: UI clearly distinguishes official information from community observations
 - [ ] **NARR-04**: Every qualitative element (tag or narrative block) is independently supported and removable without breaking the profile
-- [ ] **NARR-05**: Fontes includes citations from tags and narrative as well as existing fields
+- [x] **NARR-05**: Fontes includes citations from tags and narrative as well as existing fields
 - [ ] **NARR-06**: Correction / report-an-issue path explicitly covers tags and narrative
 
 ### Pilot & validation
@@ -91,7 +91,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | NARR-02 | Phase 14 | Complete |
 | NARR-03 | Phase 15 | Pending |
 | NARR-04 | Phase 15 | Pending |
-| NARR-05 | Phase 15 | Pending |
+| NARR-05 | Phase 15 | Complete |
 | NARR-06 | Phase 15 | Pending |
 | PILOT-01 | Phase 14 | Complete |
 | PILOT-02 | Phase 14 | Complete |
