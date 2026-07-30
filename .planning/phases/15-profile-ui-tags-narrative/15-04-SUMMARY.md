@@ -68,7 +68,7 @@ Each task was committed atomically:
 1. **Task 1: Implement ReportCorrection client + constants** - `be7aa6f` (feat)
 2. **Task 2: Add /report-correction/ route with Suspense** - `ff1a0ce` (feat)
 
-**Plan metadata:** _(pending docs commit)_
+**Plan metadata:** `52eef4f` (docs: complete plan)
 
 ## Files Created/Modified
 - `src/features/schools/ReportCorrection/constants.ts` — SCHOOL_QUERY_PARAM, CORRECTION_EMAIL env fallback, locked REPORT_COPY
