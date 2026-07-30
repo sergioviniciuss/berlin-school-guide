@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-07-30T05:49:28.555Z"
+last_updated: "2026-07-30T05:53:06.086Z"
 last_activity: 2026-07-30
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 19
-  completed_plans: 16
-  percent: 84
+  completed_plans: 17
+  percent: 89
 ---
 
 # Project State
@@ -25,7 +25,7 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 ## Current Position
 
 Phase: 15 (profile-ui-tags-narrative) — EXECUTING
-Plan: 4 of 6
+Plan: 5 of 6
 Status: Ready to execute
 Last activity: 2026-07-30
 Resume file: None
@@ -69,6 +69,7 @@ Resume file: None
 | Phase 15 P00 | 3min | 3 tasks | 11 files |
 | Phase 15 P01 | 2min | 2 tasks | 2 files |
 | Phase 15 P02 | 1min | 2 tasks | 3 files |
+| Phase 15 P03 | 2min | 2 tasks | 4 files |
 
 ## Decisions
 
@@ -123,6 +124,8 @@ Resume file: None
 - [Phase 15-01]: Category helpers live in tagTaxonomy; groupTagsByCategory deferred to TagsSection (Plan 03)
 - [Phase 15-02]: No perfilDaEscola invented cite-back — only field paths and tag ids contribute to citedBy
 - [Phase 15-02]: citedBy sorted with localeCompare pt-BR for stable Fontes output
+- [Phase 15-03]: TagRow stays an inner component in TagsSection/index.tsx (no separate TagEvidence directory)
+- [Phase 15-03]: EditorialNarrative returns null for falsy text so Wave 0 empty/undefined cases green without parent gating yet
 
 ## Blockers/Concerns
 
