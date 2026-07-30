@@ -1,6 +1,9 @@
 import {
+  formatTagCategory,
   formatTagId,
+  getTagCategory,
   schoolTagSchema,
+  TAG_CATEGORY_ORDER,
   tagConfidenceSchema,
   tagTaxonomyIdSchema,
 } from ".";
@@ -87,5 +90,38 @@ describe("formatTagId", () => {
     expect(formatTagId("active-school-community")).toBe(
       "Comunidade escolar ativa",
     );
+  });
+});
+
+describe("tag categories", () => {
+  it("maps all 10 taxonomy ids to the four locked categories", () => {
+    expect(getTagCategory("stem-focus")).toBe("academic_focus");
+    expect(getTagCategory("languages-focus")).toBe("academic_focus");
+    expect(getTagCategory("arts-music-focus")).toBe("academic_focus");
+    expect(getTagCategory("bilingual-program")).toBe("learning_model");
+    expect(getTagCategory("special-pedagogical-model")).toBe("learning_model");
+    expect(getTagCategory("all-day-model")).toBe("learning_model");
+    expect(getTagCategory("inclusion-support")).toBe("student_support");
+    expect(getTagCategory("transition-support")).toBe("student_support");
+    expect(getTagCategory("structured-learning-environment")).toBe(
+      "school_environment",
+    );
+    expect(getTagCategory("active-school-community")).toBe("school_environment");
+  });
+
+  it("formats category labels in PT-BR", () => {
+    expect(formatTagCategory("academic_focus")).toBe("Foco acadêmico");
+    expect(formatTagCategory("learning_model")).toBe("Modelo de aprendizagem");
+    expect(formatTagCategory("student_support")).toBe("Apoio ao aluno");
+    expect(formatTagCategory("school_environment")).toBe("Ambiente escolar");
+  });
+
+  it("orders categories academic → learning → support → environment", () => {
+    expect(TAG_CATEGORY_ORDER).toEqual([
+      "academic_focus",
+      "learning_model",
+      "student_support",
+      "school_environment",
+    ]);
   });
 });
