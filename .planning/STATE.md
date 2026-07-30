@@ -2,15 +2,15 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: executing
-last_updated: "2026-07-30T05:57:04.379Z"
+status: verifying
+last_updated: "2026-07-30T06:02:14.227Z"
 last_activity: 2026-07-30
 progress:
   total_phases: 5
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 19
-  completed_plans: 18
-  percent: 95
+  completed_plans: 19
+  percent: 100
 ---
 
 # Project State
@@ -26,7 +26,7 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 
 Phase: 15 (profile-ui-tags-narrative) — EXECUTING
 Plan: 6 of 6
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-07-30
 Resume file: None
 
@@ -71,6 +71,7 @@ Resume file: None
 | Phase 15 P02 | 1min | 2 tasks | 3 files |
 | Phase 15 P03 | 2min | 2 tasks | 4 files |
 | Phase 15 P04 | 2min | 2 tasks | 4 files |
+| Phase 15 P05 | 3min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -129,6 +130,8 @@ Resume file: None
 - [Phase 15-03]: EditorialNarrative returns null for falsy text so Wave 0 empty/undefined cases green without parent gating yet
 - [Phase 15]: Mock getSchoolBySlug in ReportCorrection tests so Wave 0 synthetic fixture slug can exercise prefill without living in the real directory
 - [Phase 15]: Show CORRECTION_EMAIL beside mailtoBlocked copy for manual fallback
+- [Phase 15-05]: Correction CTA uses native <a> instead of next/link so Wave 0 href with trailing slash is preserved (Link normalizes it away)
+- [Phase 15-05]: SchoolProfile remains a Server Component; TagsSection stays the only client island in the editorial zone
 
 ## Blockers/Concerns
 
