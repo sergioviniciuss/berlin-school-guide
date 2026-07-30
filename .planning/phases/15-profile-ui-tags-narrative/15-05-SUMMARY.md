@@ -71,7 +71,7 @@ Each task was committed atomically:
 1. **Task 1: Rename Perfil oficial and compose editorial zone + correction link** - `fef800f` (feat)
 2. **Task 2: Phase gate — full unit suite + VALIDATION update** - `c404e11` (docs)
 
-**Plan metadata:** _(pending final docs commit)_
+**Plan metadata:** `0e0f75b` (docs: complete plan)
 
 ## Files Created/Modified
 - `src/features/schools/SchoolProfile/constants.ts` — `schoolProfile: "Perfil oficial"`
