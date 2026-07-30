@@ -68,7 +68,7 @@ Each task was committed atomically:
 1. **Task 1: Extend collectCitedSources for tags + citedBy** - `fd0dd52` (feat)
 2. **Task 2: Render Citado em: in SourcesSection** - `f236cad` (feat)
 
-**Plan metadata:** (pending docs commit)
+**Plan metadata:** `77a67d6` (docs: complete plan)
 
 _Note: RED tests shipped in Plan 00; this plan greens Wave 0 Fontes cite-back scaffolds._
 
