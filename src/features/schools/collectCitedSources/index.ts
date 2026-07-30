@@ -1,6 +1,8 @@
 import type { School } from "@/features/schools/school";
 import { importantSchoolFieldPathsDetailedV2 } from "@/features/schools/school/constants";
 import { getSchoolFieldByPath } from "@/features/schools/getSchoolFieldByPath";
+import { profileFieldLabels } from "@/features/schools/SchoolProfile/constants";
+import { formatTagId } from "@/features/schools/tagTaxonomy";
 import type { SourceType } from "@/features/evidence/sourceTypes";
 import type { CitedSourceEntry, GroupedCitedSources } from "./types";
 
@@ -19,6 +21,25 @@ export function collectCitedSources(school: School): GroupedCitedSources[] {
     string,
     Array<{ quote?: string; note?: string }>
   >();
+  const citedByBySourceId = new Map<string, Set<string>>();
+
+  function addCitation(
+    sourceId: string,
+    citation: { quote?: string; note?: string },
+    label: string,
+  ) {
+    if (!sourceById.has(sourceId)) {
+      return;
+    }
+
+    const existing = citationsBySourceId.get(sourceId) ?? [];
+    existing.push(citation);
+    citationsBySourceId.set(sourceId, existing);
+
+    const citedBy = citedByBySourceId.get(sourceId) ?? new Set<string>();
+    citedBy.add(label);
+    citedByBySourceId.set(sourceId, citedBy);
+  }
 
   for (const path of importantSchoolFieldPathsDetailedV2) {
     const fieldValue = getSchoolFieldByPath(school, path);
@@ -27,13 +48,21 @@ export function collectCitedSources(school: School): GroupedCitedSources[] {
     }
 
     for (const citation of fieldValue.evidence.citations) {
-      if (!sourceById.has(citation.sourceId)) {
-        continue;
-      }
+      addCitation(
+        citation.sourceId,
+        { quote: citation.quote, note: citation.note },
+        profileFieldLabels[path],
+      );
+    }
+  }
 
-      const existing = citationsBySourceId.get(citation.sourceId) ?? [];
-      existing.push({ quote: citation.quote, note: citation.note });
-      citationsBySourceId.set(citation.sourceId, existing);
+  for (const tag of school.tags ?? []) {
+    for (const citation of tag.citations) {
+      addCitation(
+        citation.sourceId,
+        { quote: citation.quote, note: citation.note },
+        formatTagId(tag.id),
+      );
     }
   }
 
@@ -41,6 +70,9 @@ export function collectCitedSources(school: School): GroupedCitedSources[] {
     ([sourceId, citations]) => ({
       source: sourceById.get(sourceId)!,
       citations,
+      citedBy: [...(citedByBySourceId.get(sourceId) ?? [])].sort((a, b) =>
+        a.localeCompare(b, "pt-BR"),
+      ),
     }),
   );
 

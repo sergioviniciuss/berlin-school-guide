@@ -4,6 +4,7 @@ import type { SourceType } from "@/features/evidence/sourceTypes";
 export type CitedSourceEntry = {
   source: Source;
   citations: Array<{ quote?: string; note?: string }>;
+  citedBy: string[];
 };
 
 export type GroupedCitedSources = {
