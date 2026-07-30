@@ -9,6 +9,11 @@ jest.mock("next/navigation", () => ({
   useSearchParams: () => params,
 }));
 
+jest.mock("@/features/schools/getSchoolBySlug", () => ({
+  getSchoolBySlug: (slug: string) =>
+    slug === validTaggedSchool.slug ? validTaggedSchool : undefined,
+}));
+
 describe("ReportCorrection", () => {
   beforeEach(() => {
     params = new URLSearchParams();
