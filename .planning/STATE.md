@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-07-29T21:17:58.389Z"
-last_activity: 2026-07-29 -- Phase 15 planning complete
+last_updated: "2026-07-30T05:42:06.063Z"
+last_activity: 2026-07-30
 progress:
   total_phases: 5
   completed_phases: 3
   total_plans: 19
-  completed_plans: 13
-  percent: 68
+  completed_plans: 14
+  percent: 74
 ---
 
 # Project State
@@ -20,15 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 15 — profile-ui (Tags & Narrative)
+**Current focus:** Phase 15 — profile-ui-tags-narrative
 
 ## Current Position
 
-Phase: 15 (profile-ui-tags-narrative) — UI-SPEC APPROVED
-Plan: —
+Phase: 15 (profile-ui-tags-narrative) — EXECUTING
+Plan: 2 of 6
 Status: Ready to execute
-Last activity: 2026-07-29 -- Phase 15 planning complete
-Resume file: .planning/phases/15-profile-ui-tags-narrative/15-UI-SPEC.md
+Last activity: 2026-07-30
+Resume file: None
 
 ## Performance Metrics
 
@@ -66,6 +66,7 @@ Resume file: .planning/phases/15-profile-ui-tags-narrative/15-UI-SPEC.md
 | Phase 14 P03 | 1min | 2 tasks | 1 files |
 | Phase 14 P04 | 3min | 2 tasks | 3 files |
 | Phase 14 P05 | 8min | 2 tasks | 1 files |
+| Phase 15 P00 | 3min | 3 tasks | 11 files |
 
 ## Decisions
 
@@ -115,6 +116,8 @@ Resume file: .planning/phases/15-profile-ui-tags-narrative/15-UI-SPEC.md
 - [Phase 14-04]: Published bilingual-program on Tolstoi citing dedicated SESB page + official portrait
 - [Phase 14-05]: Human approved with three family-facing perfil wording refinements before close
 - [Phase 14-05]: Stock unconfirmed phrase locked to "Até o momento, não houve confirmação independente…"
+- [Phase 15-00]: Wave 0 ships RED tests + null stubs only — no production qualitative UI
+- [Phase 15-00]: TagsSection/EditorialNarrative/ReportCorrection stubs return null so imports resolve and assertions stay RED until later plans
 
 ## Blockers/Concerns
 
