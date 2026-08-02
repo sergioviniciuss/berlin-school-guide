@@ -21,7 +21,7 @@ A static Next.js site in Brazilian Portuguese that helps Brazilian families in B
 
 **v1.1 delivered:** Visual education journey (`EducationTimeline`, `BerlinCallout`, `GlossaryTerm`), full Kita→higher-ed editorial with Berlin differences and glossary, homepage Start here → onboarding, guides hub flagship stack, complementary Berlin/first-steps cross-links, and release gates (metadata, a11y, smoke, Jest + e2e CI).
 
-**Building:** v1.2 Evidence-Based School Profiles — Phases 12–13 complete (framework + Zod tag/evidence schema); next is pilot content authoring (Phase 14), then profile UI (Phase 15).
+**Building:** v1.2 Evidence-Based School Profiles — Phases 12–15 complete (framework, schema, pilot content, profile UI for tags & narrative). Next: Phase 16 Validation & Release Gates.
 
 ## Core Value
 
@@ -64,12 +64,13 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Public `/methodology` explains evidence-backed tags, source tiers, and confidence labels — Validated in Phase 12
 - ✓ Written pilot-selection rationale naming 3–5 schools (incl. low-documentation) — Validated in Phase 12
 - ✓ Tag/evidence schema + validators (`journalism`/`triangulated_community`, independence log, never-sole-basis, confidence enum) — Validated in Phase 13: Evidence & Tag Schema Layer
+- ✓ Pilot qualitative content (tags + Perfil da escola) authored for selected Lichtenberg schools — Validated in Phase 14: Pilot Content Authoring
+- ✓ Profile UI renders tags (category groups, confidence, expandable evidence), editorial narrative, Fontes cite-back, and correction path covering tags/narrative — Validated in Phase 15: Profile UI (Tags & Narrative)
+- ✓ Official vs community distinction via source-type labels when expanded; factual label “Perfil oficial” vs editorial “Perfil da escola” — Validated in Phase 15
 
 ### Active
 
-- [ ] Evidence-backed school profile model (structured tags + PT-BR editorial) on school profile pages
-- [ ] Pilot qualitative profiles for 3–5 representative Lichtenberg schools
-- [ ] Explicit official vs community evidence labeling; community only when triangulated
+- [ ] Validation & release gates: non-pilot regression, schema/component tests, Playwright pilot coverage, full CI green (Phase 16)
 
 ### Out of Scope
 
@@ -152,4 +153,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-07-29 — Phase 13 complete (evidence & tag schema layer)*
+*Last updated: 2026-08-02 — Phase 15 complete (profile UI: tags & narrative)*
