@@ -140,7 +140,7 @@ Plans:
 | 12. Editorial & Research Framework | v1.2 | 4/4 | Complete    | 2026-07-26 |
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
 | 14. Pilot Profile Content | v1.2 | 5/5 | Complete    | 2026-07-29 |
-| 15. Profile UI (Tags & Narrative) | v1.2 | 6/6 | Complete   | 2026-07-30 |
+| 15. Profile UI (Tags & Narrative) | v1.2 | 6/6 | Complete    | 2026-08-02 |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 
 ## Future Backlog
