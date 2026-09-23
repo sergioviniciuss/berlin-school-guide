@@ -117,6 +117,7 @@ type BaseSchoolInput = {
   postCodeAndCity: string;
   neighbourhood: string;
   website: string | null;
+  district?: string;
   classification?: "public" | "private";
   level?: "primary" | "mixed_with_primary";
   primarySectionDescription?: string;
@@ -199,7 +200,7 @@ function primarySchool(input: BaseSchoolInput): School {
         }
       : {}),
     location: {
-      district: field("Lichtenberg", directoryEvidence),
+      district: field(input.district ?? "Lichtenberg", directoryEvidence),
       neighbourhood: field(input.neighbourhood, directoryEvidence),
       address: field(
         `${input.address}, ${input.postCodeAndCity}`,
@@ -341,6 +342,18 @@ const richardWagnerMusic = schoolWebsiteSource(
   "richard-wagner-music",
   "Richard-Wagner-Schule",
   "https://www.richard-wagner-grundschule.de/unsere-schule/musikbetonung/",
+);
+const neuenTorWebsite = schoolWebsiteSource(
+  "grundschule-am-neuen-tor-website",
+  "Grundschule Neues Tor",
+  "https://www.neues-tor.de/",
+  "2026-09-23",
+);
+const neuenTorContact = schoolWebsiteSource(
+  "grundschule-am-neuen-tor-contact",
+  "Grundschule Neues Tor",
+  "https://www.neues-tor.de/kontakt/index.php?dynamisch=1",
+  "2026-09-23",
 );
 
 export const realLichtenbergPrimarySchools = [
@@ -666,5 +679,61 @@ export const realLichtenbergPrimarySchools = [
     perfilDaEscola:
       "A Seepark-Grundschule fica em Karlshorst, Lichtenberg. As informações oficiais disponíveis indicam inglês e francês como línguas; o modelo de Ganztag e ofertas específicas não aparecem nesse registro. Até o momento, não houve confirmação independente de contraturno, perfil pedagógico ou inspeção além do cadastro do Senado.",
     qualitativeLastReviewed: "2026-07-29",
+  }),
+  primarySchool({
+    portraitId: "30279",
+    slug: "grundschule-am-neuen-tor",
+    name: "Grundschule Neues Tor",
+    schoolNumber: "01G05",
+    address: "Hannoversche Str. 20",
+    postCodeAndCity: "10115 Berlin",
+    neighbourhood: "Mitte",
+    district: "Mitte",
+    website: "https://www.neues-tor.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Gebundener Ganztagbetrieb (GGB)",
+    portraitDateAccessed: "2026-09-23",
+    sources: [neuenTorWebsite, neuenTorContact],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website contact page lists Atelier (Hort) from 16:00 with tjfbg as the after-school partner.",
+      evidence("grundschule-am-neuen-tor-contact", "2026-09-23"),
+    ),
+    bilingualPrograms: field(
+      ["Deutsch-Portugiesisch"],
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    internationalPrograms: field(
+      ["Staatliche Europa-Schule Berlin Deutsch/Portugiesisch"],
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Staatliche Europa-Schule Berlin Deutsch/Portugiesisch with a parallel Regelschule track; the school website describes gebundener Ganztag for the SESB branch and offener Ganztag for the Regelzug.",
+      evidence("grundschule-am-neuen-tor-website", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      [
+        "Staatliche Europa-Schule Berlin Deutsch/Portugiesisch",
+        "bilingualer Unterricht",
+      ],
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes secretariat office hours and tjfbg Hort contact numbers.",
+      evidence("grundschule-am-neuen-tor-contact", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      "available",
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    inspectionData: field(
+      "The official Berlin school portrait lists Schulinspektion reports published on 01.07.2015 and 01.05.2018.",
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
   }),
 ] satisfies School[];
