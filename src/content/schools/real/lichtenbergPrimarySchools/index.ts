@@ -905,5 +905,18 @@ export const realLichtenbergPrimarySchools = [
       "The school website maintains a Schulinspektion page, and the official portrait lists a report published on 01.04.2018.",
       evidence("30686-official-portrait", "2026-09-23"),
     ),
+    tags: [
+      {
+        id: "special-pedagogical-model",
+        confidence: "confirmed_multi_source",
+        citations: [
+          { sourceId: "schule-auf-dem-lichtenberg-profile" },
+          { sourceId: "30686-official-portrait" },
+        ],
+      },
+    ],
+    perfilDaEscola:
+      "A Schule auf dem lichten Berg fica no Ortsteil Lichtenberg, com sede na Atzpodienstraße e uma filial na Siegfriedstraße. O cadastro oficial informa inglês, Offene Ganztagbetreuung (OGB), grupos mistos nos anos 1–3 e a coexistência de Regelklassen e Montessoriklassen. O site descreve pedagogia inspirada em Maria Montessori e eFöB/Hort das 6h às 18h. O retrato oficial e o site apontam inspeção escolar, com relatório listado em 2018.",
+    qualitativeLastReviewed: "2026-09-23",
   }),
 ] satisfies School[];
