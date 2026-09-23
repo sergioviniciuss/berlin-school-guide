@@ -735,5 +735,18 @@ export const realLichtenbergPrimarySchools = [
       "The official Berlin school portrait lists Schulinspektion reports published on 01.07.2015 and 01.05.2018.",
       evidence("30279-official-portrait", "2026-09-23"),
     ),
+    tags: [
+      {
+        id: "bilingual-program",
+        confidence: "confirmed_multi_source",
+        citations: [
+          { sourceId: "grundschule-am-neuen-tor-website" },
+          { sourceId: "30279-official-portrait" },
+        ],
+      },
+    ],
+    perfilDaEscola:
+      "A Grundschule Neues Tor fica em Mitte, perto da Charité. O cadastro oficial e o site descrevem uma Staatliche Europa-Schule Berlin (SESB) Deutsch/Portugiesisch em dois turnos, ao lado de um Regelschulzug no mesmo prédio. O inglês aparece como primeira língua estrangeira no retrato oficial. O modelo de Ganztag no cadastro é Gebundener Ganztagbetrieb (GGB); o site detalha Ganztag vinculado no ramo SESB e aberto no Regelschulzug, com Atelier (Hort) a partir das 16h em parceria com a tjfbg. O retrato oficial lista relatórios de inspeção publicados em 2015 e 2018.",
+    qualitativeLastReviewed: "2026-09-23",
   }),
 ] satisfies School[];
