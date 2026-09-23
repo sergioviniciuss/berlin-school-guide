@@ -144,7 +144,7 @@ Plans:
 - [x] 15.1-03-PLAN.md — Robinson-Schule evidence record and Perfil
 - [x] 15.1-04-PLAN.md — Schule auf dem Lichtenberg evidence record and Perfil
 - [x] 15.1-05-PLAN.md — Schlaufuchs-Schule evidence record and Perfil
-- [ ] 15.1-06-PLAN.md — Evangelische Schule Lichtenberg private evidence record and Perfil
+- [x] 15.1-06-PLAN.md — Evangelische Schule Lichtenberg private evidence record and Perfil
 - [ ] 15.1-07-PLAN.md — Directory count 15, original-ten lock, and smoke denominators
 
 ### Phase 16: Validation & Release Gates
@@ -168,7 +168,7 @@ Plans:
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
 | 14. Pilot Profile Content | v1.2 | 5/5 | Complete    | 2026-07-29 |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 6/6 | Complete    | 2026-08-02 |
-| 15.1 Five Lichtenberg Evidence-Backed Profiles | v1.2 | 5/7 | In Progress|  |
+| 15.1 Five Lichtenberg Evidence-Backed Profiles | v1.2 | 6/7 | In Progress|  |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 
 ## Future Backlog
