@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: Ready to discuss
-last_updated: "2026-09-23T17:42:58.106Z"
+last_updated: "2026-09-23T18:09:42.790Z"
 last_activity: 2026-09-23
 progress:
   total_phases: 6
@@ -28,7 +28,7 @@ Phase: 15.1
 Plan: Not started
 Status: Ready to discuss
 Last activity: 2026-09-23
-Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-CONTEXT.md
+Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-UI-SPEC.md
 
 ## Performance Metrics
 
