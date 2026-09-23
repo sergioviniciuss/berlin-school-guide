@@ -1074,5 +1074,8 @@ export const realLichtenbergPrimarySchools = [
         "2026-09-23",
       ),
     ),
+    perfilDaEscola:
+      "A Evangelische Schule Lichtenberg é uma Grundschule privada (Ersatzschule) em Friedrichsfelde, mantida pela Schulstiftung da EKBO. O cadastro oficial e o site descrevem Gebundener Ganztagbetrieb (GGB), com presença obrigatória até às 16h de segunda a quinta, e Hort opcional de manhã cedo e após as 16h. O inglês aparece como primeira língua estrangeira. O site informa que há Schulgeld escalonado por renda, com possível isenção sob pedido. Até o momento, não houve confirmação independente de inspeção oficial além dessas fontes.",
+    qualitativeLastReviewed: "2026-09-23",
   }),
 ] satisfies School[];
