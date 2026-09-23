@@ -983,5 +983,8 @@ export const realLichtenbergPrimarySchools = [
         "2026-09-23",
       ),
     ),
+    perfilDaEscola:
+      "A Schlaufuchs-Grundschule fica em Fennpfuhl, Lichtenberg. O cadastro oficial informa inglês como primeira língua estrangeira e ainda não lista um modelo de Ganztag nesse retrato. O site apresenta a escola como Offene Ganztagsgrundschule com ênfase em Bewegung, cuidado até às 18h, sala de mídia e perfil inclusivo. Até o momento, não houve confirmação independente de inspeção oficial além dessas fontes.",
+    qualitativeLastReviewed: "2026-09-23",
   }),
 ] satisfies School[];
