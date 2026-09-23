@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-09-23T19:29:56.413Z"
+last_updated: "2026-09-23T19:40:42.332Z"
 last_activity: 2026-09-23
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 26
-  completed_plans: 20
-  percent: 77
+  completed_plans: 21
+  percent: 81
 ---
 
 # Project State
@@ -25,10 +25,10 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 ## Current Position
 
 Phase: 15.1 (five-lichtenberg-evidence-profiles) — EXECUTING
-Plan: 2 of 7
+Plan: 3 of 7
 Status: Ready to execute
 Last activity: 2026-09-23
-Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-02-PLAN.md
+Resume file: None
 
 ## Performance Metrics
 
@@ -73,6 +73,7 @@ Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-02-PL
 | Phase 15 P04 | 2min | 2 tasks | 4 files |
 | Phase 15 P05 | 3min | 2 tasks | 3 files |
 | Phase 15.1 P01 | 1 min | 2 tasks | 1 files |
+| Phase 15.1 P02 | 1 min | 2 tasks | 1 files |
 
 ## Decisions
 
@@ -134,12 +135,11 @@ Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-02-PL
 - [Phase 15-05]: Correction CTA uses native <a> instead of next/link so Wave 0 href with trailing slash is preserved (Link normalizes it away)
 - [Phase 15-05]: SchoolProfile remains a Server Component; TagsSection stays the only client island in the editorial zone
 - [Phase 15.1]: Optional factory overrides keep the existing ten on public grades 1–6 while later records can pass private classification, portrait grades, a real portrait date, and a null website. — Passing undefined into officialPortraitSource would skip the default spike date, so the four-argument form is used only when portraitDateAccessed is a string.
+- [Phase 15.1]: Include Grundschule Neues Tor in Mitte under slug grundschule-am-neuen-tor, with an optional district override so Distrito filters surface Mitte. — User chose the Mitte school after the Lichtenberg-only search failed; filters derive districts from school data.
 
 ## Blockers/Concerns
 
--
-
-- Plan 15.1-02 blocked: the Berlin school directory has no Lichtenberg school named Grundschule am Neuen Tor. The only close match is Grundschule Neues Tor (01G05) in Mitte. No stub record was added. Plans 15.1-03 through 15.1-07 are waiting on this decision.
+None
 
 ## Accumulated Context
 
