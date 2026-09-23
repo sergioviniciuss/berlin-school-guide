@@ -76,6 +76,19 @@ function missing(note: string, lastChecked = spikeFullReviewDate): FieldEvidence
   };
 }
 
+function citedMissing(
+  sourceIds: string[],
+  note: string,
+  lastChecked: string,
+): FieldEvidence {
+  return {
+    status: "missing",
+    citations: sourceIds.map((sourceId) => ({ sourceId })),
+    note,
+    lastChecked,
+  };
+}
+
 function notApplicable(note: string, lastChecked = spikeFullReviewDate): FieldEvidence {
   return {
     status: "not_applicable",
@@ -103,7 +116,12 @@ type BaseSchoolInput = {
   address: string;
   postCodeAndCity: string;
   neighbourhood: string;
-  website: string;
+  website: string | null;
+  classification?: "public" | "private";
+  level?: "primary" | "mixed_with_primary";
+  primarySectionDescription?: string;
+  gradesServed?: string[];
+  portraitDateAccessed?: string;
   languages: string[];
   ganztag?: string;
   offers?: string[];
@@ -132,11 +150,18 @@ type BaseSchoolInput = {
 };
 
 function primarySchool(input: BaseSchoolInput): School {
-  const portrait = officialPortraitSource(
-    input.portraitId,
-    input.name,
-    input.schoolNumber,
-  );
+  const portrait = input.portraitDateAccessed
+    ? officialPortraitSource(
+        input.portraitId,
+        input.name,
+        input.schoolNumber,
+        input.portraitDateAccessed,
+      )
+    : officialPortraitSource(
+        input.portraitId,
+        input.name,
+        input.schoolNumber,
+      );
   const directoryEvidence = evidence(portrait.id, portrait.dateAccessed);
   const sources = [portrait, ...(input.sources ?? [])];
   const missingResearch = missing(
@@ -154,9 +179,25 @@ function primarySchool(input: BaseSchoolInput): School {
     slug: input.slug,
     name: field(input.name, directoryEvidence),
     schoolNumber: field(input.schoolNumber, directoryEvidence),
-    website: field(input.website, directoryEvidence),
-    classification: field("public", directoryEvidence),
-    level: field("primary", directoryEvidence),
+    website:
+      input.website === null
+        ? field(null, {
+            status: "missing",
+            citations: [{ sourceId: portrait.id }],
+            note: "O retrato oficial não informa o site da escola.",
+            lastChecked: portrait.dateAccessed,
+          })
+        : field(input.website, directoryEvidence),
+    classification: field(input.classification ?? "public", directoryEvidence),
+    level: field(input.level ?? "primary", directoryEvidence),
+    ...(input.primarySectionDescription !== undefined
+      ? {
+          primarySectionDescription: field(
+            input.primarySectionDescription,
+            directoryEvidence,
+          ),
+        }
+      : {}),
     location: {
       district: field("Lichtenberg", directoryEvidence),
       neighbourhood: field(input.neighbourhood, directoryEvidence),
@@ -165,7 +206,10 @@ function primarySchool(input: BaseSchoolInput): School {
         directoryEvidence,
       ),
     },
-    gradesServed: field(["1", "2", "3", "4", "5", "6"], directoryEvidence),
+    gradesServed: field(
+      input.gradesServed ?? ["1", "2", "3", "4", "5", "6"],
+      directoryEvidence,
+    ),
     ganztag: input.ganztag
       ? field(input.ganztag, directoryEvidence)
       : field(null, missingResearch),
