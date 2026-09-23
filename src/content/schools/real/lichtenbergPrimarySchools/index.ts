@@ -355,6 +355,24 @@ const neuenTorContact = schoolWebsiteSource(
   "https://www.neues-tor.de/kontakt/index.php?dynamisch=1",
   "2026-09-23",
 );
+const robinsonWebsite = schoolWebsiteSource(
+  "robinson-schule-website",
+  "Robinson-Schule",
+  "https://www.robinsonschule-berlin.de/",
+  "2026-09-23",
+);
+const robinsonGanztag = schoolWebsiteSource(
+  "robinson-schule-ganztag",
+  "Robinson-Schule",
+  "https://www.robinsonschule-berlin.de/ganztag/",
+  "2026-09-23",
+);
+const robinsonProfile = schoolWebsiteSource(
+  "robinson-schule-profile",
+  "Robinson-Schule",
+  "https://www.robinsonschule-berlin.de/schule/",
+  "2026-09-23",
+);
 
 export const realLichtenbergPrimarySchools = [
   primarySchool({
@@ -748,5 +766,59 @@ export const realLichtenbergPrimarySchools = [
     perfilDaEscola:
       "A Grundschule Neues Tor fica em Mitte, perto da Charité. O cadastro oficial e o site descrevem uma Staatliche Europa-Schule Berlin (SESB) Deutsch/Portugiesisch em dois turnos, ao lado de um Regelschulzug no mesmo prédio. O inglês aparece como primeira língua estrangeira no retrato oficial. O modelo de Ganztag no cadastro é Gebundener Ganztagbetrieb (GGB); o site detalha Ganztag vinculado no ramo SESB e aberto no Regelschulzug, com Atelier (Hort) a partir das 16h em parceria com a tjfbg. O retrato oficial lista relatórios de inspeção publicados em 2015 e 2018.",
     qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "30451",
+    slug: "robinson-schule",
+    name: "Robinson-Schule",
+    schoolNumber: "11G08",
+    address: "Wönnichstr. 7",
+    postCodeAndCity: "10317 Berlin",
+    neighbourhood: "Rummelsburg",
+    website: "https://www.robinsonschule-berlin.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Gebundener Ganztagbetrieb (GGB)",
+    gradesServed: ["1", "2", "3", "4", "5", "6"],
+    portraitDateAccessed: "2026-09-23",
+    sources: [robinsonWebsite, robinsonGanztag, robinsonProfile],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website describes eFöB in bound all-day care, with optional early care from 06:00 and late care until 18:00 plus holiday Hort.",
+      evidence("robinson-schule-ganztag", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "The school website describes participation in the Berlin FlexGanztag trial as a bound all-day Grundschule near Bahnhof Lichtenberg.",
+      evidence("robinson-schule-profile", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      ["gesundheitsbetontes Profil", "medienbetontes Profil"],
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes phone and email contacts on the homepage and describes the iServ parent platform on the Schule page.",
+      evidence("robinson-schule-website", "2026-09-23"),
+    ),
+    facilities: field(
+      [
+        "Bibliothek",
+        "zwei Computerräume",
+        "Medienecken in einigen Unterrichtsräumen",
+        "Laptop-Klasse",
+      ],
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      "available",
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
+    inspectionData: field(
+      "The official Berlin school portrait lists Schulinspektion reports published on 01.11.2012 and 01.12.2018.",
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
   }),
 ] satisfies School[];
