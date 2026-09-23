@@ -41,7 +41,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 - [x] **Phase 13: Evidence & Tag Schema Layer** — Structured tags, journalism/triangulated-community source tiers, triangulation validation, confidence labels (completed 2026-07-29)
 - [x] **Phase 14: Pilot Profile Content** — 3–5 Lichtenberg schools tagged and narrated, including a lower-documentation school and a triangulated-community example (completed 2026-07-29)
 - [x] **Phase 15: Profile UI (Tags & Narrative)** — TagsSection + editorial narrative rendering, official-vs-community distinction, extended Fontes and correction path (completed 2026-07-30)
-- [ ] **Phase 15.1: Five Lichtenberg Evidence-Backed Profiles (INSERTED)** — Neues Tor, Robinson-Schule, Schule auf dem Lichtenberg, Schlaufuchs-Schule, Evangelische Schule Lichtenberg
+- [x] **Phase 15.1: Five Lichtenberg Evidence-Backed Profiles (INSERTED)** — Neues Tor, Robinson-Schule, Schule auf dem Lichtenberg, Schlaufuchs-Schule, Evangelische Schule Lichtenberg
 - [ ] **Phase 16: Validation & Release Gates** — Non-pilot regression proof, schema/UI/Fontes test coverage, full CI green
 
 ## Phase Details
@@ -145,7 +145,7 @@ Plans:
 - [x] 15.1-04-PLAN.md — Schule auf dem Lichtenberg evidence record and Perfil
 - [x] 15.1-05-PLAN.md — Schlaufuchs-Schule evidence record and Perfil
 - [x] 15.1-06-PLAN.md — Evangelische Schule Lichtenberg private evidence record and Perfil
-- [ ] 15.1-07-PLAN.md — Directory count 15, original-ten lock, and smoke denominators
+- [x] 15.1-07-PLAN.md — Directory count 15, original-ten lock, and smoke denominators
 
 ### Phase 16: Validation & Release Gates
 **Goal**: The pilot evidence-backed profile model is proven trustworthy, repeatable, and maintainable through automated regression coverage before milestone close.
@@ -168,7 +168,7 @@ Plans:
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
 | 14. Pilot Profile Content | v1.2 | 5/5 | Complete    | 2026-07-29 |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 6/6 | Complete    | 2026-08-02 |
-| 15.1 Five Lichtenberg Evidence-Backed Profiles | v1.2 | 6/7 | In Progress|  |
+| 15.1 Five Lichtenberg Evidence-Backed Profiles | v1.2 | 7/7 | Complete    | 2026-09-23 |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 
 ## Future Backlog
