@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: executing
-last_updated: "2026-09-23T18:37:12.054Z"
-last_activity: 2026-09-23 -- Phase 15.1 planning complete
+last_updated: "2026-09-23T19:28:37.443Z"
+last_activity: 2026-09-23
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 26
-  completed_plans: 19
-  percent: 73
+  completed_plans: 20
+  percent: 77
 ---
 
 # Project State
@@ -24,11 +24,11 @@ See: .planning/PROJECT.md (updated 2026-07-26)
 
 ## Current Position
 
-Phase: 15.1
-Plan: Not started
+Phase: 15.1 (five-lichtenberg-evidence-profiles) — EXECUTING
+Plan: 2 of 7
 Status: Ready to execute
-Last activity: 2026-09-23 -- Phase 15.1 planning complete
-Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-UI-SPEC.md
+Last activity: 2026-09-23
+Resume file: None
 
 ## Performance Metrics
 
@@ -72,6 +72,7 @@ Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-UI-SP
 | Phase 15 P03 | 2min | 2 tasks | 4 files |
 | Phase 15 P04 | 2min | 2 tasks | 4 files |
 | Phase 15 P05 | 3min | 2 tasks | 3 files |
+| Phase 15.1 P01 | 1 min | 2 tasks | 1 files |
 
 ## Decisions
 
@@ -132,6 +133,7 @@ Resume file: .planning/phases/15.1-five-lichtenberg-evidence-profiles/15.1-UI-SP
 - [Phase 15]: Show CORRECTION_EMAIL beside mailtoBlocked copy for manual fallback
 - [Phase 15-05]: Correction CTA uses native <a> instead of next/link so Wave 0 href with trailing slash is preserved (Link normalizes it away)
 - [Phase 15-05]: SchoolProfile remains a Server Component; TagsSection stays the only client island in the editorial zone
+- [Phase 15.1]: Optional factory overrides keep the existing ten on public grades 1–6 while later records can pass private classification, portrait grades, a real portrait date, and a null website. — Passing undefined into officialPortraitSource would skip the default spike date, so the four-argument form is used only when portraitDateAccessed is a string.
 
 ## Blockers/Concerns
 

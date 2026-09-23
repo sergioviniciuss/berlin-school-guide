@@ -139,7 +139,7 @@ Plans:
   5. User-facing copy for new qualitative content is Brazilian Portuguese (editorial voice)
 **Plans**: 7 plans
 Plans:
-- [ ] 15.1-01-PLAN.md — Factory overrides so the five can be private, graded from the portrait, and cited-missing without changing the ten
+- [x] 15.1-01-PLAN.md — Factory overrides so the five can be private, graded from the portrait, and cited-missing without changing the ten
 - [ ] 15.1-02-PLAN.md — Grundschule am Neuen Tor evidence record and Perfil
 - [ ] 15.1-03-PLAN.md — Robinson-Schule evidence record and Perfil
 - [ ] 15.1-04-PLAN.md — Schule auf dem Lichtenberg evidence record and Perfil
@@ -168,7 +168,7 @@ Plans:
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
 | 14. Pilot Profile Content | v1.2 | 5/5 | Complete    | 2026-07-29 |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 6/6 | Complete    | 2026-08-02 |
-| 15.1 Five Lichtenberg Evidence-Backed Profiles | v1.2 | 0/7 | Planned | - |
+| 15.1 Five Lichtenberg Evidence-Backed Profiles | v1.2 | 1/7 | In Progress|  |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 
 ## Future Backlog
