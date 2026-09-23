@@ -1,11 +1,7 @@
-import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
-import { calculateEvidenceCoverage } from "@/features/evidence/calculateEvidenceCoverage";
 import { formatSourceType } from "@/features/evidence/formatSourceType";
 import type { GroupedCitedSources } from "@/features/schools/collectCitedSources";
-import { formatFieldStatus } from "@/features/schools/formatSchoolField";
-import { getCoverageTierLabel } from "@/features/schools/getCoverageTierLabel";
 
 type SourcesSectionProps = {
   groupedSources: GroupedCitedSources[];
@@ -65,6 +61,12 @@ export function SourcesSection({ groupedSources }: SourcesSectionProps) {
                         <p className="text-sm text-neutral-700">
                           <span className="font-semibold">Publicado em:</span>{" "}
                           {entry.source.datePublished}
+                        </p>
+                      ) : null}
+                      {entry.citedBy.length > 0 ? (
+                        <p className="text-sm text-neutral-600">
+                          <span className="font-semibold">Citado em:</span>{" "}
+                          {entry.citedBy.join(", ")}
                         </p>
                       ) : null}
                       <a

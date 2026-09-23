@@ -6,9 +6,12 @@ import {
   verifiedDirectoryEvidence,
 } from "@/features/schools/school/fixtures";
 import {
+  journalismSource,
   officialDirectorySource,
   schoolWebsiteSource,
 } from "@/features/evidence/source/fixtures";
+import { profileFieldLabels } from "@/features/schools/SchoolProfile/constants";
+import { formatTagId } from "@/features/schools/tagTaxonomy";
 import type { School } from "@/features/schools/school";
 
 describe("collectCitedSources", () => {
@@ -99,5 +102,74 @@ describe("collectCitedSources", () => {
       "Alpha government source",
       "Beta government source",
     ]);
+  });
+
+  it("includes a tag-only source exactly once when no field cites it", () => {
+    const tagOnlySource: Source = {
+      ...journalismSource,
+      id: "tag-only-source",
+      title: "Tag-only journalism source",
+    };
+    const school: School = {
+      ...validDetailedPublicSchool,
+      sources: [...validDetailedPublicSchool.sources, tagOnlySource],
+      tags: [
+        {
+          id: "arts-music-focus",
+          confidence: "confirmed_official",
+          citations: [{ sourceId: "tag-only-source" }],
+        },
+      ],
+      perfilDaEscola: "Parágrafo sintético de teste.",
+      qualitativeLastReviewed: "2026-07-29",
+    };
+
+    const grouped = collectCitedSources(school);
+    const matching = grouped.flatMap((group) =>
+      group.entries.filter((entry) => entry.source.id === "tag-only-source"),
+    );
+
+    expect(matching).toHaveLength(1);
+  });
+
+  it("dedupes a source cited by both a field and a tag with citedBy labels", () => {
+    const school: School = {
+      ...validDetailedPublicSchool,
+      tags: [
+        {
+          id: "stem-focus",
+          confidence: "confirmed_official",
+          citations: [{ sourceId: officialDirectorySource.id }],
+        },
+      ],
+      perfilDaEscola: "Parágrafo sintético de teste.",
+      qualitativeLastReviewed: "2026-07-29",
+    };
+
+    const grouped = collectCitedSources(school);
+    const matching = grouped.flatMap((group) =>
+      group.entries.filter(
+        (entry) => entry.source.id === officialDirectorySource.id,
+      ),
+    );
+
+    expect(matching).toHaveLength(1);
+    expect(matching[0]?.citations.length).toBeGreaterThanOrEqual(1);
+    expect(matching[0]?.citedBy).toEqual(
+      expect.arrayContaining([
+        profileFieldLabels.name,
+        formatTagId("stem-focus"),
+      ]),
+    );
+  });
+
+  it("returns citedBy as an array on every CitedSourceEntry", () => {
+    const grouped = collectCitedSources(validDetailedPublicSchool);
+
+    for (const group of grouped) {
+      for (const entry of group.entries) {
+        expect(Array.isArray(entry.citedBy)).toBe(true);
+      }
+    }
   });
 });

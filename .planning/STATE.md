@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: ready_to_plan
-last_updated: "2026-07-26T20:47:13.520Z"
-last_activity: 2026-07-26
+last_updated: "2026-07-30T06:02:14.227Z"
+last_activity: 2026-07-30
 progress:
   total_phases: 5
-  completed_phases: 2
-  total_plans: 4
-  completed_plans: 4
-  percent: 40
+  completed_phases: 5
+  total_plans: 19
+  completed_plans: 19
+  percent: 100
 ---
 
 # Project State
@@ -20,14 +20,15 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 12 — editorial-research-framework
+**Current focus:** Phase 15 — profile-ui-tags-narrative
 
 ## Current Position
 
-Phase: 13
+Phase: 16
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-07-26
+Last activity: 2026-08-02
+Resume file: None
 
 ## Performance Metrics
 
@@ -56,6 +57,21 @@ Last activity: 2026-07-26
 | Phase 12 P02 | 8min | 2 tasks | 2 files |
 | Phase 12 P03 | 6min | 2 tasks | 3 files |
 | Phase 12 P04 | 8min | 1 tasks | 1 files |
+| Phase 13 P01 | 1min | 2 tasks | 9 files |
+| Phase 13 P02 | 1min | 2 tasks | 8 files |
+| Phase 13 P03 | 1min | 2 tasks | 3 files |
+| Phase 13 P04 | 2min | 2 tasks | 3 files |
+| Phase 14 P01 | 8min | 2 tasks | 3 files |
+| Phase 14 P02 | 1min | 2 tasks | 2 files |
+| Phase 14 P03 | 1min | 2 tasks | 1 files |
+| Phase 14 P04 | 3min | 2 tasks | 3 files |
+| Phase 14 P05 | 8min | 2 tasks | 1 files |
+| Phase 15 P00 | 3min | 3 tasks | 11 files |
+| Phase 15 P01 | 2min | 2 tasks | 2 files |
+| Phase 15 P02 | 1min | 2 tasks | 3 files |
+| Phase 15 P03 | 2min | 2 tasks | 4 files |
+| Phase 15 P04 | 2min | 2 tasks | 4 files |
+| Phase 15 P05 | 3min | 2 tasks | 3 files |
 
 ## Decisions
 
@@ -85,6 +101,37 @@ Last activity: 2026-07-26
 - [Phase 12-02]: Appended four dated 2026-07-26 ADR entries tracing to CONTEXT.md D-01–D-23: tag taxonomy v1, source hierarchy extension, qualitative-richness-is-not-quality, and qualitative review cadence
 - [Phase 12-03]: Placed source-tier and tag sections between Cobertura da pesquisa and Termos em alemão per UI-SPEC Content Extension Contract; version marker v1 dated 2026-07-26
 - [Phase 12-04]: Named the 5-school pilot set verbatim from 12-RESEARCH.md's Pilot Candidate Analysis, independently re-verified against the real dataset before committing
+- [Phase 13-01]: Factual allowlist includes official types + journalism; excludes community/anecdotal
+- [Phase 13-01]: Reliability Levels in RESEARCH.md point community evidence to Canonical Source Types + Community Source Independence
+- [Phase 13-02]: Independence log property names locked to venue/identifier/dateAccessed/independenceRationale/echoCheckNote
+- [Phase 13-02]: formatTagConfidence imports TagConfidence from tagTaxonomy to share the closed enum type
+- [Phase 13-03]: Multi-source predicate includes triangulated_community sourceIds only for active-school-community
+- [Phase 13-03]: Distinct independenceLog.venue enforced across community citations on the same tag (A6)
+- [Phase 13-04]: qualitativeLastReviewed required iff (tags?.length ?? 0) > 0 — empty tags[] does not require it
+- [Phase 13-04]: Real Lichtenberg schools left untagged; validate:data green without placeholder dates
+- [Phase 14-01]: perfilDaEscola and qualitativeResearchNotes are plain trimmed optional strings; no Zod .max() (D-09)
+- [Phase 14]: qualitativeResearchNotes alone does not require qualitativeLastReviewed (RESEARCH A4)
+- [Phase 14]: Empty tags: [] remains the no-tags path (length > 0 gate)
+- [Phase 14]: Factory passthrough (not post-spread) locked for all five pilots in later plans — Plan 14-02 discretion Pattern 4
+- [Phase 14]: Conditional spreads omit undefined qualitative fields so non-pilot School objects stay identical — Plan 14-02 discretion Pattern 4
+- [Phase 14-03]: Withheld stem-focus on Grzimek — portrait MINT offer alone fails facts≠tags (D-05)
+- [Phase 14-03]: All three thin/mid pilots ship zero tags + perfil + qualitativeLastReviewed 2026-07-29
+- [Phase 14-04]: Withheld active-school-community on Tolstoi — Eltern/Förderverein present but ≥2 independent community venues not found (D-13)
+- [Phase 14-04]: Published arts-music-focus on Wagner citing musikbetonung page + official portrait
+- [Phase 14-04]: Published bilingual-program on Tolstoi citing dedicated SESB page + official portrait
+- [Phase 14-05]: Human approved with three family-facing perfil wording refinements before close
+- [Phase 14-05]: Stock unconfirmed phrase locked to "Até o momento, não houve confirmação independente…"
+- [Phase 15-00]: Wave 0 ships RED tests + null stubs only — no production qualitative UI
+- [Phase 15-00]: TagsSection/EditorialNarrative/ReportCorrection stubs return null so imports resolve and assertions stay RED until later plans
+- [Phase 15-01]: Category helpers live in tagTaxonomy; groupTagsByCategory deferred to TagsSection (Plan 03)
+- [Phase 15-02]: No perfilDaEscola invented cite-back — only field paths and tag ids contribute to citedBy
+- [Phase 15-02]: citedBy sorted with localeCompare pt-BR for stable Fontes output
+- [Phase 15-03]: TagRow stays an inner component in TagsSection/index.tsx (no separate TagEvidence directory)
+- [Phase 15-03]: EditorialNarrative returns null for falsy text so Wave 0 empty/undefined cases green without parent gating yet
+- [Phase 15]: Mock getSchoolBySlug in ReportCorrection tests so Wave 0 synthetic fixture slug can exercise prefill without living in the real directory
+- [Phase 15]: Show CORRECTION_EMAIL beside mailtoBlocked copy for manual fallback
+- [Phase 15-05]: Correction CTA uses native <a> instead of next/link so Wave 0 href with trailing slash is preserved (Link normalizes it away)
+- [Phase 15-05]: SchoolProfile remains a Server Component; TagsSection stays the only client island in the editorial zone
 
 ## Blockers/Concerns
 

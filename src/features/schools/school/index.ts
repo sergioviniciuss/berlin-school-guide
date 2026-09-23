@@ -6,6 +6,7 @@ import {
 } from "@/features/evidence/fieldEvidence";
 import { sourceSchema } from "@/features/evidence/source";
 import { validateFieldCitations } from "@/features/evidence/validateFieldCitations";
+import { validateTagEvidence } from "@/features/evidence/validateTagEvidence";
 import { researchMetadataSchema } from "@/features/schools/researchMetadata";
 import {
   inspectionAvailabilitySchema,
@@ -13,6 +14,7 @@ import {
   schoolLevelSchema,
 } from "@/features/schools/schoolClassification";
 import { schoolLocationSchema } from "@/features/schools/schoolLocation";
+import { schoolTagSchema } from "@/features/schools/tagTaxonomy";
 
 const slugSchema = z
   .string()
@@ -53,8 +55,12 @@ export const schoolSchema = z
     facilities: createFieldValueSchema(stringArraySchema),
     sources: z.array(sourceSchema).min(1),
     research: researchMetadataSchema,
+    tags: z.array(schoolTagSchema).optional(),
+    qualitativeLastReviewed: z.string().date().optional(),
+    perfilDaEscola: z.string().trim().min(1).optional(),
+    qualitativeResearchNotes: z.string().trim().min(1).optional(),
   })
-  // Citation quality gate (RSCH-04 data layer) — verified fields require acceptable primary/secondary source
+  // Citation quality gate (RSCH-04 data layer) — verified fields require acceptable factual sources
   .superRefine((school, context) => {
     const fieldEntries = collectFieldEvidence(school);
 
@@ -92,7 +98,7 @@ export const schoolSchema = z
             code: "custom",
             path: [...path, "evidence", "citations"],
             message:
-              "Verified fields must cite at least one primary or secondary source.",
+              "Verified fields must cite at least one acceptable factual source (primary/secondary reliability and an allowlisted source type).",
           });
         }
       }
@@ -123,6 +129,35 @@ export const schoolSchema = z
           });
         }
       }
+    }
+
+    for (const [index, tag] of (school.tags ?? []).entries()) {
+      const result = validateTagEvidence(tag, school.sources);
+      if (!result.ok) {
+        for (const message of result.messages) {
+          context.addIssue({ code: "custom", path: ["tags", index], message });
+        }
+      }
+    }
+
+    const hasTags = (school.tags?.length ?? 0) > 0;
+    const hasPerfil = Boolean(school.perfilDaEscola);
+
+    if (hasTags && !school.perfilDaEscola) {
+      context.addIssue({
+        code: "custom",
+        path: ["perfilDaEscola"],
+        message: "Schools with tags must include perfilDaEscola.",
+      });
+    }
+
+    if ((hasTags || hasPerfil) && !school.qualitativeLastReviewed) {
+      context.addIssue({
+        code: "custom",
+        path: ["qualitativeLastReviewed"],
+        message:
+          "Schools with tags or perfilDaEscola must include qualitativeLastReviewed (YYYY-MM-DD).",
+      });
     }
   });
 

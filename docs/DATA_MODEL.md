@@ -174,7 +174,26 @@ A "High demand" tag (admissions pressure or popularity) is explicitly out of v1 
 
 Qualitative content (tags and the "Perfil da escola" narrative) is tracked with its own field, `qualitativeLastReviewed`, separate from the factual `research.lastResearched` and `research.lastSourceChecked` fields. `research_status` and its recheck cadence continue to describe only factual field completeness; `qualitativeLastReviewed` describes when a school's tags and narrative were last reviewed under the qualitative review cadence.
 
-This section documents the field's intended semantics; Phase 13 implements it on the school schema. `qualitativeLastReviewed` should record an ISO `YYYY-MM-DD` date and be updated whenever a school's qualitative content is reviewed under the cadence documented in `docs/RESEARCH.md`'s Qualitative Review Cadence section - whether the periodic annual baseline or an event-driven trigger.
+Phase 13 shipped optional `tags` and `qualitativeLastReviewed` on the school schema. Phase 14 adds `perfilDaEscola` and `qualitativeResearchNotes`, and extends the date gate so `qualitativeLastReviewed` is required whenever tags **or** perfil are present (not tags alone).
+
+`qualitativeLastReviewed` should record an ISO `YYYY-MM-DD` date and be updated whenever a school's qualitative content is reviewed under the cadence documented in `docs/RESEARCH.md`'s Qualitative Review Cadence section - whether the periodic annual baseline or an event-driven trigger.
+
+### `perfilDaEscola`
+
+Optional plain PT-BR string on the school record (not MDX, not Markdown). Family-facing "Perfil da escola" synthesis of already-cited evidence for match-making context.
+
+This field is **distinct from** factual `schoolProfile` (`FieldValue<string>`), which typically holds German portrait/offers text with evidence status. `perfilDaEscola` is editorial PT-BR narrative for families; `schoolProfile` remains a sourced factual field.
+
+### `qualitativeResearchNotes`
+
+Optional research/withhold metadata string on the school record. Used for durable triangulation withhold summaries and similar research notes. Not rendered as the family-facing Perfil da escola.
+
+### Cross-field rules (Phase 14)
+
+- Non-empty `tags` ⇒ `perfilDaEscola` required.
+- Non-empty `tags` **or** `perfilDaEscola` ⇒ `qualitativeLastReviewed` required (`YYYY-MM-DD`).
+- Schools with neither tags nor perfil remain valid (typical non-pilot path).
+- `qualitativeResearchNotes` alone does not require `qualitativeLastReviewed`.
 
 ## Open Day Questions
 

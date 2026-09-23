@@ -17,25 +17,25 @@
 
 ### Evidence model & tags
 
-- [ ] **TAG-01**: School records support structured tags with per-tag citations and evidence status
-- [ ] **TAG-02**: Source model supports `journalism` and a displayable triangulated-community tier (distinct from hidden reserved anecdotal)
-- [ ] **TAG-03**: Community evidence requires ≥2 independent sources, an independence log, and can never be the sole basis for a tag
-- [ ] **TAG-04**: Each tag shows a qualitative confidence label that means evidence strength, not school quality
+- [x] **TAG-01**: School records support structured tags with per-tag citations and evidence status
+- [x] **TAG-02**: Source model supports `journalism` and a displayable triangulated-community tier (distinct from hidden reserved anecdotal)
+- [x] **TAG-03**: Community evidence requires ≥2 independent sources, an independence log, and can never be the sole basis for a tag
+- [x] **TAG-04**: Each tag shows a qualitative confidence label that means evidence strength, not school quality
 
 ### Profile narrative & UI
 
-- [ ] **NARR-01**: Pilot school profiles render structured tags (grouped, cited, with evidence-strength labels)
-- [ ] **NARR-02**: Short PT-BR `Perfil da escola` synthesizes existing cited evidence only — never introduces uncited claims or ranking language
-- [ ] **NARR-03**: UI clearly distinguishes official information from community observations
-- [ ] **NARR-04**: Every qualitative element (tag or narrative block) is independently supported and removable without breaking the profile
-- [ ] **NARR-05**: Fontes includes citations from tags and narrative as well as existing fields
-- [ ] **NARR-06**: Correction / report-an-issue path explicitly covers tags and narrative
+- [x] **NARR-01**: Pilot school profiles render structured tags (grouped, cited, with evidence-strength labels)
+- [x] **NARR-02**: Short PT-BR `Perfil da escola` synthesizes existing cited evidence only — never introduces uncited claims or ranking language
+- [x] **NARR-03**: UI clearly distinguishes official information from community observations
+- [x] **NARR-04**: Every qualitative element (tag or narrative block) is independently supported and removable without breaking the profile
+- [x] **NARR-05**: Fontes includes citations from tags and narrative as well as existing fields
+- [x] **NARR-06**: Correction / report-an-issue path explicitly covers tags and narrative
 
 ### Pilot & validation
 
-- [ ] **PILOT-01**: 3–5 representative Lichtenberg schools ship fully tagged and narrated profiles
-- [ ] **PILOT-02**: Pilot set includes ≥1 lower-documentation school
-- [ ] **PILOT-03**: At least one triangulated-community example is exercised end-to-end
+- [x] **PILOT-01**: 3–5 representative Lichtenberg schools ship fully tagged and narrated profiles
+- [x] **PILOT-02**: Pilot set includes ≥1 lower-documentation school
+- [x] **PILOT-03**: At least one triangulated-community example is exercised end-to-end
 - [ ] **VAL-01**: Non-pilot school profiles remain unchanged; coverage % is not silently altered by tags/editorial
 - [ ] **VAL-02**: Automated tests cover schema/triangulation rules, tags/narrative UI, and Fontes merge
 
@@ -83,19 +83,19 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FRAME-02 | Phase 12 | Complete |
 | FRAME-03 | Phase 12 | Complete |
 | FRAME-04 | Phase 12 | Complete |
-| TAG-01 | Phase 13 | Pending |
-| TAG-02 | Phase 13 | Pending |
-| TAG-03 | Phase 13 | Pending |
-| TAG-04 | Phase 13 | Pending |
-| NARR-01 | Phase 15 | Pending |
-| NARR-02 | Phase 14 | Pending |
-| NARR-03 | Phase 15 | Pending |
-| NARR-04 | Phase 15 | Pending |
-| NARR-05 | Phase 15 | Pending |
-| NARR-06 | Phase 15 | Pending |
-| PILOT-01 | Phase 14 | Pending |
-| PILOT-02 | Phase 14 | Pending |
-| PILOT-03 | Phase 14 | Pending |
+| TAG-01 | Phase 13 | Complete |
+| TAG-02 | Phase 13 | Complete |
+| TAG-03 | Phase 13 | Complete |
+| TAG-04 | Phase 13 | Complete |
+| NARR-01 | Phase 15 | Complete |
+| NARR-02 | Phase 14 | Complete |
+| NARR-03 | Phase 15 | Complete |
+| NARR-04 | Phase 15 | Complete |
+| NARR-05 | Phase 15 | Complete |
+| NARR-06 | Phase 15 | Complete |
+| PILOT-01 | Phase 14 | Complete |
+| PILOT-02 | Phase 14 | Complete |
+| PILOT-03 | Phase 14 | Complete |
 | VAL-01 | Phase 16 | Pending |
 | VAL-02 | Phase 16 | Pending |
 

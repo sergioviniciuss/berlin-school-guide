@@ -1,6 +1,6 @@
 import type { FieldEvidence } from "@/features/evidence/fieldEvidence";
 import type { Source } from "@/features/evidence/source";
-import { isAcceptableReliabilityLevel } from "@/features/evidence/sourceTypes";
+import { isAcceptableFactualEvidence } from "@/features/evidence/sourceTypes";
 
 export function validateFieldCitations(
   evidence: FieldEvidence,
@@ -13,7 +13,7 @@ export function validateFieldCitations(
   );
   const hasUnknownSource = citationSources.some((source) => !source);
   const hasAcceptableSource = citationSources.some(
-    (source) => source && isAcceptableReliabilityLevel(source.reliability),
+    (source) => source && isAcceptableFactualEvidence(source),
   );
 
   return {

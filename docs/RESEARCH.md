@@ -34,12 +34,11 @@ Structured data should use these source types:
 
 ## Reliability Levels
 
-Reliability levels should reflect source authority, not whether the information is favorable to a school:
+Reliability levels should reflect source authority for **factual** verification, not whether the information is favorable to a school. This axis is orthogonal to Canonical Source Types: community evidence is a `sourceType` (`triangulated_community`), not a reliability value. See Canonical Source Types and Community Source Independence for how community observations may be used.
 
 - `primary`: official government, district, inspection, or public education source.
 - `secondary`: school-published information, reliable public dataset, or independent journalism.
-- `triangulated_community`: independently corroborated community observation meeting the Community Source Independence rules below; may be cited only for the `active-school-community` tag, never as the sole basis for a tag.
-- `anecdotal`: subjective parent or community signal that has not been triangulated. Reserved in the data model but not displayed in V1.
+- `anecdotal`: subjective parent or community signal, including community observations that may be cited only under Community Source Independence rules (never as sole factual verification). Reserved from display when paired with `anecdotal_reserved`.
 - `unknown`: source reliability has not yet been classified.
 
 ## Community Source Independence
