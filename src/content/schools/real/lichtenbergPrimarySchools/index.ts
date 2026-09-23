@@ -397,6 +397,12 @@ const lichtenBergInspection = schoolWebsiteSource(
   "https://www.gs-lichtenberg-berlin.de/schulinspektion/",
   "2026-09-23",
 );
+const schlaufuchsWebsite = schoolWebsiteSource(
+  "schlaufuchs-schule-website",
+  "Schlaufuchs-Grundschule",
+  "https://schlaufuchs-grundschule.de/",
+  "2026-09-23",
+);
 
 export const realLichtenbergPrimarySchools = [
   primarySchool({
@@ -918,5 +924,64 @@ export const realLichtenbergPrimarySchools = [
     perfilDaEscola:
       "A Schule auf dem lichten Berg fica no Ortsteil Lichtenberg, com sede na Atzpodienstraße e uma filial na Siegfriedstraße. O cadastro oficial informa inglês, Offene Ganztagbetreuung (OGB), grupos mistos nos anos 1–3 e a coexistência de Regelklassen e Montessoriklassen. O site descreve pedagogia inspirada em Maria Montessori e eFöB/Hort das 6h às 18h. O retrato oficial e o site apontam inspeção escolar, com relatório listado em 2018.",
     qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "31283",
+    slug: "schlaufuchs-schule",
+    name: "Schlaufuchs-Grundschule",
+    schoolNumber: "11G38",
+    address: "Paul-Junius-Str. 69",
+    postCodeAndCity: "10369 Berlin",
+    neighbourhood: "Fennpfuhl",
+    website: "https://schlaufuchs-grundschule.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    portraitDateAccessed: "2026-09-23",
+    sources: [schlaufuchsWebsite],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website describes Ganztagsbetreuung until 18:00 at this open all-day primary school.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Offene Ganztagsgrundschule mit Schwerpunkt Bewegung in Berlin-Lichtenberg.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      ["Bewegung", "inklusives Miteinander"],
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    inclusionSupport: field(
+      "The school website describes itself as a bewegungsorientierte, inklusive Grundschule.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes the secretariat phone number and open-day information.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    facilities: field(
+      ["moderner Medienraum"],
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      null,
+      citedMissing(
+        ["31283-official-portrait", "schlaufuchs-schule-website"],
+        "Retrato oficial e site da escola verificados; relatório de inspeção não aparece nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
+    inspectionData: field(
+      null,
+      citedMissing(
+        ["31283-official-portrait", "schlaufuchs-schule-website"],
+        "Retrato oficial e site da escola verificados; dados de inspeção não constam nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
   }),
 ] satisfies School[];
