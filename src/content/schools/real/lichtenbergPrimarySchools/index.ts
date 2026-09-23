@@ -403,6 +403,24 @@ const schlaufuchsWebsite = schoolWebsiteSource(
   "https://schlaufuchs-grundschule.de/",
   "2026-09-23",
 );
+const evangelischeWebsite = schoolWebsiteSource(
+  "evangelische-schule-lichtenberg-website",
+  "Evangelische Schule Lichtenberg",
+  "https://www.ev-schule-lichtenberg.de/",
+  "2026-09-23",
+);
+const evangelischeDay = schoolWebsiteSource(
+  "evangelische-schule-lichtenberg-day",
+  "Evangelische Schule Lichtenberg",
+  "https://www.ev-schule-lichtenberg.de/unser-tagesablauf/",
+  "2026-09-23",
+);
+const evangelischeAdmission = schoolWebsiteSource(
+  "evangelische-schule-lichtenberg-admission",
+  "Evangelische Schule Lichtenberg",
+  "https://www.ev-schule-lichtenberg.de/anmeldung/",
+  "2026-09-23",
+);
 
 export const realLichtenbergPrimarySchools = [
   primarySchool({
@@ -986,5 +1004,75 @@ export const realLichtenbergPrimarySchools = [
     perfilDaEscola:
       "A Schlaufuchs-Grundschule fica em Fennpfuhl, Lichtenberg. O cadastro oficial informa inglês como primeira língua estrangeira e ainda não lista um modelo de Ganztag nesse retrato. O site apresenta a escola como Offene Ganztagsgrundschule com ênfase em Bewegung, cuidado até às 18h, sala de mídia e perfil inclusivo. Até o momento, não houve confirmação independente de inspeção oficial além dessas fontes.",
     qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "30319",
+    slug: "evangelische-schule-lichtenberg",
+    name: "Evangelische Schule Lichtenberg",
+    schoolNumber: "11P03",
+    address: "Rummelsburger Str. 3",
+    postCodeAndCity: "10315 Berlin",
+    neighbourhood: "Friedrichsfelde",
+    website: "https://www.ev-schule-lichtenberg.de",
+    classification: "private",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Gebundener Ganztagbetrieb (GGB)",
+    portraitDateAccessed: "2026-09-23",
+    sources: [evangelischeWebsite, evangelischeDay, evangelischeAdmission],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website lists optional Frühhort from 06:00–07:30 and Späthort from 16:00–18:00 on application, alongside mandatory bound all-day hours.",
+      evidence("evangelische-schule-lichtenberg-day", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Staatlich anerkannte Ersatzschule of the Evangelische Kirche Berlin-Brandenburg-schlesische Oberlausitz (EKBO) Schulstiftung.",
+      evidence("evangelische-schule-lichtenberg-website", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      [
+        "gebundene Ganztagsschule",
+        "evangelisches Schulprofil",
+        "Schulanfangsphase mit jahrgangsbezogenen Lerngruppen",
+      ],
+      evidence("30319-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes secretariat contact details and parent information pages including Anmeldung and Tagesablauf.",
+      evidence("evangelische-schule-lichtenberg-website", "2026-09-23"),
+    ),
+    facilities: field(
+      ["Computerraum", "Lehrküche", "Nagerkäfige"],
+      evidence("30319-official-portrait", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      null,
+      citedMissing(
+        [
+          "30319-official-portrait",
+          "evangelische-schule-lichtenberg-website",
+          "evangelische-schule-lichtenberg-day",
+          "evangelische-schule-lichtenberg-admission",
+        ],
+        "Retrato oficial e páginas do site verificados; relatório de inspeção não aparece nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
+    inspectionData: field(
+      null,
+      citedMissing(
+        [
+          "30319-official-portrait",
+          "evangelische-schule-lichtenberg-website",
+          "evangelische-schule-lichtenberg-day",
+          "evangelische-schule-lichtenberg-admission",
+        ],
+        "Retrato oficial e páginas do site verificados; dados de inspeção não constam nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
   }),
 ] satisfies School[];
