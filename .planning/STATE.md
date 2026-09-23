@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 15 — profile-ui-tags-narrative
+**Current focus:** Phase 15.1 — five-lichtenberg-evidence-profiles
 
 ## Current Position
 
-Phase: 16
+Phase: 15.1
 Plan: Not started
-Status: Ready to plan
-Last activity: 2026-08-02
+Status: Ready to discuss
+Last activity: 2026-09-23
 Resume file: None
 
 ## Performance Metrics
@@ -138,6 +138,10 @@ Resume file: None
 - None
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 15.1 inserted after Phase 15: Five Lichtenberg evidence-backed school profiles (Neues Tor, Robinson-Schule, Schule auf dem Lichtenberg, Schlaufuchs-Schule, Evangelische Schule Lichtenberg) — full evidence-backed profiles (URGENT). Phase 16 now depends on 15.1.
 
 ### Prior milestones
 
