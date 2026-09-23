@@ -373,6 +373,30 @@ const robinsonProfile = schoolWebsiteSource(
   "https://www.robinsonschule-berlin.de/schule/",
   "2026-09-23",
 );
+const lichtenBergWebsite = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-website",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/",
+  "2026-09-23",
+);
+const lichtenBergEfoeb = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-efoeb",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/efoeb/",
+  "2026-09-23",
+);
+const lichtenBergProfile = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-profile",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/schulprofil-3/",
+  "2026-09-23",
+);
+const lichtenBergInspection = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-inspection",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/schulinspektion/",
+  "2026-09-23",
+);
 
 export const realLichtenbergPrimarySchools = [
   primarySchool({
@@ -823,5 +847,63 @@ export const realLichtenbergPrimarySchools = [
     perfilDaEscola:
       "A Robinson-Schule fica em Rummelsburg, Lichtenberg, perto da estação Lichtenberg. O cadastro oficial informa inglês, Gebundener Ganztagbetrieb (GGB), perfil de saúde (gesundheitsbetontes Profil) e perfil de mídia (medienbetontes Profil). O site descreve a participação no Schulversuch FlexGanztag, com aulas até 14h30, FlexModule até 16h e eFöB/Hort com opções de 6h às 18h. As turmas vão do 1º ao 6º ano. O retrato oficial lista relatórios de inspeção de 2012 e 2018.",
     qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "30686",
+    slug: "schule-auf-dem-lichtenberg",
+    name: "Schule auf dem lichten Berg",
+    schoolNumber: "11G05",
+    address: "Atzpodienstr. 19",
+    postCodeAndCity: "10365 Berlin",
+    neighbourhood: "Lichtenberg",
+    website: "https://www.gs-lichtenberg-berlin.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Offene Ganztagbetreuung (OGB)",
+    gradesServed: ["1", "2", "3", "4", "5", "6"],
+    portraitDateAccessed: "2026-09-23",
+    sources: [
+      lichtenBergWebsite,
+      lichtenBergEfoeb,
+      lichtenBergProfile,
+      lichtenBergInspection,
+    ],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website describes eFöB (Hort) with early care from 06:00, day care, and late care until 18:00.",
+      evidence("schule-auf-dem-lichtenberg-efoeb", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Regelklassen and Montessoriklassen; the school website describes teaching inspired by Maria-Montessori pedagogy.",
+      evidence("schule-auf-dem-lichtenberg-profile", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      [
+        "Montessori",
+        "jahrgangsübergreifende Lerngruppen 1-3",
+        "ergänz. Musikunterricht für Schulanfänger",
+      ],
+      evidence("30686-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website homepage publishes secretariat and eFöB phone numbers and email.",
+      evidence("schule-auf-dem-lichtenberg-website", "2026-09-23"),
+    ),
+    facilities: field(
+      ["PC Kabinett", "Barrierefreie Toilette"],
+      evidence("30686-official-portrait", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      "available",
+      evidence("schule-auf-dem-lichtenberg-inspection", "2026-09-23"),
+    ),
+    inspectionData: field(
+      "The school website maintains a Schulinspektion page, and the official portrait lists a report published on 01.04.2018.",
+      evidence("30686-official-portrait", "2026-09-23"),
+    ),
   }),
 ] satisfies School[];
