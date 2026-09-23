@@ -820,5 +820,8 @@ export const realLichtenbergPrimarySchools = [
       "The official Berlin school portrait lists Schulinspektion reports published on 01.11.2012 and 01.12.2018.",
       evidence("30451-official-portrait", "2026-09-23"),
     ),
+    perfilDaEscola:
+      "A Robinson-Schule fica em Rummelsburg, Lichtenberg, perto da estação Lichtenberg. O cadastro oficial informa inglês, Gebundener Ganztagbetrieb (GGB), perfil de saúde (gesundheitsbetontes Profil) e perfil de mídia (medienbetontes Profil). O site descreve a participação no Schulversuch FlexGanztag, com aulas até 14h30, FlexModule até 16h e eFöB/Hort com opções de 6h às 18h. As turmas vão do 1º ao 6º ano. O retrato oficial lista relatórios de inspeção de 2012 e 2018.",
+    qualitativeLastReviewed: "2026-09-23",
   }),
 ] satisfies School[];
