@@ -2,12 +2,12 @@
 gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
-status: verifying
+status: ready_to_plan
 last_updated: "2026-09-23T21:45:00.000Z"
 last_activity: 2026-09-23
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 26
   completed_plans: 26
   percent: 100
@@ -20,13 +20,13 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 15.1 — five-lichtenberg-evidence-profiles
+**Current focus:** Phase 16 — Validation & Release Gates
 
 ## Current Position
 
-Phase: 15.1 (five-lichtenberg-evidence-profiles) — VERIFYING
-Plan: 7 of 7
-Status: All plans complete — phase verification next
+Phase: 16
+Plan: Not started
+Status: Ready to plan
 Last activity: 2026-09-23
 Resume file: None
 

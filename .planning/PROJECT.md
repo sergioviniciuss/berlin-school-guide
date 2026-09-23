@@ -21,7 +21,7 @@ A static Next.js site in Brazilian Portuguese that helps Brazilian families in B
 
 **v1.1 delivered:** Visual education journey (`EducationTimeline`, `BerlinCallout`, `GlossaryTerm`), full Kita→higher-ed editorial with Berlin differences and glossary, homepage Start here → onboarding, guides hub flagship stack, complementary Berlin/first-steps cross-links, and release gates (metadata, a11y, smoke, Jest + e2e CI).
 
-**Building:** v1.2 Evidence-Based School Profiles — Phases 12–15 complete (framework, schema, pilot content, profile UI for tags & narrative). Next: Phase 16 Validation & Release Gates.
+**Building:** v1.2 Evidence-Based School Profiles — Phases 12–15.1 complete (framework, schema, pilot content, profile UI, five additional evidence-backed profiles including Mitte Neues Tor). Next: Phase 16 Validation & Release Gates.
 
 ## Core Value
 
@@ -67,6 +67,7 @@ Parents can trust what they read because every factual school field shows its ev
 - ✓ Pilot qualitative content (tags + Perfil da escola) authored for selected Lichtenberg schools — Validated in Phase 14: Pilot Content Authoring
 - ✓ Profile UI renders tags (category groups, confidence, expandable evidence), editorial narrative, Fontes cite-back, and correction path covering tags/narrative — Validated in Phase 15: Profile UI (Tags & Narrative)
 - ✓ Official vs community distinction via source-type labels when expanded; factual label “Perfil oficial” vs editorial “Perfil da escola” — Validated in Phase 15
+- ✓ Five additional evidence-backed profiles (Neues Tor in Mitte, Robinson, Lichten Berg, Schlaufuchs, Evangelische private) with directory at 15 schools — Validated in Phase 15.1: Five Lichtenberg Evidence-Backed Profiles
 
 ### Active
 
@@ -153,4 +154,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-08-02 — Phase 15 complete (profile UI: tags & narrative)*
+*Last updated: 2026-09-23 — Phase 15.1 complete (five evidence-backed profiles; directory 15)*
