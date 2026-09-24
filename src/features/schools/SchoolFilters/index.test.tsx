@@ -140,7 +140,11 @@ describe("SchoolFilters", () => {
       />,
     );
 
-    await user.click(screen.getByLabelText("Lichtenberg"));
+    await user.click(
+      within(screen.getByRole("group", { name: "Distrito" })).getByLabelText(
+        "Lichtenberg",
+      ),
+    );
     expect(onToggle).toHaveBeenCalledWith("districts", "Lichtenberg");
   });
 });
