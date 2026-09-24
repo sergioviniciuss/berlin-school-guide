@@ -3,13 +3,13 @@ gsd_state_version: 1.0
 milestone: v1.2
 milestone_name: Evidence-Based School Profiles
 status: ready_to_plan
-last_updated: "2026-07-30T06:02:14.227Z"
-last_activity: 2026-07-30
+last_updated: "2026-09-23T21:45:00.000Z"
+last_activity: 2026-09-23
 progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 19
-  completed_plans: 19
+  total_phases: 6
+  completed_phases: 6
+  total_plans: 26
+  completed_plans: 26
   percent: 100
 ---
 
@@ -20,14 +20,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-07-26)
 
 **Core value:** Parents can trust what they read because every factual school field shows its evidence status and sources — and missing or unconfirmed information is visible, not hidden.
-**Current focus:** Phase 15 — profile-ui-tags-narrative
+**Current focus:** Phase 16 — Validation & Release Gates
 
 ## Current Position
 
 Phase: 16
 Plan: Not started
 Status: Ready to plan
-Last activity: 2026-08-02
+Last activity: 2026-09-23
 Resume file: None
 
 ## Performance Metrics
@@ -72,6 +72,13 @@ Resume file: None
 | Phase 15 P03 | 2min | 2 tasks | 4 files |
 | Phase 15 P04 | 2min | 2 tasks | 4 files |
 | Phase 15 P05 | 3min | 2 tasks | 3 files |
+| Phase 15.1 P01 | 1 min | 2 tasks | 1 files |
+| Phase 15.1 P02 | 1 min | 2 tasks | 1 files |
+| Phase 15.1 P03 | 8 min | 2 tasks | 1 files |
+| Phase 15.1 P04 | 10 min | 2 tasks | 1 files |
+| Phase 15.1 P05 | 8 min | 2 tasks | 1 files |
+| Phase 15.1 P06 | 10 min | 2 tasks | 1 files |
+| Phase 15.1 P07 | 15 min | 2 tasks | 6 files |
 
 ## Decisions
 
@@ -132,12 +139,18 @@ Resume file: None
 - [Phase 15]: Show CORRECTION_EMAIL beside mailtoBlocked copy for manual fallback
 - [Phase 15-05]: Correction CTA uses native <a> instead of next/link so Wave 0 href with trailing slash is preserved (Link normalizes it away)
 - [Phase 15-05]: SchoolProfile remains a Server Component; TagsSection stays the only client island in the editorial zone
+- [Phase 15.1]: Optional factory overrides keep the existing ten on public grades 1–6 while later records can pass private classification, portrait grades, a real portrait date, and a null website. — Passing undefined into officialPortraitSource would skip the default spike date, so the four-argument form is used only when portraitDateAccessed is a string.
+- [Phase 15.1]: Include Grundschule Neues Tor in Mitte under slug grundschule-am-neuen-tor, with an optional district override so Distrito filters surface Mitte. — User chose the Mitte school after the Lichtenberg-only search failed; filters derive districts from school data.
 
 ## Blockers/Concerns
 
-- None
+None
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 15.1 inserted after Phase 15: Five Lichtenberg evidence-backed school profiles (Neues Tor, Robinson-Schule, Schule auf dem Lichtenberg, Schlaufuchs-Schule, Evangelische Schule Lichtenberg) — full evidence-backed profiles (URGENT). Phase 16 now depends on 15.1.
 
 ### Prior milestones
 

@@ -70,7 +70,7 @@ describe("filterSchools", () => {
         districts: ["Lichtenberg"],
         neighbourhoods: ["Friedrichsfelde"],
       }),
-    ).toHaveLength(6);
+    ).toHaveLength(7);
   });
 
   it("filters by public/private classification", () => {
@@ -79,7 +79,15 @@ describe("filterSchools", () => {
         ...defaultDirectoryFilters,
         classifications: ["public"],
       }),
-    ).toHaveLength(10);
+    ).toHaveLength(14);
+    const privateSchools = filterSchools(schools, {
+      ...defaultDirectoryFilters,
+      classifications: ["private"],
+    });
+    expect(privateSchools).toHaveLength(1);
+    expect(privateSchools.map((school) => school.slug)).toContain(
+      "evangelische-schule-lichtenberg",
+    );
   });
 
   it("filters Ganztag by verified and missing/unconfirmed status", () => {

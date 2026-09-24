@@ -31,7 +31,7 @@ describe("SchoolDirectory", () => {
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
     expect(screen.getByRole("heading", { name: "Escolas" })).toBeVisible();
-    expect(screen.getByText("10 de 10 escolas encontradas")).toBeVisible();
+    expect(screen.getByText("15 de 15 escolas encontradas")).toBeVisible();
   });
 
   it("does not sync search to URL until debounce elapses", () => {
@@ -154,7 +154,7 @@ describe("SchoolDirectory", () => {
 
     render(<SchoolDirectory schools={getSchoolDirectoryItems()} />);
 
-    expect(screen.getByText("4 de 10 escolas encontradas")).toBeVisible();
+    expect(screen.getByText("4 de 15 escolas encontradas")).toBeVisible();
     expect(
       screen.getByRole("heading", { name: "Lew-Tolstoi-Schule" }),
     ).toBeVisible();
@@ -226,7 +226,11 @@ describe("SchoolDirectory", () => {
     replace.mockClear();
 
     const sheet = screen.getByRole("dialog");
-    await user.click(within(sheet).getByLabelText("Lichtenberg"));
+    await user.click(
+      within(
+        within(sheet).getByRole("group", { name: "Distrito" }),
+      ).getByLabelText("Lichtenberg"),
+    );
 
     expect(replace).not.toHaveBeenCalled();
   });
@@ -239,7 +243,11 @@ describe("SchoolDirectory", () => {
     await user.click(screen.getByRole("button", { name: "Filtros" }));
 
     const sheet = screen.getByRole("dialog");
-    await user.click(within(sheet).getByLabelText("Lichtenberg"));
+    await user.click(
+      within(
+        within(sheet).getByRole("group", { name: "Distrito" }),
+      ).getByLabelText("Lichtenberg"),
+    );
     replace.mockClear();
 
     await user.click(screen.getByRole("button", { name: "Fechar menu de navegação" }));

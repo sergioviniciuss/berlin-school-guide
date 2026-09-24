@@ -44,6 +44,6 @@ describe("HomePage", () => {
     ).toHaveAttribute("href", "/guides/german-education-system");
     expect(
       screen.getByRole("link", { name: "Ver escolas em Lichtenberg" }),
-    ).toHaveAttribute("href", "/schools");
+    ).toHaveAttribute("href", "/schools?district=Lichtenberg");
   });
 });

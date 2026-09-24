@@ -76,6 +76,19 @@ function missing(note: string, lastChecked = spikeFullReviewDate): FieldEvidence
   };
 }
 
+function citedMissing(
+  sourceIds: string[],
+  note: string,
+  lastChecked: string,
+): FieldEvidence {
+  return {
+    status: "missing",
+    citations: sourceIds.map((sourceId) => ({ sourceId })),
+    note,
+    lastChecked,
+  };
+}
+
 function notApplicable(note: string, lastChecked = spikeFullReviewDate): FieldEvidence {
   return {
     status: "not_applicable",
@@ -103,7 +116,13 @@ type BaseSchoolInput = {
   address: string;
   postCodeAndCity: string;
   neighbourhood: string;
-  website: string;
+  website: string | null;
+  district?: string;
+  classification?: "public" | "private";
+  level?: "primary" | "mixed_with_primary";
+  primarySectionDescription?: string;
+  gradesServed?: string[];
+  portraitDateAccessed?: string;
   languages: string[];
   ganztag?: string;
   offers?: string[];
@@ -132,11 +151,18 @@ type BaseSchoolInput = {
 };
 
 function primarySchool(input: BaseSchoolInput): School {
-  const portrait = officialPortraitSource(
-    input.portraitId,
-    input.name,
-    input.schoolNumber,
-  );
+  const portrait = input.portraitDateAccessed
+    ? officialPortraitSource(
+        input.portraitId,
+        input.name,
+        input.schoolNumber,
+        input.portraitDateAccessed,
+      )
+    : officialPortraitSource(
+        input.portraitId,
+        input.name,
+        input.schoolNumber,
+      );
   const directoryEvidence = evidence(portrait.id, portrait.dateAccessed);
   const sources = [portrait, ...(input.sources ?? [])];
   const missingResearch = missing(
@@ -154,18 +180,37 @@ function primarySchool(input: BaseSchoolInput): School {
     slug: input.slug,
     name: field(input.name, directoryEvidence),
     schoolNumber: field(input.schoolNumber, directoryEvidence),
-    website: field(input.website, directoryEvidence),
-    classification: field("public", directoryEvidence),
-    level: field("primary", directoryEvidence),
+    website:
+      input.website === null
+        ? field(null, {
+            status: "missing",
+            citations: [{ sourceId: portrait.id }],
+            note: "O retrato oficial não informa o site da escola.",
+            lastChecked: portrait.dateAccessed,
+          })
+        : field(input.website, directoryEvidence),
+    classification: field(input.classification ?? "public", directoryEvidence),
+    level: field(input.level ?? "primary", directoryEvidence),
+    ...(input.primarySectionDescription !== undefined
+      ? {
+          primarySectionDescription: field(
+            input.primarySectionDescription,
+            directoryEvidence,
+          ),
+        }
+      : {}),
     location: {
-      district: field("Lichtenberg", directoryEvidence),
+      district: field(input.district ?? "Lichtenberg", directoryEvidence),
       neighbourhood: field(input.neighbourhood, directoryEvidence),
       address: field(
         `${input.address}, ${input.postCodeAndCity}`,
         directoryEvidence,
       ),
     },
-    gradesServed: field(["1", "2", "3", "4", "5", "6"], directoryEvidence),
+    gradesServed: field(
+      input.gradesServed ?? ["1", "2", "3", "4", "5", "6"],
+      directoryEvidence,
+    ),
     ganztag: input.ganztag
       ? field(input.ganztag, directoryEvidence)
       : field(null, missingResearch),
@@ -297,6 +342,84 @@ const richardWagnerMusic = schoolWebsiteSource(
   "richard-wagner-music",
   "Richard-Wagner-Schule",
   "https://www.richard-wagner-grundschule.de/unsere-schule/musikbetonung/",
+);
+const neuenTorWebsite = schoolWebsiteSource(
+  "grundschule-am-neuen-tor-website",
+  "Grundschule Neues Tor",
+  "https://www.neues-tor.de/",
+  "2026-09-23",
+);
+const neuenTorContact = schoolWebsiteSource(
+  "grundschule-am-neuen-tor-contact",
+  "Grundschule Neues Tor",
+  "https://www.neues-tor.de/kontakt/index.php?dynamisch=1",
+  "2026-09-23",
+);
+const robinsonWebsite = schoolWebsiteSource(
+  "robinson-schule-website",
+  "Robinson-Schule",
+  "https://www.robinsonschule-berlin.de/",
+  "2026-09-23",
+);
+const robinsonGanztag = schoolWebsiteSource(
+  "robinson-schule-ganztag",
+  "Robinson-Schule",
+  "https://www.robinsonschule-berlin.de/ganztag/",
+  "2026-09-23",
+);
+const robinsonProfile = schoolWebsiteSource(
+  "robinson-schule-profile",
+  "Robinson-Schule",
+  "https://www.robinsonschule-berlin.de/schule/",
+  "2026-09-23",
+);
+const lichtenBergWebsite = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-website",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/",
+  "2026-09-23",
+);
+const lichtenBergEfoeb = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-efoeb",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/efoeb/",
+  "2026-09-23",
+);
+const lichtenBergProfile = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-profile",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/schulprofil-3/",
+  "2026-09-23",
+);
+const lichtenBergInspection = schoolWebsiteSource(
+  "schule-auf-dem-lichtenberg-inspection",
+  "Schule auf dem lichten Berg",
+  "https://www.gs-lichtenberg-berlin.de/schulinspektion/",
+  "2026-09-23",
+);
+const schlaufuchsWebsite = schoolWebsiteSource(
+  "schlaufuchs-schule-website",
+  "Schlaufuchs-Grundschule",
+  "https://schlaufuchs-grundschule.de/",
+  "2026-09-23",
+);
+const evangelischeWebsite = schoolWebsiteSource(
+  "evangelische-schule-lichtenberg-website",
+  "Evangelische Schule Lichtenberg",
+  "https://www.ev-schule-lichtenberg.de/",
+  "2026-09-23",
+);
+const evangelischeDay = schoolWebsiteSource(
+  "evangelische-schule-lichtenberg-day",
+  "Evangelische Schule Lichtenberg",
+  "https://www.ev-schule-lichtenberg.de/unser-tagesablauf/",
+  "2026-09-23",
+);
+const evangelischeAdmission = schoolWebsiteSource(
+  "evangelische-schule-lichtenberg-admission",
+  "Evangelische Schule Lichtenberg",
+  "https://www.ev-schule-lichtenberg.de/anmeldung/",
+  "2026-09-23",
 );
 
 export const realLichtenbergPrimarySchools = [
@@ -622,5 +745,341 @@ export const realLichtenbergPrimarySchools = [
     perfilDaEscola:
       "A Seepark-Grundschule fica em Karlshorst, Lichtenberg. As informações oficiais disponíveis indicam inglês e francês como línguas; o modelo de Ganztag e ofertas específicas não aparecem nesse registro. Até o momento, não houve confirmação independente de contraturno, perfil pedagógico ou inspeção além do cadastro do Senado.",
     qualitativeLastReviewed: "2026-07-29",
+  }),
+  primarySchool({
+    portraitId: "30279",
+    slug: "grundschule-am-neuen-tor",
+    name: "Grundschule Neues Tor",
+    schoolNumber: "01G05",
+    address: "Hannoversche Str. 20",
+    postCodeAndCity: "10115 Berlin",
+    neighbourhood: "Mitte",
+    district: "Mitte",
+    website: "https://www.neues-tor.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Gebundener Ganztagbetrieb (GGB)",
+    portraitDateAccessed: "2026-09-23",
+    sources: [neuenTorWebsite, neuenTorContact],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website contact page lists Atelier (Hort) from 16:00 with tjfbg as the after-school partner.",
+      evidence("grundschule-am-neuen-tor-contact", "2026-09-23"),
+    ),
+    bilingualPrograms: field(
+      ["Deutsch-Portugiesisch"],
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    internationalPrograms: field(
+      ["Staatliche Europa-Schule Berlin Deutsch/Portugiesisch"],
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Staatliche Europa-Schule Berlin Deutsch/Portugiesisch with a parallel Regelschule track; the school website describes gebundener Ganztag for the SESB branch and offener Ganztag for the Regelzug.",
+      evidence("grundschule-am-neuen-tor-website", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      [
+        "Staatliche Europa-Schule Berlin Deutsch/Portugiesisch",
+        "bilingualer Unterricht",
+      ],
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes secretariat office hours and tjfbg Hort contact numbers.",
+      evidence("grundschule-am-neuen-tor-contact", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      "available",
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    inspectionData: field(
+      "The official Berlin school portrait lists Schulinspektion reports published on 01.07.2015 and 01.05.2018.",
+      evidence("30279-official-portrait", "2026-09-23"),
+    ),
+    tags: [
+      {
+        id: "bilingual-program",
+        confidence: "confirmed_multi_source",
+        citations: [
+          { sourceId: "grundschule-am-neuen-tor-website" },
+          { sourceId: "30279-official-portrait" },
+        ],
+      },
+    ],
+    perfilDaEscola:
+      "A Grundschule Neues Tor fica em Mitte, perto da Charité. O cadastro oficial e o site descrevem uma Staatliche Europa-Schule Berlin (SESB) Deutsch/Portugiesisch em dois turnos, ao lado de um Regelschulzug no mesmo prédio. O inglês aparece como primeira língua estrangeira no retrato oficial. O modelo de Ganztag no cadastro é Gebundener Ganztagbetrieb (GGB); o site detalha Ganztag vinculado no ramo SESB e aberto no Regelschulzug, com Atelier (Hort) a partir das 16h em parceria com a tjfbg. O retrato oficial lista relatórios de inspeção publicados em 2015 e 2018.",
+    qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "30451",
+    slug: "robinson-schule",
+    name: "Robinson-Schule",
+    schoolNumber: "11G08",
+    address: "Wönnichstr. 7",
+    postCodeAndCity: "10317 Berlin",
+    neighbourhood: "Rummelsburg",
+    website: "https://www.robinsonschule-berlin.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Gebundener Ganztagbetrieb (GGB)",
+    gradesServed: ["1", "2", "3", "4", "5", "6"],
+    portraitDateAccessed: "2026-09-23",
+    sources: [robinsonWebsite, robinsonGanztag, robinsonProfile],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website describes eFöB in bound all-day care, with optional early care from 06:00 and late care until 18:00 plus holiday Hort.",
+      evidence("robinson-schule-ganztag", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "The school website describes participation in the Berlin FlexGanztag trial as a bound all-day Grundschule near Bahnhof Lichtenberg.",
+      evidence("robinson-schule-profile", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      ["gesundheitsbetontes Profil", "medienbetontes Profil"],
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes phone and email contacts on the homepage and describes the iServ parent platform on the Schule page.",
+      evidence("robinson-schule-website", "2026-09-23"),
+    ),
+    facilities: field(
+      [
+        "Bibliothek",
+        "zwei Computerräume",
+        "Medienecken in einigen Unterrichtsräumen",
+        "Laptop-Klasse",
+      ],
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      "available",
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
+    inspectionData: field(
+      "The official Berlin school portrait lists Schulinspektion reports published on 01.11.2012 and 01.12.2018.",
+      evidence("30451-official-portrait", "2026-09-23"),
+    ),
+    perfilDaEscola:
+      "A Robinson-Schule fica em Rummelsburg, Lichtenberg, perto da estação Lichtenberg. O cadastro oficial informa inglês, Gebundener Ganztagbetrieb (GGB), perfil de saúde (gesundheitsbetontes Profil) e perfil de mídia (medienbetontes Profil). O site descreve a participação no Schulversuch FlexGanztag, com aulas até 14h30, FlexModule até 16h e eFöB/Hort com opções de 6h às 18h. As turmas vão do 1º ao 6º ano. O retrato oficial lista relatórios de inspeção de 2012 e 2018.",
+    qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "30686",
+    slug: "schule-auf-dem-lichtenberg",
+    name: "Schule auf dem lichten Berg",
+    schoolNumber: "11G05",
+    address: "Atzpodienstr. 19",
+    postCodeAndCity: "10365 Berlin",
+    neighbourhood: "Lichtenberg",
+    website: "https://www.gs-lichtenberg-berlin.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Offene Ganztagbetreuung (OGB)",
+    gradesServed: ["1", "2", "3", "4", "5", "6"],
+    portraitDateAccessed: "2026-09-23",
+    sources: [
+      lichtenBergWebsite,
+      lichtenBergEfoeb,
+      lichtenBergProfile,
+      lichtenBergInspection,
+    ],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website describes eFöB (Hort) with early care from 06:00, day care, and late care until 18:00.",
+      evidence("schule-auf-dem-lichtenberg-efoeb", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Regelklassen and Montessoriklassen; the school website describes teaching inspired by Maria-Montessori pedagogy.",
+      evidence("schule-auf-dem-lichtenberg-profile", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      [
+        "Montessori",
+        "jahrgangsübergreifende Lerngruppen 1-3",
+        "ergänz. Musikunterricht für Schulanfänger",
+      ],
+      evidence("30686-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website homepage publishes secretariat and eFöB phone numbers and email.",
+      evidence("schule-auf-dem-lichtenberg-website", "2026-09-23"),
+    ),
+    facilities: field(
+      ["PC Kabinett", "Barrierefreie Toilette"],
+      evidence("30686-official-portrait", "2026-09-23"),
+    ),
+    inspectionAvailability: field(
+      "available",
+      evidence("schule-auf-dem-lichtenberg-inspection", "2026-09-23"),
+    ),
+    inspectionData: field(
+      "The school website maintains a Schulinspektion page, and the official portrait lists a report published on 01.04.2018.",
+      evidence("30686-official-portrait", "2026-09-23"),
+    ),
+    tags: [
+      {
+        id: "special-pedagogical-model",
+        confidence: "confirmed_multi_source",
+        citations: [
+          { sourceId: "schule-auf-dem-lichtenberg-profile" },
+          { sourceId: "30686-official-portrait" },
+        ],
+      },
+    ],
+    perfilDaEscola:
+      "A Schule auf dem lichten Berg fica no Ortsteil Lichtenberg, com sede na Atzpodienstraße e uma filial na Siegfriedstraße. O cadastro oficial informa inglês, Offene Ganztagbetreuung (OGB), grupos mistos nos anos 1–3 e a coexistência de Regelklassen e Montessoriklassen. O site descreve pedagogia inspirada em Maria Montessori e eFöB/Hort das 6h às 18h. O retrato oficial e o site apontam inspeção escolar, com relatório listado em 2018.",
+    qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "31283",
+    slug: "schlaufuchs-schule",
+    name: "Schlaufuchs-Grundschule",
+    schoolNumber: "11G38",
+    address: "Paul-Junius-Str. 69",
+    postCodeAndCity: "10369 Berlin",
+    neighbourhood: "Fennpfuhl",
+    website: "https://schlaufuchs-grundschule.de",
+    classification: "public",
+    level: "primary",
+    languages: ["Englisch"],
+    portraitDateAccessed: "2026-09-23",
+    sources: [schlaufuchsWebsite],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website describes Ganztagsbetreuung until 18:00 at this open all-day primary school.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Offene Ganztagsgrundschule mit Schwerpunkt Bewegung in Berlin-Lichtenberg.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      ["Bewegung", "inklusives Miteinander"],
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    inclusionSupport: field(
+      "The school website describes itself as a bewegungsorientierte, inklusive Grundschule.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes the secretariat phone number and open-day information.",
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    facilities: field(
+      ["moderner Medienraum"],
+      evidence("schlaufuchs-schule-website", "2026-09-23"),
+    ),
+    inspectionAvailability: field<
+      School["inspectionAvailability"]["value"]
+    >(
+      null,
+      citedMissing(
+        ["31283-official-portrait", "schlaufuchs-schule-website"],
+        "Retrato oficial e site da escola verificados; relatório de inspeção não aparece nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
+    inspectionData: field<string>(
+      null,
+      citedMissing(
+        ["31283-official-portrait", "schlaufuchs-schule-website"],
+        "Retrato oficial e site da escola verificados; dados de inspeção não constam nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
+    perfilDaEscola:
+      "A Schlaufuchs-Grundschule fica em Fennpfuhl, Lichtenberg. O cadastro oficial informa inglês como primeira língua estrangeira e ainda não lista um modelo de Ganztag nesse retrato. O site apresenta a escola como Offene Ganztagsgrundschule com ênfase em Bewegung, cuidado até às 18h, sala de mídia e perfil inclusivo. Até o momento, não houve confirmação independente de inspeção oficial além dessas fontes.",
+    qualitativeLastReviewed: "2026-09-23",
+  }),
+  primarySchool({
+    portraitId: "30319",
+    slug: "evangelische-schule-lichtenberg",
+    name: "Evangelische Schule Lichtenberg",
+    schoolNumber: "11P03",
+    address: "Rummelsburger Str. 3",
+    postCodeAndCity: "10315 Berlin",
+    neighbourhood: "Friedrichsfelde",
+    website: "https://www.ev-schule-lichtenberg.de",
+    classification: "private",
+    level: "primary",
+    languages: ["Englisch"],
+    ganztag: "Gebundener Ganztagbetrieb (GGB)",
+    portraitDateAccessed: "2026-09-23",
+    sources: [evangelischeWebsite, evangelischeDay, evangelischeAdmission],
+    researchStatus: "profile_ready",
+    coverageLevel: "detailed",
+    lastResearched: "2026-09-23",
+    lastSourceChecked: "2026-09-23",
+    afterSchoolCare: field(
+      "The school website lists optional Frühhort from 06:00–07:30 and Späthort from 16:00–18:00 on application, alongside mandatory bound all-day hours.",
+      evidence("evangelische-schule-lichtenberg-day", "2026-09-23"),
+    ),
+    schoolProfile: field(
+      "Staatlich anerkannte Ersatzschule of the Evangelische Kirche Berlin-Brandenburg-schlesische Oberlausitz (EKBO) Schulstiftung.",
+      evidence("evangelische-schule-lichtenberg-website", "2026-09-23"),
+    ),
+    pedagogyFocus: field(
+      [
+        "gebundene Ganztagsschule",
+        "evangelisches Schulprofil",
+        "Schulanfangsphase mit jahrgangsbezogenen Lerngruppen",
+      ],
+      evidence("30319-official-portrait", "2026-09-23"),
+    ),
+    familyCommunication: field(
+      "The school website publishes secretariat contact details and parent information pages including Anmeldung and Tagesablauf.",
+      evidence("evangelische-schule-lichtenberg-website", "2026-09-23"),
+    ),
+    facilities: field(
+      ["Computerraum", "Lehrküche", "Nagerkäfige"],
+      evidence("30319-official-portrait", "2026-09-23"),
+    ),
+    inspectionAvailability: field<
+      School["inspectionAvailability"]["value"]
+    >(
+      null,
+      citedMissing(
+        [
+          "30319-official-portrait",
+          "evangelische-schule-lichtenberg-website",
+          "evangelische-schule-lichtenberg-day",
+          "evangelische-schule-lichtenberg-admission",
+        ],
+        "Retrato oficial e páginas do site verificados; relatório de inspeção não aparece nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
+    inspectionData: field<string>(
+      null,
+      citedMissing(
+        [
+          "30319-official-portrait",
+          "evangelische-schule-lichtenberg-website",
+          "evangelische-schule-lichtenberg-day",
+          "evangelische-schule-lichtenberg-admission",
+        ],
+        "Retrato oficial e páginas do site verificados; dados de inspeção não constam nessas fontes.",
+        "2026-09-23",
+      ),
+    ),
+    perfilDaEscola:
+      "A Evangelische Schule Lichtenberg é uma Grundschule privada (Ersatzschule) em Friedrichsfelde, mantida pela Schulstiftung da EKBO. O cadastro oficial e o site descrevem Gebundener Ganztagbetrieb (GGB), com presença obrigatória até às 16h de segunda a quinta, e Hort opcional de manhã cedo e após as 16h. O inglês aparece como primeira língua estrangeira. O site informa que há Schulgeld escalonado por renda, com possível isenção sob pedido. Até o momento, não houve confirmação independente de inspeção oficial além dessas fontes.",
+    qualitativeLastReviewed: "2026-09-23",
   }),
 ] satisfies School[];

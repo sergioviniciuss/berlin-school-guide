@@ -12,7 +12,16 @@ describe("getSchoolBySlug", () => {
     expect(getSchoolBySlug("unknown-slug")).toBeUndefined();
   });
 
-  it("returns all 10 real school slugs", () => {
-    expect(getAllSchoolSlugs()).toHaveLength(10);
+  it("returns all 15 real school slugs", () => {
+    expect(getAllSchoolSlugs()).toHaveLength(15);
+    for (const slug of [
+      "grundschule-am-neuen-tor",
+      "robinson-schule",
+      "schule-auf-dem-lichtenberg",
+      "schlaufuchs-schule",
+      "evangelische-schule-lichtenberg",
+    ]) {
+      expect(getSchoolBySlug(slug)?.slug).toBe(slug);
+    }
   });
 });

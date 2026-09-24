@@ -26,7 +26,9 @@ export function HomeJourneyCards() {
           informação.
         </p>
         <Button asChild variant="outline" className="mt-4">
-          <Link href="/schools">Ver escolas em Lichtenberg</Link>
+          <Link href="/schools?district=Lichtenberg">
+            Ver escolas em Lichtenberg
+          </Link>
         </Button>
       </article>
     </div>

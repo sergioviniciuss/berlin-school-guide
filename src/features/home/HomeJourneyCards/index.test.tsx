@@ -22,12 +22,12 @@ describe("HomeJourneyCards", () => {
     ).toHaveAttribute("href", "/guides/german-education-system");
   });
 
-  it('links "Ver escolas em Lichtenberg" to /schools', () => {
+  it('links "Ver escolas em Lichtenberg" to /schools?district=Lichtenberg', () => {
     render(<HomeJourneyCards />);
 
     expect(
       screen.getByRole("link", { name: "Ver escolas em Lichtenberg" }),
-    ).toHaveAttribute("href", "/schools");
+    ).toHaveAttribute("href", "/schools?district=Lichtenberg");
   });
 
   it("applies primary accent chrome only to the Comece por aqui card", () => {

@@ -41,6 +41,7 @@ Full details: [milestones/v1.1-ROADMAP.md](milestones/v1.1-ROADMAP.md)
 - [x] **Phase 13: Evidence & Tag Schema Layer** — Structured tags, journalism/triangulated-community source tiers, triangulation validation, confidence labels (completed 2026-07-29)
 - [x] **Phase 14: Pilot Profile Content** — 3–5 Lichtenberg schools tagged and narrated, including a lower-documentation school and a triangulated-community example (completed 2026-07-29)
 - [x] **Phase 15: Profile UI (Tags & Narrative)** — TagsSection + editorial narrative rendering, official-vs-community distinction, extended Fontes and correction path (completed 2026-07-30)
+- [x] **Phase 15.1: Five Lichtenberg Evidence-Backed Profiles (INSERTED)** — Neues Tor, Robinson-Schule, Schule auf dem Lichtenberg, Schlaufuchs-Schule, Evangelische Schule Lichtenberg
 - [ ] **Phase 16: Validation & Release Gates** — Non-pilot regression proof, schema/UI/Fontes test coverage, full CI green
 
 ## Phase Details
@@ -120,9 +121,35 @@ Plans:
 - [x] 15-05-PLAN.md — Wire SchoolProfile editorial zone, Perfil oficial rename, correction CTA
 **UI hint**: yes
 
+### Phase 15.1: Five Lichtenberg Evidence-Backed Profiles (INSERTED)
+**Goal**: Add five Lichtenberg schools as full evidence-backed profiles (factual fields + sources + tags + Perfil da escola where evidence supports), using the Phase 13–15 model already in production UI.
+**Depends on**: Phase 15
+**Requirements**: No formal REQ-IDs. Plans cover the five success criteria below.
+**Schools (locked request)**:
+  1. Grundschule am Neuen Tor (Neues Tor)
+  2. Robinson-Schule
+  3. Schule auf dem Lichtenberg
+  4. Schlaufuchs-Schule
+  5. Evangelische Schule Lichtenberg
+**Success Criteria** (what must be TRUE):
+  1. All five schools appear in the static directory and have `/schools/[slug]/` profiles
+  2. Each school has field-level evidence status and `Fontes` citations for authored factual fields
+  3. Each school has a short Perfil da escola, and tags only where gathered evidence earns them, that passes `validate:data` / tag evidence rules; sparse-but-honest is allowed when documentation is thin
+  4. Existing Phase 14–15 pilot schools remain valid; no schema or UI regressions
+  5. User-facing copy for new qualitative content is Brazilian Portuguese (editorial voice)
+**Plans**: 7 plans
+Plans:
+- [x] 15.1-01-PLAN.md — Factory overrides so the five can be private, graded from the portrait, and cited-missing without changing the ten
+- [x] 15.1-02-PLAN.md — Grundschule am Neuen Tor evidence record and Perfil
+- [x] 15.1-03-PLAN.md — Robinson-Schule evidence record and Perfil
+- [x] 15.1-04-PLAN.md — Schule auf dem Lichtenberg evidence record and Perfil
+- [x] 15.1-05-PLAN.md — Schlaufuchs-Schule evidence record and Perfil
+- [x] 15.1-06-PLAN.md — Evangelische Schule Lichtenberg private evidence record and Perfil
+- [x] 15.1-07-PLAN.md — Directory count 15, original-ten lock, and smoke denominators
+
 ### Phase 16: Validation & Release Gates
 **Goal**: The pilot evidence-backed profile model is proven trustworthy, repeatable, and maintainable through automated regression coverage before milestone close.
-**Depends on**: Phase 15
+**Depends on**: Phase 15.1
 **Requirements**: VAL-01, VAL-02
 **Success Criteria** (what must be TRUE):
   1. Non-pilot school profile pages and each school's `coverage.percentage` value are verified byte-identical before and after tags/editorial are introduced
@@ -141,6 +168,7 @@ Plans:
 | 13. Evidence & Tag Schema Layer | v1.2 | 4/4 | Complete    | 2026-07-29 |
 | 14. Pilot Profile Content | v1.2 | 5/5 | Complete    | 2026-07-29 |
 | 15. Profile UI (Tags & Narrative) | v1.2 | 6/6 | Complete    | 2026-08-02 |
+| 15.1 Five Lichtenberg Evidence-Backed Profiles | v1.2 | 7/7 | Complete    | 2026-09-23 |
 | 16. Validation & Release Gates | v1.2 | 0/? | Not started | - |
 
 ## Future Backlog

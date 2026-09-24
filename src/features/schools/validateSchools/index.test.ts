@@ -10,7 +10,7 @@ describe("validateSchoolFixtures", () => {
 
   it("validates static real school records", () => {
     expect(validateRealSchools()).toEqual({
-      checked: 10,
+      checked: 15,
       failures: [],
     });
   });
