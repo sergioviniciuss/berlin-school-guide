@@ -11,8 +11,12 @@ test("navigates from homepage to school directory via journey CTA", async ({
   ).toBeVisible();
 
   await page.getByRole("link", { name: "Ver escolas em Lichtenberg" }).click();
-  await expect(page).toHaveURL(/\/schools$/);
+  await expect(page).toHaveURL(/\/schools\?district=Lichtenberg$/);
   await expect(page.getByRole("heading", { name: "Escolas" })).toBeVisible();
+  await expect(page.getByText("14 de 15 escolas encontradas")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Remover filtro Distrito: Lichtenberg" }),
+  ).toBeVisible();
 });
 
 test("navigates from homepage to school directory via header nav", async ({

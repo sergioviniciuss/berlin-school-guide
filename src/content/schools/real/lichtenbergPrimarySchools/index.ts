@@ -985,7 +985,9 @@ export const realLichtenbergPrimarySchools = [
       ["moderner Medienraum"],
       evidence("schlaufuchs-schule-website", "2026-09-23"),
     ),
-    inspectionAvailability: field(
+    inspectionAvailability: field<
+      School["inspectionAvailability"]["value"]
+    >(
       null,
       citedMissing(
         ["31283-official-portrait", "schlaufuchs-schule-website"],
@@ -993,7 +995,7 @@ export const realLichtenbergPrimarySchools = [
         "2026-09-23",
       ),
     ),
-    inspectionData: field(
+    inspectionData: field<string>(
       null,
       citedMissing(
         ["31283-official-portrait", "schlaufuchs-schule-website"],
@@ -1048,7 +1050,9 @@ export const realLichtenbergPrimarySchools = [
       ["Computerraum", "Lehrküche", "Nagerkäfige"],
       evidence("30319-official-portrait", "2026-09-23"),
     ),
-    inspectionAvailability: field(
+    inspectionAvailability: field<
+      School["inspectionAvailability"]["value"]
+    >(
       null,
       citedMissing(
         [
@@ -1061,7 +1065,7 @@ export const realLichtenbergPrimarySchools = [
         "2026-09-23",
       ),
     ),
-    inspectionData: field(
+    inspectionData: field<string>(
       null,
       citedMissing(
         [
